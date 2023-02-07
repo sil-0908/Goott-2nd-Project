@@ -25,7 +25,13 @@
 	<select id="login" resultType="String">
 		select NICKNAME
 		  from USER
-		 where EMAIL=#{email} and PASSWORD=#{password}
+		 where EMAIL=#{email}
+	</select>
+	
+	<select id="pwGet" resultType="String">
+		select PASSWORD
+		  from USER
+		 where EMAIL=#{email}
 	</select>
 	
 	<select id="mydetail" resultType="hashMap">

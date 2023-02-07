@@ -3,6 +3,7 @@ package com.test.test1.user.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.test.test1.user.dao.UserDao;
@@ -12,6 +13,7 @@ import com.test.test1.user.dto.UserDto;
 public class UserServiceImpl implements UserService{
 	@Autowired
 	UserDao userDao;
+	BCryptPasswordEncoder encoder;
 	
 	@Override
 	public boolean create(UserDto userDto) {
@@ -19,8 +21,8 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public String login(UserDto userDto) {
-		return userDao.login(userDto);
+	public String login(UserDto userDto, BCryptPasswordEncoder encoder) {
+		return userDao.login(userDto, encoder);
 	}
 
 	@Override
