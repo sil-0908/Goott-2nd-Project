@@ -124,6 +124,7 @@ public class UserController {
 	//전체조회 - 01.31 장재호
 	@RequestMapping("list")
 	public ModelAndView list(ModelAndView mv) {
+		System.out.println(userService.list().toString());
 		mv.addObject("data", userService.list());
 		mv.setViewName("/user/list");
 		return mv;

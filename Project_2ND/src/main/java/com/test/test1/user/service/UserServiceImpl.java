@@ -45,6 +45,11 @@ public class UserServiceImpl implements UserService{
 	public int modifyDetail(UserDto userDto) {
 		return userDao.modify_detail(userDto);
 	}
+
+	@Override
+	public int userIdx(String user) {
+		return userDao.userIdx(user);
+	}
 }
 
 

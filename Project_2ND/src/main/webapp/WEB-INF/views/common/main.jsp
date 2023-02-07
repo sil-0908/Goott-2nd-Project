@@ -39,6 +39,13 @@ hello
 	</h1>
 </c:if>
 <input type="button" value="회원 조회" onclick="location.href='user/list'">
+
+<c:if test="${sessionScope.user_email != null}">
+<!-- QNA -->
+<form action="/qna/list">
+	<input type="button" value="QNA게시판" onclick="location.href='qna/list'">
+</form>
+</c:if>
 <script>
 	const timer = setTimeout(function(){
 		$('h1').text('');

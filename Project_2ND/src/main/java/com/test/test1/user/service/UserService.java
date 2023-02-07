@@ -21,6 +21,8 @@ public interface UserService {
 
 	int modifyDetail(UserDto userDto);
 
+	int userIdx(String user);
+
 
 
 }

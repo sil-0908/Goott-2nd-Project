@@ -63,6 +63,12 @@ public class UserDao {
 		return sqlSessionTemplate.selectList("user.list");
 		
 	}
+
+	//qna등록 시 user Key값 받아오기 - 02.07 장재호
+	public int userIdx(String user) {
+		System.out.println("user                                = " + user);
+		return sqlSessionTemplate.selectOne("user.idx", user);
+	}
 	
 
 	

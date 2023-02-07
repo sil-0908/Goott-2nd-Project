@@ -52,4 +52,10 @@
         select * from USER
         order by USER_ID asc
 	</select>
+	
+	<select id="idx" resultType="int">
+		select USER_ID
+		  from USER
+		 where EMAIL=#{user}
+	</select>
 </mapper>
