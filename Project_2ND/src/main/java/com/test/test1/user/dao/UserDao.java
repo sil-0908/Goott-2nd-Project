@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.test.test1.user.dto.UserDto;
@@ -12,6 +13,7 @@ import com.test.test1.user.dto.UserDto;
 public class UserDao {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
+	BCryptPasswordEncoder encoder; //로그인 시 복호화를 위해
 	
 	//이메일 중복확인 버튼 기능 - 01.31 장재호
 	public String emailCheck(String email) {
@@ -31,8 +33,13 @@ public class UserDao {
 	}
 	
 	//로그인 - 01.31 장재호
-	public String login(UserDto userDto) {
-		return sqlSessionTemplate.selectOne("user.login", userDto);
+	public String login(UserDto userDto, BCryptPasswordEncoder encoder) {
+		//암호화 된 암호를 복호화 해서 들고나와서 비교해야함.
+		String pw = sqlSessionTemplate.selectOne("user.pwGet", userDto); // pw : DB에 암호화 된 userPW
+		if(encoder.matches(userDto.getPassword(), pw)) {                 //비밀번호 일치 시
+			return sqlSessionTemplate.selectOne("user.login", userDto);  //nickname값 세션 저장을 위해 return
+		}
+		else return null;
 	}
 	
 	//개인 정보 조회 - 01.31 장재호
