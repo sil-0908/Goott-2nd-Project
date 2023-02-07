@@ -5,12 +5,18 @@
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <meta charset="UTF-8">
+<link rel="stylesheet" href="/resources/css/common/common.css">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
+<div id="navArea"></div>
+
+
+<div id="main_Con">
 hello
 <!-- 로그인 성공 시 -->
 <c:if test="${sessionScope.nickname != null}">
-	<h1>
+	<h1 id="text">
 		${sessionScope.nickname}님 환영합니다	
 	</h1>
 </c:if>
@@ -29,12 +35,12 @@ hello
 <input type="button" value="동영상게시판" onclick="location.href='video/list'">
 </c:if>
 <c:if test="${message=='success'}">
-	<h1>
+	<h1 id="text">
 		가입 성공
 	</h1>
 </c:if>
 <c:if test="${message=='oknick'}">
-	<h1>
+	<h1 id="text">
 		변경 완료
 	</h1>
 </c:if>
@@ -46,9 +52,10 @@ hello
 	<input type="button" value="QNA게시판" onclick="location.href='qna/list'">
 </form>
 </c:if>
+</div>
 <script>
 	const timer = setTimeout(function(){
-		$('h1').text('');
+		$('#text').text('');
 	}, 2000);
 </script>
 </body>

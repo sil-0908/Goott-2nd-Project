@@ -39,5 +39,10 @@ public class QnaServiceImpl implements QnaService {
 		qnaDao.delete(question_id);
 	}
 
+	@Override
+	public List<QnaDto> qnaSearch(String keyword, String option) {
+		return qnaDao.qnaSearch(keyword, option);
+	}
+
 
 }

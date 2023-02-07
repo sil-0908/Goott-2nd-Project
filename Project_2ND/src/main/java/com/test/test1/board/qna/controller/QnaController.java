@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.test1.board.qna.dto.QnaDto;
@@ -26,10 +27,18 @@ public class QnaController {
 	//qna 게시판 출력 - 02.07 장재호
 	//user Key값으로 닉네임을 리스트에 출력
 	@RequestMapping("list")
-	public ModelAndView qnaList(ModelAndView mv, QnaDto qnaDto) {
-		mv.addObject("data", qnaService.list());
-		mv.setViewName("board/qna/qna_list");		
+	public ModelAndView qnaList(ModelAndView mv, QnaDto qnaDto, String keyword, String option) {
+		if(keyword == null || keyword == "" || option == "") { //초기 리스트 진입 시(검색x)
+			mv.addObject("data", qnaService.list());
+			mv.setViewName("board/qna/qna_list");
+			return mv;
+		}
+		System.out.println("keyword = " + keyword + ", option = " + option);
+		//검색 진행
+		mv.addObject("data", qnaService.qnaSearch(keyword, option));
+		mv.setViewName("board/qna/qna_list");
 		return mv;
+
 	}
 	
 	//질문생성 페이지 - 02.07 장재호
@@ -71,11 +80,11 @@ public class QnaController {
 		return "redirect:/qna/list/{question_id}";
 	}
 	
-	//삭제하기
+	//삭제하기 - 02.07 장재호
 	@RequestMapping("qnaDelete")
 	public String qnaDelete(int question_id) {
 		qnaService.delete(question_id);
 		return "redirect:/qna/list";
 	}	
-	
+
 }

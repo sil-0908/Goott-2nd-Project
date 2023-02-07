@@ -14,6 +14,8 @@ public interface QnaService {
 
 	void modify(QnaDto qnaDto);
 
-	void delete(int question_id);	
+	void delete(int question_id);
+
+	List<QnaDto> qnaSearch(String keyword, String option);	
 	
 }
