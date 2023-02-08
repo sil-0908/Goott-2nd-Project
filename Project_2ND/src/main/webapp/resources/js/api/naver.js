@@ -24,14 +24,8 @@ naverLogin.getLoginStatus(function (status) {
 
 console.log(naverLogin);
 
-
 function setLoginStatus(){
-	$.ajax({
-		  type : 'post',
-		  url : '/naverLogin',
-		  data : JSON.stringify(naverLogin),
-		  dataType : 'text',
-	})
+
 	
 	const message_area=document.getElementById('message');
 	message_area.innerHTML=`
@@ -40,6 +34,14 @@ function setLoginStatus(){
 		<div>user Age(범위) : ${naverLogin.user.age}</div>
 		<div>user Birthday : ${naverLogin.user.birthday}</div>
 		`;
+	
+	$.ajax({
+		  type : 'post',
+		  url : '/naverLogin',
+		  data : {"email" : t.user.email, "nickname" : t.user.nickname},
+		  dataType : 'text',
+	})
+	
 
 	const button_area=document.getElementById('button_area');
 	button_area.innerHTML="<button id='btn_logout'>로그아웃</button>";
@@ -47,6 +49,6 @@ function setLoginStatus(){
 	const logout=document.getElementById('btn_logout');
 	logout.addEventListener('click',(e)=>{
 		naverLogin.logout();
-		location.replace("http://127.0.0.1:5500");
+		location.replace("http://localhost:8080/user/signin");
 	})
 }

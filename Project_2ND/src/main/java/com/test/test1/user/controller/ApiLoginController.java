@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ApiLoginController {	
 	@RequestMapping(value = "kakaoLogin", method = RequestMethod.POST)
-	//RequestBody : Model, RequestParam : Map
-	//contentType : app/json->map / text->Model
 	public String kakaoLogin(@RequestParam Map<String, Object> kakao) {
 		System.out.println(kakao);
 		return "redirect:/";
