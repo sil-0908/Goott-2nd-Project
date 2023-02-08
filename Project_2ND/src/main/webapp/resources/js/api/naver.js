@@ -7,6 +7,7 @@ const naverLogin = new naver.LoginWithNaverId({
  
 naverLogin.getLoginStatus(function (status) {
 	if (status) {
+		const email=naverLogin.user.getEmail();
 		const nickName=naverLogin.user.getNickName();
 		const age=naverLogin.user.getAge();
 		const birthday=naverLogin.user.getBirthday();
@@ -18,6 +19,14 @@ naverLogin.getLoginStatus(function (status) {
 			return ;  
 		}else{
 			setLoginStatus(); //모든 필수 정보 제공 동의하면 실행하는 함수
+			
+			$.ajax({
+				  type : 'post',
+				  url : '/naverLogin',
+				  data : {"email" : email, "nickname" : nickName},
+				  dataType : 'text'
+			})
+			
 		}
 	}
 });
@@ -30,17 +39,12 @@ function setLoginStatus(){
 	const message_area=document.getElementById('message');
 	message_area.innerHTML=`
 		<h3> Login 성공 </h3>
+		<div>user EMAIL : ${naverLogin.user.email}</div>
 		<div>user Nickname : ${naverLogin.user.nickname}</div>
 		<div>user Age(범위) : ${naverLogin.user.age}</div>
 		<div>user Birthday : ${naverLogin.user.birthday}</div>
+		
 		`;
-	
-	$.ajax({
-		  type : 'post',
-		  url : '/naverLogin',
-		  data : {"email" : t.user.email, "nickname" : t.user.nickname},
-		  dataType : 'text',
-	})
 	
 
 	const button_area=document.getElementById('button_area');

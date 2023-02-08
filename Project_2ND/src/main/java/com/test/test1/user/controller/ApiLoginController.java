@@ -7,18 +7,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.test.test1.user.dto.UserDto;
+
 //api로그인 구현 컨트롤러 - 02.08 장재호
 @Controller
 public class ApiLoginController {	
 	@RequestMapping(value = "kakaoLogin", method = RequestMethod.POST)
-	public String kakaoLogin(@RequestParam Map<String, Object> kakao) {
-		System.out.println(kakao);
+	public String kakaoLogin(UserDto userDto) {
+		System.out.println(userDto.toString());
 		return "redirect:/";
 	}
 	
 	@RequestMapping("naverLogin")
-	public String naverLogin(@RequestParam Map<String, Object> naver) {
-		System.out.println(naver);
+	public String naverLogin(UserDto userDto) {
+		System.out.println(userDto);
 		return "redirect:/user/signin";
 	}
 
