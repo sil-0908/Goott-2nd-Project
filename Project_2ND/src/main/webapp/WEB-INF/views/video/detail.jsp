@@ -20,12 +20,7 @@
        <video controls loop>
 	    <source src="${data.VIDEO_URL}" type="video/mp4">
        </video>
-    </div>
-  
-    
-    
-    
-   
+    </div>   
    
    
    

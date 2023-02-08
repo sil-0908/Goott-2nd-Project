@@ -129,4 +129,12 @@ public class UserController {
 		mv.setViewName("/user/list");
 		return mv;
 	}
+	
+	@RequestMapping(value="kakao", method=RequestMethod.POST)
+	public String kakaoLogin(String kakao) {
+		System.out.println(kakao);
+		return null;
+	}
+	
+	
 }
