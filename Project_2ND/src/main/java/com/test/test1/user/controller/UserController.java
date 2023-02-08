@@ -128,13 +128,6 @@ public class UserController {
 		mv.addObject("data", userService.list());
 		mv.setViewName("/user/list");
 		return mv;
-	}
-	
-	@RequestMapping(value="kakao", method=RequestMethod.POST)
-	public String kakaoLogin(String kakao) {
-		System.out.println(kakao);
-		return null;
-	}
-	
+	}	
 	
 }
