@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link rel="stylesheet" href="/resources/css/user/user_signin.css">
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="/resources/js/user/user_signin.js"></script>
 <!-- Google -->
 <meta name="google-signin-client_id" content="967788525797-huq32simk5h35o6faii7nlbi86822e6l.apps.googleusercontent.com">
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
@@ -13,43 +16,61 @@
 <!-- kakao -->
 <!-- naver -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"charset="utf-8"></script>
-<link rel="stylesheet" href="/resources/css/api/naver.css">
-<!-- naver -->
+</head>
 <body>
-<form method="post" action="signin_check">
-	이메일 : <input type="email" name="email">
-	비밀번호 : <input type="password" name="password">
-	<input type="submit" value="로그인">
-</form>
-	<!-- kakao -->
-	<ul>
-		<li onclick="kakaoLogin();">
-			<a href="javascript:void(0)"><span>카카오 로그인</span></a>
-		</li>
-		<li onclick="kakaoLogout();">
-			<a href="javascript:void(0)"><span>카카오 로그아웃</span></a>
-		</li>
-	</ul>
+	<header>
+		<div class="header_logo">
+			<img src="/resources/img/user/logo.png" alt="">
+		</div>
+	</header>
+	<section>
+		<div class="section_loginform">
+			<span class="login"><span class="login_text">로그인</span><small><a href="/user/find">비밀번호를 잊어버리셨나요?</a></small></span>
+			<form method="post" action="signin_check">
+				<div>
+					<div class="input_text">
+						<input type="text" name="id" placeholder="ID" autocomplete="off" class="input_size">
+						<span id="id" class="formSpans"></span>
+					</div>
+					<div class="input_text">
+						<input type="password" name="password" placeholder="비밀번호" autocomplete="off" class="input_size">
+						<span id="password" class="formSpans"></span>
+						<!-- test="${message == 'error' } - 조건식 : 컨트롤러에서 들고오는 메세지-->
 
-	<!-- google -->
-	<ul>
-		<li id="GgCustomLogin">
-			<a href="javascript:void(0)"><span>Login with Google</span></a>
-		</li>
-	</ul>
-
-
-    <!-- 네이버 로그인 버튼 노출 영역 -->
-	<div class="container">
-		<h1>Naver Login API 사용하기</h1>
-			<div class="login-area">
-				<div id="message">로그인 버튼을 눌러 로그인 해주세요.</div>
-			<div id="button_area"> 
-				<div id="naverIdLogin"></div>
+					</div>
+					<button class="login_submit">로그인</button>
+					<c:if test="${message == 'error' }">
+            				<div class="error_text">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+         			</c:if>                    
+				</div> 
+			</form>
+			
+			<span class="division_line"> <br>다른 방법으로 로그인하기</span>
+                  
+			<div class="image-div">
+				<div id="button_area"> 
+					<div class="naverIcon" id="naverIdLogin"><img src="/resources/img/user/iconNaver.svg"></div>
+				</div>
+				<div onclick="kakaoLogin()">
+					<div class="kakaoIcon"><img src="/resources/img/user/iconKakao.svg" alt=""></div>
+				</div>
+				<div onclick="location.href='https://www.facebook.com/login'">
+					<div class="faceIcon"><img src="/resources/img/user/iconFace.svg" alt=""></div>
+				</div>
+			</div>
+                  
+			<div>
+				<span class="signup_text"> <br>혹시 아직 회원이 아닌가요? </span>
+				<br>
+				<form method="get" action="/user/signup">
+					<button class="signup">회원가입</button>
+				</form>
 			</div>
 		</div>
-	</div>
-	
+	</section>
+	<footer>
+
+	</footer>
 <script src="/resources/js/api/google.js"></script>
 <script src="/resources/js/api/kakao.js"></script>
 <script src="/resources/js/api/naver.js"></script>

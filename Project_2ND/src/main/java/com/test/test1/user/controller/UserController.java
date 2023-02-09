@@ -42,8 +42,10 @@ public class UserController {
 			session.setAttribute("nickname", str);
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
 			mv.setViewName("redirect:/");
+			mv.addObject("message", "success");
 		}else {                                    //로그인 실패
 			mv.setViewName("user/signin");
+			mv.addObject("message", "error");
 		}
 		return mv;
 	}
@@ -62,12 +64,12 @@ public class UserController {
 	}
 	
 	//이메일 중복 확인 버튼 기능 - 01.31 장재호
-	@RequestMapping("emailCheck")
+	@RequestMapping("idCheck")
 	@ResponseBody //ajax 요청에 담긴 값을 자바 객체로 변환시켜 인스턴스(boolean)에 저장 -> illegalargumentException 방지
-	public boolean emailCheck(@RequestParam("email") String email) {
-		//DB 들어가서 email 중복값이 있나 들고나옴
+	public boolean idCheck(@RequestParam("id") String id) {
+		//DB 들어가서 id 중복값이 있나 들고나옴
 		String check = null;
-		check = userService.emailCheck(email); //check : email파라미터로 DB조회 결과
+		check = userService.idCheck(id); //check : id파라미터로 DB조회 결과
 		if(check != null) return true;         //중복없음
 		else return false;		
 	}
@@ -95,8 +97,8 @@ public class UserController {
 	//개인 상세 정보 조회 - 01.31 장재호
 	@RequestMapping("mydetail")
 	public ModelAndView mydetail(HttpSession session, ModelAndView mv) {		
-		String user_email = session.getAttribute("user_email").toString();
-		List<UserDto> list = userService.mydetail(user_email); //list : 로그인 된 user_email값에 해당하는 개인 정보
+		String user_id = session.getAttribute("user_id").toString();
+		List<UserDto> list = userService.mydetail(user_id); //list : 로그인 된 user_id값에 해당하는 개인 정보
 
 		mv.setViewName("user/mydetail");
 		mv.addObject("data", list);
@@ -128,6 +130,14 @@ public class UserController {
 		mv.addObject("data", userService.list());
 		mv.setViewName("/user/list");
 		return mv;
-	}	
+	}
+	
+	// 아이디/비밀번호 찾기 - 02.08 김범수
+	@RequestMapping("find")
+	public ModelAndView find(ModelAndView mv) {
+		mv.setViewName("user/find_id");
+		return mv;
+	}
+	
 	
 }
