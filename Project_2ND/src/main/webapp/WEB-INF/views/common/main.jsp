@@ -44,6 +44,7 @@ hello
 		$('h1').text('');
 	}, 2000);
 </script>
+
 </body>
 
 </html>

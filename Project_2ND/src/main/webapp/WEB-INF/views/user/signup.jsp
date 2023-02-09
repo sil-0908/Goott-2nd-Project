@@ -11,9 +11,6 @@
 </head>
 <body>
 
-
-
-
 <div class="container_j"> 
 	<div class="background_j">
 		<div class="header_j">
