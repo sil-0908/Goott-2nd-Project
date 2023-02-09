@@ -1,0 +1,204 @@
+:root{
+    --logo-color:#FFCC00;
+    --logo-size: 60px;
+    --title-size: 25px;
+    --title-border: 600px;
+    --text-color:#CCCCCC;
+    --text-size: 17px;
+    --bg:#24292D;
+}
+
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+   }
+
+*{
+    margin: auto;
+    box-sizing: border-box;
+    font-family:'NanumBarunGothic'; 
+   
+}
+
+body{
+    background-color: var(--bg);
+}
+
+/* ==============================================================================================  */
+
+.container_j {
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+    "header"
+    "main"
+    "footer";
+}
+
+.background_j {
+    position: absolute;
+    width: 100%;
+    height: 140vh;
+    z-index: -1;
+    background-position: center;
+    background-size: cover;
+    filter:brightness(1);
+}
+
+
+.header_j {
+    width: 100%;
+    height: 10vh;
+    grid-area: header;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255,255,255, 0));
+    
+  }
+
+.headerLogo_j{
+    font-size: 60px;
+    color: #FFCC00;
+    
+    
+    width: 15vw;
+    height: 10vh;
+    display: inline-block;
+    justify-self: start;
+}
+
+/* =====================================   비밀번호 보기 감추기      =================================  */
+.fa-solid fa-eye-slash fa-lg{
+    color:dimgray;
+    position: relative;
+    top: -33px;
+    left: 340px;
+    
+}
+
+
+
+/* ==============================================================================================  */
+
+
+#mainDiv_j{
+	width: 50%;
+    height: 100vh;
+    grid-area: main;
+    justify-self: center;
+    padding: 5vh 5vw 5vh 5vw;
+    display: grid;
+}
+
+#viewDiv_j{
+	width: 500px;
+    height: 900px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    place-self: center;
+    padding: 60px;
+    display: grid;
+    border-radius: 60px 60px;
+}
+
+
+
+#signUpText_j{
+	color:#CCCCCC;
+    font-size: 24px;
+    display: block;
+    margin: 10px;
+    height: 10px;
+}
+
+
+.wrapInput {
+	margin-top:80px;
+	display: flex;
+	flex-direction: column;
+}
+
+
+#emailcheck_j{
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-around;
+}
+
+
+
+#btn{
+	justify-content: flex-end;
+	margin-top: 20px;
+	padding-right:-50px;
+}
+#idcheck{
+	margin-top:20px;
+}
+
+.formInputs{
+    width: 380px;
+    height: 50px;
+    font-size: 15px;
+    padding: 10px 0 10px 20px;
+    background-color: rgb(25, 26, 30);
+    color: #CCCCCC;
+    border: none;
+    border-radius:  10px;
+    margin-top:-60px;
+}
+
+.formInputs::placeholder{
+    color: rgb(90, 90, 90);
+}
+.formInputs:focus{
+    outline: none;
+    background-color:rgb(42, 43, 49);
+}
+
+
+
+/* ====================================== 체크박스 ========================================================  */
+
+#checkbox{
+    color: #CCCCCC;
+    font-size: 17px;
+    text-align: start;
+    margin: 10px 0 10px 10px;
+
+}
+
+
+.checkB{
+    margin:14px 0 0 20px;
+    
+}
+
+#submit{
+    width: 380px;
+    height: 50px;
+    background-color:#F82F62;
+    border-radius: 10px;
+    color: #CCCCCC;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    margin: 20px 0 0 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

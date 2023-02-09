@@ -32,19 +32,24 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public String emailCheck(String email) {
-		return userDao.emailCheck(email);
+	public String idCheck(String id) {
+		return userDao.idCheck(id);
 	}
 
 
 	@Override
-	public List<UserDto> mydetail(String user_email) {
-		return userDao.mydetail(user_email);
+	public List<UserDto> mydetail(String user_id) {
+		return userDao.mydetail(user_id);
 	}
 
 	@Override
 	public int modifyDetail(UserDto userDto) {
 		return userDao.modify_detail(userDto);
+	}
+
+	@Override
+	public int userIdx(String user) {
+		return userDao.userIdx(user);
 	}
 }
 

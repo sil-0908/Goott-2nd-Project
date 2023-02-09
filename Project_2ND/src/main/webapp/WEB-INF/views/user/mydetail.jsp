@@ -10,6 +10,7 @@
 	<ul>
 	<form method="post" action="modify_detail">
 	<c:forEach var="list" items="${data}">
+		<li>아이디 : <input type="text" name="id" value="${list.ID}" readonly></li>
 		<li>이메일 : <input type="email" name="email" value="${list.EMAIL}" readonly></li>
 		<li>비밀번호 : <input type="password" name="password" value="${list.PASSWORD}"></li>
 		<li>닉네임 : <input type="text" name="nickname" value="${list.NICKNAME}"></li>
