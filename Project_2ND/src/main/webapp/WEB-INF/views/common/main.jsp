@@ -15,13 +15,13 @@ hello
 	</h1>
 </c:if>
 
-<c:if test="${sessionScope.user_email == null}">
+<c:if test="${sessionScope.user_id == null}">
 <!-- 회원가입 -->
 <input type="button" value="회원가입" onclick="location.href='user/signup'">
 <!-- 로그인 로그아웃 -->
 <input type="button" value="로그인" onclick="location.href='user/signin'">
 </c:if>
-<c:if test="${sessionScope.user_email != null}">
+<c:if test="${sessionScope.user_id != null}">
 <form action="/user/sign_out">
 	<input type="submit" value="로그아웃">
 </form>
@@ -44,6 +44,7 @@ hello
 		$('h1').text('');
 	}, 2000);
 </script>
+
 </body>
 
 </html>

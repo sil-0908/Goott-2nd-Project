@@ -15,12 +15,13 @@ public interface UserService {
 
 	String login(UserDto userDto, BCryptPasswordEncoder encoder);
 
-	String emailCheck(String email);
+	String idCheck(String id);
 
-	List<UserDto> mydetail(String user_email);
+	List<UserDto> mydetail(String user_id);
 
 	int modifyDetail(UserDto userDto);
 
+	int userIdx(String user);
 
 
 }
