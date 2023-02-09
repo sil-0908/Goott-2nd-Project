@@ -11,7 +11,6 @@
    <p>이미지URL<input type="text" name="imgurl" /></p> 
    <p>제작국가 : <input type="text" name="country" /></p>
    <p>제작년도 : <input type="text" name="year" /></p>
-   <p>추천수 : <input type="text" name="recommand" /></p>
    <p>등급 : <input type="text" name="grade" /></p>   
    <p><input type="submit" value="저장" />
   </form>

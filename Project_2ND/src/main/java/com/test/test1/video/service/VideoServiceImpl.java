@@ -30,8 +30,8 @@ public class VideoServiceImpl implements VideoService {
 	
 	@Override
 	public List<Map<String, Object>> list(Map<String, Object> map) {
-		// TODO Auto-generated method stub
 		return this.videoDao.selectList(map);
 	}
+
 
 }

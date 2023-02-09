@@ -20,16 +20,16 @@
 		<td>생성일자</td>
 	</tr>
 	<c:forEach var="list" items="${data}">
-	<tr>
-		<td>${list.USER_ID}</td>
-		<td>${list.EMAIL}</td>
-		<td>${list.PASSWORD}</td>
-		<td>${list.NICKNAME}</td>
-		<td>${list.PHONE_NUM}</td>
-		<td>${list.SUBSCRIBE_YN}</td>
-		<td>${list.DELETE_YN}</td>
-		<td>${list.CREATE_DATE}</td>
-	</tr>
+		<tr>
+			<td>${list.USER_ID}</td>
+			<td>${list.EMAIL}</td>
+			<td>${list.PASSWORD}</td>
+			<td>${list.NICKNAME}</td>
+			<td>${list.PHONE_NUM}</td>
+			<td>${list.SUBSCRIBE_YN}</td>
+			<td>${list.DELETE_YN}</td>
+			<td>${list.CREATE_DATE}</td>
+		</tr>
 	</c:forEach>
 </table>
 </body>
