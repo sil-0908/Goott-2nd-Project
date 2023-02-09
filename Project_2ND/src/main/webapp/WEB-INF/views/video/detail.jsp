@@ -13,9 +13,12 @@
   </style>
 </head>
 <body>
-
+       
        <p>제목 :${data.TITLE} </p>
        <p>URL :${data.VIDEO_URL} </p>
+       <p>IMAGE_URL :${data.IMAGE_URL} </p>
+       <p>줄거리:${data.SUMMARY}</p>
+       
     <div>
        <video controls loop>
 	    <source src="${data.VIDEO_URL}" type="video/mp4">

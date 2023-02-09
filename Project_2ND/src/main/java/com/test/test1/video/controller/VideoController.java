@@ -1,5 +1,6 @@
 package com.test.test1.video.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +13,12 @@ import org.springframework.web.servlet.ModelAndView;
 import com.test.test1.video.service.VideoService;
 
 @Controller
+@RequestMapping("/video/**")
 public class VideoController { 
 		
 		@Autowired 
 		VideoService videoService; 
+		
 		
 		@RequestMapping(value="/create", method = RequestMethod.GET)
 		public ModelAndView create() {
@@ -36,14 +39,29 @@ public class VideoController {
 		    return mav;
 		}
 
-	   
+	    //영상 상세 페이지 -02.07 배철우
 		@RequestMapping(value = "/detail", method = RequestMethod.GET)
 		public ModelAndView detail(@RequestParam Map<String, Object> map) {
 		    Map<String, Object> detailMap = this.videoService.detail(map);
 		    ModelAndView mav = new ModelAndView();
 		    mav.addObject("data", detailMap);
+		    String videoId = map.get("videoId").toString();
+		    mav.addObject("videoId", videoId);
 		    mav.setViewName("/video/detail");
 		    return mav;
-		}	   
+		}
+		
+		//영상 전체조희 페이지-02.07 배철우
+		@RequestMapping(value = "/list", method=RequestMethod.GET)
+		public ModelAndView list(@RequestParam Map<String, Object> map) {
+			// 여러건을 가져오고 싶을때
+			List<Map<String,Object>> list = this.videoService.list(map);
+			
+			ModelAndView mv = new ModelAndView();
+			mv.addObject("data", list);
+			mv.setViewName("/video/list");
+			return mv;
+		}
 
+     
 }

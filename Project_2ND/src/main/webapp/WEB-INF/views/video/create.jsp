@@ -8,6 +8,7 @@
    <p>제목 : <input type="text" name="title" /></p>
    <p>줄거리 : <input type="text" name="summary" /></p>
    <p>URL : <input type="text" name="url" /></p>
+   <p>이미지URL<input type="text" name="imgurl" /></p> 
    <p>제작국가 : <input type="text" name="country" /></p>
    <p>제작년도 : <input type="text" name="year" /></p>
    <p>추천수 : <input type="text" name="recommand" /></p>

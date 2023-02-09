@@ -1,5 +1,6 @@
 package com.test.test1.video.service;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,11 @@ public class VideoServiceImpl implements VideoService {
 	  
 		return this.videoDao.selectDetail(map);
 	}
-
+	
+	@Override
+	public List<Map<String, Object>> list(Map<String, Object> map) {
+		// TODO Auto-generated method stub
+		return this.videoDao.selectList(map);
+	}
 
 }
