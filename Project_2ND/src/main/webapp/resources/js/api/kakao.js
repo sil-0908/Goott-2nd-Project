@@ -10,7 +10,7 @@ function kakaoLogin() {
         	  console.log(response);
         	  $.ajax({
         		  type : 'post',
-        		  url : '/kakaoLogin',
+        		  url : 'user/kakaoLogin',
         		  data : {"email" : response.kakao_account.email,
         			  "nickname" : response.properties.nickname},
         		  dataType : 'text',
@@ -26,18 +26,3 @@ function kakaoLogin() {
       },
     })
   }
-//카카오로그아웃  
-function kakaoLogout() {
-    if (Kakao.Auth.getAccessToken()) {
-      Kakao.API.request({
-        url: '/v1/user/unlink',
-        success: function (response) {
-        	console.log(response)
-        },
-        fail: function (error) {
-          console.log(error)
-        },
-      })
-      Kakao.Auth.setAccessToken(undefined)
-    }
-  }  
