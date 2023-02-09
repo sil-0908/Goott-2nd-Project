@@ -1,16 +1,15 @@
 package com.test.test1.user.controller;
 
-import java.util.Map;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.test.test1.user.dto.UserDto;
 
 //api로그인 구현 컨트롤러 - 02.08 장재호
 @Controller
+@RequestMapping("/user/**")
 public class ApiLoginController {	
 	@RequestMapping(value = "kakaoLogin", method = RequestMethod.POST)
 	public String kakaoLogin(UserDto userDto) {
@@ -18,10 +17,11 @@ public class ApiLoginController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping("naverLogin")
+	@RequestMapping(value = "naverLogin", method = RequestMethod.POST)
+	@ResponseBody
 	public String naverLogin(UserDto userDto) {
 		System.out.println(userDto);
-		return "redirect:/user/signin";
+		return "main/main";
 	}
 
 
