@@ -1,0 +1,133 @@
+:root{
+    /* 웹페이지 디자인 기본설정
+    사용되는 속성값을 변수처럼 사용하도록 저장    */
+       --main-color:##24292D;
+       --black:#13131a;
+       --bg: #010103;
+       --border: .1rem solid rgba(255,255,255,.3);
+}
+   
+   *{
+       margin: 0;
+       padding : 0;
+       box-sizing: border-box;
+       border : none;
+       text-decoration: none;
+       outline: none;
+       text-transform: capitalize;
+       transition: 0.3s linear;
+   }
+/* video area start */
+
+.video_area {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	width: 100%;
+	margin-top: 5rem;
+	margin-bottom: 5rem;
+}
+
+/* video area start */
+
+/* =================================== sectionA 영역 start ===================================*/
+/*
+.sectionA{
+    height: 30rem;
+    background-color: var(--main-color);
+    text-align: center;
+}
+.sectionA #img1{
+    width: 63%;
+    top: 50%;
+    left: 50%;
+}
+*/
+/* =================================== sectionA 영역 end ===================================*/
+
+/* =================================== sectionB 영역 start ===================================*/
+.sectionB{
+    background-color: #6c7555;
+    height: 20rem;
+    display: flex;
+    text-align: center;
+    justify-content: space-around;
+}
+
+.sectionB .storyDescription{
+    background-color: #d5dd67;
+    width: 35%;
+}
+
+.sectionB .storyinfo{
+    background-color: #50550e;
+    width: 35%;
+}
+/* =================================== sectionB 영역 end ===================================*/
+
+/* =================================== sectionC 영역 start ===================================*/
+
+.sectionC .comment{
+   border: 1rem solid tomato;
+}
+
+.sectionC{
+    padding-left: 5rem;
+    padding-top: 2rem;
+    height: 300px;
+}
+
+
+
+.C_review {
+    font-size: 3rem;
+    margin-top: 1rem;
+    vertical-align: baseline;
+    outline: 0;
+    border: none;
+    display: flex;
+    justify-content: left;
+    text-align: end;
+}
+
+
+
+/* 댓글창 영역 */
+.sectionC .C_review .C_review_comment #input_comment{
+    margin-left: 2rem;
+    margin-top: 2rem;
+    width : 70rem;
+    height : 3rem;
+    font-size: large;
+    box-sizing: border-box;
+    background-color: #dbd5da;
+}
+
+
+/* 댓글 게시판 영역 */
+.sectionC .C_review_comment_border{ 
+    background-color: #a6c94e;  
+}
+
+
+
+
+/* =================================== sectionC 영역 end ===================================*/
+
+/* =================================== sectionD 영역 start ===================================*/
+
+.sectionD{
+    height: 20rem;
+    background-color: #6c7555;
+}
+
+
+/* 캐러셀 이미지 부분 */
+.sectionD_btn_img{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 5rem;
+}
+
+/* =================================== sectionD 영역 end ===================================*/
