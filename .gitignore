@@ -1,4 +1,8 @@
-.settings/
+.settings/ 
 
 # sbteclipse plugin
 .target/
+
+.class
+
+.project

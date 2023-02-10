@@ -68,6 +68,15 @@ public class UserDao {
 	public int userIdx(String user) {
 		return sqlSessionTemplate.selectOne("user.idx", user);
 	}
+
+	public String findid(String email) {
+		return sqlSessionTemplate.selectOne("user.findid", email);
+	}
+
+	public void findpw(UserDto dto) {
+		sqlSessionTemplate.selectOne("user.findpw", dto);
+		
+	}
 	
 
 	

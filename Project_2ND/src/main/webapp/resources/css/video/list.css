@@ -19,34 +19,181 @@ body {
 }
 
 /* navbar start */
-#navbar {
-    height: 100px;
+
+nav {
+
     display: flex;
-    text-align: center;
+    position: fixed;
+    height: 6rem;
+    width: 100%;
     align-items: center;
+    z-index: 1000;
 }
 
-#logo {
-    font-size: var(--logo-size);
-    color: var(--logo-color);
+ul li {
+    list-style: none;       /* 전체 ul, li 일괄 효과 적용 */
+    text-align: center;
+    line-height: 50px;
+    color: var(--text-color);
+    cursor: pointer;
 }
+
+.icons {
+    color: var(--text-color);       /* 전체아이콘(검색,내정보) 일괄 효과 적용 */
+    cursor: pointer;
+}
+
+.icons:hover {
+    color: #FFCC00;
+}
+
+/* logo start */
+
+#logo {
+    color: var(--logo-color);
+    font-size: var(--logo-size);
+    margin-left: 0.5rem;
+    margin-top: -0.6rem;
+    cursor: pointer;
+}
+
+/* logo end */
+
+/* menu start */
+
+.menu {
+    margin-left: 2rem;
+    margin-right: auto;
+}
+
+.menu_ul{
+    display: flex;
+    justify-content: center;
+}
+
+.menu_text_li {
+    display: inline;
+    margin-right: 3rem;
+    position: relative;
+    text-align: center;
+    font-size: 20px;
+}
+
+.menu_text_li > p:hover {
+    color: #FFCC00;
+}
+
+.drop_menu_ul {
+    font-size: 15px;
+    position: absolute;
+    z-index: 1;
+}
+
+.drop_menu_ul > li {
+    background-color: var(--bg);
+    width: 100px;
+}
+
+#menu1 > ul > li {
+    margin-left: -1.2rem;
+}
+
+#menu2 > ul > li {
+    margin-left: -0.9rem;
+}
+
+/* menu end */
+
+/* search start */
+
+#search {
+    /* width: 20rem;
+    height: 2.5rem; */
+    width: 0;
+    height: 0;
+    outline: none;
+    opacity: 0;
+    font-size: var(--text-size);
+    transition:all 700ms linear;
+}
+
+#search.view {
+    opacity: 1;
+    width: 20rem;
+    height: 2.5rem;
+    transition:all 700ms linear;
+}
+
+#search_icon {
+    margin-right: 4rem;
+}
+
+/* search end */
+
+/* info start */
+
+.info {
+    margin-right: 3rem;
+    margin-top: 0.8rem;
+}
+
+.info_li > ul > li {
+    margin-left: -2.2rem;
+}
+
+/* info end */
+
+/* drop down start */
+
+.drop_menu_ul {
+    /* pointer-events : opacity로 하면 숨겨지는거다 보니 해당영역에
+    마우스를 올리면 hover효과가 인식되는데 해당 이벤트를 사용하면
+    영역에 마우스를 올려도 인식하지 않는다
+
+    display나 visibility가 아닌 opacity로 사용한 이유
+    > 위 두개는 transition 효과적용이 원활하지 않아 opacity로 처리 */
+    opacity: 0;
+    pointer-events: none;
+}
+
+.menu_text_li:hover > .drop_menu_ul {
+    opacity: 1;
+    pointer-events: auto;
+    transition: 1s ease;
+}
+
+.info_li:hover > .drop_menu_ul {
+    opacity: 1;
+    pointer-events: auto;
+    transition: 1s ease;
+}
+
+.drop_menu_li:hover {
+    color: #FFCC00;
+}
+
+/* drop down end */
+
 /* navbar end */
+
 
 /* main video start */
 #main_video {
-    background-color: white;
+    background-color:var(--bg);
     height: 500px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    
     
 }
 
 
 /* main background video */
 #bg_video{
- width:100%;
+ width:93.5%;
  height:100%;
- object-fit:cover;
-
+ object-fit:fill;
 }
 
 /* main video end */
@@ -80,15 +227,37 @@ img{
 	margin: 10px;
 }
 
+/* 슬라이드 버튼 시작 */
+.slick-arrow {
+    padding:5px;
+    background-color: var(--bg);
+    border: none;   
+}
 
+.fa-solid {
+  color: white;
+  font-size: 50px;
+}
+/* 슬라이드 버튼 끝 */
+	
+	
+}
+
+/* 메인텍스트 시작 */
 .section_main_text{
     font-size: 28px;
-    background-color: white;
-    height: 50px;
-    width: 100px;
+    color: #ffff;
     text-align: center;
     align-items: center;
 }
+h1{
+	color: #ffff;
+	padding-left:60px;
+}
+#main_text{
+	padding-top:30px;
+}
+/* 메인텍스트 끝*/
 
 /* section end */
 
@@ -101,11 +270,27 @@ img{
     height: 900px;
     width: 180px;
 }
+
 /* adv area end */
 
 /* footer start */
-#footer {
-    background-color: var(--bg);
-    height: 200px;
+
+footer{
+	border:2px solid red;
+}
+
+#map{
+	border : solid red 3px;
+	width : 600px;
+	height : 300px;
+}
+
+#f_Con1{
+	margin-left : 20%;
+	margin-right : 20%;
+	display : flex;
+}
+#f_Con2{
+	margin-right : 20%;
 }
 /* footer end */

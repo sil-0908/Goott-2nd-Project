@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.test1.video.dto.VideoDto;
 import com.test.test1.video.service.VideoService;
 
 @Controller
@@ -38,6 +39,16 @@ public class VideoController {
 
 	    return mav;
 	}
+	
+//	영상 전체조회 페이지 - 0207 배철우
+//	DTO 생성 후 DTO 활용하여 코드재생성 - 0210 장민실
+	@RequestMapping("list")
+	public ModelAndView list(ModelAndView mv) {
+		List<VideoDto> list = videoService.list();
+		mv.addObject("data", list);
+		mv.setViewName("video/list");
+		return mv;
+	}
 
     //영상 상세 페이지 -02.07 배철우
 	@RequestMapping(value = "/detail", method = RequestMethod.GET)
@@ -51,17 +62,6 @@ public class VideoController {
 	    return mav;
 	}
 	
-	//영상 전체조희 페이지-02.07 배철우
-	@RequestMapping(value = "/list", method=RequestMethod.GET)
-	public ModelAndView list(@RequestParam Map<String, Object> map) {
-		// 여러건을 가져오고 싶을때
-		List<Map<String,Object>> list = this.videoService.list(map);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("data", list);
-		mv.setViewName("/video/list");
-		return mv;
-	}
 	
 	
 	
