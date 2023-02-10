@@ -59,11 +59,7 @@
 		select USER_ID
 		  from USER
 		 where EMAIL=#{user}
-	</select>
+	</select>	
+
 	
-	<select id="apiCheck" resultType="String">
-		select EMAIL
-		  from USER
-		 where EMAIL=#{email}
-	</select>
 </mapper>
