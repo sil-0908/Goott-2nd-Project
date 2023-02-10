@@ -30,5 +30,4 @@ public class VideoDao {
 		// TODO Auto-generated method stub
 		return this.sqlSessionTemplate.selectList("video.select_list", map);
 	}
-
 }
