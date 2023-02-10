@@ -3,8 +3,17 @@ package com.test.test1.user.dto;
 public class UserDto {
 	private int user_id;
 	private String id, email, password, nickname, phone_num, subscribe_yn, delete_yn, create_date;
+	private String create_type; //apiLogin때문에 추가 - 02.10 장재호	
 	
 		
+	public String getCreate_type() {
+		return create_type;
+	}
+
+	public void setCreate_type(String create_type) {
+		this.create_type = create_type;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -82,7 +91,7 @@ public class UserDto {
 	@Override
 	public String toString() {
 		return "UserDto : [id=" + id + ", email=" + email + ", passwd="+ password+
-				", nickname=" + nickname + ", phone_num=" + phone_num + "]";
+				", nickname=" + nickname + ", phone_num=" + phone_num + ", create_type=" + create_type + "]";
 	}
 	
 }

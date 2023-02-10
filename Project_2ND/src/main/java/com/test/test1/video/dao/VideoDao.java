@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.test.test1.video.dto.VideoDto;
+
 @Repository
 public class VideoDao {
 	
@@ -19,15 +21,18 @@ public class VideoDao {
 		  
 	}
 	
+//	video_list 전체조회 - 02.10 장민실
+	public List<VideoDto> list() {
+		return sqlSessionTemplate.selectList("video.list");
+	}
+	
 	//상세조회 -02.07 배철우
 	public Map<String, Object> selectDetail(Map<String,Object> map) {
 		// selectOne:데이터를 한개만 가져올때 사용 
 		return this.sqlSessionTemplate.selectOne("video.select_detail",map);
 		
 	}
-    //전체조희 -02.07 배철우
-	public List<Map<String, Object>> selectList(Map<String, Object> map) {
-		// TODO Auto-generated method stub
-		return this.sqlSessionTemplate.selectList("video.select_list", map);
-	}
+
+	
+	
 }
