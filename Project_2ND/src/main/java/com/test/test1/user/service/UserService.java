@@ -23,6 +23,10 @@ public interface UserService {
 
 	int userIdx(String user);
 
+	String findid(String email);
+
+	void findpw(UserDto dto);
+
 
 }
 

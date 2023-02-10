@@ -59,4 +59,16 @@
 		  from USER
 		 where EMAIL=#{user}
 	</select>
+	
+	<select id="findid" resultType="String">
+        select ID 
+          from USER
+         where EMAIL = #{email}
+	</select>
+	
+	<select id="findpw" resultType="hashMap">
+        select ID 
+          from USER
+         where EMAIL = #{email}
+	</select>
 </mapper>
