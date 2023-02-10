@@ -15,10 +15,10 @@ public class UserDao {
 	SqlSessionTemplate sqlSessionTemplate;
 	BCryptPasswordEncoder encoder; //로그인 시 복호화를 위해
 	
-	//이메일 중복확인 버튼 기능 - 01.31 장재호
-	public String emailCheck(String email) {
-		String check = null; //check : 이메일 중복 값이 있다면 담김
-		check = this.sqlSessionTemplate.selectOne("user.email_check", email);
+	//id 중복확인 버튼 기능 - 01.31 장재호
+	public String idCheck(String id) {
+		String check = null; //check : id 중복 값이 있다면 담김
+		check = this.sqlSessionTemplate.selectOne("user.id_check", id);
 		return check;
 	}
 	
@@ -43,8 +43,8 @@ public class UserDao {
 	}
 	
 	//개인 정보 조회 - 01.31 장재호
-	public List<UserDto> mydetail(String email) {
-		return sqlSessionTemplate.selectList("user.mydetail", email);		
+	public List<UserDto> mydetail(String id) {
+		return sqlSessionTemplate.selectList("user.mydetail", id);		
 	}
 	
 	//회원 정보 수정 - 01.31 장재호
@@ -62,6 +62,11 @@ public class UserDao {
 	public List<UserDto> list() {
 		return sqlSessionTemplate.selectList("user.list");
 		
+	}
+
+	//qna등록 시 user Key값 받아오기 - 02.07 장재호
+	public int userIdx(String user) {
+		return sqlSessionTemplate.selectOne("user.idx", user);
 	}
 	
 
