@@ -54,6 +54,7 @@
          order by USER_ID asc
 	</select>
 	
+	<!-- 게시판 구현 시 추가 - 02.07 장재호 -->
 	<select id="idx" resultType="int">
 		select USER_ID
 		  from USER
@@ -71,4 +72,5 @@
           from USER
          where EMAIL = #{email}
 	</select>
+	
 </mapper>

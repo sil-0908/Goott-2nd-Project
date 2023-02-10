@@ -12,9 +12,10 @@
 	<!-- 비디오  전체조희 쿼리문  -->
 	<select id="list" parameterType="hashMap" resultType="hashMap">
 		<![CDATA[
-		select VIDEO_ID, TITLE, IMAGE_URL, VIDEO_URL
-		  from VIDEO
-		 where 1=1
+		select v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL, c.CATEGORY_ID 
+          from VIDEO v 
+          join VIDEO_CATEGORY c on v.VIDEO_ID = c.VIDEO_ID 
+         where 1=1 and (c.CATEGORY_ID = 1 or c.CATEGORY_ID = 2 or c.CATEGORY_ID = 3)
 		]]>
 	</select>
 	 
