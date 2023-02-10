@@ -8,27 +8,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-	<form method="post">
-		이메일 : <input type="email" name="email">
-		<button type="button" id="btn">아이디 중복체크</button>
-		<p id="idcheck"></p>
-		비밀번호 : <input type="password" name="password">
-		<p id="pwcheck"></p>
-		닉네임 : <input type="text" name="nickname">
-		<p id="nncheck"></p>
-		<c:if test="${message=='fault'}">
-			<p id="nncheck2">중복된 닉네임입니다.</p>
-		</c:if>	
-		휴대폰 번호 : <input type="text" name="phone_num">
-		<p id="phcheck"></p>	
-		<input type="button" value="가입하기">
-		<c:if test="${message=='fault'}">
-			<h1>
-				가입 실패
-			</h1>
-		</c:if>
-	</form>
-	
+<form method="post">
+	이메일 : <input type="email" name="email">
+	<button type="button" id="btn">아이디 중복체크</button>
+	<p id="idcheck"></p>
+	비밀번호 : <input type="password" name="password">
+	<p id="pwcheck"></p>
+	닉네임 : <input type="text" name="nickname">
+	<p id="nncheck"></p>
+	<c:if test="${message=='fault'}">
+		<p id="nncheck2">중복된 닉네임입니다.</p>
+	</c:if>	
+	휴대폰 번호 : <input type="text" name="phone_num">
+	<p id="phcheck"></p>	
+	<input type="button" value="가입하기">
+	<c:if test="${message=='fault'}">
+		<h1>
+			가입 실패
+		</h1>
+	</c:if>
+</form>
 <script>
 	//혹시모를 청개구리의 enter키 입력 방지
 	document.addEventListener('keydown', function(e){
