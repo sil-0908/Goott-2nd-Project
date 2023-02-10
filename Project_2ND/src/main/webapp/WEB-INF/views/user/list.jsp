@@ -11,7 +11,6 @@
 <table>
 	<tr>
 		<td>idx</td>
-		<td>아이디<td>
 		<td>이메일</td>
 		<td>비밀번호</td>
 		<td>닉네임</td>
@@ -23,7 +22,6 @@
 	<c:forEach var="list" items="${data}">
 	<tr>
 		<td>${list.USER_ID}</td>
-		<td>${list.ID}<td>
 		<td>${list.EMAIL}</td>
 		<td>${list.PASSWORD}</td>
 		<td>${list.NICKNAME}</td>

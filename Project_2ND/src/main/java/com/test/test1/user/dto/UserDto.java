@@ -2,17 +2,8 @@ package com.test.test1.user.dto;
 
 public class UserDto {
 	private int user_id;
-	private String id, email, password, nickname, phone_num, subscribe_yn, delete_yn, create_date;
+	private String email, password, nickname, phone_num, subscribe_yn, delete_yn, create_date;
 	
-		
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
-
 	public UserDto() {
 		
 	}
@@ -81,7 +72,7 @@ public class UserDto {
 	
 	@Override
 	public String toString() {
-		return "UserDto : [id=" + id + ", email=" + email + ", passwd="+ password+
+		return "UserDto : [email=" + email + ", passwd="+ password+
 				", nickname=" + nickname + ", phone_num=" + phone_num + "]";
 	}
 	
