@@ -1,5 +1,8 @@
-pom.properties
+.settings/ 
 
-MANIFEST.MF
+# sbteclipse plugin
+.target
 
-.settings/
+.class
+
+.project
