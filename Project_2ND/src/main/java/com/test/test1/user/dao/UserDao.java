@@ -13,6 +13,7 @@ import com.test.test1.user.dto.UserDto;
 public class UserDao {
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
+	@Autowired
 	BCryptPasswordEncoder encoder; //로그인 시 복호화를 위해
 	
 	//id 중복확인 버튼 기능 - 01.31 장재호
@@ -26,6 +27,7 @@ public class UserDao {
 	public boolean create(UserDto userDto) {
 		String checkTF = this.sqlSessionTemplate.selectOne("user.signUpCheck", userDto);  //checkTF : 닉네임 중복이되면 중복 값을 담는다
 		if(checkTF == null) { // 중복 없음
+			userDto.setPassword(encoder.encode(userDto.getPassword()));
 			sqlSessionTemplate.insert("user.insert", userDto);
 			return true;
 		}
@@ -33,10 +35,13 @@ public class UserDao {
 	}
 	
 	//로그인 - 01.31 장재호
-	public String login(UserDto userDto, BCryptPasswordEncoder encoder) {
+	public String login(UserDto userDto) {
 		//암호화 된 암호를 복호화 해서 들고나와서 비교해야함.
+		//로그인 최종 수정 : 암호화 된 두 값을 비교해야 항상 비교가 가능 - 02.11 장재호
 		String pw = sqlSessionTemplate.selectOne("user.pwGet", userDto); // pw : DB에 암호화 된 userPW
-		if(encoder.matches(userDto.getPassword(), pw)) {                 //비밀번호 일치 시
+		String rawPw = userDto.getPassword();		
+		String encryptedRanPw = encoder.encode(rawPw);
+		if(encoder.matches(rawPw, encryptedRanPw)) {                 //비밀번호 일치 시
 			return sqlSessionTemplate.selectOne("user.login", userDto);  //nickname값 세션 저장을 위해 return
 		}
 		else return null;

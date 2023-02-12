@@ -2,8 +2,6 @@ package com.test.test1.user.service;
 
 import java.util.List;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
 import com.test.test1.user.dto.UserDto;
 
 public interface UserService {
@@ -13,7 +11,7 @@ public interface UserService {
 
 	List<UserDto> list();
 
-	String login(UserDto userDto, BCryptPasswordEncoder encoder);
+	String login(UserDto userDto);
 
 	String idCheck(String id);
 
