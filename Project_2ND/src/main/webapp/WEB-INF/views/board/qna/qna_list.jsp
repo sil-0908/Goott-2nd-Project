@@ -12,6 +12,18 @@
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <!-- ******* -->
+<style>
+	ul {
+		list-style: none;
+		width : 30%;
+		display: inline-block;
+	}
+	
+	li {
+		float: left;
+		margin-left : 5px;
+	}
+</style>
 </head>
 <body>
 <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
@@ -20,14 +32,14 @@
 
 <div class="container" id="main_Con">
 	<div class="row">
-		<form name="form1">
+		<form name="form1" action="qnaSearch">
 			<select id="selectBox" onChange="getSelect(this)">
 			  <option value="NICKNAME">닉네임</option>
 			  <option value="SUBJECT">제목</option>
 			  <option value="CONTENT">내용</option>
 			  <option value="SUBJECT,CONTENT">제목+내용</option>	  
 			</select>
-			 <input id="optionV" type="hidden" name="option" value="NICKNAME">			
+			<input id="optionV" type="hidden" name="option" value="NICKNAME">			
 			<input type="text" placeholder="검색" name="keyword" value="${keyword}" />  
 			<input id="searchBtn"type="button" value="검색" />  
 		</form>
@@ -53,6 +65,28 @@
 				</tr>
 				</c:forEach>
 			</table>
+			<div>
+				<ul class="pagination">
+				<c:if test="${pageMaker.prev }">
+		      		<li class="pagination_button">
+		      			<a href="#">Previous</a>
+		      		</li>
+		    	</c:if>
+			
+			    <c:forEach var="num" begin="${pageMaker.startPage }" end="${pageMaker.endPage }">
+			    <li class="pagination_button">
+			    	<a href="#">${num }</a>
+			    </li>
+			    </c:forEach>
+			
+			    <c:if test="${pageMaker.next }">
+			    <li class="pagination_button">
+			    	<a href="#">Next</a>
+			    </li>
+			    </c:if>
+				</ul>
+			</div>
+			
 			<input type="button" value="질문등록" onclick="location.href='/qna/create'">
 		</div>
 	</div>

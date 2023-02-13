@@ -10,41 +10,40 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-public class ChatHandler extends TextWebSocketHandler{
+public class ChattingHandler extends TextWebSocketHandler{
 
 
-    private static Logger log = LoggerFactory.getLogger(ChatHandler.class);
+    private static Logger log = LoggerFactory.getLogger(ChattingHandler.class);
 
 	private List<WebSocketSession> sessionList = new ArrayList<WebSocketSession>();
 	
 	@Override
 	public void afterConnectionEstablished(WebSocketSession session) throws Exception {
 		
-		log.info("#ChatHandler, afterConnectionEstablished");
+		log.info("#ChattingHandler, afterConnectionEstablished");
 		sessionList.add(session);
 		
-		log.info("{} 연결됨", session.getId());
+		log.info(session.getPrincipal().getName() + "님이 입장하셨습니다.");
 	}
 	
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
 		
-		log.info("#ChatHandler, handleMessage");
-		log.info(session.getId() + ": " + message);		
+		log.info("#ChattingHandler, handleMessage");
+		log.info(session.getId() + ": " + message);
 		
 		for(WebSocketSession s : sessionList) {
-			s.sendMessage(new TextMessage(session.getId() + ":" + message.getPayload()));
+			s.sendMessage(new TextMessage(session.getPrincipal().getName() + ":" + message.getPayload()));
 		}
-		System.out.println("sessionList = " + sessionList);
 	}
 	
 	@Override
 	public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
 		
-		log.info("#ChatHandler, afterConnectionClosed");
+		log.info("#ChattingHandler, afterConnectionClosed");
 
 		sessionList.remove(session);
 		
-		log.info(session.getId() + "님이 퇴장하셨습니다.");
+		log.info(session.getPrincipal().getName() + "님이 퇴장하셨습니다.");
 	}
 }

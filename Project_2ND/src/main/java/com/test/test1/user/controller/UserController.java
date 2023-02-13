@@ -51,7 +51,8 @@ public class UserController {
 	//PW -> DB 전송 시 암호화 추가 - 02.06 장재호
 	@RequestMapping("signin_check")
 	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv) {
-		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재) 
+		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재)
+		System.out.println("str = " + str);
 		if(str != null) {                          //로그인 성공(세션에 로그인 정보 추가)
 			session.setAttribute("user_id", userDto.getId());
 			session.setAttribute("nickname", str);
@@ -93,7 +94,9 @@ public class UserController {
 	//회원가입 기능 - 01.31 장재호
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
 	public ModelAndView createPost(UserDto userDto) {
-	    //암호화하여 DB에 암호 저장	    
+	    //암호화하여 DB에 암호 저장
+
+		userDto.setPassword(encoder.encode(userDto.getPassword()));
 	    boolean tf = userService.create(userDto); //tf : 닉네임 중복여부 boolean
 	    ModelAndView mav = new ModelAndView();
 
@@ -222,6 +225,5 @@ public class UserController {
 		}
 		return null;
 	}
-	
-	
+		
 }

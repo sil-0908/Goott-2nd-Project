@@ -20,23 +20,26 @@ public class QnaController {
 	@Autowired
 	QnaService qnaService;
 	@Autowired
-	UserService userService;
+	UserService userService;	
 	
 	//qna 게시판 출력 - 02.07 장재호
 	//user Key값으로 닉네임을 리스트에 출력
 	@RequestMapping("list")
-	public ModelAndView qnaList(ModelAndView mv, QnaDto qnaDto) {
-		//option : selectbox 키워드값
-		if(qnaDto.getKeyword() == null || qnaDto.getKeyword() == "") { //초기 리스트 진입 시(검색x)
-			mv.addObject("data", qnaService.list());
-			mv.setViewName("board/qna/qna_list");
-			return mv;
-		}
-		//검색 진행
+	public ModelAndView qnaList(ModelAndView mv) {
+		mv.setViewName("board/qna/qna_list");
+		
+		mv.addObject("data", qnaService.list());
+
+		return mv;
+		
+	}
+	
+	//검색 기능 분할 - 02.13 장재호 수정
+	@RequestMapping("qnaSearch")
+	public ModelAndView qnaSearch(ModelAndView mv, QnaDto qnaDto) {
 		mv.addObject("data", qnaService.qnaSearch(qnaDto));
 		mv.setViewName("board/qna/qna_list");
 		return mv;
-
 	}
 	
 	//질문생성 페이지 - 02.07 장재호

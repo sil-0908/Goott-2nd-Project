@@ -13,7 +13,6 @@
 		  from QNA Q, USER U
 		where Q.USER_ID = U.USER_ID
 	</select>
-	
 
 	<select id="detail" resultType="com.test.test1.board.qna.dto.QnaDto">
 		select Q.QUESTION_ID, U.NICKNAME, Q.Q_SUBJECT, Q.Q_CONTENT, Q.ANSWER, Q.A_CREATE_DATE

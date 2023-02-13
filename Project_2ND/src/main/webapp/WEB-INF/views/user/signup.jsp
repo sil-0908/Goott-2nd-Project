@@ -49,7 +49,7 @@
 		                    </div>
 		                    
 		                    <div class="wrapInput">
-		                        <input type="password" name="password" id="password1" class="formInputs" placeholder="비밀번호 확인" autocomplete="on">
+		                        <input type="password" name="password1" id="password1" class="formInputs" placeholder="비밀번호 확인" autocomplete="on">
   								<i class="fa-solid fa-eye-slash fa-lg" id="eye2"></i>
   							</div>
 		                    

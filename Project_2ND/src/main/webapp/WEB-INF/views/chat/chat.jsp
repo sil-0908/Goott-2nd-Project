@@ -43,6 +43,8 @@
 </div>
 </body>
 <script type="text/javascript">
+const username = document.querySelector('input[name=user]');
+
 //채팅 서버 주소
 let url = "ws://localhost:8080/chatserver";
    		
