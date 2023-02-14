@@ -4,6 +4,8 @@
 <html>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 아임포트 -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <meta charset="UTF-8">
 </head>
 <body>
@@ -27,6 +29,8 @@ hello
 </form>
 <input type="button" value="마이페이지" onclick="location.href='user/mydetail'">
 <input type="button" value="동영상게시판" onclick="location.href='video/list'">
+<input type="button" value="결제하기" onclick="iamport()">	
+
 </c:if>
 <c:if test="${message=='success'}">
 	<h1>
@@ -46,5 +50,5 @@ hello
 </script>
 
 </body>
-
+<script src="/resources/js/api/payment.js"></script>
 </html>
