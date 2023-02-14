@@ -8,20 +8,7 @@ public class QnaDto {
 	private String q_subject, q_content, answer;
 	private Date q_create_date, a_create_date;
 	private String nickname;
-	private String keyword, option;
-	
-	public String getKeyword() {
-		return keyword;
-	}
-	public void setKeyword(String keyword) {
-		this.keyword = keyword;
-	}
-	public String getOption() {
-		return option;
-	}
-	public void setOption(String option) {
-		this.option = option;
-	}
+
 	public int getQuestion_id() {
 		return question_id;
 	}
@@ -77,5 +64,6 @@ public class QnaDto {
 	}
 	public void setNickname(String nickname) {
 		this.nickname = nickname;
-	}	
+	}
+
 }

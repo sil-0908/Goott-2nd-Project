@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.test1.board.qna.dto.Criteria;
+import com.test.test1.board.qna.dto.PageMaker;
 import com.test.test1.board.qna.dto.QnaDto;
 import com.test.test1.board.qna.service.QnaService;
 import com.test.test1.user.service.UserService;
@@ -25,21 +27,21 @@ public class QnaController {
 	//qna 게시판 출력 - 02.07 장재호
 	//user Key값으로 닉네임을 리스트에 출력
 	@RequestMapping("list")
-	public ModelAndView qnaList(ModelAndView mv) {
-		mv.setViewName("board/qna/qna_list");
+	public ModelAndView qnaList(ModelAndView mv, Criteria cri) throws Exception {
 		
-		mv.addObject("data", qnaService.list());
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri); //page, perpagenum 셋팅
+		pageMaker.setTotalCount(qnaService.listCount(cri)); //총 게시글 수 셋팅
+		System.out.println("count = " + qnaService.listCount(cri));
+		
+		//View에 페이징 처리를 위한 조건 및 그에 맞는 게시판 리스트 전송
+		mv.addObject("pageMaker", pageMaker);
+		mv.addObject("data", qnaService.list(cri)); 
+		
+		mv.setViewName("board/qna/qna_list");
 
 		return mv;
 		
-	}
-	
-	//검색 기능 분할 - 02.13 장재호 수정
-	@RequestMapping("qnaSearch")
-	public ModelAndView qnaSearch(ModelAndView mv, QnaDto qnaDto) {
-		mv.addObject("data", qnaService.qnaSearch(qnaDto));
-		mv.setViewName("board/qna/qna_list");
-		return mv;
 	}
 	
 	//질문생성 페이지 - 02.07 장재호
