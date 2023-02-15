@@ -20,3 +20,8 @@
     > pom.xml 에 메일 관련 dependency 추가
     > root-context에 메일관련 빈 추가
   > video section : video/list 카테고리별로 분류해서 가져오는기능 , 이미지 캐러셀기능
+  
+230215 3차 전체병합 진행 > 완료
+  > user section : 비밀번호 찾기, 아이디 중복확인, 회원가입시 이메일 인증, 닉네임 빈칸&특수문자 유효성 검사, 비밀번호 확인 작업 완료
+  > CRUD 게시판&페이징 처리, KAKAO 결제 및 결제기간 입력 시 자동업데이트 완료
+  > video section : video list 내 영화 장르별로 분류기능, video detail 영상정보&배우정보 가져오기 
