@@ -60,7 +60,7 @@ section {
 /*로그인창 크기 설정*/
 .section_loginform {
     width: 500px;
-    height: 750px;
+    height: 820px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 60px 60px;
     padding: 5vh 5vh 5vw 5vh;
@@ -72,7 +72,7 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 0;
+    margin-bottom: 2vh; 
     font-size: var(--title-size);
 }
 
@@ -192,8 +192,65 @@ section {
     cursor: pointer;
 }
 
+/* 0209 - 비밀번호 찾기 버튼 상태 추가 */
 #submit_pw_text{
 	color: red;
+}
+
+/* 02.11 - 팝업창 추가 */
+/* 팝업창 배경*/
+.popup{
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 10000; /*팝업창처럼 뜨게 제일 최상위로 올려놓음*/
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /*상태창*/
+}
+
+/* 팝업창 메인*/
+.pwrap{
+    width: 450px;
+    height: 370px;
+    margin: 0 auto;
+    position: absolute; /* 영역안에 기능들이 보일수 있도록 하는 것 */
+    left: 0;
+    right: 0;
+    top: 150px;  
+    background-color: var(--bg);
+    color: var(--text-color);
+    padding: 20px;
+    box-sizing: border-box; /* 텍스트들이 지정해놓은 영역안에 담기기 위함*/
+    border-radius: 10px;
+}
+
+/* 닫기 버튼 */
+.pwrap a{
+	float: right;
+	cursor: pointer;
+}
+
+/* 비밀번호 변경 텍스트 */
+.pwrap h2{    
+    margin-bottom: 10px;
+}
+
+/* 비밀번호 입력창  */
+.pw_input_text {
+    height: 80px;
+    font-size: var(--title-size);
+}
+
+/* 비밀번호 변경 버튼 */
+.pwrap button{
+    width: 50px;
+    height: 30px;
+    background-color:rgb(90, 90, 90);
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
 }
 
 /*section area end*/

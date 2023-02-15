@@ -31,6 +31,7 @@ public class UserDao {
 	public boolean create(UserDto userDto) {
 		String checkTF = this.sqlSessionTemplate.selectOne("user.signUpCheck", userDto);  //checkTF : 닉네임 중복이되면 중복 값을 담는다
 		if(checkTF == null) { // 중복 없음
+			System.out.println(userDto.getPassword());
 			sqlSessionTemplate.insert("user.insert", userDto);
 			return true;
 		}
@@ -74,14 +75,26 @@ public class UserDao {
 		return sqlSessionTemplate.selectOne("user.idx", user);
 	}
 
+	//아이디 찾기 - 02.10 김범수
 	public String findid(String email) {
 		return sqlSessionTemplate.selectOne("user.findid", email);
 	}
 
-	public void findpw(UserDto dto) {
-		sqlSessionTemplate.selectOne("user.findpw", dto);
-		
+	//비밀번호 찾기 - 02.10 김범수
+	public String findpw(UserDto dto) {
+		return sqlSessionTemplate.selectOne("user.findpw", dto);
 	}
+
+	//비밀번호 변경 - 02.12 김범수
+	public void changepw(UserDto dto) {
+		sqlSessionTemplate.selectOne("user.changepw", dto);
+	}
+
+	// 미완성 - 02.15김범수
+//	public int getid(String id) {
+//		return sqlSessionTemplate.selectOne("user.getid", id);
+//	}
+	
 
 	//결제 처리 - 02.15 장재호
 	public void paid(Map<String, Object> map) {

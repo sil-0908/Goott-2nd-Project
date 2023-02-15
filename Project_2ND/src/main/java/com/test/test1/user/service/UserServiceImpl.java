@@ -57,8 +57,8 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public void findpw(UserDto dto) {
-		userDao.findpw(dto);
+	public String findpw(UserDto dto) {
+		return userDao.findpw(dto);
 		
 	}
 
@@ -66,6 +66,15 @@ public class UserServiceImpl implements UserService{
 	public void paid(Map<String, Object> map) {
 		userDao.paid(map);
 	}
+	public void changepw(UserDto dto) {
+		userDao.changepw(dto);
+	}
+
+	// 미완성 - 02.15 김범수
+//	@Override
+//	public int getid(String id) {
+//		return userDao.getid(id);
+//	}
 }
 
 
