@@ -100,7 +100,7 @@
       <div class="section">
        <div class="slider"> 
         <c:forEach var="movie" items="${dto}">
-	       <c:if test="${movie.category_id == '1'}">
+	       <c:if test="${movie.category_id == '1'}"> 
 	       <div class="conta">
 			 <a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}" alt="Image not found"> </a> 
 		   </div>

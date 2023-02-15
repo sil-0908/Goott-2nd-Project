@@ -28,7 +28,7 @@
 	                <p>${dto.title}</p> <br><br>
 					<p>줄거리 : ${dto.summary}</p> <br><br>
 					<p>${dto.create_year}년 / ${dto.country} / 관람등급 : ${dto.grade}</p>
-				</div>
+				</div> 
             </div>
             <div class="actor_info">     
                 	<div class="info_text" id="actor_info_text">

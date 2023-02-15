@@ -115,7 +115,7 @@ public class VideoDto {
 			+ ", create_year = " + create_year
 			+ ", recommand = " + recommand
 			+ ", category_id = " + category_id + "]";
-	}
+	} 
 	
 	
 	

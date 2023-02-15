@@ -58,7 +58,7 @@ public class VideoController {
 		mv.addObject("dto", videoService.detail(video_id));
 		mv.addObject("detail", actor);
 		mv.setViewName("video/detail");
-		return mv;
+		return mv; 
 	}
 	
 	

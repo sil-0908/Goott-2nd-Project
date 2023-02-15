@@ -36,7 +36,7 @@ public class VideoServiceImpl implements VideoService {
 		return videoDao.detail(video_id);
 	}
 
-//	video_detail_actorName 02.10 장민실
+//	video_detail_actorName 02.10 장민실 
 	@Override
 	public List<VideoDto> actor(int video_id) {
 		return videoDao.actor(video_id);

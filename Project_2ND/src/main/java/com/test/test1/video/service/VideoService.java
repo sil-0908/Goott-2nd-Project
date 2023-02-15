@@ -15,7 +15,7 @@ public interface VideoService {
 //	video_detail 02.10 장민실
 	VideoDto detail(int video_id);
 
-//	vodeo_detail_actorName 02.10 장민실
+//	vodeo_detail_actorName 02.10 장민실 
 	List<VideoDto> actor(int video_id);
 	
 	

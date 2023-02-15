@@ -31,7 +31,7 @@ public class VideoDao {
 		return sqlSessionTemplate.selectOne("video.detail", video_id);
 	}
 
-//	video_detail_actorName 02.10 장민실
+//	video_detail_actorName 02.10 장민실 
 	public List<VideoDto> actor(int video_id) {
 		return sqlSessionTemplate.selectList("video.actor", video_id);
 	}
