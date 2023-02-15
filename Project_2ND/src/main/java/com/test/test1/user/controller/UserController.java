@@ -3,7 +3,6 @@ package com.test.test1.user.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -19,12 +18,12 @@ import com.test.test1.user.service.UserService;
 
 @Controller
 @RequestMapping("/user/**")
-public class UserController {
+public class UserController {	
 
 	@Autowired
 	UserService userService;	
 	UserDao userDao;
-	BCryptPasswordEncoder encoder;
+	BCryptPasswordEncoder encoder;	
 	
 	//로그인 페이지 이동 - 01.31 장재호
 	@RequestMapping("signin")
@@ -73,11 +72,13 @@ public class UserController {
 		if(check != null) return true;         //중복없음
 		else return false;		
 	}
-
+	
+	
 	//회원가입 기능 - 01.31 장재호
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
 	public ModelAndView createPost(UserDto userDto, BCryptPasswordEncoder encoder) {
 	    //암호화하여 DB에 암호 저장
+		System.out.println(userDto.toString());
 	    userDto.setPassword(encoder.encode(userDto.getPassword()));
 	    
 	    boolean tf = userService.create(userDto); //tf : 닉네임 중복여부 boolean
@@ -93,6 +94,7 @@ public class UserController {
 	    return mav;
 	}
 	
+
 	
 	//개인 상세 정보 조회 - 01.31 장재호
 	@RequestMapping("mydetail")
