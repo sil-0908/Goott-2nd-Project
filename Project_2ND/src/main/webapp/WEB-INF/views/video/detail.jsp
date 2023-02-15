@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
         <!-- video area start -->
 		<div class="video_area">
 			<video controls autoplay loop class="video">
-				<source src="${data.VIDEO_URL}" type="video/mp4">
+				<source src="${dto.video_url}" type="video/mp4">
 			</video>
 		</div>
         <!-- video area start -->
@@ -24,13 +25,18 @@
         <div class="info_area">
             <div class="movie_info">
                 <div class="info_text" id="movie_info_text">
-	                <td>${data.TITLE}</td> <br><br>
-					<td>줄거리 : ${data.SUMMARY}</td> <br><br>
-					<td>${data.CREATE_YEAR}년 / ${data.CREATE_COUNTRY} / 관람등급 : ${data.GRADE}</td>
+	                <p>${dto.title}</p> <br><br>
+					<p>줄거리 : ${dto.summary}</p> <br><br>
+					<p>${dto.create_year}년 / ${dto.country} / 관람등급 : ${dto.grade}</p>
 				</div>
             </div>
-            <div class="actor_info">
-                <div class="info_text" id="actor_info_text">${data.ACTOR_ID}</div>
+            <div class="actor_info">     
+                	<div class="info_text" id="actor_info_text">
+                	<td>주연배우</td> <br><br>
+                		<c:forEach var="dto" items="${detail}">
+                			<p>${dto.actor}</p><br>
+                		</c:forEach>
+                	</div>
             </div>
 		</div>
         <!-- movie info start -->
@@ -65,5 +71,6 @@
         
 	</div>
    
+<script src="/resources/js/video/detail.js"></script>
 </body>
 </html>

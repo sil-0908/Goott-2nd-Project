@@ -17,12 +17,13 @@
        text-transform: capitalize;
        transition: 0.3s linear;
    }
+   
 /* video area start */
 
 .video_area {
 	display: flex;
 	justify-content: center;
-	align-content: center;
+	align-items: center;
 	width: 100%;
 	margin-top: 5rem;
 	margin-bottom: 5rem;
@@ -30,40 +31,39 @@
 
 /* video area start */
 
-/* =================================== sectionA 영역 start ===================================*/
-/*
-.sectionA{
-    height: 30rem;
-    background-color: var(--main-color);
-    text-align: center;
-}
-.sectionA #img1{
-    width: 63%;
-    top: 50%;
-    left: 50%;
-}
-*/
-/* =================================== sectionA 영역 end ===================================*/
+/* movie info start */
 
-/* =================================== sectionB 영역 start ===================================*/
-.sectionB{
-    background-color: #6c7555;
-    height: 20rem;
+.info_area {
     display: flex;
-    text-align: center;
     justify-content: space-around;
+    align-items: center;
+    background-color: #010103;
+    color: white;
+    width: 100%;
+    height: 20rem;
 }
 
-.sectionB .storyDescription{
-    background-color: #d5dd67;
-    width: 35%;
+.movie_info {
+    background-color: antiquewhite;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    width: 40%;   
 }
 
-.sectionB .storyinfo{
-    background-color: #50550e;
-    width: 35%;
+.actor_info {
+    background-color: burlywood;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 40%;
 }
-/* =================================== sectionB 영역 end ===================================*/
+
+/* movie info end */
 
 /* =================================== sectionC 영역 start ===================================*/
 

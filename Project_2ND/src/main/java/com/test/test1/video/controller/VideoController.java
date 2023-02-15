@@ -40,26 +40,25 @@ public class VideoController {
 	    return mav;
 	}
 	
-//	영상 전체조회 페이지 - 0207 배철우
-//	DTO 생성 후 DTO 활용하여 코드재생성 - 0210 장민실
+//	영상 전체조회 페이지 - 02.07 배철우
+//	DTO 생성 후 DTO 활용하여 코드재생성 - 02.10 장민실
 	@RequestMapping("list")
 	public ModelAndView list(ModelAndView mv) {
 		List<VideoDto> list = videoService.list();
-		mv.addObject("data", list);
+		mv.addObject("dto", list);
 		mv.setViewName("video/list");
 		return mv;
 	}
 
-    //영상 상세 페이지 -02.07 배철우
-	@RequestMapping(value = "/detail", method = RequestMethod.GET)
-	public ModelAndView detail(@RequestParam Map<String, Object> map) {
-	    Map<String, Object> detailMap = this.videoService.detail(map);
-	    ModelAndView mav = new ModelAndView();
-	    mav.addObject("data", detailMap);
-	    String videoId = map.get("videoId").toString();
-	    mav.addObject("videoId", videoId);
-	    mav.setViewName("/video/detail");
-	    return mav;
+//	video_detail 02.07 배철우
+//	DTO 생성 후 DTO 활용하여 코드재생성 + 배우정보 가져오기 - 02.14 장민실
+	@RequestMapping("detail")
+	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv) {
+		List<VideoDto> actor = videoService.actor(video_id);
+		mv.addObject("dto", videoService.detail(video_id));
+		mv.addObject("detail", actor);
+		mv.setViewName("video/detail");
+		return mv;
 	}
 	
 	

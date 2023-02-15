@@ -12,7 +12,11 @@ public interface VideoService {
 //	video_list 전체조회 - 02.10 장민실
 	List<VideoDto> list();
 
-	Map<String, Object> detail(Map<String, Object> map);
+//	video_detail 02.10 장민실
+	VideoDto detail(int video_id);
+
+//	vodeo_detail_actorName 02.10 장민실
+	List<VideoDto> actor(int video_id);
 	
 	
 
