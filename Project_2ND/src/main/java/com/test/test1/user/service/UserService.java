@@ -16,6 +16,8 @@ public interface UserService {
 	String login(UserDto userDto, BCryptPasswordEncoder encoder);
 
 	String idCheck(String id);
+	
+	String emailCheck(String email);
 
 	List<UserDto> mydetail(String user_id);
 
@@ -26,6 +28,8 @@ public interface UserService {
 	String findid(String email);
 
 	void findpw(UserDto dto);
+
+	
 
 
 }

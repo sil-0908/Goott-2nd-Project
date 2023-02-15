@@ -62,6 +62,11 @@ public class UserServiceImpl implements UserService{
 		userDao.findpw(dto);
 		
 	}
+
+	@Override
+	public String emailCheck(String email) {
+		return userDao.emailCheck(email);
+	}
 }
 
 

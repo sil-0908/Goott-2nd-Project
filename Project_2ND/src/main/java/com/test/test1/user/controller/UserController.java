@@ -75,7 +75,7 @@ public class UserController {
 		return "user/signup";
 	}
 	
-	//이메일 중복 확인 버튼 기능 - 01.31 장재호
+	//아이디 중복 확인 버튼 기능 - 01.31 장재호
 	@RequestMapping("idCheck")
 	@ResponseBody //ajax 요청에 담긴 값을 자바 객체로 변환시켜 인스턴스(boolean)에 저장 -> illegalargumentException 방지
 	public boolean idCheck(@RequestParam("id") String id) {
@@ -86,6 +86,16 @@ public class UserController {
 		else return false;		
 	}
 	
+	// 이메일 중복확인 버튼 기능 - 02-13 김지혜 
+	@RequestMapping("emailCheck")
+	@ResponseBody //ajax 요청에 담긴 값을 자바 객체로 변환시켜 인스턴스(boolean)에 저장 -> illegalargumentException 방지
+	public boolean emailCheck(@RequestParam("email") String email) {
+		//DB 들어가서 email 중복값이 있으면 check1값은 
+		String check1 = null;
+		check1 = userService.emailCheck(email); //check : email파라미터로 DB조회 결과
+		if(check1 != null) return true;         //중복없음
+		else return false;		
+	}
 	
 	//회원가입 기능 - 01.31 장재호
 	@RequestMapping(value = "signup", method = RequestMethod.POST)

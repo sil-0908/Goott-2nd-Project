@@ -16,6 +16,14 @@
 		 where ID=#{id}
 	</select>
 	
+	<!-- email 중복버튼 구현을 위한 조회 쿼리문 -->
+	<select id="email_check" resultType="String">
+		select EMAIL
+		  from USER
+		 where EMAIL=#{email}
+	</select>
+	
+	
 	<!-- 회원 가입 버튼 클릭 시 email, nickname, phone_num 중복 체크 -->
 	<select id="signUpCheck" resultType="String">
 		select NICKNAME

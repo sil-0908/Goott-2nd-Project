@@ -77,6 +77,12 @@ public class UserDao {
 		sqlSessionTemplate.selectOne("user.findpw", dto);
 		
 	}
+
+	public String emailCheck(String email) {
+		String check1 = null; //check : email 중복 값이 있다면 담김
+		check1 = this.sqlSessionTemplate.selectOne("user.email_check", email);
+		return check1;
+	}
 	
 
 	
