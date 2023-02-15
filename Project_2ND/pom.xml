@@ -198,6 +198,43 @@
 			<version>1.3.2</version>
 		</dependency>
 
+	
+		<!-- mail library -->
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+		</dependency>
+
+		<!-- mail 서포트 -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context-support</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency> 
+	<!-- end -->
+	
+	<!-- Spring-websocket -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.websocket</groupId>
+			<artifactId>javax.websocket-api</artifactId>
+	   		<version>1.1</version>
+		</dependency>
+		
+		<!-- JSON -->
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+		  	<artifactId>json-simple</artifactId>
+		  	<version>1.1.1</version>
+		</dependency>
+	<!-- socket end -->
+	
 	<!-- security -->
 		<!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-core -->
 		<dependency>
@@ -218,23 +255,24 @@
 		    <version>5.2.13.RELEASE</version>
 		</dependency>
 		
-		<!-- mail library -->
+		<!-- 아임포트  -->
 		<dependency>
-			<groupId>javax.mail</groupId>
-			<artifactId>mail</artifactId>
-			<version>1.4.7</version>
+  			<groupId>com.github.iamport</groupId>
+  			<artifactId>iamport-rest-client-java</artifactId>
+  			<version>0.2.14</version>
 		</dependency>
-
-		<!-- mail 서포트 -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-context-support</artifactId>
-			<version>${org.springframework-version}</version>
-		</dependency> 
-	<!-- end -->
-
+		<!-- 아임포트  -->
 
 	</dependencies>
+			
+	<!-- 아임포트 -->
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
+	<!-- 아임포트 -->
 	
 	
     <build>

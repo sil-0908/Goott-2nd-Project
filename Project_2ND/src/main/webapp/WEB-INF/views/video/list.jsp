@@ -21,26 +21,25 @@
         <div class="menu">
             <ul class="menu_ul">
                 <li class="menu_text_li" id="menu1">
-                    <p>MOVIE</p>
-                    <ul class="drop_menu_ul">
-                        <li class="drop_menu_li">ROMANCE</li>
-                        <li class="drop_menu_li">SF/FANTASY</li>
-                        <li class="drop_menu_li">ACTION</li>
-                        <li class="drop_menu_li">COMEDY</li>
-                        <li class="drop_menu_li">HORROR</li>
-                        <li class="drop_menu_li">CRIME</li>
-                    </ul>
+                   <p>MOVIE</p>
+               <ul class="drop_menu_ul">
+                 <li class="drop_menu_li" onclick="toggleSubMenu('actionSubMenu')">ACTION</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('dramaSubMenu')">DRAMA</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('fantasySubMenu')">FANTASY</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('sfSubMenu')">SF</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('crimeSubMenu')">CRIME</li>
+               </ul>
                 </li>
-                <li class="menu_text_li" id="menu2">
-                    <p>DRAMA</p>
-                    <ul class="drop_menu_ul">
+                <li class="menu_text_li" id="menu2" onclick="ani_q()"> 
+                    <p>애니메이션</p>    
+                    <!-- <ul class="drop_menu_ul">
                         <li class="drop_menu_li">ROMANCE</li>
                         <li class="drop_menu_li">SF/FANTASY</li>
                         <li class="drop_menu_li">ACTION</li>
                         <li class="drop_menu_li">COMEDY</li>
                         <li class="drop_menu_li">HORROR</li>
                         <li class="drop_menu_li">CRIME</li>
-                    </ul>
+                    </ul> -->
                 </li>
             </ul>
         </div>
@@ -91,40 +90,134 @@
   
 <!-- main video end -->
 
-
-
-   <div id="section_all">
-  
-<!-- movie section start -->
-     <h1 class="section_main_text" id="main_text">영화</h1>
+ <div id="section_all">
+<!-- movie category -->
+   <div class="hide">
+     <h1 class="section_main_text">영화</h1>
       <div class="section">
        <div class="slider"> 
-        <c:forEach var="movie" items="${dto}">
-	       <c:if test="${movie.category_id == '1'}"> 
-	       <div class="conta">
-			 <a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}" alt="Image not found"> </a> 
-		   </div>
-		   </c:if> 
-	   </c:forEach>
-	   </div>
-	  </div>
-<!-- movie section start -->   
+        <c:forEach var="row" items="${data}">
+         <c:if test="${row.CATEGORY_ID == '1'}"> 
+          <div class="conta">
+         <img src="${row. IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}"  >
+         </div>
+        </c:if> 
+      </c:forEach>
+      </div>
+     </div>
+    </div>  
+                <!-- action genre -->
+             <div id="actionSubMenu" class="sub-menu" style="display:none">
+         
+                 <h1 class="section_main_text">액션</h1>
+                  <div class="section">
+                   
+                    <c:forEach var="row" items="${data}">
+                     <c:if test="${row.GENRE_ID == '1'}"> 
+                      <div class="conta">
+                     <img src="${row. IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}"  >
+                     </div>
+                    </c:if> 
+                  </c:forEach>
+                  
+                 </div> 
+                </div>    
+                 <!-- action genre end -->       
+                         
+                          <!-- drama genre -->
+           <div id="dramaSubMenu" class="sub-menu" style="display:none">
+         
+                 <h1 class="section_main_text">드라마</h1>
+                  <div class="section">
+                   
+                    <c:forEach var="row" items="${data}">
+                     <c:if test="${row.GENRE_ID == '2'}"> 
+                      <div class="conta">
+                     <img src="${row. IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}"  >
+                     </div>
+                    </c:if> 
+                  </c:forEach>
+                  
+                 </div> 
+             </div>   
+                      <!-- drama genre end -->        
+                
+                            <!-- fantasy genre -->
+             <div id="fantasySubMenu" class="sub-menu" style="display:none">
+         
+                 <h1 class="section_main_text">판타지</h1>
+                  <div class="section">
+                   
+                    <c:forEach var="row" items="${data}">
+                     <c:if test="${row.GENRE_ID == '3'}"> 
+                      <div class="conta">
+                     <img src="${row. IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}"  >
+                     </div>
+                    </c:if> 
+                  </c:forEach>
+                  </div> 
+             </div>     
+                           <!-- fantasy genre end -->
+                 
+                     <!-- SF genre  -->
+           <div id="sfSubMenu" class="sub-menu" style="display:none">
+         
+                 <h1 class="section_main_text">SF</h1>
+                  <div class="section">
+                   
+                    <c:forEach var="row" items="${data}">
+                     <c:if test="${row.GENRE_ID == '4'}"> 
+                      <div class="conta">
+                     <img src="${row. IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}"  >
+                     </div>
+                    </c:if> 
+                  </c:forEach>
+                  
+                 </div> 
+            </div>          
+                     <!-- SF genre end  -->      
+               
+                      <!-- crime genre -->
+            <div id="crimeSubMenu" class="sub-menu" style="display:none">
+         
+                 <h1 class="section_main_text">범죄</h1>
+                  <div class="section">
+                   
+                    <c:forEach var="row" items="${data}">
+                     <c:if test="${row.GENRE_ID == '5'}"> 
+                      <div class="conta">
+                     <img src="${row. IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}"  >
+                     </div>
+                    </c:if> 
+                  </c:forEach>
+                  
+                 </div> 
+           </div>           
+                       <!-- crime genre end -->    
+                      
+                                    
+<!-- movie category end -->
 
-<!-- animation section start -->
+   
+
+<!-- animation category -->
+      <div class="hide">
         <h1 class="section_main_text">애니메이션</h1>
         <div class="section">
          <div class="slider"> 
-           <c:forEach var="ani" items="${dto}">
-	        <c:if test="${ani.category_id == '3'}">
-		     <div class="conta">
-			  <a href="/video/detail?video_id=${ani.video_id}"> <img src="${ani.image_url}" alt="Image not found"> </a>
-			 </div>
-			</c:if>
-	       </c:forEach>
-	     </div>
+           <c:forEach var="row" items="${data}">
+           <c:if test="${row.CATEGORY_ID == '3'}">
+           <div class="conta">
+           <img src="${row.IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}">
+          </div>
+         </c:if>
+          </c:forEach>
+        </div>
         </div>
 <!-- animation section end -->
       </div> 
+      </div>
+<!-- animation category end -->
           
      
 
@@ -138,10 +231,10 @@
 
 <!-- footer start -->
    <!--  <div id="f_Con1">
-	<div id="f_Con2">	
-		<h1>김범수</h1><span>보고싶다</span>
-	</div>
-	<div id="map"></div>
+   <div id="f_Con2">   
+      <h1>김범수</h1><span>보고싶다</span>
+   </div>
+   <div id="map"></div>
 </div> -->
 <!-- footer end -->
     
@@ -152,23 +245,83 @@
 
 <!-- 이미지 슬라이드  -->
    $('.slider').slick({
-	  
-	  slidesToShow:6,
-	  slidesToScroll:6,	 
-	  prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
-	  nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
-	});
+     slidesToShow:6,
+     slidesToScroll:6,    
+     prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
+     nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
+   });
+  
+
   
 const search_input = document.querySelector('#search'),
 search_i = document.querySelector('#search_icon');
-	
+   
   search_i.addEventListener('click', function() {
-	     search_input.classList.toggle("view");
-	  });
-	
+        search_input.classList.toggle("view");
+     });
 
   
-/* 	   
+  
+ function ani_q() {
+	  let mainText = document.querySelectorAll(".hide .section_main_text")[0];
+	  let section = document.querySelectorAll(".hide .section")[0];
+	  
+
+	  let subMenu = document.createElement('div');
+	  subMenu.classList.add('sub-menu');
+	  subMenu.id = 'my-sub-menu';
+
+
+	  document.body.appendChild(subMenu);
+
+	 
+	  toggleSubMenu('my-sub-menu');
+
+	  if (mainText.style.display === "none") {
+	    mainText.style.display = "block";
+	    section.style.display = "block";
+	    window.location.reload();
+	  } else {
+	    mainText.style.display = "none";
+	    section.style.display = "none";
+	  }
+	}
+
+  
+  
+
+	function toggleSubMenu(subMenuId) {
+	  var subMenus = document.getElementsByClassName('sub-menu');
+	  for (var i = 0; i < subMenus.length; i++) {
+	    if (subMenus[i].id !== subMenuId) {
+	      subMenus[i].style.display = 'none';
+	    }
+	  }
+
+	  var subMenu = document.getElementById(subMenuId);
+	  if (subMenu.style.display === 'none') {
+	    subMenu.style.display = 'block';
+	  } else {
+	    subMenu.style.display = 'none';
+	  }
+
+	  var hides = document.querySelectorAll('.hide .section, .hide .section_main_text');
+	  for (var j = 0; j < hides.length; j++) {
+	    if (subMenu.style.display === 'block') {
+	      hides[j].style.display = 'none';
+	    } else {
+	      hides[j].style.display = 'block';
+	    }
+	  }
+	}
+ 
+  
+
+ 
+
+  
+  
+/*       
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
    mapOption = { 
        center: new kakao.maps.LatLng(37.48195693074062, 126.89815006835722), // 지도의 중심좌표
@@ -208,4 +361,6 @@ var infowindow = new kakao.maps.InfoWindow({
     */
    
 </script>
-  
+
+</body>
+</html>

@@ -2,13 +2,16 @@ package com.test.test1.board.qna.service;
 
 import java.util.List;
 
+import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.board.qna.dto.QnaDto;
 
 public interface QnaService {
 
 	void qCreate(QnaDto qnaDto);
 
-	List<QnaDto> list();
+	List<QnaDto> list(Criteria cri) throws Exception;
+	
+	public int listCount(Criteria cri) throws Exception;
 
 	QnaDto detail(int question_id);
 
@@ -16,6 +19,7 @@ public interface QnaService {
 
 	void delete(int question_id);
 
-	List<QnaDto> qnaSearch(QnaDto qnaDto);
-	
+//	List<QnaDto> qnaSearch(Criteria cri);
+
+
 }

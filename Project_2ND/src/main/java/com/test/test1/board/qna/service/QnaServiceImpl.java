@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.test1.board.qna.dao.QnaDao;
+import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.board.qna.dto.QnaDto;
 
 @Service
@@ -15,9 +16,14 @@ public class QnaServiceImpl implements QnaService {
 	QnaDao qnaDao;
 	
 	@Override
-	public List<QnaDto> list() {
-		return qnaDao.list();
-	}	
+	public List<QnaDto> list(Criteria cri) throws Exception {
+		return qnaDao.list(cri);
+	}
+	
+	@Override
+	public int listCount(Criteria cri) throws Exception {
+		return qnaDao.listCount(cri);
+	}
 	
 	@Override
 	public void qCreate(QnaDto qnaDto) {
@@ -39,10 +45,9 @@ public class QnaServiceImpl implements QnaService {
 		qnaDao.delete(question_id);
 	}
 
-	@Override
-	public List<QnaDto> qnaSearch(QnaDto qnaDto) {
-		return qnaDao.qnaSearch(qnaDto);
-	}
-
+//	@Override
+//	public List<QnaDto> qnaSearch(Criteria cri) {
+//		return qnaDao.qnaSearch(cri);
+//	}
 
 }
