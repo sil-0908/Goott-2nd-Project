@@ -1,10 +1,14 @@
 package com.test.test1.common;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,9 +20,13 @@ import com.siot.IamportRestClient.IamportClient;
 import com.siot.IamportRestClient.exception.IamportResponseException;
 import com.siot.IamportRestClient.response.IamportResponse;
 import com.siot.IamportRestClient.response.Payment;
+import com.test.test1.user.service.UserService;
 
 @Controller
 public class PayMentController {
+	
+	@Autowired
+	UserService userService;
 
 	private IamportClient api;
 	
@@ -34,6 +42,18 @@ public class PayMentController {
 			, @PathVariable(value= "imp_uid") String imp_uid) throws IamportResponseException, IOException{	
 		
 			return api.paymentByImpUid(imp_uid);
+	}
+	
+	//결제 완료 시 DB에 결제 완료 처리 - 02.15 장재호
+	@RequestMapping("paySuccess")
+	public void paySuccess(String amount,String ID) {
+		int tmp = Integer.parseInt(amount);
+		int months = tmp/3000; //개월 수로 치환 -> 기간 갱신을 위함
+		Map<String, Object> map = new HashMap<>();
+		map.put("ID", ID);
+		map.put("months", months);
+		
+		userService.paid(map); //map에 ID, 개월 수 넣고 DB갱신
 	}
 	
 }

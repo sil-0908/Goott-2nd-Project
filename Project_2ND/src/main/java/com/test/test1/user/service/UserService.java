@@ -1,6 +1,7 @@
 package com.test.test1.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.test.test1.user.dto.UserDto;
 
@@ -24,6 +25,8 @@ public interface UserService {
 	String findid(String email);
 
 	void findpw(UserDto dto);
+
+	void paid(Map<String, Object> map);
 
 
 }

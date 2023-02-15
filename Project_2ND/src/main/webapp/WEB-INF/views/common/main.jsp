@@ -5,14 +5,14 @@
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <!-- 아임포트 -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <meta charset="UTF-8">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/pay_modal.jsp" %>
 hello
 <!-- 로그인 성공 시 -->
 <c:if test="${sessionScope.nickname != null}">
-	<h1>
+	<h1 id="nick">
 		${sessionScope.nickname}님 환영합니다	
 	</h1>
 </c:if>
@@ -29,7 +29,8 @@ hello
 </form>
 <input type="button" value="마이페이지" onclick="location.href='user/mydetail'">
 <input type="button" value="동영상게시판" onclick="location.href='video/list'">
-<input type="button" value="결제하기" onclick="iamport()">	
+<input type="button" value="결제하기" onclick="modal()">	
+<input type="text" id="userid" value="${sessionScope.user_id}">
 
 </c:if>
 <c:if test="${message=='success'}">
@@ -43,12 +44,12 @@ hello
 	</h1>
 </c:if>
 <input type="button" value="회원 조회" onclick="location.href='user/list'">
+
 <script>
 	const timer = setTimeout(function(){
-		$('h1').text('');
-	}, 2000);
+		$('#nick').text('');
+	}, 2000);	
 </script>
 
 </body>
-<script src="/resources/js/api/payment.js"></script>
 </html>

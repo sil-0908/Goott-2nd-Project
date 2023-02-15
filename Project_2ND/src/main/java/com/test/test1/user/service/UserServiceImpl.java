@@ -1,6 +1,7 @@
 package com.test.test1.user.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,6 +60,11 @@ public class UserServiceImpl implements UserService{
 	public void findpw(UserDto dto) {
 		userDao.findpw(dto);
 		
+	}
+
+	@Override
+	public void paid(Map<String, Object> map) {
+		userDao.paid(map);
 	}
 }
 

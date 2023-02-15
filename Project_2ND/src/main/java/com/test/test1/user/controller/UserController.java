@@ -52,7 +52,6 @@ public class UserController {
 	@RequestMapping("signin_check")
 	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv) {
 		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재)
-		System.out.println("str = " + str);
 		if(str != null) {                          //로그인 성공(세션에 로그인 정보 추가)
 			session.setAttribute("user_id", userDto.getId());
 			session.setAttribute("nickname", str);
@@ -144,7 +143,6 @@ public class UserController {
 	//전체조회 - 01.31 장재호
 	@RequestMapping("list")
 	public ModelAndView list(ModelAndView mv) {
-		System.out.println(userService.list().toString());
 		mv.addObject("data", userService.list());
 		mv.setViewName("/user/list");
 		return mv;

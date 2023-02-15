@@ -1,6 +1,7 @@
 package com.test.test1.user.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +81,11 @@ public class UserDao {
 	public void findpw(UserDto dto) {
 		sqlSessionTemplate.selectOne("user.findpw", dto);
 		
+	}
+
+	//결제 처리 - 02.15 장재호
+	public void paid(Map<String, Object> map) {
+		sqlSessionTemplate.update("user.paid", map);
 	}
 	
 }
