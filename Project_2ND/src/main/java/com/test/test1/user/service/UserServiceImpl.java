@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService{
 		return userDao.idCheck(id);
 	}
 
-
 	@Override
 	public List<UserDto> mydetail(String user_id) {
 		return userDao.mydetail(user_id);
@@ -59,10 +58,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public String findpw(UserDto dto) {
 		return userDao.findpw(dto);
-		
 	}
 
 	@Override
+	public String emailCheck(String email) {
+		return userDao.emailCheck(email);
+	}
 	public void paid(Map<String, Object> map) {
 		userDao.paid(map);
 	}

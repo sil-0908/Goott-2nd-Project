@@ -85,6 +85,11 @@ public class UserDao {
 		return sqlSessionTemplate.selectOne("user.findpw", dto);
 	}
 
+	public String emailCheck(String email) {
+		String check1 = null; //check : email 중복 값이 있다면 담김
+		check1 = this.sqlSessionTemplate.selectOne("user.email_check", email);
+		return check1;
+	}
 	//비밀번호 변경 - 02.12 김범수
 	public void changepw(UserDto dto) {
 		sqlSessionTemplate.selectOne("user.changepw", dto);

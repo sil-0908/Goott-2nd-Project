@@ -15,6 +15,8 @@ public interface UserService {
 	String login(UserDto userDto);
 
 	String idCheck(String id);
+	
+	String emailCheck(String email);
 
 	List<UserDto> mydetail(String user_id);
 
@@ -32,6 +34,8 @@ public interface UserService {
 //	int getid(String id);
 
 	void paid(Map<String, Object> map);
+
+	
 
 
 }

@@ -15,6 +15,12 @@
 		 where ID=#{id}
 	</select>
 	
+	<select id="email_check" resultType="String">
+		select EMAIL
+		  from USER
+		 where EMAIL=#{email}
+	</select>
+	
 	<select id="signUpCheck" resultType="String">
 		select NICKNAME
 		  from USER
