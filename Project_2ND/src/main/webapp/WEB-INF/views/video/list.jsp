@@ -78,14 +78,12 @@
       
  
   
-<!-- main video start -->
-    
-    
+<!-- main video start -->    
   
     <div id="main_video">  
      <video muted autoplay loop id="bg_video">
-      <c:forEach var="row" items="${data}"  begin="4" end="4" step="1" varStatus="status">
-         <source src="${row.VIDEO_URL} " type="video/mp4">
+      <c:forEach var="list" items="${dto}"  begin="4" end="4" step="1" varStatus="status">
+         <source src="${list.video_url} " type="video/mp4">
        </c:forEach> 
      </video>
     </div>
@@ -216,6 +214,7 @@
           </c:forEach>
         </div>
         </div>
+<!-- animation section end -->
       </div> 
       </div>
 <!-- animation category end -->

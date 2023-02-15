@@ -51,6 +51,17 @@ public class UserServiceImpl implements UserService{
 	public int userIdx(String user) {
 		return userDao.userIdx(user);
 	}
+
+	@Override
+	public String findid(String email) {
+		return userDao.findid(email);
+	}
+
+	@Override
+	public void findpw(UserDto dto) {
+		userDao.findpw(dto);
+		
+	}
 }
 
 
