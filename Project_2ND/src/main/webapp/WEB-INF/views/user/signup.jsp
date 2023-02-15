@@ -11,6 +11,10 @@
 </head>
 <body>
 
+
+
+
+
 <div class="container_j"> 
 	<div class="background_j">
 		<div class="header_j">
@@ -60,7 +64,7 @@
 			                    </div>
 			                    
 			                    <div class="wrapInput">
-			                        <input type="password" name="password1" id="password1" placeholder="비밀번호 확인" autocomplete="on">
+			                        <input type="password1" name="password1" id="password1" placeholder="비밀번호 확인" autocomplete="on">
 	  								<i class="fa-solid fa-eye-slash fa-lg" id="eye2"></i>
 	  							</div>
 		                    </div>  
