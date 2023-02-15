@@ -13,6 +13,7 @@
     padding: 0;
 }
 
+
 body {
     background-color: var(--bg);
     
@@ -214,18 +215,27 @@ ul li {
     
    
 }
+.sub-menu {
+  transform: translateX(40px);
+}
 
 img{
-	height: 270px;
-	width: 100%;
+   height: 270px;
+   width: 90%;
 
 }
+
+
+
 
 
 /* 이미지 링크 div */
 .conta{
-	margin: 10px;
+   margin: 10px;
 }
+
+
+
 
 /* 슬라이드 버튼 시작 */
 .slick-arrow {
@@ -239,8 +249,8 @@ img{
   font-size: 50px;
 }
 /* 슬라이드 버튼 끝 */
-	
-	
+   
+   
 }
 
 /* 메인텍스트 시작 */
@@ -251,12 +261,11 @@ img{
     align-items: center;
 }
 h1{
-	color: #ffff;
-	padding-left:60px;
+   color: #ffff;
+   padding:20px 0 0 60px; 
+
 }
-#main_text{
-	padding-top:30px;
-}
+
 /* 메인텍스트 끝*/
 
 /* section end */
@@ -276,21 +285,22 @@ h1{
 /* footer start */
 
 footer{
-	border:2px solid red;
+   height: 300px;
 }
 
 #map{
-	border : solid red 3px;
-	width : 600px;
-	height : 300px;
+   border : solid red 3px;
+   width : 600px;
+   height : 300px;
 }
 
 #f_Con1{
-	margin-left : 20%;
-	margin-right : 20%;
-	display : flex;
+   margin-left : 20%;
+   margin-right : 20%;
+   display : flex;
 }
 #f_Con2{
-	margin-right : 20%;
+   margin-right : 20%;
 }
 /* footer end */
+
