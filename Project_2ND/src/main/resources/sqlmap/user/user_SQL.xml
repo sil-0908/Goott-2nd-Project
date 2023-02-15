@@ -48,11 +48,11 @@
 	</update>
 	
 	<select id="list" resultType="hashMap">
-        select * from USER
+        select *
+		  from USER
          order by USER_ID asc
 	</select>
 	
-	<!-- 게시판 구현 시 추가 - 02.07 장재호 -->
 	<select id="idx" resultType="int">
 		select USER_ID
 		  from USER
