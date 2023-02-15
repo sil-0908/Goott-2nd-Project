@@ -9,14 +9,12 @@
 	    ]]>
 	</insert>
 	
-	<!-- id 중복버튼 구현을 위한 조회 쿼리문 -->
 	<select id="id_check" resultType="String">
 		select ID
 		  from USER
 		 where ID=#{id}
 	</select>
 	
-	<!-- 회원 가입 버튼 클릭 시 email, nickname, phone_num 중복 체크 -->
 	<select id="signUpCheck" resultType="String">
 		select NICKNAME
 		  from USER
@@ -50,7 +48,8 @@
 	</update>
 	
 	<select id="list" resultType="hashMap">
-        select * from USER
+        select *
+		  from USER
          order by USER_ID asc
 	</select>
 	
