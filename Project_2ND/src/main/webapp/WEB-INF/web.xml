@@ -9,7 +9,8 @@
 		<param-value>
 			/WEB-INF/spring/root-context.xml
 			/WEB-INF/spring/spring-security.xml
-		</param-value>
+		</param-value>		
+    	<async-supported>true</async-supported>
 	</context-param>
 	
 	

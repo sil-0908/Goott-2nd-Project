@@ -1,7 +1,7 @@
 .settings/ 
 
 # sbteclipse plugin
-.target/
+.target
 
 .class
 

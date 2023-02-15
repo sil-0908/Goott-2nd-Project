@@ -19,6 +19,7 @@
 	<form name="form1">
 		<input type="button" value="수정하기" onclick="location.href='/qna/modify/${question_id}'">
 		<input type="button" value="삭제하기" onclick="qnaDelete()">
+		<input type="button" value="목록으로" onclick="location.href='/qna/list'">		
 		<input type="hidden" name="question_id" value="${question_id}">
 	</form>		
 		

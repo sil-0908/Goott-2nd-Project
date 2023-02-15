@@ -1,0 +1,49 @@
+:root{
+    --logo-color:#FFCC00;
+    --logo-size: 60px;
+    --title-size: 25px;
+    --title-border: 600px;
+    --text-color:#CCCCCC;
+    --text-size: 17px;
+    --bg:#24292D;
+}
+/* 팝업창 배경*/
+.popup{
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    z-index: 10000; /*팝업창처럼 뜨게 제일 최상위로 올려놓음*/
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none; /*상태창*/
+}
+
+/* 팝업창 메인*/
+.pwrap{
+    width: 450px;
+    height: 370px;
+    margin: 0 auto;
+    position: absolute; /* 영역안에 기능들이 보일수 있도록 하는 것 */
+    left: 0;
+    right: 0;
+    top: 150px;  
+    background-color: var(--bg);
+    color: var(--text-color);
+    padding: 20px;
+    box-sizing: border-box; /* 텍스트들이 지정해놓은 영역안에 담기기 위함*/
+    border-radius: 10px;
+}
+/* 닫기 버튼 */
+.pwrap a{
+   float: right;
+   cursor: pointer;
+}
+table{
+	margin-left : auto;
+	margin-right : auto;
+}
+img{
+	width : 100px;
+	height : 100px;
+}

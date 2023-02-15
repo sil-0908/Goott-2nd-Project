@@ -67,8 +67,9 @@
 				</form>
 			</div>
 		</div>
-	</section>
+	</section>		
 	<footer>
+
 
 	</footer>
 <script src="/resources/js/api/google.js"></script>

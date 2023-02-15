@@ -28,7 +28,7 @@ body{
 }
 
 /* ==============================================================================================  */
-
+/* 회원가입 전체페이지  */
 .container_j {
     width: 100%;
     display: grid;
@@ -37,7 +37,7 @@ body{
     "main"
     "footer";
 }
-
+/* 회원가입 전체페이지 위치 조정 */
 .background_j {
     position: absolute;
     width: 100%;
@@ -48,7 +48,7 @@ body{
     filter:brightness(1);
 }
 
-
+/* 헤더영역  */
 .header_j {
     width: 100%;
     height: 10vh;
@@ -56,12 +56,10 @@ body{
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255,255,255, 0));
     
   }
-
+/* 로고 */
 .headerLogo_j{
     font-size: 60px;
     color: #FFCC00;
-    
-    
     width: 15vw;
     height: 10vh;
     display: inline-block;
@@ -71,31 +69,29 @@ body{
 
 /* =====================================   비밀번호 보기 감추기      =================================  */
 
-
+/* 비밀번호 눈아이콘 */
 .fa-solid{
-	position : relative;
-	left : 170px;
-	top: -30px;
-	
+   position : relative;
+   left : 350px;
+   top: -35px;
+   
 }
-
-
 
 /* ==============================================================================================  */
 
-
+/* 회원가입폼 담는 박스  */
 #mainDiv_j{
-	width: 50%;
+   width: 50%;
     height: 100vh;
     grid-area: main;
     justify-self: center;
     padding: 5vh 5vw 5vh 5vw;
     display: grid;
-}
-
+} 
+/* 회원가입폼 담는 박스 (핸드폰모양틀) */
 #viewDiv_j{
-	width: 500px;
-    height: 900px;
+   width: 500px;
+    height: 1100px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
     place-self: center;
@@ -105,80 +101,91 @@ body{
 }
 
 
-
+/* 회원가입폼에 주제 "LOGO 회원가입"텍스트 */
 #signUpText_j{
-	color:#CCCCCC;
+   color: #CCCCCC;
     font-size: 24px;
     display: block;
-    margin: 10px;
-    height: 10px;
+    margin: 30px;
+    height: 50px;
+
+}
+
+/* 아이디/ 이메일 중복체크버튼  */
+#btn, #email_btn{
+   height :30px;
+   width: 100px;
+   border-radius: 5px;
+    border: none;
+    cursor: pointer;
+      font-size: 13px;
+      margin : 1vh 0;
+}
+
+/* 이메일 입력란 공간 */
+#email{
+   margin-top: 2vh;
+}
+/* 이메일 인증버튼 공간 */
+#emailchk{
+   margin-top: 4vh;
 }
 
 
+/* 회원정보 입력란  공간*/
 .wrapInput {
-	margin-top:80px;
-	display: flex;
-	flex-direction: column;
+   z-index : 1;
+   height: 80px;
+   margin-top:10px;
+
 }
 
-
-#emailcheck_j{
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: space-around;
-}
-
-
-
-#btn{
-	justify-content: flex-end;
-	margin-top: 20px;
-	padding-right:-50px;
-}
-#idcheck{
-	margin-top:20px;
-}
-
-
-
+/* 회원정보 입력란  */
 .wrapInput input{
     width: 380px;
     height: 50px;
-    font-size: 15px;
-    padding: 10px 0 10px 20px;
+    font-size: 13px;
+    padding: 0 0 0 20px;
     background-color: rgb(25, 26, 30);
     color: #CCCCCC;
     border: none;
     border-radius:  10px;
-    margin-top:-60px;
+    
 }
-
+/* 회원정보 입력란 의 ::placeholder */
 .wrapInput input::placeholder{
     color: rgb(90, 90, 90);
 }
+/* 회원정보 입력란 의 :input:focus */
 .wrapInput input:focus{
     outline: none;
     background-color:rgb(42, 43, 49);
 }
 
+/* span : 유효성검사/중복처리 확인 메시지글   */
+span{
+   font-size: 0.8rem;
+   color : red;
+}
+
 
 
 /* ====================================== 체크박스 ========================================================  */
-
+/* 체크박스 전체 담고있는 박스 */
 #checkbox{
     color: #CCCCCC;
-    font-size: 17px;
+    font-size: var(--text-size);
     text-align: start;
     margin: 10px 0 10px 10px;
 
 }
 
-
+/* 동의항목 3개 */
 .checkB{
     margin:14px 0 0 20px;
     
 }
-
+/* 가입하기 버튼  */
 #submit{
     width: 380px;
     height: 50px;
@@ -193,16 +200,49 @@ body{
 
 
 
+/* ==============================================================================================  */
 
 
+/* 이메일 인증 상태 메세지  */
+.formSpans {
+    display: inline-block;
+    font-size: 0.8rem;
+}
+
+/* 이메일인증 (이메일인증번호 발송)버튼 */
+.email_checkbtn{
+    font-size : 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 30px;
+    width: 100px;
+    margin-bottom: 1vh;
+}
 
 
+/* 인증번호입력란 */
+.authorkey{
+    width: 200px;
+    height: 40px;
+    background-color: rgb(25, 26, 30);
+    border: none;
+    border-radius:  10px;
+    padding: 0 0 0 20px;
+    margin-bottom : 10px;
+    color: white;
+}
 
+/* 인증번호 입력창 focus 효과 추가*/
+.authorkey:focus{
+    outline: none;
+    background-color:rgb(42, 43, 49);
+}
 
-
-
-
-
-
-
-
+/* 이메일 인증번호 확인버튼 */
+.key_submit{
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+}

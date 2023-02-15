@@ -22,21 +22,31 @@ import org.springframework.web.servlet.ModelAndView;
 import com.test.test1.user.dao.UserDao;
 import com.test.test1.user.dto.UserDto;
 import com.test.test1.user.service.UserService;
+import com.test.test1.video.dto.RentalDTO;
+import com.test.test1.video.dto.VideoDto;
+import com.test.test1.video.service.RentalService;
+import com.test.test1.video.service.VideoService;
 
 @Controller
 @RequestMapping("/user/**")
 public class UserController {	
 
 	@Autowired
-	UserService userService;	
+	UserService userService;
+	@Autowired
 	UserDao userDao;
+	@Autowired
 	BCryptPasswordEncoder encoder;
+	
 	// loger 변수 생성 - 로그데이터를 끌어오기 위함, 0209 김범수
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	// 메일 샌더 객체 생성 - 0209 김범수
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	RentalService rentalService;	
 	
 	//로그인 페이지 이동 - 01.31 장재호
 	@RequestMapping("signin")
@@ -47,10 +57,10 @@ public class UserController {
 	//로그인 기능  - 01.31 장재호
 	//PW -> DB 전송 시 암호화 추가 - 02.06 장재호
 	@RequestMapping("signin_check")
-	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv, BCryptPasswordEncoder encoder) {
-		String str = userService.login(userDto, encoder);   //str : 유저닉네임(email, pw 일치 시 존재) 
+	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv) {
+		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재)
 		if(str != null) {                          //로그인 성공(세션에 로그인 정보 추가)
-			session.setAttribute("user_email", userDto.getEmail());
+			session.setAttribute("user_id", userDto.getId());
 			session.setAttribute("nickname", str);
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
 			mv.setViewName("redirect:/");
@@ -75,7 +85,7 @@ public class UserController {
 		return "user/signup";
 	}
 	
-	//이메일 중복 확인 버튼 기능 - 01.31 장재호
+	//아이디 중복 확인 버튼 기능 - 01.31 장재호
 	@RequestMapping("idCheck")
 	@ResponseBody //ajax 요청에 담긴 값을 자바 객체로 변환시켜 인스턴스(boolean)에 저장 -> illegalargumentException 방지
 	public boolean idCheck(@RequestParam("id") String id) {
@@ -86,14 +96,23 @@ public class UserController {
 		else return false;		
 	}
 	
+	// 이메일 중복확인 버튼 기능 - 02-13 김지혜 
+	@RequestMapping("emailCheck")
+	@ResponseBody //ajax 요청에 담긴 값을 자바 객체로 변환시켜 인스턴스(boolean)에 저장 -> illegalargumentException 방지
+	public boolean emailCheck(@RequestParam("email") String email) {
+		//DB 들어가서 email 중복값이 있으면 check1값은 
+		String check1 = null;
+		check1 = userService.emailCheck(email); //check : email파라미터로 DB조회 결과
+		if(check1 != null) return true;         //중복없음
+		else return false;		
+	}
 	
 	//회원가입 기능 - 01.31 장재호
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
-	public ModelAndView createPost(UserDto userDto, BCryptPasswordEncoder encoder) {
+	public ModelAndView createPost(UserDto userDto) {
 	    //암호화하여 DB에 암호 저장
-		System.out.println(userDto.toString());
-	    userDto.setPassword(encoder.encode(userDto.getPassword()));
-	    
+
+		userDto.setPassword(encoder.encode(userDto.getPassword()));
 	    boolean tf = userService.create(userDto); //tf : 닉네임 중복여부 boolean
 	    ModelAndView mav = new ModelAndView();
 
@@ -121,7 +140,7 @@ public class UserController {
 	}
 	
 	//개인 정보 수정 - 01.31 장재호
-	@RequestMapping("modify_detail")
+	@RequestMapping(value="modify_detail", method=RequestMethod.POST)
 	public ModelAndView modify_detail(HttpSession session, UserDto userDto) {
 
 		int modifyTF = userService.modifyDetail(userDto);
@@ -141,7 +160,6 @@ public class UserController {
 	//전체조회 - 01.31 장재호
 	@RequestMapping("list")
 	public ModelAndView list(ModelAndView mv) {
-		System.out.println(userService.list().toString());
 		mv.addObject("data", userService.list());
 		mv.setViewName("/user/list");
 		return mv;
@@ -205,9 +223,9 @@ public class UserController {
 	@RequestMapping(value = "findid", method = RequestMethod.POST)
 	@ResponseBody
 	// email - view단에서 입력된 email을 가져옴
-	public String findid(@RequestParam String email, ModelAndView mv) {
+	public String findid(String email, ModelAndView mv) {
 		// email을 이용해 해당 email정보를 가진 id값을 가져옴
-		String id = userService.findid(email);		
+		String id = userService.findid(email); 
 		return id;
 		
 	}
@@ -217,11 +235,42 @@ public class UserController {
 	@ResponseBody
 	public String findpw(UserDto dto) { // dto에 id와 email 값을 뷰단에서 받아옴
 		if(dto.getId() != null && dto.getEmail() != null) {
-			userService.findpw(dto);
-			return "ok"; // ok일시 비밀번호를 바꾸게 할 예정
+			String nick = userService.findpw(dto); // dto에 담긴 정보를 토대로 닉네임을 불러옴
+			if(nick != null) {
+				return "ok"; // ok일시 비밀번호를 바꾸게 할 예정
+			}
+			else {
+				return "no"; // no일시 해당하는 정보가 없다고 메세지 띄움
+			}
 		}
-		return null;
+		return "error";
 	}
+	
+	// 비밀번호 변경 - 02.12 김범수
+	@RequestMapping(value ="changepw", method = RequestMethod.POST)
+	public String changepw(UserDto dto, BCryptPasswordEncoder encoder) {
+		dto.setPassword(encoder.encode(dto.getPassword())); // 비밀번호 암호화
+		userService.changepw(dto); // 비밀번호 변경
+		return "redirect:/user/signin"; // 비밀번호 변경이 끝나면 로그인페이지로 이동시킴
+	}
+	
+	// 내보관함 기능 구현 - 미완성, 02.15 김범수
+//	@RequestMapping("mylocker")
+//	public String mylocker(RentalDTO dto, HttpSession session) {
+//		String id = (String) session.getAttribute("userid");
+//		int videoid = (int) session.getAttribute("video_id");
+//		
+//		if(id == null) {
+//			return "redirect:/user/signin"; // 로그인을 하지않은 사람을 돌려보냄
+//		}
+//		int userid = userService.getid(id); // USER_ID를 가져오기 위함
+//		
+//		dto.setId(userid);
+//		dto.setVideo_id(videoid);
+//		rentalService.insert(dto);
+//
+//		return "redirect:/video/list"; 
+//	}
 	
 	
 }

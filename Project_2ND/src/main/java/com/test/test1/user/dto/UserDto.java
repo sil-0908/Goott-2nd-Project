@@ -3,9 +3,10 @@ package com.test.test1.user.dto;
 public class UserDto {
 	private int user_id;
 	private String id, email, password, nickname, phone_num, subscribe_yn, delete_yn, create_date;
-	private String create_type; //apiLogin때문에 추가 - 02.10 장재호	
+	private String create_type; //apiLogin때문에 추가 - 02.10 장재호
+	private String chatId; // chat기능 - 02.11 장재호
 	
-		
+			
 	public String getCreate_type() {
 		return create_type;
 	}
@@ -92,6 +93,14 @@ public class UserDto {
 	public String toString() {
 		return "UserDto : [id=" + id + ", email=" + email + ", passwd="+ password+
 				", nickname=" + nickname + ", phone_num=" + phone_num + ", create_type=" + create_type + "]";
+	}
+
+	public String getChatId() {
+		return chatId;
+	}
+
+	public void setChatId(String chatId) {
+		this.chatId = chatId;
 	}
 	
 }
