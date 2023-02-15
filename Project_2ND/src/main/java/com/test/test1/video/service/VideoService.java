@@ -3,6 +3,7 @@ package com.test.test1.video.service;
 import java.util.List;
 import java.util.Map;
 
+import com.test.test1.video.dto.RentalDTO;
 import com.test.test1.video.dto.VideoDto;
 
 public interface VideoService {
@@ -13,6 +14,7 @@ public interface VideoService {
 	List<VideoDto> list();
 
 	Map<String, Object> detail(Map<String, Object> map);
+
 	
 	
 

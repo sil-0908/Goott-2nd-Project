@@ -25,7 +25,12 @@ public interface UserService {
 
 	String findid(String email);
 
-	void findpw(UserDto dto);
+	String findpw(UserDto dto);
+
+	void changepw(UserDto dto);
+
+	// 미완성
+//	int getid(String id);
 
 
 }
