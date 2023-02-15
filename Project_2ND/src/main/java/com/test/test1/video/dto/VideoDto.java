@@ -2,7 +2,7 @@ package com.test.test1.video.dto;
 
 public class VideoDto {
 	
-	private String title, video_url, image_url, summary, country, grade, actor, genre;
+	private String title, video_url, image_url, summary, country, grade, actor, genre_id;
 	private int video_id, create_year, recommand, category_id;
 	
 	public String getTitle() {
@@ -53,12 +53,12 @@ public class VideoDto {
 		this.grade = grade;
 	}
 	
-	public String getGenre() {
-		return genre;
+	public String getGenre_id() {
+		return genre_id;
 	}
 	
-	public void setGenre(String genre) {
-		this.genre = genre;
+	public void setGenre_id(String genre_id) {
+		this.genre_id = genre_id;
 	}	
 	
 	public String getActor() {
@@ -110,7 +110,7 @@ public class VideoDto {
 			+ ", country = " + country
 			+ ", grade = " + grade
 			+ ", actor = " + actor
-			+ ", genre = " + genre
+			+ ", genre_id = " + genre_id
 			+ ", video_id = " + video_id
 			+ ", create_year = " + create_year
 			+ ", recommand = " + recommand

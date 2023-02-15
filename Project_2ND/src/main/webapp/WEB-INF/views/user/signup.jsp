@@ -105,9 +105,5 @@
 </div> <!-- <div id="container_j"> end -->
   
 	<script src="/resources/js/user/user_signup.js"></script>
-	로딩순서가 더 빠름 자바스크립트는 
-	자바스크립트를 위에 두면 요소를 못찾음 
-	자바스크립트는 css  
-	위에 둘때는 onload나 function을 이용해서 로딩 순서를 바꿀 수는 있다.   
 </body>
 </html>

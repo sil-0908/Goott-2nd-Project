@@ -28,49 +28,66 @@
 	                <p>${dto.title}</p> <br><br>
 					<p>줄거리 : ${dto.summary}</p> <br><br>
 					<p>${dto.create_year}년 / ${dto.country} / 관람등급 : ${dto.grade}</p>
-				</div> 
+				</div>
             </div>
             <div class="actor_info">     
                 	<div class="info_text" id="actor_info_text">
-                	<td>주연배우</td> <br><br>
+                		<td>주연배우</td> <br><br>
                 		<c:forEach var="dto" items="${detail}">
-                			<p>${dto.actor}</p><br>
+                			<p>${dto.actor}</p> <br>
                 		</c:forEach>
                 	</div>
             </div>
 		</div>
         <!-- movie info start -->
 
-
-        <!-- comment area start -->
+        <!-- button area start -->
         <div class="comunication_btn">
-            <i class="far fa-hand-point-up comu_btn" id="subscribe"></i>
-            <p>구독</p>
-            <i class="far fa-thumbs-up comu_btn" id="liek"></i>
+            <i class="far fa-heart comu_btn" id="subscribe"></i>
+            <p>찜하기</p>
+            <i class="far fa-thumbs-up comu_btn" id="like"></i>
             <p>좋아요</p>
             <i class="far fa-thumbs-down comu_btn" id="bad"></i>
             <p>싫어요</p>
+            <i class="fa-solid fa-coins comu_btn" id="payment"></i>
+            <p>결제</p>
         </div>
-        <div class="comment">
-            <div class="C_review">
-                <img  id="C_review_img" src="https://cdn.inflearn.com/public/main/profile/default_profile.png" alt="프로필"/>
-                <div class="C_review_comment">
-                    <input id="input_comment" type="search" autocomplete="off" spellcheck="false" role="combobox" placeholder="댓글창" aria-live="polite">
-                    <div class="C_review_comment_btn">
-                        <input type="button" value="취소" id= "" onclick='alert("정말 취소하시겠습니까?")'/> 
-                        <input type="button" value="답글" id= "" onclick='alert("정말 답글을 올리겠습니까?")'/> 
-                    </div>
-                </div>
-            </div>     
-            <section class="C_review_comment_border">
-                <span> 댓글 게시판영역 </span>
-            </section>
+        <!-- button area end -->
+
+        <!-- comment wirte area start -->
+        <div class="comment_area">
+            <input id="comment_input" type="text" autocomplete="off" spellcheck="false" placeholder="댓글 달아볼테면 달아보든가ㅋ">
+            <button id="comment_write_btn">작성</button>
         </div>
-        <!-- comment area start -->
-        
+        <!-- comment wirte area start -->
+
+        <hr>
+
+        <!-- comment list area start -->
+        <div class="comment_list_area">
+            <table class="comment_list">
+                <tr>
+                    <td id="com_title">댓글제목&nbsp;&nbsp;</td>
+                    <td id="com_data">댓글날짜</td>
+                </tr>
+                <tr>
+                    <td id="com_contents">댓글내용</td>
+                </tr>
+            </table>
+            <div class="comment_btn">
+                <i class="far fa-thumbs-up comm_btn" id="like"></i>
+                <p>좋아요</p>
+                <i class="far fa-thumbs-down comm_btn" id="bad"></i>
+                <p>싫어요</p>
+                <button id="co_comment_btn">답글</button>
+            </div>
+        </div>
+        <hr>
+        <!-- comment list area start -->
         
 	</div>
-   
+	
 <script src="/resources/js/video/detail.js"></script>
+
 </body>
 </html>
