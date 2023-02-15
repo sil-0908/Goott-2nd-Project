@@ -28,7 +28,7 @@
 		]]>
 	</select>
 	
-	<!-- 비디오 상세조회 내 배우정보 받아오기 -->
+	<!-- 비디오 상세조회 내 배우정보 받아오기  -->
 	<select id="actor" resultType="com.test.test1.video.dto.VideoDto">
 		<![CDATA[
 		select a.`ACTOR_NAME(KOR)` as actor
