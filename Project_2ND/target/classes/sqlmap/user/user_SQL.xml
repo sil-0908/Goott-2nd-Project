@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+
+	<insert id="insert">  
+	    <![CDATA[
+	    insert into USER (ID, EMAIL, PASSWORD, NICKNAME, PHONE_NUM)  
+	    values (#{id}, #{email}, #{password}, #{nickname}, #{phone_num})
+	    ]]>
+	</insert>
+	
+	<select id="id_check" resultType="String">
+		select ID
+		  from USER
+		 where ID=#{id}
+	</select>
+	
+	<select id="email_check" resultType="String">
+		select EMAIL
+		  from USER
+		 where EMAIL=#{email}
+	</select>
+	
+	<select id="signUpCheck" resultType="String">
+		select NICKNAME
+		  from USER
+		 where NICKNAME=#{nickname}
+	</select>
+	
+	<select id="login" resultType="String">
+		select NICKNAME
+		  from USER
+		 where ID=#{id}
+	</select>
+	
+	<select id="pwGet" resultType="String">
+		select PASSWORD
+		  from USER
+		 where ID=#{id}
+	</select>
+	
+	<select id="mydetail" resultType="hashMap">
+		<![CDATA[
+		select ID, EMAIL, PASSWORD, NICKNAME, PHONE_NUM
+		  from USER
+		 where ID=#{id}
+		 ]]>
+	</select>
+	
+	<update id="modify_detail">
+		update USER
+		   set NICKNAME=#{nickname}, PASSWORD=#{password}
+		 where ID=#{id}
+	</update>
+	
+	<select id="list" resultType="hashMap">
+        select *
+		  from USER
+         order by USER_ID asc
+	</select>
+	
+	<select id="idx" resultType="int">
+		select USER_ID
+		  from USER
+		 where EMAIL=#{user}
+	</select>
+	
+	<select id="findid" resultType="String">
+        select ID 
+          from USER
+         where EMAIL = #{email}
+	</select>
+	
+	<select id="findpw" resultType="String">
+        select NICKNAME
+          from USER
+         where EMAIL = #{email} 
+           and ID = #{id}
+	</select>
+	
+	<update id="paid">
+		<![CDATA[
+		update USER
+		  set SUBSCRIBE_YN="Y", EXPIRATION_DATE=(date_add(NOW(),interval ${months} month))
+		where USER_ID = (select U.USER_ID from (select USER_ID from USER where ID="${ID}") AS U);
+		]]>
+	</update>
+	
+	<update id="changepw">
+		update USER
+		   set PASSWORD=#{password}
+		 where ID = #{id}
+	</update>
+	
+<!-- 미완성	
+	<select id="getid" resultType="int">
+        select USER_ID
+          from USER
+         where ID = #{id} 
+	</select>
+-->
+
+</mapper>
