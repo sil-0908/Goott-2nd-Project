@@ -35,7 +35,5 @@ public class VideoDao {
 	public List<VideoDto> actor(int video_id) {
 		return sqlSessionTemplate.selectList("video.actor", video_id);
 	}
-
-	
 	
 }
