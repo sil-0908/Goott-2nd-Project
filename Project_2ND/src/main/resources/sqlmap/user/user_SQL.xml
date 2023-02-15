@@ -65,10 +65,25 @@
          where EMAIL = #{email}
 	</select>
 	
-	<select id="findpw" resultType="hashMap">
-        select ID 
+	<select id="findpw" resultType="String">
+        select NICKNAME
           from USER
-         where EMAIL = #{email}
+         where EMAIL = #{email} 
+           and ID = #{id}
 	</select>
 	
+	<update id="changepw">
+		update USER
+		   set PASSWORD=#{password}
+		 where ID = #{id}
+	</update>
+	
+<!-- 미완성	
+	<select id="getid" resultType="int">
+        select USER_ID
+          from USER
+         where ID = #{id} 
+	</select>
+-->
+
 </mapper>
