@@ -69,10 +69,13 @@ public class UserDao {
 		return sqlSessionTemplate.selectOne("user.idx", user);
 	}
 
-	//api로그인 시 아이디존재여부  - 02.10장재호
-	public UserDto apiCheck(String email) {
-		// TODO Auto-generated method stub
-		return null;
+	public String findid(String email) {
+		return sqlSessionTemplate.selectOne("user.findid", email);
+	}
+
+	public void findpw(UserDto dto) {
+		sqlSessionTemplate.selectOne("user.findpw", dto);
+		
 	}
 	
 

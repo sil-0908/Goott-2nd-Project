@@ -1,9 +1,16 @@
 package com.test.test1.user.controller;
 
 import java.util.List;
+import java.util.Random;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +30,13 @@ public class UserController {
 	@Autowired
 	UserService userService;	
 	UserDao userDao;
-	BCryptPasswordEncoder encoder;	
+	BCryptPasswordEncoder encoder;
+	// loger 변수 생성 - 로그데이터를 끌어오기 위함, 0209 김범수
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+	
+	// 메일 샌더 객체 생성 - 0209 김범수
+	@Autowired
+	private JavaMailSender mailSender;
 	
 	//로그인 페이지 이동 - 01.31 장재호
 	@RequestMapping("signin")
@@ -134,11 +147,80 @@ public class UserController {
 		return mv;
 	}
 	
-	// 아이디/비밀번호 찾기 - 02.08 김범수
+	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
 	@RequestMapping("find")
 	public ModelAndView find(ModelAndView mv) {
 		mv.setViewName("user/find_id");
 		return mv;
+	}
+	
+	// 이메일 인증 - 02.09 김범수
+	@RequestMapping(value="/mailCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String mailCheckGET(String email) throws Exception{
+		//인증번호 생성(난수)
+		Random random = new Random();
+		int checkNum = random.nextInt(888888) + 111111; // checkNum에 랜덤한 인증번호가 담김
+		logger.info("인증번호" + checkNum); 
+		
+		// 이메일 보내기 양식
+        String setFrom = "GoottFlex";
+        String toMail = email;
+        String title = "GoottFlex 이메일 인증 메일 전송입니다.";
+        String content = 
+                "홈페이지를 방문해주셔서 감사합니다." +
+                "<br><br>" + 
+                "인증 번호는 " + checkNum + "입니다." + 
+                "<br>" + 
+                "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+        
+//        setForm : root-context.xml에 삽입한 자신의 이메일 계정의 이메일 주소 
+//        toMail : 수신받을 이메일 - 뷰로부터 받은 이메일 주소인 변수 email을 사용.
+//        title : 자신이 보낼 이메일 제목.
+//        content : 자신이 보낼 이메일 내용.
+        
+        try {
+        	// MimeMessage : 자바 API, 객체를 직접 생성해 메일을 발송하는 것이 가능
+            MimeMessage message = mailSender.createMimeMessage();
+            // MimeMessageHelper : MimeMessage 객체를 활용하여 멀티파트 메세지를 보내는 것도 가능, 문자 형식 지정 가능
+            MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8"); 
+            // 보낼 내용을 지정하는 MimeMessageHelper의 메소드들
+            helper.setFrom(setFrom);
+            helper.setTo(toMail);
+            helper.setSubject(title);
+            helper.setText(content,true);
+            // 메일 발송
+            mailSender.send(message); 
+            
+        }catch(Exception e) {
+            e.printStackTrace();
+        }
+        
+        // 인증번호를 String 타입으로 변경해서 리턴
+        String num = Integer.toString(checkNum); 
+		return num;
+	}
+	
+	// 아이디 찾기 - 02.10 김범수
+	@RequestMapping(value = "findid", method = RequestMethod.POST)
+	@ResponseBody
+	// email - view단에서 입력된 email을 가져옴
+	public String findid(@RequestParam String email, ModelAndView mv) {
+		// email을 이용해 해당 email정보를 가진 id값을 가져옴
+		String id = userService.findid(email);		
+		return id;
+		
+	}
+	
+	// 비밀번호 찾기 - 02.10 김범수
+	@RequestMapping(value = "findpw", method = RequestMethod.POST)
+	@ResponseBody
+	public String findpw(UserDto dto) { // dto에 id와 email 값을 뷰단에서 받아옴
+		if(dto.getId() != null && dto.getEmail() != null) {
+			userService.findpw(dto);
+			return "ok"; // ok일시 비밀번호를 바꾸게 할 예정
+		}
+		return null;
 	}
 	
 	

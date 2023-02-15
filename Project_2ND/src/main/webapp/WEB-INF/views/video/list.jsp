@@ -79,14 +79,12 @@
       
  
   
-<!-- main video start -->
-    
-    
+<!-- main video start -->    
   
     <div id="main_video">  
      <video muted autoplay loop id="bg_video">
-      <c:forEach var="row" items="${data}"  begin="4" end="4" step="1" varStatus="status">
-         <source src="${row.VIDEO_URL} " type="video/mp4">
+      <c:forEach var="list" items="${dto}"  begin="4" end="4" step="1" varStatus="status">
+         <source src="${list.video_url} " type="video/mp4">
        </c:forEach> 
      </video>
     </div>
@@ -97,43 +95,36 @@
 
    <div id="section_all">
   
-
-
-<!-- section2 start -->
+<!-- movie section start -->
      <h1 class="section_main_text" id="main_text">영화</h1>
       <div class="section">
        <div class="slider"> 
-        <c:forEach var="row" items="${data}" begin="0" end="17">
-	      <c:if test="${row.CATEGORY_ID == '1'}"> 
+        <c:forEach var="movie" items="${dto}">
+	       <c:if test="${movie.category_id == '1'}"> 
 	       <div class="conta">
-			<img src="${row. IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}"  >
+			 <a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}" alt="Image not found"> </a> 
 		   </div>
-		  </c:if> 
+		   </c:if> 
 	   </c:forEach>
 	   </div>
 	  </div>
-	     
-       
-       
-<!-- section2 end -->
+<!-- movie section start -->   
 
-   
-
-<!-- section3 start -->
+<!-- animation section start -->
         <h1 class="section_main_text">애니메이션</h1>
         <div class="section">
          <div class="slider"> 
-           <c:forEach var="row" items="${data}">
-	        <c:if test="${row.CATEGORY_ID == '3'}">
+           <c:forEach var="ani" items="${dto}">
+	        <c:if test="${ani.category_id == '3'}">
 		     <div class="conta">
-			  <img src="${row.IMAGE_URL}" alt="Image not found" onclick="location.href='/video/detail?videoId=' + ${row.VIDEO_ID}">
+			  <a href="/video/detail?video_id=${ani.video_id}"> <img src="${ani.image_url}" alt="Image not found"> </a>
 			 </div>
 			</c:if>
 	       </c:forEach>
 	     </div>
         </div>
+<!-- animation section end -->
       </div> 
-<!-- section3 end -->
           
      
 
