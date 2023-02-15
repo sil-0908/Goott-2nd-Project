@@ -4,29 +4,34 @@
 <html>
 <head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- 아임포트 -->
 <meta charset="UTF-8">
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/pay_modal.jsp" %>
 hello
 <!-- 로그인 성공 시 -->
 <c:if test="${sessionScope.nickname != null}">
-	<h1>
+	<h1 id="nick">
 		${sessionScope.nickname}님 환영합니다	
 	</h1>
 </c:if>
 
-<c:if test="${sessionScope.user_id == null}">
+<c:if test="${sessionScope.nickname == null}">
 <!-- 회원가입 -->
 <input type="button" value="회원가입" onclick="location.href='user/signup'">
 <!-- 로그인 로그아웃 -->
 <input type="button" value="로그인" onclick="location.href='user/signin'">
 </c:if>
-<c:if test="${sessionScope.user_id != null}">
+<c:if test="${sessionScope.nickname != null}">
 <form action="/user/sign_out">
 	<input type="submit" value="로그아웃">
 </form>
 <input type="button" value="마이페이지" onclick="location.href='user/mydetail'">
 <input type="button" value="동영상게시판" onclick="location.href='video/list'">
+<input type="button" value="결제하기" onclick="modal()">	
+<input type="text" id="userid" value="${sessionScope.user_id}">
+
 </c:if>
 <c:if test="${message=='success'}">
 	<h1>
@@ -39,12 +44,12 @@ hello
 	</h1>
 </c:if>
 <input type="button" value="회원 조회" onclick="location.href='user/list'">
+
 <script>
 	const timer = setTimeout(function(){
-		$('h1').text('');
-	}, 2000);
+		$('#nick').text('');
+	}, 2000);	
 </script>
 
 </body>
-
 </html>

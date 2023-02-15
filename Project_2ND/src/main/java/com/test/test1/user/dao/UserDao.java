@@ -1,6 +1,7 @@
 package com.test.test1.user.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +12,13 @@ import com.test.test1.user.dto.UserDto;
 
 @Repository
 public class UserDao {
+	
+	@Autowired
+	BCryptPasswordEncoder encoder;
+	
+	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
-	BCryptPasswordEncoder encoder; //로그인 시 복호화를 위해
 	
 	//id 중복확인 버튼 기능 - 01.31 장재호
 	public String idCheck(String id) {
@@ -34,9 +39,8 @@ public class UserDao {
 	}
 	
 	//로그인 - 01.31 장재호
-	public String login(UserDto userDto, BCryptPasswordEncoder encoder) {
-		//암호화 된 암호를 복호화 해서 들고나와서 비교해야함.
-		String pw = sqlSessionTemplate.selectOne("user.pwGet", userDto); // pw : DB에 암호화 된 userPW
+	public String login(UserDto userDto) {
+		String pw = sqlSessionTemplate.selectOne("user.pwGet", userDto);// pw : DB에 암호화 된 userPW
 		
 		if(encoder.matches(userDto.getPassword(), pw)) {                 //비밀번호 일치 시
 			return sqlSessionTemplate.selectOne("user.login", userDto);  //nickname값 세션 저장을 위해 return
@@ -92,5 +96,9 @@ public class UserDao {
 //	}
 	
 
+	//결제 처리 - 02.15 장재호
+	public void paid(Map<String, Object> map) {
+		sqlSessionTemplate.update("user.paid", map);
+	}
 	
 }

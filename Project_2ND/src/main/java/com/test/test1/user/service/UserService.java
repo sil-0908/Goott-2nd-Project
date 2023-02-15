@@ -1,8 +1,7 @@
 package com.test.test1.user.service;
 
 import java.util.List;
-
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import java.util.Map;
 
 import com.test.test1.user.dto.UserDto;
 
@@ -13,7 +12,7 @@ public interface UserService {
 
 	List<UserDto> list();
 
-	String login(UserDto userDto, BCryptPasswordEncoder encoder);
+	String login(UserDto userDto);
 
 	String idCheck(String id);
 
@@ -31,6 +30,8 @@ public interface UserService {
 
 	// 미완성
 //	int getid(String id);
+
+	void paid(Map<String, Object> map);
 
 
 }

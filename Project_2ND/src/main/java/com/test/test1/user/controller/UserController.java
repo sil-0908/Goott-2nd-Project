@@ -32,9 +32,12 @@ import com.test.test1.video.service.VideoService;
 public class UserController {	
 
 	@Autowired
-	UserService userService;	
+	UserService userService;
+	@Autowired
 	UserDao userDao;
+	@Autowired
 	BCryptPasswordEncoder encoder;
+	
 	// loger 변수 생성 - 로그데이터를 끌어오기 위함, 0209 김범수
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
@@ -54,11 +57,10 @@ public class UserController {
 	//로그인 기능  - 01.31 장재호
 	//PW -> DB 전송 시 암호화 추가 - 02.06 장재호
 	@RequestMapping("signin_check")
-	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv, BCryptPasswordEncoder encoder) {
-		String str = userService.login(userDto, encoder);   //str : 유저닉네임(email, pw 일치 시 존재)
-		System.out.println(str);
+	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv) {
+		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재)
 		if(str != null) {                          //로그인 성공(세션에 로그인 정보 추가)
-			session.setAttribute("user_email", userDto.getEmail());
+			session.setAttribute("user_id", userDto.getId());
 			session.setAttribute("nickname", str);
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
 			mv.setViewName("redirect:/");
@@ -97,11 +99,10 @@ public class UserController {
 	
 	//회원가입 기능 - 01.31 장재호
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
-	public ModelAndView createPost(UserDto userDto, BCryptPasswordEncoder encoder) {
+	public ModelAndView createPost(UserDto userDto) {
 	    //암호화하여 DB에 암호 저장
-		System.out.println(userDto.toString());
-	    userDto.setPassword(encoder.encode(userDto.getPassword()));
-	    
+
+		userDto.setPassword(encoder.encode(userDto.getPassword()));
 	    boolean tf = userService.create(userDto); //tf : 닉네임 중복여부 boolean
 	    ModelAndView mav = new ModelAndView();
 
@@ -129,7 +130,7 @@ public class UserController {
 	}
 	
 	//개인 정보 수정 - 01.31 장재호
-	@RequestMapping("modify_detail")
+	@RequestMapping(value="modify_detail", method=RequestMethod.POST)
 	public ModelAndView modify_detail(HttpSession session, UserDto userDto) {
 
 		int modifyTF = userService.modifyDetail(userDto);
@@ -149,7 +150,6 @@ public class UserController {
 	//전체조회 - 01.31 장재호
 	@RequestMapping("list")
 	public ModelAndView list(ModelAndView mv) {
-		System.out.println(userService.list().toString());
 		mv.addObject("data", userService.list());
 		mv.setViewName("/user/list");
 		return mv;
