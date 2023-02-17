@@ -2,13 +2,25 @@ package com.test.test1.board.qna.dto;
 
 import java.util.Date;
 
+/* 게시판 암호화 기능 및 비회원도 사용 가능하게 하기 위해 islogined, password 추가 - 02.17 장재호 */
 public class QnaDto {
 
-	private int question_id, user_id;
-	private String q_subject, q_content, answer;
+	private int question_id, user_id, islogined;
+	private String q_subject, q_content, answer, nickname, password;
 	private Date q_create_date, a_create_date;
-	private String nickname;
 
+	public int getIslogined() {
+		return islogined;
+	}
+	public void setIslogined(int islogined) {
+		this.islogined = islogined;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 	public int getQuestion_id() {
 		return question_id;
 	}
@@ -55,7 +67,7 @@ public class QnaDto {
 	@Override
 	public String toString() {
 		return "QnaDto : [question_id=" + question_id + ",user_id="+ user_id + ",nickname="+nickname+", q_subject=" + q_subject + ", q_content=" + q_content + 
-				", q_create_date=" + q_create_date + ", answer=" + answer + ", a_create_date=" + a_create_date + "]";
+				", q_create_date=" + q_create_date + ", answer=" + answer + ", a_create_date=" + a_create_date + ", password=" + password + ", islogined=" + islogined + "]";
 	}
 	
 	//게시판 목록 조회 시 userKey에 대한 nickname을 담음 - 02.07 장재호

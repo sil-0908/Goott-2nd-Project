@@ -1,8 +1,7 @@
 $(function() {
-	/* 체크박스 - 02.17 장재호 */
+	/* 체크박스 전체 선택 기능 - 02.17 장재호 */
 	  $('.js-check-all').on('click', function() {
-
-	  	if ( $(this).prop('checked') ) {
+		if ( $(this).prop('checked') ) {
 		  	$('th input[type="checkbox"]').each(function() {
 		  		$(this).prop('checked', true);
 	        $(this).closest('tr').addClass('active');
@@ -26,6 +25,10 @@ $(function() {
 	  
 	//selectbox 선택한 값만 검색 - 02.07 장재호
 	  $('#searchBtn').click(function(){
+		if($('option').val() == "선택"){
+			alert("검색 조건을 선택하세요");
+			return;
+		}
 	  	if($('input[type=text]').val() == 'undefined' || $('input[type=text]').val() == ''){		
 	  		alert("검색어를 입력하세요");
 	  		return;
@@ -54,8 +57,53 @@ $(function() {
 		}
 		else return;
 	}
-
+	
+	/* 비밀번호 걸려있는 게시글일 시 비밀번호 입력 시키기 - 02.17 장재호 */
+	$('.moveDetail').on('click', function(e){
+		//체크박스 선택 시 
+		if(e.target.tagName === 'DIV' || e.target.tagName === 'INPUT'){
+//			console.log(e.target.parentElement.parentElement.nextElementSibling.innerText);			
+			return;
+		}
+		const nick = e.target.parentElement.children[2].textContent;
+		const locker = e.target.parentElement.children[1];
+		if(locker.children.length == 2){ //비밀번호 걸려있는 글 접근 시
+			const passwordCheck = prompt("비밀번호를 입력하세요", "비밀번호 입력");
+			if(passwordCheck != $('.passwordInput').val()){ //비밀번호 입력 값이 다를 경우 접근 불가
+				alert("비밀번호가 틀립니다");
+				return;
+			}
+			else location.href='/qna/list/'+locker.textContent;
+		}
+		//비밀번호 없는 글
+		else location.href='/qna/list/'+locker.textContent;
+	})
+	
 });
+
+const checkbox = document.querySelectorAll('.checkNum');
+
+function qnaDelete(){
+	const delArr = new Array();	
+	
+	checkbox.forEach(function(e){
+		//체크 된 녀석의 질문번호 받아오기
+		if(e.checked){
+			delArr.push(e.parentElement.nextElementSibling.value);			
+		}
+	})
+	
+	if(confirm("삭제하시겠습니까?")){
+		$.ajax({
+			url : 'qnaDeletes',
+			data : JSON.stringify(delArr),
+			type : 'post',
+			contentType: 'application/json; charset=utf-8',
+			dataType : 'json',
+		});
+	}
+
+}
 
 
 

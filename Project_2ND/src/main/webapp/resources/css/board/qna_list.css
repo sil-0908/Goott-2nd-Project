@@ -45,6 +45,28 @@ h2 {
   color: #fff;
 }
 
+.fa-lock {
+	margin-right : 10px;	
+}	
+
+.createBtn , .deleteBtn{
+	padding : 5px;
+	background-color : var(--logo-color);
+	border-radius : 10px;
+	border : none;
+	transition: all .2s ease-out, color .2s ease-out;
+	margin-bottom : 10px;
+}
+
+.createBtn:hover{
+	background: #ed7009;	
+}
+
+#pageUL{
+	margin-left : 45%;
+}
+
+/* */
 .custom-table {
   min-width: 900px;
   text-align : center;

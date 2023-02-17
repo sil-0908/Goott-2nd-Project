@@ -1,10 +1,13 @@
 package com.test.test1.board.qna.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -53,8 +56,8 @@ public class QnaController {
 	//질문생성하기 - 02.07 장재호
 	@RequestMapping(value = "create", method = RequestMethod.POST)
 	public String qCreate(QnaDto qnaDto, HttpSession session) {
-		String user = session.getAttribute("user_email").toString();
-		System.out.println();
+
+		String user = session.getAttribute("user_id").toString();
 		int idx = userService.userIdx(user); // idx : user Key값
 		
 		qnaDto.setUser_id(idx);
@@ -88,6 +91,13 @@ public class QnaController {
 	public String qnaDelete(int question_id) {
 		qnaService.delete(question_id);
 		return "redirect:/qna/list";
-	}	
+	}
+	
+	
+	//selectbox를 통한 다중 삭제 - 02.17 장재호
+	@RequestMapping(value="qnaDeletes", method=RequestMethod.POST)
+	public void qnaDeletes(@RequestBody List<Integer> delArr) {
+		System.out.println(delArr);
+	}
 
 }
