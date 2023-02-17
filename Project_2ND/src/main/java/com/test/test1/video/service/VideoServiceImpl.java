@@ -42,5 +42,12 @@ public class VideoServiceImpl implements VideoService {
 		return videoDao.actor(video_id);
 	}
 
+// 내보관함 구현 02.16 김범수
+	@Override
+	public int getid(String title) {
+		return videoDao.getid(title);
+	}
+	
+
 
 }

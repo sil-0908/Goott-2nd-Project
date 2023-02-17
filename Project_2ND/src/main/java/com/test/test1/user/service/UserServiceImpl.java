@@ -30,7 +30,6 @@ public class UserServiceImpl implements UserService{
 		return userDao.idCheck(id);
 	}
 
-
 	@Override
 	public int userIdx(String user) {
 		return userDao.userIdx(user);
@@ -50,11 +49,18 @@ public class UserServiceImpl implements UserService{
 	public String emailCheck(String email) {
 		return userDao.emailCheck(email);
 	}
+
 	public void paid(Map<String, Object> map) {
 		userDao.paid(map);
 	}
+
 	public void changepw(UserDto dto) {
 		userDao.changepw(dto);
+	}
+	
+	@Override
+	public int getid(String id) {
+		return userDao.getid(id);
 	}
 
 	// 개인정보상세조회  
@@ -63,13 +69,9 @@ public class UserServiceImpl implements UserService{
 		return userDao.detail(user_id);
 	}
 
-	
 
-	// 미완성 - 02.15 김범수
-//	@Override
-//	public int getid(String id) {
-//		return userDao.getid(id);
-//	}
+
+
 }
 
 

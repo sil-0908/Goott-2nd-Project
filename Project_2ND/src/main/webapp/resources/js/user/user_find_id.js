@@ -289,18 +289,3 @@ $(function() {
 	});
 });
 
-
-//$(function() {
-//	$('#test').click(function() {
-//		
-//		$.ajax({
-//			url : 'mylocker',
-//			type : 'post',
-//			data : {'video_id' : video_id},
-//			success : function() {
-//				alert('내 보관함에 담겼습니다');
-//				location.href = 'signin'
-//			}
-//		})
-//	})
-//})

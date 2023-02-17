@@ -81,10 +81,9 @@ public class UserDao {
 		sqlSessionTemplate.selectOne("user.changepw", dto);
 	}
 
-	// 미완성 - 02.15김범수
-//	public int getid(String id) {
-//		return sqlSessionTemplate.selectOne("user.getid", id);
-//	}
+	public int getid(String id) {
+		return sqlSessionTemplate.selectOne("user.getid", id);
+	}
 	
 
 	//결제 처리 - 02.15 장재호
