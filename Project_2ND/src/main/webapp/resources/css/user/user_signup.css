@@ -9,11 +9,11 @@
 }
 
 @font-face {
-    font-family: 'NanumBarunGothic';
-    font-style: normal;
-    font-weight: 400;
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
-    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+	font-family: 'NanumBarunGothic';
+	font-style: normal;
+	font-weight: 400;
+	src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+	src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
    }
 
 *{
@@ -53,9 +53,9 @@ body{
     width: 100%;
     height: 10vh;
     grid-area: header;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255,255,255, 0));
-    
-  }
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255,255,255, 0));    
+}
+  
 /* 로고 */
 .headerLogo_j{
     font-size: 60px;
@@ -71,17 +71,16 @@ body{
 
 /* 비밀번호 눈아이콘 */
 .fa-solid{
-   position : relative;
-   left : 350px;
-   top: -35px;
-   
+	position : relative;
+	left : 350px;
+	top: -35px;
 }
 
 /* ==============================================================================================  */
 
 /* 회원가입폼 담는 박스  */
 #mainDiv_j{
-   width: 50%;
+    width: 50%;
     height: 100vh;
     grid-area: main;
     justify-self: center;
@@ -90,7 +89,7 @@ body{
 } 
 /* 회원가입폼 담는 박스 (핸드폰모양틀) */
 #viewDiv_j{
-   width: 500px;
+	width: 500px;
     height: 1100px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
@@ -103,40 +102,40 @@ body{
 
 /* 회원가입폼에 주제 "LOGO 회원가입"텍스트 */
 #signUpText_j{
-   color: #CCCCCC;
-    font-size: 24px;
-    display: block;
-    margin: 30px;
-    height: 50px;
+	color: #CCCCCC;
+	font-size: 24px;
+	display: block;
+	margin: 30px;
+	height: 50px;
 
 }
 
 /* 아이디/ 이메일 중복체크버튼  */
 #btn, #email_btn{
-   height :30px;
-   width: 100px;
-   border-radius: 5px;
-    border: none;
-    cursor: pointer;
-      font-size: 13px;
-      margin : 1vh 0;
+	height :30px;
+	width: 100px;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	font-size: 13px;
+	margin : 1vh 0;
 }
 
 /* 이메일 입력란 공간 */
 #email{
-   margin-top: 2vh;
+	margin-top: 2vh;
 }
 /* 이메일 인증버튼 공간 */
 #emailchk{
-   margin-top: 4vh;
+	margin-top: 4vh;
 }
 
 
 /* 회원정보 입력란  공간*/
 .wrapInput {
-   z-index : 1;
-   height: 80px;
-   margin-top:10px;
+	z-index : 1;
+	height: 80px;
+	margin-top:10px;
 
 }
 
@@ -162,12 +161,16 @@ body{
     background-color:rgb(42, 43, 49);
 }
 
-/* span : 유효성검사/중복처리 확인 메시지글   */
+/* span : 아이디 & 이메일 & 닉네임 - 유효성검사/중복처리 확인 메시지글   */
 span{
-   font-size: 0.8rem;
-   color : red;
+	font-size: 0.8rem;
+	color : red;
 }
 
+/* span : 비밀번호 - 유효성검사/중복처리 확인 메시지글   */
+.wrapInput #pwMsg{
+	margin-left: -25px;
+}
 
 
 /* ====================================== 체크박스 ========================================================  */
