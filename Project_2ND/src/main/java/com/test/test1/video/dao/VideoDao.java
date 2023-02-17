@@ -16,9 +16,7 @@ public class VideoDao {
 	SqlSessionTemplate sqlSessionTemplate;
 	
 	public int insert(Map<String, Object> map) {
-		
-		return this.sqlSessionTemplate.insert("video.insert", map);
-		  
+		return this.sqlSessionTemplate.insert("video.insert", map);		  
 	}
 	
 //	video_list 전체조회 - 02.10 장민실
@@ -34,6 +32,11 @@ public class VideoDao {
 //	video_detail_actorName 02.10 장민실 
 	public List<VideoDto> actor(int video_id) {
 		return sqlSessionTemplate.selectList("video.actor", video_id);
+	}
+
+	// 내보관함 구현 02.16 김범수
+	public int getid(String title) {
+		return sqlSessionTemplate.selectOne("video.getid", title);
 	}
 
 	

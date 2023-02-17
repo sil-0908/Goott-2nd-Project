@@ -5,8 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/video/detail.css">
-<link rel="stylesheet" href="/WEB-INF/views/common/navbar">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <title>video detail</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 				<source src="${dto.video_url}" type="video/mp4">
 			</video>
 		</div>
-        <!-- video area start -->
+        <!-- video area end -->
 
         <!-- movie info start -->
         <div class="info_area">
@@ -39,11 +39,13 @@
                 	</div>
             </div>
 		</div>
-        <!-- movie info start -->
+        <!-- movie info end -->
 
         <!-- button area start -->
         <div class="comunication_btn">
-            <i class="far fa-heart comu_btn" id="subscribe"></i>
+      
+      		<!-- 보관함 구현을 위한 정보를 전송 02.16 김범수 -->
+        	<i class="far fa-heart comu_btn" id="subscribe"></i>
             <p>찜하기</p>
             <i class="far fa-thumbs-up comu_btn" id="like"></i>
             <p>좋아요</p>
@@ -59,7 +61,7 @@
             <input id="comment_input" type="text" autocomplete="off" spellcheck="false" placeholder="댓글 달아볼테면 달아보든가ㅋ">
             <button id="comment_write_btn">작성</button>
         </div>
-        <!-- comment wirte area start -->
+        <!-- comment wirte area end -->
 
         <hr>
 
@@ -83,11 +85,10 @@
             </div>
         </div>
         <hr>
-        <!-- comment list area start -->
+        <!-- comment list area end -->
         
 	</div>
 	
 <script src="/resources/js/video/detail.js"></script>
-
 </body>
 </html>

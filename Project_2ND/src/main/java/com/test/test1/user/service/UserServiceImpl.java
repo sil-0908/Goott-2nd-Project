@@ -24,25 +24,10 @@ public class UserServiceImpl implements UserService{
 	public String login(UserDto userDto) {
 		return userDao.login(userDto);
 	}
-
-	@Override
-	public List<UserDto> list() {
-		return userDao.list();		
-	}
-
+	
 	@Override
 	public String idCheck(String id) {
 		return userDao.idCheck(id);
-	}
-
-	@Override
-	public List<UserDto> mydetail(String user_id) {
-		return userDao.mydetail(user_id);
-	}
-
-	@Override
-	public int modifyDetail(UserDto userDto) {
-		return userDao.modify_detail(userDto);
 	}
 
 	@Override
@@ -64,18 +49,29 @@ public class UserServiceImpl implements UserService{
 	public String emailCheck(String email) {
 		return userDao.emailCheck(email);
 	}
+
 	public void paid(Map<String, Object> map) {
 		userDao.paid(map);
 	}
+
 	public void changepw(UserDto dto) {
 		userDao.changepw(dto);
 	}
+	
+	@Override
+	public int getid(String id) {
+		return userDao.getid(id);
+	}
 
-	// 미완성 - 02.15 김범수
-//	@Override
-//	public int getid(String id) {
-//		return userDao.getid(id);
-//	}
+	// 개인정보상세조회  
+	@Override
+	public UserDto detail(String user_id) {
+		return userDao.detail(user_id);
+	}
+
+
+
+
 }
 
 

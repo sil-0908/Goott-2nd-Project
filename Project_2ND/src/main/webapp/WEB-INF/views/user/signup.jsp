@@ -4,15 +4,12 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Insert title here</title>
+	<title>signup</title>
   	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<link href="/resources/css/user/signup.css" rel="stylesheet">
+	<link href="/resources/css/user/user_signup.css" rel="stylesheet">
 </head>
 <body>
-
-
-
 
 
 <div class="container_j"> 
@@ -64,7 +61,7 @@
 			                    </div>
 			                    
 			                    <div class="wrapInput">
-			                        <input type="password1" name="password1" id="password1" placeholder="비밀번호 확인" autocomplete="on">
+			                        <input type="password" name="password1" id="password1" placeholder="비밀번호 확인" autocomplete="on">
 	  								<i class="fa-solid fa-eye-slash fa-lg" id="eye2"></i>
 	  							</div>
 		                    </div>  

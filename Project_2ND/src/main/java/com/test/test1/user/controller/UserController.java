@@ -1,9 +1,11 @@
 package com.test.test1.user.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -13,6 +15,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,8 +49,6 @@ public class UserController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	@Autowired
-	RentalService rentalService;	
 	
 	//로그인 페이지 이동 - 01.31 장재호
 	@RequestMapping("signin")
@@ -126,45 +128,26 @@ public class UserController {
 	    return mav;
 	}
 	
+	
+//
+	// 개인 정보 조회하기 (post 형식)
+	// 개인 수정 하기 
+	//  detail 개인 정보 목록 받아오기 
 
 	
-	//개인 상세 정보 조회 - 01.31 장재호
-	@RequestMapping("mydetail")
-	public ModelAndView mydetail(HttpSession session, ModelAndView mv) {		
-		String user_id = session.getAttribute("user_id").toString();
-		List<UserDto> list = userService.mydetail(user_id); //list : 로그인 된 user_id값에 해당하는 개인 정보
+	
+	// 회원정보가진 개인정보페이지 열기  23/02/16 김지혜 
+	@RequestMapping("/mydetail")
+	public String detail(HttpSession session, Model model) {
+		// 유저 아이디를 통해 세션에서 정보 가져오기 
+		String user_id =(String) session.getAttribute("user_id").toString();
+		UserDto dto = userService.detail(user_id);
+		model.addAttribute("data", dto);
+		return "user/mydetail"; 		
+	}
+	
+	
 
-		mv.setViewName("user/mydetail");
-		mv.addObject("data", list);
-		return mv;
-	}
-	
-	//개인 정보 수정 - 01.31 장재호
-	@RequestMapping(value="modify_detail", method=RequestMethod.POST)
-	public ModelAndView modify_detail(HttpSession session, UserDto userDto) {
-
-		int modifyTF = userService.modifyDetail(userDto);
-		ModelAndView mv = new ModelAndView();
-		
-		if(modifyTF == -1) {                                         //실패
-			mv.addObject("message", "samenick");                     //오류 메세지를 위한 Obj 추가
-			return mydetail(session, mv);
-		} else {                                                     //성공
-			mv.setViewName("common/main");
-			mv.addObject("message", "oknick");
-			session.setAttribute("nickname", userDto.getNickname()); //성공했으므로 세션 값 변경
-		}
-		return mv;
-	}
-	
-	//전체조회 - 01.31 장재호
-	@RequestMapping("list")
-	public ModelAndView list(ModelAndView mv) {
-		mv.addObject("data", userService.list());
-		mv.setViewName("/user/list");
-		return mv;
-	}
-	
 	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
 	@RequestMapping("find")
 	public ModelAndView find(ModelAndView mv) {
@@ -254,23 +237,7 @@ public class UserController {
 		return "redirect:/user/signin"; // 비밀번호 변경이 끝나면 로그인페이지로 이동시킴
 	}
 	
-	// 내보관함 기능 구현 - 미완성, 02.15 김범수
-//	@RequestMapping("mylocker")
-//	public String mylocker(RentalDTO dto, HttpSession session) {
-//		String id = (String) session.getAttribute("userid");
-//		int videoid = (int) session.getAttribute("video_id");
-//		
-//		if(id == null) {
-//			return "redirect:/user/signin"; // 로그인을 하지않은 사람을 돌려보냄
-//		}
-//		int userid = userService.getid(id); // USER_ID를 가져오기 위함
-//		
-//		dto.setId(userid);
-//		dto.setVideo_id(videoid);
-//		rentalService.insert(dto);
-//
-//		return "redirect:/video/list"; 
-//	}
 	
+
 	
 }

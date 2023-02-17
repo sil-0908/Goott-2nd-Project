@@ -41,6 +41,12 @@ public class VideoServiceImpl implements VideoService {
 	public List<VideoDto> actor(int video_id) {
 		return videoDao.actor(video_id);
 	}
+
+// 내보관함 구현 02.16 김범수
+	@Override
+	public int getid(String title) {
+		return videoDao.getid(title);
+	}
 	
 
 
