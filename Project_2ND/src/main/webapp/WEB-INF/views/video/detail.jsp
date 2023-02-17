@@ -5,8 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/video/detail.css">
-<link rel="stylesheet" href="/WEB-INF/views/common/navbar">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 <title>video detail</title>
 </head>
 <body>
@@ -19,7 +18,7 @@
 				<source src="${dto.video_url}" type="video/mp4">
 			</video>
 		</div>
-        <!-- video area start -->
+        <!-- video area end -->
 
         <!-- movie info start -->
         <div class="info_area">
@@ -39,7 +38,7 @@
                 	</div>
             </div>
 		</div>
-        <!-- movie info start -->
+        <!-- movie info end -->
 
         <!-- button area start -->
         <div class="comunication_btn">
@@ -59,7 +58,7 @@
             <input id="comment_input" type="text" autocomplete="off" spellcheck="false" placeholder="댓글 달아볼테면 달아보든가ㅋ">
             <button id="comment_write_btn">작성</button>
         </div>
-        <!-- comment wirte area start -->
+        <!-- comment wirte area end -->
 
         <hr>
 
@@ -83,7 +82,7 @@
             </div>
         </div>
         <hr>
-        <!-- comment list area start -->
+        <!-- comment list area end -->
         
 	</div>
 	
