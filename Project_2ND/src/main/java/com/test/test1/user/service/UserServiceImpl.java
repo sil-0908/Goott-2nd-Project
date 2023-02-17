@@ -24,26 +24,12 @@ public class UserServiceImpl implements UserService{
 	public String login(UserDto userDto) {
 		return userDao.login(userDto);
 	}
-
-	@Override
-	public List<UserDto> list() {
-		return userDao.list();		
-	}
-
+	
 	@Override
 	public String idCheck(String id) {
 		return userDao.idCheck(id);
 	}
 
-	@Override
-	public List<UserDto> mydetail(String user_id) {
-		return userDao.mydetail(user_id);
-	}
-
-	@Override
-	public int modifyDetail(UserDto userDto) {
-		return userDao.modify_detail(userDto);
-	}
 
 	@Override
 	public int userIdx(String user) {
@@ -70,6 +56,14 @@ public class UserServiceImpl implements UserService{
 	public void changepw(UserDto dto) {
 		userDao.changepw(dto);
 	}
+
+	// 개인정보상세조회  
+	@Override
+	public UserDto detail(String user_id) {
+		return userDao.detail(user_id);
+	}
+
+	
 
 	// 미완성 - 02.15 김범수
 //	@Override

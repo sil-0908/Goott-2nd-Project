@@ -39,25 +39,12 @@
 		 where ID=#{id}
 	</select>
 	
-	<select id="mydetail" resultType="hashMap">
-		<![CDATA[
-		select ID, EMAIL, PASSWORD, NICKNAME, PHONE_NUM
-		  from USER
-		 where ID=#{id}
-		 ]]>
-	</select>
-	
-	<update id="modify_detail">
-		update USER
-		   set NICKNAME=#{nickname}, PASSWORD=#{password}
-		 where ID=#{id}
-	</update>
-	
-	<select id="list" resultType="hashMap">
-        select *
-		  from USER
-         order by USER_ID asc
-	</select>
+
+
+
+
+
+
 	
 	<select id="idx" resultType="int">
 		select USER_ID
@@ -99,5 +86,13 @@
          where ID = #{id} 
 	</select>
 -->
+<!--    개인정보 상세조회	 _김지혜  -->
+	<select id="detail" resultType = "com.test.test1.user.dto.UserDto">
+		select ID, EMAIL, NICKNAME, PHONE_NUM
+		  from USER
+		 where ID=#{user_id}
+	</select>
+
+
 
 </mapper>
