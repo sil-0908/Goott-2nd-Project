@@ -16,9 +16,7 @@ public class VideoDao {
 	SqlSessionTemplate sqlSessionTemplate;
 	
 	public int insert(Map<String, Object> map) {
-		
-		return this.sqlSessionTemplate.insert("video.insert", map);
-		  
+		return this.sqlSessionTemplate.insert("video.insert", map);		  
 	}
 	
 //	video_list 전체조회 - 02.10 장민실
