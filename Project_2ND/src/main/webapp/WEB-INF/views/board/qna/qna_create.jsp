@@ -17,6 +17,8 @@
 			<div id="title_Con"> 
 				<h1>제목</h1>
 				<textarea id="title" name="q_subject"></textarea>
+				<p>비밀번호</p>
+				<input type="password" name="password" placeholder="비밀번호를 입력하세요">
 			</div>
 			<div id="content_Con">
 				<h1>내용</h1>
@@ -26,24 +28,5 @@
 		<input type="button" value="등록" onclick="qCreate()">
 	</form>
 </body>
-<script>
-const title = document.querySelector('textarea[id=title]');
-const content = document.querySelector('textarea[id=content]');
-
-// 등록 버튼 클릭 시 
-function qCreate(){
-	if(title.value == "") {
-		alert("제목을 입력하세요");
-		document.form1.q_subject.focus();
-		return;
-	}
-	if(content.value == ""){
-		alert("내용을 입력하세요");
-		document.form1.q_content.focus();
-		return;
-	}
-	document.form1.action="create"
-	document.form1.submit();	
-}
-</script>
+<script src="/resources/js/board/qna_create.js"></script>
 </html>

@@ -7,10 +7,6 @@
 <link rel="stylesheet" href="/resources/css/user/user_signin.css">
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/resources/js/user/user_signin.js"></script>
-<!-- Google -->
-<meta name="google-signin-client_id" content="967788525797-huq32simk5h35o6faii7nlbi86822e6l.apps.googleusercontent.com">
-<script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
-<!-- Google -->
 <!-- kakao -->
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 <!-- kakao -->

@@ -1,0 +1,13 @@
+h1{
+	color:white;
+}
+.mainCon{
+	display : flex;
+	justify-content : center;
+}
+.categoryCon, .genreCon{
+	width : 600px;
+	height : 250px;
+	margin : 50px;
+
+}
