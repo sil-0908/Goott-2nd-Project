@@ -28,12 +28,12 @@ public class VideoController {
 	@Autowired 
 	VideoService videoService;
 	
-	// 내보관함 페이지 구현 - 02.16 김범수
-	@Autowired
-	RentalService rentalService;	
-	
 	@Autowired
 	AlgorithmService algo;
+	
+	// 내보관함 페이지 구현 - 02.16 김범수
+	@Autowired
+	RentalService rentalService;
 	
 	@RequestMapping(value="/create", method = RequestMethod.GET)
 	public ModelAndView create() {

@@ -1,6 +1,5 @@
 package com.test.test1.user.dao;
 
-import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -14,8 +13,7 @@ import com.test.test1.user.dto.UserDto;
 public class UserDao {
 	
 	@Autowired
-	BCryptPasswordEncoder encoder;
-	
+	BCryptPasswordEncoder encoder;	
 	
 	@Autowired
 	SqlSessionTemplate sqlSessionTemplate;
@@ -47,14 +45,6 @@ public class UserDao {
 		}
 		else return null;
 	}
-	
-	// 마이페이지 
-	
-	
-	
-	
-	
-
 
 	//qna등록 시 user Key값 받아오기 - 02.07 장재호
 	public int userIdx(String user) {
@@ -76,6 +66,7 @@ public class UserDao {
 		check1 = this.sqlSessionTemplate.selectOne("user.email_check", email);
 		return check1;
 	}
+	
 	//비밀번호 변경 - 02.12 김범수
 	public void changepw(UserDto dto) {
 		sqlSessionTemplate.selectOne("user.changepw", dto);
@@ -83,8 +74,7 @@ public class UserDao {
 
 	public int getid(String id) {
 		return sqlSessionTemplate.selectOne("user.getid", id);
-	}
-	
+	}	
 
 	//결제 처리 - 02.15 장재호
 	public void paid(Map<String, Object> map) {
