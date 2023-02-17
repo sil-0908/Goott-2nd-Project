@@ -29,8 +29,8 @@ hello
 </form>
 <input type="button" value="마이페이지" onclick="location.href='user/mydetail'">
 <input type="button" value="동영상게시판" onclick="location.href='video/list'">
+<input type="button" value="QnA" onclick="location.href='qna/list'">
 <input type="button" value="결제하기" onclick="modal()">	
-<input type="text" id="userid" value="${sessionScope.user_id}">
 
 </c:if>
 <c:if test="${message=='success'}">

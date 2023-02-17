@@ -1,5 +1,6 @@
 package com.test.test1.video.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.test1.video.dto.RentalDTO;
+import com.test.test1.algorithm.service.AlgorithmService;
 import com.test.test1.video.dto.VideoDto;
 import com.test.test1.video.service.RentalService;
 import com.test.test1.video.service.VideoService;
@@ -24,12 +26,14 @@ import com.test.test1.video.service.VideoService;
 public class VideoController { 
 		
 	@Autowired 
-	VideoService videoService; 
+	VideoService videoService;
 	
 	// 내보관함 페이지 구현 - 02.16 김범수
 	@Autowired
 	RentalService rentalService;	
 	
+	@Autowired
+	AlgorithmService algo;
 	
 	@RequestMapping(value="/create", method = RequestMethod.GET)
 	public ModelAndView create() {
@@ -62,8 +66,19 @@ public class VideoController {
 
 //	video_detail 02.07 배철우
 //	DTO 생성 후 DTO 활용하여 코드재생성 + 배우정보 가져오기 - 02.14 장민실
+//	알고리즘 구현을 위해 detail페이지 접근 시 PK값 저장 - 02.15 장재호
 	@RequestMapping("detail")
-	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv) {
+	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session) { //세션추가 - 02.15 장재호
+/*--------------------------------------- db에 알고리즘 구현을 위한 값들 저장 - 02.15 장재호 ---------------------------------------*/
+		String id = (String) session.getAttribute("user_id");
+		Map<String, Object> map = new HashMap<>();
+		map.put("id", id);
+		map.put("video_id", video_id);
+//		if = 추가, else = 업데이트(클릭 수 업)
+		if(algo.check(map) == null)	algo.insert(map);
+		else algo.update(map);
+/*--------------------------------------------------------------------------------------------------------------------*/
+		
 		List<VideoDto> actor = videoService.actor(video_id);
 		mv.addObject("dto", videoService.detail(video_id));
 		mv.addObject("detail", actor);

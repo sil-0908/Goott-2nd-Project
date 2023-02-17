@@ -1,3 +1,4 @@
+/* 결제 모달 창 - 02.14 장재호 */
 const closebtn = document.querySelector('.closebtn');
 const popup = document.querySelector('.popup');
 const inputH = document.querySelector('.inputMonthH') //결제 개월 수 입력받는 inputhidden

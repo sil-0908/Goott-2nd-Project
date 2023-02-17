@@ -1,0 +1,159 @@
+:root{
+    --logo-color:#FFCC00;
+    --logo-size: 60px;
+    --title-size: 25px;
+    --title-border: 600px;
+    --text-color:#CCCCCC;
+    --text-size: 17px;
+    --bg:#24292D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg);
+    width: 100%;
+    height: 100%;
+}
+
+hr {
+    margin: 30px 60px;
+}
+
+/* navbar start */
+#navbar {
+    height: 100px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+#logo {
+    font-size: var(--logo-size);
+    color: var(--logo-color);
+}
+/* navbar end */
+
+/* user info edit start */
+#edit_text {
+    color: var(--text-color);
+    margin: 30px 30px 30px 60px;
+}
+
+#info_edit {
+    display: flex;
+    flex-direction: column;
+}
+
+.user_form {
+    display: flex;
+}
+
+.user_form > input {
+    height: 50px;
+    width: 1000px;
+    margin-left: 100px;
+}
+
+.info_text {
+    background-color: white;
+    height: 50px;
+    width: 100px;
+    margin-left: 70px;
+}
+/* user info edit end */
+
+/* marketing edit start */
+#marketing_edit {
+    color: var(--text-color);
+}
+
+#marketing_info {
+    display: flex;
+    flex-direction: column;
+}
+
+#personal_info {
+    display: flex;
+    flex-direction: column;
+}
+
+#marketing_info > h2 {
+    margin-left: 60px;
+}
+
+#marketing_info > p {
+    margin-left: 60px;
+    margin-top: 30px;
+}
+
+#personal_info > h2 {
+    margin-left: 60px;
+}
+
+.check_box {
+    margin: 20px 0 30px 80px;
+    display: flex;
+    flex-direction: column;
+    margin-right: auto;
+}
+
+.check_box > p {
+    margin-bottom: 20px;
+}
+
+.check_box > p > input {
+    margin-right: 15px;
+}
+
+.check_box > :last-child {
+    margin-bottom: 0;
+}
+/* marketing edit end */
+
+/* bottom button start */
+
+/* bottom button end */
+#bot_btn {
+    display: flex;
+    flex-direction: column;
+}
+
+#bot_btn > div > button {
+    border: none;
+    cursor: pointer;
+    background-color: bisque;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 5%;
+}
+
+#secession, #choice_btn {
+    margin-left: 60px;
+    margin-bottom: 60px;
+}
+
+#choice_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#choice_btn > #save {
+    margin-right: 30px;
+    padding: 15px 60px 15px 60px;
+}
+
+#choice_btn > #cancle {
+    padding: 15px 60px 15px 60px;
+}
+
+/* footer start */
+#footer {
+    background-color: bisque;
+    height: 200px;
+}
+/* footer end */
