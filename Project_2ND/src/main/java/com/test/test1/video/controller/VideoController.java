@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.test.test1.algorithm.util.AlgorithmUtil;
-import com.test.test1.user.service.UserService;
+import com.test.test1.algorithm.service.AlgorithmService;
 import com.test.test1.video.dto.VideoDto;
 import com.test.test1.video.service.VideoService;
 
@@ -26,7 +25,7 @@ public class VideoController {
 	VideoService videoService;
 	
 	@Autowired
-	AlgorithmUtil algo;
+	AlgorithmService algo;
 	
 	@RequestMapping(value="/create", method = RequestMethod.GET)
 	public ModelAndView create() {
@@ -68,10 +67,7 @@ public class VideoController {
 		map.put("id", id);
 		map.put("video_id", video_id);
 //		if = 추가, else = 업데이트(클릭 수 업)
-		System.out.println("숫자 = " + algo.check(map));
-		if(algo.check(map) <= 0) {
-			algo.insert(map);
-		}
+		if(algo.check(map) == null)	algo.insert(map);
 		else algo.update(map);
 /*--------------------------------------------------------------------------------------------------------------------*/
 		
