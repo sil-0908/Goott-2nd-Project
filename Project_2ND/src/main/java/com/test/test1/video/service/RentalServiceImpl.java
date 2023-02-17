@@ -1,6 +1,6 @@
 package com.test.test1.video.service;
 
-//import javax.inject.Inject;
+import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
@@ -10,13 +10,18 @@ import com.test.test1.video.dto.RentalDTO;
 @Service
 public class RentalServiceImpl implements RentalService{
 	
-//	@Inject
-//	RentalDao rentalDao;
+	@Inject
+	RentalDao rentalDao;
 
-//	@Override
-//	public void insert(RentalDTO dto) {
-//		rentalDao.insert(dto);
-//	}
+	@Override
+	public void insert(RentalDTO dto) {
+		rentalDao.insert(dto);
+	}
+
+	@Override
+	public void delete(RentalDTO dto) {
+		rentalDao.delete(dto);
+	}
 
 	
 }

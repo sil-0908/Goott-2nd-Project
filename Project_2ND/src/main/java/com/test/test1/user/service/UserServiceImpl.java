@@ -71,11 +71,11 @@ public class UserServiceImpl implements UserService{
 		userDao.changepw(dto);
 	}
 
-	// 미완성 - 02.15 김범수
-//	@Override
-//	public int getid(String id) {
-//		return userDao.getid(id);
-//	}
+	
+	@Override
+	public int getid(String id) {
+		return userDao.getid(id);
+	}
 }
 
 

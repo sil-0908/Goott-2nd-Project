@@ -4,15 +4,15 @@ import java.util.Date;
 
 public class RentalDTO {
 	
-	private int id;
+	private String id;
 	private int video_id;
 	private Date rental_date;
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

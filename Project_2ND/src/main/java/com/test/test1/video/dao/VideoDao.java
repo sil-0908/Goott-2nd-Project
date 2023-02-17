@@ -36,6 +36,11 @@ public class VideoDao {
 		return sqlSessionTemplate.selectList("video.actor", video_id);
 	}
 
+	// 내보관함 구현 02.16 김범수
+	public int getid(String title) {
+		return sqlSessionTemplate.selectOne("video.getid", title);
+	}
+
 	
 	
 }

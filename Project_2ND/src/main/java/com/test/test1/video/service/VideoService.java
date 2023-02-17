@@ -17,6 +17,9 @@ public interface VideoService {
 
 //	vodeo_detail_actorName 02.10 장민실 
 	List<VideoDto> actor(int video_id);
+
+	// 내보관함 구현 02.16 김범수
+	int getid(String title);
 	
 	
 

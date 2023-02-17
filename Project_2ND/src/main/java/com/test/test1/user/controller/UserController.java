@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -45,8 +46,6 @@ public class UserController {
 	@Autowired
 	private JavaMailSender mailSender;
 	
-	@Autowired
-	RentalService rentalService;	
 	
 	//로그인 페이지 이동 - 01.31 장재호
 	@RequestMapping("signin")
@@ -254,23 +253,7 @@ public class UserController {
 		return "redirect:/user/signin"; // 비밀번호 변경이 끝나면 로그인페이지로 이동시킴
 	}
 	
-	// 내보관함 기능 구현 - 미완성, 02.15 김범수
-//	@RequestMapping("mylocker")
-//	public String mylocker(RentalDTO dto, HttpSession session) {
-//		String id = (String) session.getAttribute("userid");
-//		int videoid = (int) session.getAttribute("video_id");
-//		
-//		if(id == null) {
-//			return "redirect:/user/signin"; // 로그인을 하지않은 사람을 돌려보냄
-//		}
-//		int userid = userService.getid(id); // USER_ID를 가져오기 위함
-//		
-//		dto.setId(userid);
-//		dto.setVideo_id(videoid);
-//		rentalService.insert(dto);
-//
-//		return "redirect:/video/list"; 
-//	}
 	
+
 	
 }

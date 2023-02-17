@@ -30,8 +30,7 @@ public interface UserService {
 
 	void changepw(UserDto dto);
 
-	// 미완성
-//	int getid(String id);
+	int getid(String id);
 
 	void paid(Map<String, Object> map);
 

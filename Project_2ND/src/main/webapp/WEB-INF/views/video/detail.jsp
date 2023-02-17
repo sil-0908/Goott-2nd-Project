@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/resources/css/video/detail.css">
 <link rel="stylesheet" href="/WEB-INF/views/common/navbar">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <title>video detail</title>
 </head>
 <body>
@@ -43,7 +44,9 @@
 
         <!-- button area start -->
         <div class="comunication_btn">
-            <i class="far fa-heart comu_btn" id="subscribe"></i>
+      
+      		<!-- 보관함 구현을 위한 정보를 전송 02.16 김범수 -->
+        	<i class="far fa-heart comu_btn" id="subscribe"></i>
             <p>찜하기</p>
             <i class="far fa-thumbs-up comu_btn" id="like"></i>
             <p>좋아요</p>
@@ -88,6 +91,5 @@
 	</div>
 	
 <script src="/resources/js/video/detail.js"></script>
-
 </body>
 </html>

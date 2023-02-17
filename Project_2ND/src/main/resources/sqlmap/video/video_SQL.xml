@@ -47,6 +47,13 @@
  		]]>
 	</select>
 	
+	<select id="getid" resultType="int">
+		<![CDATA[
+		select video_id
+  		  from VIDEO
+    	 where TITLE = #{title}
+ 		]]>
+	</select>
 
 	  
 	
