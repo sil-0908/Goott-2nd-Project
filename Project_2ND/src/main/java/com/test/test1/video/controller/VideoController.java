@@ -105,12 +105,5 @@ public class VideoController {
 			rentalService.delete(dto);
 		}	
 	}
-	
-	
-	
-	
-	
-	
-
-     
+	     
 }

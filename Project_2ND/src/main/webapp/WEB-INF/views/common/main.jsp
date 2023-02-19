@@ -44,12 +44,22 @@ hello
 	</h1>
 </c:if>
 <input type="button" value="회원 조회" onclick="location.href='user/list'">
-
+<form name="adminform">
+	<input type="button" value="관리자페이지" onclick="admin()">
+</form>
 <script>
-	const timer = setTimeout(function(){
-		$('#nick').text('');
-	}, 2000);	
+/* URL을 통한 접근 시 에러 View에 alert - 02.18 장재호 */
+$(function(){
+	const url = new URL(window.location.href);
+	const urlParams = url.searchParams;
+	if(urlParams.get('error') != null){
+		alert(urlParams.get('error'));
+	}
+})
+function admin(){
+	document.adminform.action="admin";
+	document.adminform.submit();
+}
 </script>
-
 </body>
 </html>

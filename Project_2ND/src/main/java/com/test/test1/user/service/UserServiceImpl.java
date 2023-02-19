@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.user.dao.UserDao;
 import com.test.test1.user.dto.UserDto;
 
@@ -26,13 +27,13 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	public List<UserDto> list(Criteria cri) throws Exception {
+		return userDao.list(cri);		
+	}
+	
+	@Override
 	public String idCheck(String id) {
 		return userDao.idCheck(id);
-	}
-
-	@Override
-	public int userIdx(String user) {
-		return userDao.userIdx(user);
 	}
 
 	@Override
@@ -67,6 +68,31 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public UserDto detail(String user_id) {
 		return userDao.detail(user_id);
+	}
+
+	@Override
+	public String paidCheck(String ID) {
+		return userDao.paidCheck(ID);
+	}
+
+	@Override
+	public void rePaid(Map<String, Object> map) {
+		userDao.rePaid(map);		
+	}
+
+	@Override
+	public int listCount(Criteria cri) {
+		return userDao.listCount(cri);
+	}
+
+	@Override
+	public void paidUpdate(int months) {
+		userDao.paidUpdate(months);		
+	}
+
+	@Override
+	public void addVisit() {
+		userDao.addVisit();
 	}
 
 

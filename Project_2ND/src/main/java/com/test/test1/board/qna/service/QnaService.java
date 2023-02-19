@@ -19,6 +19,14 @@ public interface QnaService {
 
 	void delete(int question_id);
 
+	void deletes(List<Integer> delArr);
+
+	String passCheck(int question_id);
+
+	void answerCreate(QnaDto qnaDto);
+
+	String answerGet(int question_id);
+
 //	List<QnaDto> qnaSearch(Criteria cri);
 
 

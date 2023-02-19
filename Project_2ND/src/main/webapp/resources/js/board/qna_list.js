@@ -1,4 +1,12 @@
 $(function() {
+	
+	/* URL을 통한 접근 시 에러 View에 alert - 02.18 장재호 */
+	const url = new URL(window.location.href);
+	const urlParams = url.searchParams;
+	if(urlParams.get('error') != null){
+		alert(urlParams.get('error'));
+	}
+
 	/* 체크박스 전체 선택 기능 - 02.17 장재호 */
 	  $('.js-check-all').on('click', function() {
 		if ( $(this).prop('checked') ) {
@@ -25,10 +33,6 @@ $(function() {
 	  
 	//selectbox 선택한 값만 검색 - 02.07 장재호
 	  $('#searchBtn').click(function(){
-		if($('option').val() == "선택"){
-			alert("검색 조건을 선택하세요");
-			return;
-		}
 	  	if($('input[type=text]').val() == 'undefined' || $('input[type=text]').val() == ''){		
 	  		alert("검색어를 입력하세요");
 	  		return;
@@ -62,14 +66,20 @@ $(function() {
 	$('.moveDetail').on('click', function(e){
 		//체크박스 선택 시 
 		if(e.target.tagName === 'DIV' || e.target.tagName === 'INPUT'){
-//			console.log(e.target.parentElement.parentElement.nextElementSibling.innerText);			
 			return;
 		}
 		const nick = e.target.parentElement.children[2].textContent;
 		const locker = e.target.parentElement.children[1];
-		if(locker.children.length == 2){ //비밀번호 걸려있는 글 접근 시
+		//비밀번호 걸려있는 글 접근 시
+		if(locker.children.length == 2){
+			//1. 관리자 접근 시 허용
+			if($(".adminID").val() == 'admin' && $('.adminNick').val() == 'admin'){
+				location.href='/qna/list/'+locker.textContent;
+				return;
+			}
+			//2.비밀번호 입력 값이 다를 경우 접근 불가
 			const passwordCheck = prompt("비밀번호를 입력하세요", "비밀번호 입력");
-			if(passwordCheck != $('.passwordInput').val()){ //비밀번호 입력 값이 다를 경우 접근 불가
+			if(passwordCheck != $('.passwordInput').val()){ 
 				alert("비밀번호가 틀립니다");
 				return;
 			}
@@ -83,6 +93,7 @@ $(function() {
 
 const checkbox = document.querySelectorAll('.checkNum');
 
+/* 질문 삭제(체크박스 기능) - 02.17 장재호 */
 function qnaDelete(){
 	const delArr = new Array();	
 	
@@ -93,18 +104,25 @@ function qnaDelete(){
 		}
 	})
 	
+	//삭제 선택 안하고 삭제 버튼만 클릭 시 막기
+	if(delArr.length == 0){
+		alert("삭제할 게시물을 선택해 주세요");
+		return;
+	}
+	
+	//삭제 게시물 PK 전송
 	if(confirm("삭제하시겠습니까?")){
 		$.ajax({
 			url : 'qnaDeletes',
 			data : JSON.stringify(delArr),
 			type : 'post',
-			contentType: 'application/json; charset=utf-8',
-			dataType : 'json',
+			contentType: 'application/json; charset=utf-8',	
+			success:function(data){
+				location.href="/qna/list";
+			}
 		});
 	}
-
 }
-
 
 
 

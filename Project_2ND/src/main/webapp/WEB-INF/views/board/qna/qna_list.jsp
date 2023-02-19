@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!DOCTYPE html>
 <html>
@@ -8,8 +9,8 @@
 <meta name="author" content="colorlib.com">
 <link rel="stylesheet" href="/resources/css/board/qna_list.css">
 <link rel="stylesheet" href="/resources/css/board/searchbar.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
-<link rel="stylesheet" href="/resources/css/board/style.css"><!-- **스트랩** -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
+<link rel="stylesheet" href="/resources/css/board/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- ******* -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -26,8 +27,7 @@
 			<div class="input-field first-wrap">
 				<div class="input-select">
 					<select id="selectBox" name="option" data-trigger="">
-						<option value="NO">선택</option>
-						<option value="NICKNAME">닉네임</option>
+						<option value="ID">ID</option>
 						<option value="SUBJECT">제목</option>
 						<option value="CONTENT">내용</option>
 						<option value="SUBJECT,CONTENT">제목+내용</option>	  
@@ -44,13 +44,17 @@
 					</svg>
 				</button>				
 			</div>  
-		<input type="hidden" name="page" value="1">
-	</div>
-</form>
+			<input type="hidden" name="page" value="1">
+		</div>
+	</form>
 </div>
 <div class="container">
 	<input class="createBtn"type="button" value="질문등록" onclick="location.href='/qna/create'">
-	<input class="deleteBtn"type="button" value="삭제하기" onclick="qnaDelete()">	
+	<c:if test="${sessionScope.user_id == 'admin' && sessionScope.nickname == 'admin'}">
+		<input class="deleteBtn"type="button" value="삭제하기" onclick="qnaDelete()">
+	</c:if>
+	<input class="adminID" type="hidden" value="${sessionScope.user_id}">
+	<input class="adminNick" type="hidden" value="${sessionScope.nickname}">
 </div>
 
 
@@ -85,18 +89,18 @@
 							<input class="delID" type="hidden" value="${list.question_id}"> 
 						</th>
 						<td>
-							<c:if test="${list.password != null}">
+							<c:if test="${list.password != ''}">
 								<span><i class="fa-solid fa-lock"></i></span>
 								<input class="passwordInput" type="hidden" value="${list.password}">	
 							</c:if>${list.question_id}
 						</td>
-						<td>${list.nickname}</td>
+						<td>${list.id}</td>
 						<td>${list.q_subject}</td>
 						<c:choose>
-							<c:when test="${list.answer!=null}"><td>완료</td></c:when>
+							<c:when test="${list.answer!=null}"><td style="color:red;">완료</td></c:when>
 							<c:otherwise><td>진행중</td></c:otherwise>						
 						</c:choose>	
-						<td>${list.q_create_date}</td>
+						<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${list.q_create_date}" /></td>
 					</tr>
 					<tr class="spacer"><td colspan="100"></td></tr>				
 				</c:forEach>
@@ -135,9 +139,6 @@
 	<input id="optionH" type="hidden" name="option" value="${pageMaker.cri.option}">
 	</form>		
 </div>
-<footer>
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
-</footer>
 <script src="/resources/js/board/qna_list.js"></script>
 <script src="/resources/js/board/searchbar.js"></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js></script>
@@ -148,7 +149,6 @@ const choices = new Choices('[data-trigger]',
   searchEnabled: false,
   itemSelectText: '',
 });
-</script>
 </script>
 </body>
 </html>

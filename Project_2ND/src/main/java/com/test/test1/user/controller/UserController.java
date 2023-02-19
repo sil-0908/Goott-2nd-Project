@@ -146,7 +146,6 @@ public class UserController {
 		return "user/mydetail"; 		
 	}
 	
-	
 
 	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
 	@RequestMapping("find")

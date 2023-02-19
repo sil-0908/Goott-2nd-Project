@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.test.test1.board.qna.dto.Criteria;
+import com.test.test1.user.dto.UserDto;
 import com.test.test1.video.dto.VideoDto;
 
 @Repository
@@ -39,6 +41,15 @@ public class VideoDao {
 		return sqlSessionTemplate.selectOne("video.getid", title);
 	}
 
+	/**************************************** 관리자용 - 02.19 장재호 *****************************/
+	public int adminListCount(Criteria cri) {
+		return sqlSessionTemplate.selectOne("video.adminListCount", cri);
+	}
+
+	public List<UserDto> adminList(Criteria cri) {
+		return sqlSessionTemplate.selectList("video.adminList", cri);
+	}
+	/*************************************************************************************/
 	
 	
 }
