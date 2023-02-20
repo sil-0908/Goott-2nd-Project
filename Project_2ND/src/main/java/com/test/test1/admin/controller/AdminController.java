@@ -75,7 +75,8 @@ public class AdminController {
 		mv.addObject("genre", algorithmService.genreRate());
 		//3. 매출
 		int total = adminService.getTotalSales() * 15000;
-		int daily = adminService.getDailySales() * 15000;
+		int daily = adminService.getDailySales() * 15000;		
+		
 		mv.addObject("totalSales", total);
 		mv.addObject("dailySales", daily);
 		//4. 방문자 수

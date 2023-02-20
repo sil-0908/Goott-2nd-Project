@@ -16,7 +16,10 @@ public class AdminDao {
 	SqlSession ss;
 	
 	public int getTotalSales() {
-		return ss.selectOne("admin.getTotalSales");
+		if(ss.selectOne("admin.getTotalSales") == null) {
+			return 0;
+		}
+		else return ss.selectOne("admin.getTotalSales");
 	}
 
 	public void deletes(List<Integer> delArr) {
@@ -24,15 +27,24 @@ public class AdminDao {
 	}
 
 	public int getDailySales() {
-		return ss.selectOne("admin.getDailySales");
+		if(ss.selectOne("admin.getDailySales") == null) {
+			return 0;
+		}
+		else return ss.selectOne("admin.getDailySales");
 	}
 
 	public int getTodayVisit() {
-		return ss.selectOne("admin.getTodayVisit");
+		if(ss.selectOne("admin.getTodayVisit") == null) {
+			return 0;
+		}
+		else return ss.selectOne("admin.getTodayVisit");
 	}
 
 	public int getTotalVisit() {
-		return ss.selectOne("admin.getTotalVisit");
+		if(ss.selectOne("admin.getTotalVisit") == null) {
+			return 0;
+		}
+		else return ss.selectOne("admin.getTotalVisit");
 	}
 
 	public void videoDel(int video_id) {
