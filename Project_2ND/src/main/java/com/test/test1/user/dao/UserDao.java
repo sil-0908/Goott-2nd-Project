@@ -1,5 +1,6 @@
 package com.test.test1.user.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -28,8 +29,7 @@ public class UserDao {
 	//회원 가입 - 01.31 장재호
 	public boolean create(UserDto userDto) {
 		String checkTF = this.sqlSessionTemplate.selectOne("user.signUpCheck", userDto);  //checkTF : 닉네임 중복이되면 중복 값을 담는다
-		if(checkTF == null) { // 중복 없음
-			System.out.println(userDto.getPassword());
+		if(checkTF == null) { // 닉네임 중복 없음
 			sqlSessionTemplate.insert("user.insert", userDto);
 			return true;
 		}
@@ -81,5 +81,15 @@ public class UserDao {
 	public UserDto detail(String user_id) {
 		return sqlSessionTemplate.selectOne("user.detail", user_id);
 	}
-	
+
+	// 개인정보수정 23/02/20 김지혜 
+	public void infoModify(UserDto dto) {
+		// 이메일 중복거르기
+		
+		
+		sqlSessionTemplate.update("user.infoModify", dto);
+		
+	}
+
+
 }

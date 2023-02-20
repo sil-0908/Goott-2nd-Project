@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,7 +17,7 @@
     
 <!-- navbar start -->
     <nav id="navbar">
-        <h1 id="logo">LOGO</h1>
+        <h1 id="logo" onclick="back()">LOGO</h1>
           <!-- menu start -->
         <div class="menu">
             <ul class="menu_ul">
@@ -85,20 +86,21 @@
 <!-- main video end -->
 
 	<div id="section_all">
-	 
+	  <div id="search-results"></div>
 	<!-- movie category -->
 		<div class="hide">
 			<h1 class="section_main_text">영화</h1>
 			<div class="section">
-				<div class="slider"> 
-					<c:forEach var="movie" items="${dto}">
-						<c:if test="${movie.category_id == '1'}">
+		       <div class="slider">
+					<c:forEach var="row" items="${dto}">
+						<c:if test="${row.category_id == '1' && fn:containsIgnoreCase(row.title, searchText)}">
 							<div class="conta">
-								<a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}" alt="Image not found"></a>
+								<a href="/video/detail?video_id=${row.video_id}"> <img src="${row.image_url}" alt="Image not found"></a>
+							      <span style="display:none">${row.title}</span>
 							</div>
 						</c:if> 
 					</c:forEach>
-				</div>
+		      </div>
 			</div>
 		</div>  
 		
@@ -183,18 +185,21 @@
 		<div class="hide">
 			<h1 class="section_main_text">애니메이션</h1>
 			<div class="section">
-				<div class="slider"> 
+			    <div class="slider">
 					<c:forEach var="row" items="${dto}">
-						<c:if test="${row.category_id == '3'}">
+						<c:if test="${row.category_id == '3' && fn:containsIgnoreCase(row.title, searchText)}">
 							<div class="conta">
 								<a href="/video/detail?video_id=${row.video_id}"> <img src="${row.image_url}" alt="Image not found"></a>
+							      <span style="display:none">${row.title}</span>
 							</div>
 						</c:if>
 					</c:forEach>
-				</div>
+	           </div>
 		</div>
 		<!-- animation section end -->
 		</div> 
+	
+	
 	</div>
 	<!-- animation category end -->
           
@@ -218,8 +223,6 @@
 <!-- footer end -->
     
 </footer>
-
-
 <script src="/resources/js/video/list.js"></script>
 
 </body>
