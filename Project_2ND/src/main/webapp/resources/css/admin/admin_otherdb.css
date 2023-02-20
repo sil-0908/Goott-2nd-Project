@@ -1,0 +1,12 @@
+.dbDiv{
+	margin : 20px;
+}
+
+table{
+	text-align : center;
+}
+
+th, td{
+	min-width : 200px;
+	min-height : 100px;
+}

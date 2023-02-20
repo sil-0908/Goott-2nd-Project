@@ -5,6 +5,7 @@
 		insert into RENTAL(USER_ID, VIDEO_ID)
 		values((select USER_ID from USER where ID = "${id}"), #{video_id})
 	</insert>
+	
 	<delete id="delete">
 		<![CDATA[
 		delete from RENTAL
@@ -12,4 +13,27 @@
 		   and VIDEO_ID = #{video_id}
 		 ]]>
 	</delete>
+	
+	<select id="getid" resultType="String">
+		<![CDATA[
+		select RENTAL_ID
+		  from RENTAL
+		 where USER_ID = (select USER_ID from USER where ID = "${id}")
+		   and VIDEO_ID = #{video_id}
+		]]>
+	</select>
+
+<!-- 미완성, 내보관함 기능 구현 - 02.19 김범수 
+	<select id="list" resultType="com.test.test1.video.dto.VideoDto">
+		<![CDATA[
+		select distinct v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL
+          from VIDEO v 
+		  left join RENTAL r
+		    on v.VIDEO_ID = r.VIDEO_ID
+		  left join USER u
+		    on r.USER_ID = u.USER_ID
+		 where u.USER_ID = (select USER_ID from USER where ID = "${id}")
+		]]>
+	</select>
+-->
 </mapper>

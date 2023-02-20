@@ -3,6 +3,8 @@ package com.test.test1.video.service;
 import java.util.List;
 import java.util.Map;
 
+import com.test.test1.board.qna.dto.Criteria;
+import com.test.test1.user.dto.UserDto;
 import com.test.test1.video.dto.VideoDto;
 
 public interface VideoService {
@@ -20,7 +22,12 @@ public interface VideoService {
 
 	// 내보관함 구현 02.16 김범수
 	int getid(String title);
-	
+
+	/***********************관리자 페이지용 - 02.19 장재호*******************/
+	int adminListCount(Criteria cri);
+
+	List<UserDto> adminList(Criteria cri) throws Exception;
+	/*****************************끝*************************/
 	
 
 }

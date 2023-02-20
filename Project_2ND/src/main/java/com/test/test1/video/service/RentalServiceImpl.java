@@ -1,11 +1,14 @@
 package com.test.test1.video.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.test.test1.video.dao.RentalDao;
 import com.test.test1.video.dto.RentalDTO;
+import com.test.test1.video.dto.VideoDto;
 
 @Service
 public class RentalServiceImpl implements RentalService{
@@ -23,5 +26,15 @@ public class RentalServiceImpl implements RentalService{
 		rentalDao.delete(dto);
 	}
 
-	
+	@Override
+	public String getid(RentalDTO dto) {
+		return rentalDao.getid(dto);
+	}
+
+//	미완성
+//	@Override
+//	public List<VideoDto> list(String id) {
+//		return rentalDao.list(id);
+//	}
+
 }

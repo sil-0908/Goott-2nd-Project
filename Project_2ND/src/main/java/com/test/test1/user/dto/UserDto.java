@@ -1,12 +1,39 @@
 package com.test.test1.user.dto;
 
+import java.util.Date;
+
 public class UserDto {
-	private int user_id;
-	private String id, email, password, nickname, phone_num, subscribe_yn, delete_yn, create_date;
+	private int user_id, paid_m; //결제 누적 수 paid_m 추가 - 02.18 장재호
+	private String id, email, password, nickname, phone_num, subscribe_yn, delete_yn;
 	private String create_type; //apiLogin때문에 추가 - 02.10 장재호
 	private String chatId; // chat기능 - 02.11 장재호
+	private Date create_date, expiration_date, delete_date; //관리자 페이지 추가 - 02.18 장재호
 	
 			
+	public Date getCreate_date() {
+		return create_date;
+	}
+
+	public void setCreate_date(Date create_date) {
+		this.create_date = create_date;
+	}
+
+	public Date getExpiration_date() {
+		return expiration_date;
+	}
+
+	public void setExpiration_date(Date expiration_date) {
+		this.expiration_date = expiration_date;
+	}
+
+	public Date getDelete_date() {
+		return delete_date;
+	}
+
+	public void setDelete_date(Date delete_date) {
+		this.delete_date = delete_date;
+	}
+
 	public String getCreate_type() {
 		return create_type;
 	}
@@ -81,20 +108,6 @@ public class UserDto {
 		this.delete_yn = delete_yn;
 	}
 
-	public String getCreate_date() {
-		return create_date;
-	}
-
-	public void setCreate_date(String create_date) {
-		this.create_date = create_date;
-	}
-	
-	@Override
-	public String toString() {
-		return "UserDto : [id=" + id + ", email=" + email + ", passwd="+ password+
-				", nickname=" + nickname + ", phone_num=" + phone_num + ", create_type=" + create_type + "]";
-	}
-
 	public String getChatId() {
 		return chatId;
 	}
@@ -102,6 +115,21 @@ public class UserDto {
 	public void setChatId(String chatId) {
 		this.chatId = chatId;
 	}
+
+	public int getPaid_m() {
+		return paid_m;
+	}
+
+	public void setPaid_m(int paid_m) {
+		this.paid_m = paid_m;
+	}
+	
+	@Override
+	public String toString() {
+		return "UserDto : [id=" + id + ", email=" + email + ", passwd="+ password+ ", nickname=" + nickname + ", phone_num=" + phone_num +
+				", create_type=" + create_type + ", paid_m=" + paid_m + "]";
+	}
+
 	
 }
 

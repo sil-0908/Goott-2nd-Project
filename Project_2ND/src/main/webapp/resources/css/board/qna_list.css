@@ -13,11 +13,27 @@
 }
 
 /* 페이징 */
+#pageUL{
+	margin-left : 45%;
+	color : var(--logo-color) !important ;
+	transition: all .2s ease-out, color .2s ease-out !important;	
+}
+
+#pageUL:hover{
+	color : #ed7009 !important;
+}
+
 li {
 	list-style: none; float: left; padding: 6px;
 	margin-left : auto;
 	margin-right : auto;
+	color : var(--bg);	
 }
+
+.input-select, .choices, .choices__inner{
+	margin-top : 10px !important;
+}
+
 
 /*********/
 
@@ -45,6 +61,26 @@ h2 {
   color: #fff;
 }
 
+.fa-lock {
+	margin-right : 10px;	
+}	
+
+.createBtn , .deleteBtn{
+	padding : 5px;
+	background-color : var(--logo-color);
+	border-radius : 10px;
+	border : none;
+	transition: all .2s ease-out, color .2s ease-out;
+	margin-bottom : 10px;
+}
+
+.createBtn:hover{
+	background: #ed7009;	
+}
+
+
+
+/* */
 .custom-table {
   min-width: 900px;
   text-align : center;

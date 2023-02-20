@@ -12,12 +12,12 @@
 <!-- ********************************모달 시작****************************** -->
 <input class="inputMonthH" type="hidden">
 <input class="sessionuserID" type="hidden" value="${sessionScope.user_id}">
-<input class="amountValue" type="hidden">
+<input class="amountValue" type="text">
 <div class="popup">  <!-- 팝업처럼 하기 위한 배경 -->
 	<div class="pwrap">  <!-- 실제 팝업창 -->
 		<a class="closebtn">X</a> <!-- 비밀번호 변경창 닫기 버튼 -->
 		<div>
-			<h1>결제하기</h1><span>(1개월 결제 금액은 3000원 입니다.)</span>
+			<h1>결제하기</h1><span>(1개월 결제 금액은 15000원 입니다.)</span>
 		</div>
 		<table>
 			<tr>

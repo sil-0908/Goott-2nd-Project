@@ -27,7 +27,7 @@
                 <div class="info_text" id="movie_info_text">
 	                <p>${dto.title}</p> <br><br>
 					<p>줄거리 : ${dto.summary}</p> <br><br>
-					<p>${dto.create_year}년 / ${dto.country} / 관람등급 : ${dto.grade}</p>
+					<p>${dto.create_year}년 / ${dto.create_country} / 관람등급 : ${dto.grade}</p>
 				</div>
             </div>
             <div class="actor_info">     
@@ -45,7 +45,15 @@
         <div class="comunication_btn">
       
       		<!-- 보관함 구현을 위한 정보를 전송 02.16 김범수 -->
-        	<i class="far fa-heart comu_btn" id="subscribe"></i>
+      		<c:set var="rental_id" value="${rental_id}"/>
+			<c:choose>
+				<c:when test="${rental_id ne null}"> <!-- rental_id가 null값이 아닐 경우 -->
+        			<i class="fas fa-heart comu_btn" id="subscribe"></i>
+				</c:when>
+				<c:otherwise> <!-- rental_id가 null일 경우 -->
+					<i class="far fa-heart comu_btn" id="subscribe"></i>
+				</c:otherwise>
+     		</c:choose>
             <p>찜하기</p>
             <i class="far fa-thumbs-up comu_btn" id="like"></i>
             <p>좋아요</p>

@@ -28,7 +28,7 @@
 	<!--  비디오 상세 조희 쿼리문 -->
 	<select id="detail" resultType="com.test.test1.video.dto.VideoDto">
 		<![CDATA[
-		select TITLE, VIDEO_ID, VIDEO_URL, IMAGE_URL, SUMMARY, CREATE_COUNTRY, CREATE_YEAR, GRADE
+		select TITLE, VIDEO_ID, VIDEO_URL, IMAGE_URL, SUMMARY, CREATE_COUNTRY, CREATE_YEAR, GRADE, UPLOAD_DATE
 		  from VIDEO
 		 where VIDEO_ID=#{video_id}
 		]]>
@@ -55,6 +55,25 @@
     	 where TITLE = #{title}
  		]]>
 	</select>
+	
+	<!-- 비디오 리스트 관리자 페이징 및 검색 포함 02.19 장재호 -->
+	<select id="adminList" resultType="com.test.test1.video.dto.VideoDto">
+		select *
+		  from VIDEO
+		 where <if test="option == 'TITLE'"> TITLE like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == null or option == ''">1=1</if>
+         order by UPLOAD_DATE desc
+         limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="adminListCount" resultType="int">
+		select count(VIDEO_ID)
+		  from VIDEO
+		 where <if test="option == 'TITLE'"> TITLE like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == null or option == ''">1=1</if>
+	</select>
+	<!-- 비디오 리스트 페이징 및 검색 포함 끝-->
+	
 
 	  
 	

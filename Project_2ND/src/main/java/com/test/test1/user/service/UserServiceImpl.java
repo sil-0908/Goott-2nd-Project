@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.user.dao.UserDao;
 import com.test.test1.user.dto.UserDto;
 
@@ -14,6 +15,19 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	UserDao userDao;
+
+
+	// 개인정보상세조회 
+	@Override
+	public UserDto detail(String user_id) {
+		return userDao.detail(user_id);
+	}
+	
+	// 개인정보수정내용 저장 23/02/20 김지혜 
+	@Override
+	public void infoModify(UserDto dto) {
+		userDao.infoModify(dto);
+	}
 	
 	@Override
 	public boolean create(UserDto userDto) {
@@ -26,13 +40,13 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
+	public List<UserDto> list(Criteria cri) throws Exception {
+		return userDao.list(cri);		
+	}
+	
+	@Override
 	public String idCheck(String id) {
 		return userDao.idCheck(id);
-	}
-
-	@Override
-	public int userIdx(String user) {
-		return userDao.userIdx(user);
 	}
 
 	@Override
@@ -57,16 +71,31 @@ public class UserServiceImpl implements UserService{
 	public void changepw(UserDto dto) {
 		userDao.changepw(dto);
 	}
-	
+
+
 	@Override
-	public int getid(String id) {
-		return userDao.getid(id);
+	public String paidCheck(String ID) {
+		return userDao.paidCheck(ID);
 	}
 
-	// 개인정보상세조회  
 	@Override
-	public UserDto detail(String user_id) {
-		return userDao.detail(user_id);
+	public void rePaid(Map<String, Object> map) {
+		userDao.rePaid(map);		
+	}
+
+	@Override
+	public int listCount(Criteria cri) {
+		return userDao.listCount(cri);
+	}
+
+	@Override
+	public void paidUpdate(int months) {
+		userDao.paidUpdate(months);		
+	}
+
+	@Override
+	public void addVisit() {
+		userDao.addVisit();
 	}
 
 

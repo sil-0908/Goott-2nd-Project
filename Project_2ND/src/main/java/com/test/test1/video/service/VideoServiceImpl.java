@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.test.test1.board.qna.dto.Criteria;
+import com.test.test1.user.dto.UserDto;
 import com.test.test1.video.dao.VideoDao;
 import com.test.test1.video.dto.VideoDto;
 
@@ -47,7 +49,19 @@ public class VideoServiceImpl implements VideoService {
 	public int getid(String title) {
 		return videoDao.getid(title);
 	}
+
 	
+	/***********************관리자 페이지용 - 02.19 장재호*******************/
+	@Override
+	public int adminListCount(Criteria cri) {
+		return videoDao.adminListCount(cri);
+	}
+
+	@Override
+	public List<UserDto> adminList(Criteria cri) throws Exception {
+		return videoDao.adminList(cri);		
+	}
+	/************************************끝**********************************/
 
 
 }

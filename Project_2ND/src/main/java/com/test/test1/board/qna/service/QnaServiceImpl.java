@@ -45,6 +45,27 @@ public class QnaServiceImpl implements QnaService {
 		qnaDao.delete(question_id);
 	}
 
+	@Override
+	public void deletes(List<Integer> delArr) {
+		qnaDao.deletes(delArr);
+	}
+
+	@Override
+	public String passCheck(int question_id) {
+		return qnaDao.passCheck(question_id);
+	}
+
+	@Override
+	public void answerCreate(QnaDto qnaDto) {
+		qnaDao.answerCreate(qnaDto);
+		
+	}
+
+	@Override
+	public String answerGet(int question_id) {
+		return qnaDao.answerGet(question_id);
+	}
+
 //	@Override
 //	public List<QnaDto> qnaSearch(Criteria cri) {
 //		return qnaDao.qnaSearch(cri);
