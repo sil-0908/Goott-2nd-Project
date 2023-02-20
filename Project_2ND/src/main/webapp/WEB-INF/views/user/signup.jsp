@@ -89,7 +89,7 @@
 										<input type='checkbox'class="checkB" id="check3"  name="check" value=""> [필수] 개인정보 수집 및 서비스 활용 동의
 		            </div> 
 					<!--  id="checkbox" end  -->
-	            <input id="submit" type="button" value="가입하기">
+	            <input id="submit" type="button" value="가입하기" >
 	            <c:if test="${message=='fault'}">
 				</c:if>
 				</form>
