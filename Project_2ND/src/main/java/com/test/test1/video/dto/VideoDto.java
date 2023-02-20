@@ -1,9 +1,11 @@
 package com.test.test1.video.dto;
 
+import java.util.Date;
+
 public class VideoDto {
-	
-	private String title, video_url, image_url, summary, country, grade, actor, genre_id;
-	private int video_id, create_year, recommand, category_id;
+	private String title, video_url, image_url, summary, create_country, grade, actor, genre_id, create_year;
+	private int video_id, recommand, category_id;
+	private Date upload_date;//02.19 장재호 추가
 	
 	public String getTitle() {
 		return title;
@@ -37,13 +39,6 @@ public class VideoDto {
 		this.summary = summary;
 	}
 	
-	public String getCountry() {
-		return country;
-	}
-	
-	public void setCountry(String country) {
-		this.country = country;
-	}
 	
 	public String getGrade() {
 		return grade;
@@ -77,11 +72,11 @@ public class VideoDto {
 		this.video_id = video_id;
 	}
 	
-	public int getCreate_year() {
+	public String getCreate_year() {
 		return create_year;
 	}
 	
-	public void setCreate_year(int create_year) {
+	public void setCreate_year(String create_year) {
 		this.create_year = create_year;
 	}
 	
@@ -107,7 +102,7 @@ public class VideoDto {
 			+ ", video_url = " + video_url
 			+ ", image_url = " + image_url
 			+ ", summary = " + summary
-			+ ", country = " + country
+			+ ", country = " + create_country
 			+ ", grade = " + grade
 			+ ", actor = " + actor
 			+ ", genre_id = " + genre_id
@@ -115,6 +110,22 @@ public class VideoDto {
 			+ ", create_year = " + create_year
 			+ ", recommand = " + recommand
 			+ ", category_id = " + category_id + "]";
+	}
+
+	public Date getUpload_date() {
+		return upload_date;
+	}
+
+	public void setUpload_date(Date upload_date) {
+		this.upload_date = upload_date;
+	}
+
+	public String getCreate_country() {
+		return create_country;
+	}
+
+	public void setCreate_country(String create_country) {
+		this.create_country = create_country;
 	} 
 	
 	

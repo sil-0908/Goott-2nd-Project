@@ -39,12 +39,6 @@
 		 where ID=#{id}
 	</select>
 	
-	<select id="idx" resultType="int">
-		select USER_ID
-		  from USER
-		 where EMAIL=#{user}
-	</select>
-	
 	<select id="findid" resultType="String">
         select ID 
           from USER
@@ -61,9 +55,21 @@
 	<update id="paid">
 		<![CDATA[
 		update USER
-		  set SUBSCRIBE_YN="Y", EXPIRATION_DATE=(date_add(NOW(),interval ${months} month))
+		  set SUBSCRIBE_YN="Y", PAID_M=PAID_M+${months}, EXPIRATION_DATE=(date_add(NOW(),interval ${months} month))
 		where USER_ID = (select U.USER_ID from (select USER_ID from USER where ID="${ID}") AS U);
 		]]>
+	</update>
+	
+	<select id="paidCheck" resultType="String">
+		select SUBSCRIBE_YN
+		  from USER
+		 where ID="${ID}"
+	</select>
+	
+	<update id="rePaid">
+		update USER
+		   set PAID_M=PAID_M+${months}, EXPIRATION_DATE=(date_add(NOW(),interval ${months} month))
+		 where USER_ID = (select U.USER_ID from (select USER_ID from USER where ID="${ID}") AS U);		   
 	</update>
 	
 	<update id="changepw">
@@ -78,7 +84,78 @@
 		  from USER
 		 where ID=#{user_id}
 	</select>
-<!--    개인정보 상세수정  _ 23/02/20 김지혜  -->
+	
+	<!-- 유저 리스트 페이징 및 검색 포함 02.18 장재호 -->
+	<select id="list" resultType="com.test.test1.user.dto.UserDto">
+		select USER_ID, ID, NICKNAME, EMAIL, PHONE_NUM, SUBSCRIBE_YN, DELETE_YN, CREATE_DATE
+		  from USER
+		 where <if test="option == 'ID'"> ID like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == 'NICKNAME'"> NICKNAME like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == 'SUBSCRIBE_YN'"> SUBSCRIBE_YN like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == 'DELETE_YN'"> DELETE_YN like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == null or option == ''">1=1</if>
+         order by CREATE_DATE desc
+         limit #{pageStart}, #{perPageNum}
+	</select>
+	
+	<select id="listCount" resultType="int">
+		select count(USER_ID)
+		  from USER
+		 where <if test="option == 'ID'"> ID like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == 'NICKNAME'"> NICKNAME like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == 'SUBSCRIBE_YN'"> SUBSCRIBE_YN like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == 'DELETE_YN'"> DELETE_YN like CONCAT('%',#{keyword},'%')</if>
+		       <if test="option == null or option == ''">1=1</if>
+	</select>
+	<!-- 유저 리스트 페이징 및 검색 포함 끝-->
+	
+	<!-- 유저 결제 시 PAID DB등록 - 02.19 장재호 -->
+	<select id="todayPaidCheck" resultType="String">
+		<![CDATA[
+			select PAID_DATE
+			  from PAID
+			 where date_format(PAID_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d');
+		 ]]>
+	</select>
+	
+	<insert id="todayFirstPaid">
+		insert into PAID (PAID_DATE, AMOUNT)
+		values (date_format(now(), '%Y%m%d'), #{months})
+	</insert>
+	
+	<update id="todayAddPaid">
+		<![CDATA[
+			update PAID
+			   set AMOUNT=AMOUNT+#{months}
+			 where date_format(PAID_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d')
+		 ]]>
+	</update>
+	<!-- 유저 결제 시 PAID DB등록 끝 -->
+	
+	<!-- 유저 방문자수 - 02.19 장재호 -->
+	<select id="todayVisitCheck" resultType="String">
+		<![CDATA[
+			select VISIT_DATE
+			  from VISIT
+			 where date_format(VISIT_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d');
+		 ]]>
+	</select>
+	
+	<insert id="todayFirstVisit">
+		insert into VISIT (VISIT_DATE, NUMBER)
+		values (date_format(now(), '%Y%m%d'), 1)
+	</insert>
+	
+	<update id="todayAddVisit">
+		<![CDATA[
+			update VISIT
+			   set NUMBER=NUMBER+1
+			 where date_format(VISIT_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d')
+		 ]]>
+	</update>	
+	<!-- 유저 방문자수 끝 -->
+
+    <!-- 개인정보 상세수정  _ 23/02/20 김지혜  -->
 	<update id="infoModify">
 		update USER
 		   set EMAIL = #{email}, NICKNAME= #{nickname}, PHONE_NUM= #{phone_num}

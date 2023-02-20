@@ -14,7 +14,7 @@ closebtn.addEventListener('click', function(){
 
 //결제 개월 수 view에 hidden으로 출력
 function monthSelect(e){
-	const paynum = (3000*e.value);
+	const paynum = (15000*e.value);
 	inputH.value = e.value;
 	amount.textContent = "결제 금액 : " + paynum + "원";
 	amountV.value = paynum;

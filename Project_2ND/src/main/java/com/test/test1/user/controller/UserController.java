@@ -41,41 +41,28 @@ public class UserController {
 	@Autowired
 	UserDao userDao;
 	@Autowired
-	BCryptPasswordEncoder encoder;
+	BCryptPasswordEncoder encoder;		
+	// loger 변수 생성 - 로그데이터를 끌어오기 위함, 0209 김범수
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);	
+	// 메일 샌더 객체 생성 - 0209 김범수
+	@Autowired
+	private JavaMailSender mailSender;	
 	
-	// 개인 수정 하기 
+	//로그인 페이지 이동 - 01.31 장재호
+	@RequestMapping("signin")
+	public String login() {
+	    return "user/signin";
+	}
 	
-// mydetail.jsp에서 입력 받아온 값을 다시 받아와 디비에 저장 
-// 아이디 이메일 닉네임 전화번호 이렇게 정보 4가지가 보여짐. 
-
-//		아이디만은 변경불가 
-//		이메일 - 변경 가능/ 중복불가 (확인 버튼 생성하여 인증번호 받기도 처리해야함.- 해당메소드 호출하면 되지 않을까)
-//		닉네임 - 변경 가능 / 중복 가능 .
-//		전화번호 - 변경 가능 / 중복 가능. 
-//		변경한것을 다시 디비에 뿌려주기까지 해야 완성! 
-		
-// 여기서 변경이 가능한 것은 모두임. 이떄 변경사항이 있을 경우와 없는 경우 나누고 
-// 각 유효성 검사과정이 필요함. 
-		
-// 전제는, my detail 페이지에서 바로 수정할 수 있도록 처리할 것. 
-		
-//		유저가 input란에 클릭후 내용이 바뀔 경우,수정하기 버튼이 생성됨 
-// 		만약 변경하다 기존 내용으로 변경이 안될 시 수정하기 버튼은 사라짐. (속성을 줄 것임.)
-//		그 전에 값에서 다른 값으로 바뀔시 (이전 상태과 !=) 
-//		
 	// 회원정보가진 개인정보페이지 연결  23/02/16 김지혜 
 	@RequestMapping(value= "/info_mydetail")
 	public String detail(HttpSession session, Model model) {
 		// 유저 아이디를 통해 세션에서 정보 가져오기 
-		String user_id =(String) session.getAttribute("user_id").toString();
-		System.out.println("어어어어어우위아ㅜ린ㅇ루미루님루니룸닝뤼                       " + user_id);
-		
+		String user_id =(String) session.getAttribute("user_id").toString();		
 		UserDto dto = userService.detail(user_id); // 회원 ID를 사용하여 해당 회원의 정보를 찾아 dto에 넣는다.
 		model.addAttribute("data", dto); // 위에서 받은 회원정보를 model을 통해 view에 보내준다.
-		System.out.println("뭔데데데데데데데데덷데데데데데데뎃글              "+ dto.toString());
 		return "user/mydetail"; 		
-	}
-	
+	}	
 	
 	// VIEW에서 받아온 값을 이용하여 수정페이지  _ 23/02/18~23/02/20  
 	@RequestMapping(value="/info_modify", method=RequestMethod.GET)
@@ -86,45 +73,14 @@ public class UserController {
 		mv.addObject("list", list);
 		mv.setViewName("user/info_modify");
 		return mv;
-	}
-
-	
+	}	
 	
 	// VIEW에서 받아온 값을 이용하여 수정페이지  _ 23/02/18~
 	@RequestMapping(value="/info_modify", method=RequestMethod.POST)
 	public String detailModify(@ModelAttribute UserDto dto) {
 		// 재 입력된 값을 받아 db 저장. (수정된 내용이던, 수정되지 않은 내용이던 수정하기 버튼을 누르면 디비에 새롭게 update되도록 처리)
-		System.out.println(dto.toString());
 		userService.infoModify(dto);
 		return "redirect:/user/info_mydetail";
-	}
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	// loger 변수 생성 - 로그데이터를 끌어오기 위함, 0209 김범수
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
-	// 메일 샌더 객체 생성 - 0209 김범수
-	@Autowired
-	private JavaMailSender mailSender;
-	
-	
-	//로그인 페이지 이동 - 01.31 장재호
-	@RequestMapping("signin")
-	public String login() {
-	    return "user/signin";
 	}
 	
 	//로그인 기능  - 01.31 장재호
@@ -198,11 +154,17 @@ public class UserController {
 	        mav.setViewName("common/start");  // 회원가입 완료 후 시작페이지로 이동 시켜서 로그인 시킴 -02.19 김범수  
 	    }
 	    return mav;
-	}
+	}	
 	
-
-
-	
+	// 회원정보가진 개인정보페이지 열기  23/02/16 김지혜 
+	@RequestMapping("/mydetail")
+	public String detail(HttpSession session, Model model) {
+		// 유저 아이디를 통해 세션에서 정보 가져오기 
+		String user_id =(String) session.getAttribute("user_id").toString();
+		UserDto dto = userService.detail(user_id);
+		model.addAttribute("data", dto);
+		return "user/mydetail"; 		
+	}	
 
 	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
 	@RequestMapping("find")

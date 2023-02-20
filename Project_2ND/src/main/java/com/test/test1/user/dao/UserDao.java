@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
+import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.user.dto.UserDto;
 
 @Repository
@@ -45,10 +46,12 @@ public class UserDao {
 		}
 		else return null;
 	}
-
-	//qna등록 시 user Key값 받아오기 - 02.07 장재호
-	public int userIdx(String user) {
-		return sqlSessionTemplate.selectOne("user.idx", user);
+	
+	//전체 조회 - 01.31 장재호
+	//관리자 페이징 추가 - 02.18 장재호
+	public List<UserDto> list(Criteria cri) throws Exception {
+		return sqlSessionTemplate.selectList("user.list", cri);
+		
 	}
 
 	//아이디 찾기 - 02.10 김범수
@@ -82,14 +85,44 @@ public class UserDao {
 		return sqlSessionTemplate.selectOne("user.detail", user_id);
 	}
 
-	// 개인정보수정 23/02/20 김지혜 
+	//개인정보수정 23/02/20 김지혜  
 	public void infoModify(UserDto dto) {
-		// 이메일 중복거르기
-		
-		
-		sqlSessionTemplate.update("user.infoModify", dto);
-		
+		// 이메일 중복거르기		
+		sqlSessionTemplate.update("user.infoModify", dto);		
+	}
+	
+	//기 결제확인 - 02.18 장재호
+	public String paidCheck(String ID) {
+		return sqlSessionTemplate.selectOne("user.paidCheck", ID);
 	}
 
+	//재결제 시 - 02.18 장재호
+	public void rePaid(Map<String, Object> map) {
+		sqlSessionTemplate.update("user.rePaid", map);		
+	}
+	
+	//페이징 추가 - 02.18 장재호
+	public int listCount(Criteria cri) {
+		return sqlSessionTemplate.selectOne("user.listCount", cri);
+	}
 
+	//관리자 페이지 일 결제 추가 - 02.19 장재호
+	public void paidUpdate(int months) {
+		//1. 오늘 첫 결제일 경우
+		if(sqlSessionTemplate.selectOne("user.todayPaidCheck") == null) {
+			sqlSessionTemplate.insert("user.todayFirstPaid", months);
+		}
+		//2. 아닐경우 +
+		else sqlSessionTemplate.update("user.todayAddPaid", months);
+	}
+
+	//방문자수 - 02.19 장재호
+	public void addVisit() {
+		//1. 일별로 방문 1번째일 때
+		if(sqlSessionTemplate.selectOne("user.todayVisitCheck") == null){
+			sqlSessionTemplate.insert("user.todayFirstVisit");
+		}
+		else sqlSessionTemplate.update("user.todayAddVisit");
+	}
+	
 }
