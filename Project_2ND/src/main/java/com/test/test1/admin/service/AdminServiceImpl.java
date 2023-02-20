@@ -11,7 +11,7 @@ import com.test.test1.video.dto.VideoDto;
 
 @Service
 public class AdminServiceImpl implements AdminService {
-
+/****************************************** 02.18~ 장재호 ***********************************************/
 	@Autowired
 	AdminDao adminDao;
 	
@@ -85,4 +85,14 @@ public class AdminServiceImpl implements AdminService {
 		adminDao.delGenre(genre_name);
 	}
 
+	@Override
+	public void addActor(String[] actor) {
+		adminDao.addActor(actor);
+	}
+
+	@Override
+	public void addVideo(AdminETCDto dto) {
+		adminDao.addVideo(dto);
+	}
 }
+/****************************************** 02.18~ 장재호 ***********************************************/

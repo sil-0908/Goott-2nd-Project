@@ -108,7 +108,7 @@
 				                    <div class="name">출연진</div>
 				                    <div class="value">
 				                        <div class="input-group">                        
-				                            <textarea class="textarea--style-6" id="content" name="actor_name" placeholder="출연진"></textarea>
+				                            <textarea class="textarea--style-6" id="content" name="actor_name" placeholder="출연진 구분을 쉼표(,)로 처리 해 주시기 바랍니다 *띄어쓰기 금지*"></textarea>
 				                        </div>
 				                    </div>
 				                </div>

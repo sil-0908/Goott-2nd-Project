@@ -117,7 +117,7 @@
 							<div class="card-body">
 								<div class="row no-gutters align-items-center">
 									<div class="col mr-2">
-										<div class="text-xs font-weight-bold text-success text-uppercase mb-1">전체 매출</div>
+										<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">전체 매출</div>
 										<div class="h5 mb-0 font-weight-bold text-gray-800">${totalSales}원</div>
 									</div>
 									<div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
@@ -131,7 +131,7 @@
 	        				<div class="card-body">
 	            				<div class="row no-gutters align-items-center">
 	                				<div class="col mr-2">
-	                    				<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">일 방문자 수</div>
+	                    				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">일 방문자 수</div>
 	                    				<div class="h5 mb-0 font-weight-bold text-gray-800">${todayVisit}명</div>
 	                				</div>
 	                				<div class="col-auto">
@@ -148,7 +148,7 @@
 	        				<div class="card-body">
 	            				<div class="row no-gutters align-items-center">
 	                				<div class="col mr-2">
-	                    				<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">총 방문자 수</div>
+	                    				<div class="text-xs font-weight-bold text-success text-uppercase mb-1">총 방문자 수</div>
 	                    				<div class="h5 mb-0 font-weight-bold text-gray-800">${totalVisit}명</div>
 	                				</div>
 	                				<div class="col-auto">

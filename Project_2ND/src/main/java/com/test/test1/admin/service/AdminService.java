@@ -6,7 +6,7 @@ import com.test.test1.admin.dto.AdminETCDto;
 import com.test.test1.video.dto.VideoDto;
 
 public interface AdminService {
-
+/****************************************** 02.18~ 장재호 ***********************************************/
 	int getTotalSales();
 
 	void deletes(List<Integer> delArr);
@@ -35,4 +35,8 @@ public interface AdminService {
 
 	void delGenre(String genre_name);
 
+	void addActor(String[] actor);
+
+	void addVideo(AdminETCDto dto);
 }
+/****************************************** 02.18~ 장재호 ***********************************************/

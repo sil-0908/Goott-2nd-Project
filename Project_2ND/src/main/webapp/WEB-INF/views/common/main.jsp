@@ -60,7 +60,7 @@ $(function(){
 	}
 })
 function admin(){
-	document.adminform.action="admin";
+	document.adminform.action="/admin";
 	document.adminform.submit();
 }
 </script>

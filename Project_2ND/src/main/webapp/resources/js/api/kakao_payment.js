@@ -30,8 +30,8 @@ function kakaopay(){
             msg += '// 카드 승인번호 : ' + data.apply_num;
             
             $.ajax({
-            	type : 'get',
-            	url : 'paySuccess',
+            	type : 'post',
+            	url : '/paySuccess',
             	data : {"ID" : data.buyer_email, "amount" : data.paid_amount},
             });
         }else{

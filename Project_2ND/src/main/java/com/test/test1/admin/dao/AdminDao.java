@@ -1,5 +1,6 @@
 package com.test.test1.admin.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,7 +12,7 @@ import com.test.test1.video.dto.VideoDto;
 
 @Repository
 public class AdminDao {
-
+/****************************************** 02.18~ 장재호 ***********************************************/
 	@Autowired
 	SqlSession ss;
 	
@@ -68,7 +69,8 @@ public class AdminDao {
 	}
 
 	public void addCategory(String category_name) {
-		ss.insert("admin.addCategory", category_name);
+		ss.insert("admin.addCategory", category_name);	
+		
 	}
 
 	public void addGenre(String genre_name) {
@@ -83,4 +85,27 @@ public class AdminDao {
 		ss.delete("admin.delGenre", genre_name);
 	}
 
+	public void addActor(String[] actor) {
+		List<String> delArr = new ArrayList<>();
+		List<String> actorArr = new ArrayList<>();
+		
+		delArr = ss.selectList("admin.actorCheck", actor);
+		for(String a : actor) actorArr.add(a);
+
+		for(int i=0; i<delArr.size(); i++) {
+			for(int j=0; j<actorArr.size(); j++) {
+				if(delArr.get(i).equals(actorArr.get(j))) {
+					actorArr.remove(j);
+				}
+			}
+		}
+		System.out.println("삭제할 배열 : " + delArr);
+		System.out.println("추가 : " + actorArr);
+		ss.insert("admin.addActor", actorArr);
+	}
+
+	public void addVideo(AdminETCDto dto) {
+		ss.insert("admin.addVideo", dto);
+	}
 }
+/****************************************** 02.18~ 장재호 ***********************************************/
