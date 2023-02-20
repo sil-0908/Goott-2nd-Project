@@ -1,0 +1,78 @@
+:root{
+    --logo-color:#FFCC00;
+    --logo-size: 60px;
+    --title-size: 25px;
+    --title-border: 600px;
+    --text-color:#CCCCCC;
+    --text-size: 17px;
+    --bg:#24292D;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    background-color: var(--bg);
+    
+}
+
+/* section start */
+.slider {
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	height: 350px;
+	overflow: hidden;
+	position: relative;
+}
+
+.section{
+	height: 350px;
+    display: flex;
+}
+
+.sub-menu {
+	transform: translateX(40px);
+}
+
+img{
+	height: 270px;
+	width: 90%;
+}
+
+/* 이미지 링크 div */
+.conta{
+	margin: 10px;
+}
+
+/* 슬라이드 버튼 시작 */
+.slick-arrow {
+	padding:5px;
+    background-color: var(--bg);
+    border: none;   
+}
+
+.fa-solid {
+	color: white;
+	font-size: 50px;
+}
+/* 슬라이드 버튼 끝 */
+
+/* 메인텍스트 시작 */
+.section_main_text{
+    font-size: 28px;
+    color: #ffff;
+    text-align: center;
+    align-items: center;
+}
+h1{
+   color: #ffff;
+   padding:20px 0 0 60px; 
+
+}
+/* section end */
+
+

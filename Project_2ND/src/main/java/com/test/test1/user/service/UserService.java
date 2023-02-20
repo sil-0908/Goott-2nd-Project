@@ -32,8 +32,6 @@ public interface UserService {
 
 	void changepw(UserDto dto);
 
-	int getid(String id);
-
 	void paid(Map<String, Object> map);
 
 

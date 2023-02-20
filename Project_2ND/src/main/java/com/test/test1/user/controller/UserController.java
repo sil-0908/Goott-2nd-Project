@@ -129,6 +129,7 @@ public class UserController {
 	
 	//로그인 기능  - 01.31 장재호
 	//PW -> DB 전송 시 암호화 추가 - 02.06 장재호
+	// 시작페이지 연결을 위한 setviewname / addObject수정 - 02.19김범수 
 	@RequestMapping("signin_check")
 	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv) {
 		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재)
@@ -136,8 +137,7 @@ public class UserController {
 			session.setAttribute("user_id", userDto.getId());
 			session.setAttribute("nickname", str);
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
-			mv.setViewName("redirect:/");
-			mv.addObject("message", "success");
+			mv.setViewName("common/main"); // 리다이렉트에서 main으로 주소 변경 - 02.19 김범수
 		}else {                                    //로그인 실패
 			mv.setViewName("user/signin");
 			mv.addObject("message", "error");
@@ -181,6 +181,7 @@ public class UserController {
 	}
 	
 	//회원가입 기능 - 01.31 장재호
+	// 시작페이지 연결을 위한 주소 수정 - 02.19 김범수
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
 	public ModelAndView createPost(UserDto userDto) {
 	    //암호화하여 DB에 암호 저장
@@ -194,7 +195,7 @@ public class UserController {
 	        mav.setViewName("user/signup");
 	    }else {   //가입 성공
 	        mav.addObject("message", "success");
-	        mav.setViewName("common/main");      
+	        mav.setViewName("common/start");  // 회원가입 완료 후 시작페이지로 이동 시켜서 로그인 시킴 -02.19 김범수  
 	    }
 	    return mav;
 	}

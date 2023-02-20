@@ -27,7 +27,6 @@ public class UserServiceImpl implements UserService{
 	public void infoModify(UserDto dto) {
 		userDao.infoModify(dto);
 	}
-
 	
 	@Override
 	public boolean create(UserDto userDto) {
@@ -71,17 +70,7 @@ public class UserServiceImpl implements UserService{
 	public void changepw(UserDto dto) {
 		userDao.changepw(dto);
 	}
-	
-	@Override
-	public int getid(String id) {
-		return userDao.getid(id);
-	}
 
-
-
-
-
-	
 
 
 
