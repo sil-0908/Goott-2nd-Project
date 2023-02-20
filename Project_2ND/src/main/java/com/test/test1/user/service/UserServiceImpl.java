@@ -14,6 +14,20 @@ public class UserServiceImpl implements UserService{
 	
 	@Autowired
 	UserDao userDao;
+
+
+	// 개인정보상세조회 
+	@Override
+	public UserDto detail(String user_id) {
+		return userDao.detail(user_id);
+	}
+	
+	// 개인정보수정내용 저장 23/02/20 김지혜 
+	@Override
+	public void infoModify(UserDto dto) {
+		userDao.infoModify(dto);
+	}
+
 	
 	@Override
 	public boolean create(UserDto userDto) {
@@ -63,11 +77,11 @@ public class UserServiceImpl implements UserService{
 		return userDao.getid(id);
 	}
 
-	// 개인정보상세조회  
-	@Override
-	public UserDto detail(String user_id) {
-		return userDao.detail(user_id);
-	}
+
+
+
+
+	
 
 
 

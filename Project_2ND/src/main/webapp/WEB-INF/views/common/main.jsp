@@ -27,7 +27,7 @@ hello
 <form action="/user/sign_out">
 	<input type="submit" value="로그아웃">
 </form>
-<input type="button" value="마이페이지" onclick="location.href='user/mydetail'">
+<input type="button" value="마이페이지" onclick="location.href='user/info_mydetail'">
 <input type="button" value="동영상게시판" onclick="location.href='video/list'">
 <input type="button" value="QnA" onclick="location.href='qna/list'">
 <input type="button" value="결제하기" onclick="modal()">	

@@ -10,29 +10,37 @@
 </head>
 <body>
 
-<form name="form1" method="post" action="info_modify"> <!-- "info_modify"페이지에 데이터 전송 -->
+<form name="form1" method="post">	
 
 	
-		<!-- 수정가능한 페이지로 이동   -->
-		<button type="button" id="btnWrite">수정하기</button>
-		<button type="button" id="">비밀번호 변경</button> <!-- ajax로 변경가능하도록 설계 예정 -->
+	<button type="button" id="">비밀번호 변경</button> <!--  -->
 	
 	<ul>
 		<li>아이디 : 
-			<input type="text" name="id" value="${data.id}" disabled>
+			<input type="text" name="id" value="${list.id}" readonly>  <!-- 변경불가능한 텍스트인것을 알려주도록 색깔주기... 아이디는 변경 불가능이므로 읽기 전용으로 설정 -->
 		</li>
 		<li>이메일 : 
-			<input type="email" name="email" value="${data.email}" disabled>
+			<input type="email" name="email" id="email" value="${list.email}" >
 		</li>
 		<li>닉네임 : 
-			<input type="text" name="nickname" value="${data.nickname}" disabled>
+			<input type="text" name="nickname" id="nickname"  value="${list.nickname}">
 		</li>	
 		<li>휴대전화 : 
-			<input type="text" name="phone_num" value="${data.phone_num}" disabled>
+			<input type="text" name="phone_num" id="phone_num"  value="${list.phone_num}" >
 		</li>
 	</ul>
 	
+	<input id="submit" type="submit" value="변경하기">
 </form>
+
+
+
+
+
+
+
+
+
 
 	<script src="/resources/js/user/user_mydetail.js"></script>
 </body>
