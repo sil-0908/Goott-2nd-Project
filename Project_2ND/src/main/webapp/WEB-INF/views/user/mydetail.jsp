@@ -14,7 +14,7 @@
 
 	
 		<!-- 수정가능한 페이지로 이동   -->
-		<button type="button" id="btnWrite">수정하기</button>
+		<button type="button" id="btnWrite" onclick="location.href='user/info_modify'">수정하기</button>
 		<button type="button" id="">비밀번호 변경</button> <!-- ajax로 변경가능하도록 설계 예정 -->
 	
 	<ul>

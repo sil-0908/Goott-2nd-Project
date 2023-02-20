@@ -17,9 +17,8 @@ public class MainController {
 	@RequestMapping("/")
 	public String Main() {
 		//일 방문자수 ++ - 02.19 장재호
-		userService.addVisit();
-		
-		return ("common/main");
+		userService.addVisit();		
+		return ("common/start");
 	}
 	
 }

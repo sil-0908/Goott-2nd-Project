@@ -155,16 +155,6 @@ public class UserController {
 	    }
 	    return mav;
 	}	
-	
-	// 회원정보가진 개인정보페이지 열기  23/02/16 김지혜 
-	@RequestMapping("/mydetail")
-	public String detail(HttpSession session, Model model) {
-		// 유저 아이디를 통해 세션에서 정보 가져오기 
-		String user_id =(String) session.getAttribute("user_id").toString();
-		UserDto dto = userService.detail(user_id);
-		model.addAttribute("data", dto);
-		return "user/mydetail"; 		
-	}	
 
 	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
 	@RequestMapping("find")

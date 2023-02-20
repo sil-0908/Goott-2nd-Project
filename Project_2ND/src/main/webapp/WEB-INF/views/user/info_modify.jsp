@@ -13,7 +13,7 @@
 <form name="form1" method="post">	
 
 	
-	<button type="button" id="">비밀번호 변경</button> <!--  -->
+	<button type="button" id="">비밀번호 변경</button>
 	
 	<ul>
 		<li>아이디 : 
