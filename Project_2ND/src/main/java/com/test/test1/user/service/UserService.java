@@ -25,8 +25,6 @@ public interface UserService {
 
 	void changepw(UserDto dto);
 
-	int getid(String id);
-
 	void paid(Map<String, Object> map);
 
 	// 개인정보상세조회  

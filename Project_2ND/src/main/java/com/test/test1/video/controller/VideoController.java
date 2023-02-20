@@ -68,7 +68,7 @@ public class VideoController {
 //	DTO 생성 후 DTO 활용하여 코드재생성 + 배우정보 가져오기 - 02.14 장민실
 //	알고리즘 구현을 위해 detail페이지 접근 시 PK값 저장 - 02.15 장재호
 	@RequestMapping("detail")
-	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session) { //세션추가 - 02.15 장재호
+	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session, RentalDTO dto) { //세션추가 - 02.15 장재호
 /*--------------------------------------- db에 알고리즘 구현을 위한 값들 저장 - 02.15 장재호 ---------------------------------------*/
 		String id = (String) session.getAttribute("user_id");
 		Map<String, Object> map = new HashMap<>();
@@ -77,6 +77,10 @@ public class VideoController {
 //		if = 추가, else = 업데이트(클릭 수 업)
 		if(algo.check(map) == null)	algo.insert(map);
 		else algo.update(map);
+/*---------------------------내보관함 기능 구현 - rental_id detail.jsp로 꽂기 위한 값 저장 02.18 김범수-------------------------------*/
+		dto.setId(id); // Id dto에 저장
+		String rental_id = rentalService.getid(dto);// rental id를 가져오는 것
+		mv.addObject("rental_id",rental_id);
 /*--------------------------------------------------------------------------------------------------------------------*/
 		
 		List<VideoDto> actor = videoService.actor(video_id);
@@ -90,20 +94,32 @@ public class VideoController {
 //	 내보관함 기능 구현 - 02.15 김범수
 	@RequestMapping(value = {"mylocker_in", "mylocker_de"}, method = RequestMethod.POST)
 	@ResponseBody
-	public void mylocker(String title, RentalDTO dto, HttpSession session, HttpServletRequest request) throws Exception{
+	public ModelAndView mylocker(String title, RentalDTO dto, HttpSession session, HttpServletRequest request, ModelAndView mv) throws Exception{
 		String requestUrl = request.getRequestURL().toString();
 		String id = (String) session.getAttribute("user_id");
 		int video_id = videoService.getid(title); // 비디오 아이디를 가져오는것
+		if(id == null) {
+			mv.setViewName("redirect:/user/signin");
+		}
+		// rental_id insert
 		if(requestUrl.contains("mylocker_in")) {
 			dto.setVideo_id(video_id);
 			dto.setId(id);
 			rentalService.insert(dto);
+			String rental_id = rentalService.getid(dto);
+			mv.addObject("rental_id",rental_id);
+			mv.setViewName("video/detail");
 		}
-		else {
+		else {// rental_id delete
 			dto.setId(id);
 			dto.setVideo_id(video_id);
 			rentalService.delete(dto);
-		}	
+			String rental_id = rentalService.getid(dto);
+			mv.addObject("rental_id",rental_id);
+			mv.setViewName("video/detail");
+		}
+		
+		return mv;	
 	}
 	
 	

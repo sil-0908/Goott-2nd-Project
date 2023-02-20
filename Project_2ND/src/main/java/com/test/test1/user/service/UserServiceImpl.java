@@ -58,11 +58,6 @@ public class UserServiceImpl implements UserService{
 		userDao.changepw(dto);
 	}
 	
-	@Override
-	public int getid(String id) {
-		return userDao.getid(id);
-	}
-
 	// 개인정보상세조회  
 	@Override
 	public UserDto detail(String user_id) {

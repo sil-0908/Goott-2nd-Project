@@ -72,10 +72,6 @@ public class UserDao {
 		sqlSessionTemplate.selectOne("user.changepw", dto);
 	}
 
-	public int getid(String id) {
-		return sqlSessionTemplate.selectOne("user.getid", id);
-	}	
-
 	//결제 처리 - 02.15 장재호
 	public void paid(Map<String, Object> map) {
 		sqlSessionTemplate.update("user.paid", map);

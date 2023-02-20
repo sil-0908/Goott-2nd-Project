@@ -17,21 +17,22 @@ hello
 	</h1>
 </c:if>
 
+<!-- 시작화면 연결을 위한 주소 수정 - 02.19 김범수 (회원 조회 삭제 / 각 주소값 다 변경)-->
 <c:if test="${sessionScope.nickname == null}">
 <!-- 회원가입 -->
-<input type="button" value="회원가입" onclick="location.href='user/signup'">
+<input type="button" value="회원가입" onclick="location.href='/user/signup'">
 <!-- 로그인 로그아웃 -->
-<input type="button" value="로그인" onclick="location.href='user/signin'">
+<input type="button" value="로그인" onclick="location.href='/user/signin'">
 </c:if>
 <c:if test="${sessionScope.nickname != null}">
 <form action="/user/sign_out">
 	<input type="submit" value="로그아웃">
 </form>
-<input type="button" value="마이페이지" onclick="location.href='user/mydetail'">
-<input type="button" value="동영상게시판" onclick="location.href='video/list'">
-<input type="button" value="QnA" onclick="location.href='qna/list'">
+<input type="button" value="마이페이지" onclick="location.href='/user/mydetail'">
+<input type="button" value="동영상게시판" onclick="location.href='/video/list'">
+<input type="button" value="QnA" onclick="location.href='/qna/list'">
 <input type="button" value="결제하기" onclick="modal()">	
-
+<input type="button" value="내보관함" onclick="location.href='/mypage/mylocker'">
 </c:if>
 <c:if test="${message=='success'}">
 	<h1>
@@ -43,7 +44,6 @@ hello
 		변경 완료
 	</h1>
 </c:if>
-<input type="button" value="회원 조회" onclick="location.href='user/list'">
 
 <script>
 	const timer = setTimeout(function(){
