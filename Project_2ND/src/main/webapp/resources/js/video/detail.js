@@ -33,6 +33,12 @@ comu_btn[0].addEventListener('click', function(){
     }
 });
 
+// 댓글 작성하기 버튼 눌렀을때 댓글작성하기 - 02.20 장민실
+   $("#comment_write_btn").on('click', function(event){ 
+	   document.comt_write.action="/comt/write";
+	   document.comt_write.submit();
+      });
+
 
 
 

@@ -42,7 +42,9 @@
     justify-content: center;
     align-items: center;
     height: 100%; 
-    width: 40%;   
+    width: 40%;  
+    overflow: scroll;
+    overflow: auto;
 }
 
 .actor_info {
@@ -52,6 +54,8 @@
     justify-content: center;
     height: 100%;
     width: 40%;
+    overflow: scroll;
+    overflow: auto;
 }
 
 /* movie info end */
@@ -100,10 +104,10 @@
 }
 
 #comment_write_btn {
-    width: 2.5rem;
-    height: 2rem;
+    width: 3.5rem;
+    height: 1.5rem;
     margin-top: 0.5rem;
-    margin-left: 103.7rem;
+    margin-left: 102.7rem;
 }
 
 /* comment wirte area end */

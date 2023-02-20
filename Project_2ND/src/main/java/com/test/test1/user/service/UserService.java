@@ -13,8 +13,6 @@ public interface UserService {
 
 	// 개인정보수정 23/02/20 김지혜 
 	void infoModify(UserDto dto);
-
-
 	
 	boolean create(UserDto userDto);
 	
@@ -34,7 +32,6 @@ public interface UserService {
 
 	void paid(Map<String, Object> map);
 
-
 	String paidCheck(String ID);
 
 	void rePaid(Map<String, Object> map);
@@ -44,6 +41,9 @@ public interface UserService {
 	void paidUpdate(int months);
 
 	void addVisit();
+	
+//	video detail 내 댓글등록 위해 유저정보 받아오기 02.20 장민실
+	int getid(String user_id);
 	
 	
 

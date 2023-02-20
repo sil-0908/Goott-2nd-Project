@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,36 +66,41 @@
         <!-- button area end -->
 
         <!-- comment wirte area start -->
-        <div class="comment_area">
-            <input id="comment_input" type="text" autocomplete="off" spellcheck="false" placeholder="댓글 달아볼테면 달아보든가ㅋ">
-            <button id="comment_write_btn">작성</button>
-        </div>
+        <form name="comt_write" method="post">
+        	<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
+	        <div class="comment_area">
+	            <input id="comment_input" type="text" autocomplete="off" spellcheck="false" name="commentary" placeholder="댓글을 작성해 주세요">
+	            <input id="comment_write_btn" type="button" value="작성하기">
+	        </div>
+        </form>
         <!-- comment wirte area end -->
 
         <hr>
-
+        
         <!-- comment list area start -->
         <div class="comment_list_area">
-            <table class="comment_list">
-                <tr>
-                    <td id="com_title">댓글제목&nbsp;&nbsp;</td>
-                    <td id="com_data">댓글날짜</td>
-                </tr>
-                <tr>
-                    <td id="com_contents">댓글내용</td>
-                </tr>
-            </table>
-            <div class="comment_btn">
-                <i class="far fa-thumbs-up comm_btn" id="like"></i>
-                <p>좋아요</p>
-                <i class="far fa-thumbs-down comm_btn" id="bad"></i>
-                <p>싫어요</p>
-                <button id="co_comment_btn">답글</button>
-            </div>
+			<c:forEach var="comt" items="${c_dto}">
+				<table class="comment_list">
+					<tr>
+						<td id="com_title">${comt.nickname}&nbsp;&nbsp;</td>
+						<td id="com_data"><fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					</tr>
+					<tr>
+						<td id="com_contents">${comt.commentary}</td>
+					</tr>
+				</table>
+					<div class="comment_btn">
+		                <i class="far fa-thumbs-up comm_btn" id="like"></i>
+		                <p>좋아요</p>
+		                <i class="far fa-thumbs-down comm_btn" id="bad"></i>
+		                <p>싫어요</p>
+		                <button id="co_comment_btn">답글</button>
+					</div>
+			</c:forEach>
         </div>
         <hr>
         <!-- comment list area end -->
-        
+<%--  --%>
 	</div>
 	
 <script src="/resources/js/video/detail.js"></script>
