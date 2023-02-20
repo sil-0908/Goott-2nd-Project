@@ -30,8 +30,7 @@ public class UserDao {
 	//회원 가입 - 01.31 장재호
 	public boolean create(UserDto userDto) {
 		String checkTF = this.sqlSessionTemplate.selectOne("user.signUpCheck", userDto);  //checkTF : 닉네임 중복이되면 중복 값을 담는다
-		if(checkTF == null) { // 중복 없음
-			System.out.println(userDto.getPassword());
+		if(checkTF == null) { // 닉네임 중복 없음
 			sqlSessionTemplate.insert("user.insert", userDto);
 			return true;
 		}
@@ -76,10 +75,6 @@ public class UserDao {
 		sqlSessionTemplate.selectOne("user.changepw", dto);
 	}
 
-	public int getid(String id) {
-		return sqlSessionTemplate.selectOne("user.getid", id);
-	}	
-
 	//결제 처리 - 02.15 장재호
 	public void paid(Map<String, Object> map) {
 		sqlSessionTemplate.update("user.paid", map);
@@ -90,6 +85,12 @@ public class UserDao {
 		return sqlSessionTemplate.selectOne("user.detail", user_id);
 	}
 
+	//개인정보수정 23/02/20 김지혜  
+	public void infoModify(UserDto dto) {
+		// 이메일 중복거르기		
+		sqlSessionTemplate.update("user.infoModify", dto);		
+	}
+	
 	//기 결제확인 - 02.18 장재호
 	public String paidCheck(String ID) {
 		return sqlSessionTemplate.selectOne("user.paidCheck", ID);

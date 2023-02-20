@@ -14,21 +14,21 @@ let title = document.querySelector('.info_text').children[0].innerText;
 
 comu_btn[0].addEventListener('click', function(){
     if(this.className.includes('fas')){ // 내보관함에서 삭제
-    	this.classList.toggle('fas'); // 내보관함에 삭제하면 다시 fas삭제
     	$.ajax({
     		url : 'mylocker_de',
     		type : 'post',
     		data : {'title' : title},		
     	})
+    	this.className = 'far fa-heart comu_btn';
     	alert('내보관함에서 삭제되었습니다');
     
     }else { // 내보관함에 담기
-    	this.classList.toggle('fas'); // 내보관함에 담으면 fas설정
     	$.ajax({
     		url : 'mylocker_in',
     		type : 'post',
     		data : {'title' : title},
     	})
+    	this.className = 'fas fa-heart comu_btn';
     	alert('내보관함에 담겼습니다');
     }
 });

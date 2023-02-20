@@ -8,7 +8,14 @@ import com.test.test1.user.dto.UserDto;
 
 public interface UserService {
 
+	// 개인정보상세조회  
+	UserDto detail(String user_id);
 
+	// 개인정보수정 23/02/20 김지혜 
+	void infoModify(UserDto dto);
+
+
+	
 	boolean create(UserDto userDto);
 	
 	List<UserDto> list(Criteria cri) throws Exception;
@@ -25,12 +32,8 @@ public interface UserService {
 
 	void changepw(UserDto dto);
 
-	int getid(String id);
-
 	void paid(Map<String, Object> map);
 
-	// 개인정보상세조회  
-	UserDto detail(String user_id);
 
 	String paidCheck(String ID);
 

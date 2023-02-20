@@ -1,3 +1,4 @@
+
 :root{
     --logo-color:#FFCC00;
     --logo-size: 60px;
@@ -12,7 +13,9 @@
     margin: 0;
     padding: 0;
 }
-
+.hidden {
+  display: none;
+}
 
 body {
     background-color: var(--bg);
@@ -29,6 +32,14 @@ nav {
     width: 100%;
     align-items: center;
     z-index: 1000;
+}
+nav{
+    background-color: transparent;
+}
+
+/* 스크롤 밑으로 내릴 때 적용할 배경색 */
+nav.scrolled {
+    background-color:#24292D;
 }
 
 ul li {
@@ -105,6 +116,7 @@ ul li {
 
 /* menu end */
 
+
 /* search start */
 
 #search {
@@ -147,7 +159,7 @@ ul li {
 /* drop down start */
 
 .drop_menu_ul {
-    /* pointer-events : opacity로 하면 숨겨지는거다 보니 해당영역에
+     /* pointer-events : opacity로 하면 숨겨지는거다 보니 해당영역에
     마우스를 올리면 hover효과가 인식되는데 해당 이벤트를 사용하면
     영역에 마우스를 올려도 인식하지 않는다
 
@@ -215,6 +227,8 @@ ul li {
     
    
 }
+
+/* 장르 토글영역 div */
 .sub-menu {
   transform: translateX(40px);
 }
@@ -226,12 +240,19 @@ img{
 }
 
 
-
-
-
 /* 이미지 링크 div */
 .conta{
    margin: 10px;
+   height: 280px;
+   width:250px;
+}
+
+/* 검색결과 값 div */
+#search-results{
+	display: flex;	
+	transform: translateX(50px);
+	padding-top:50px;
+
 }
 
 

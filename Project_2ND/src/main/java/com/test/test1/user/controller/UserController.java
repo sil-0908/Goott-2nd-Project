@@ -16,6 +16,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,15 +41,12 @@ public class UserController {
 	@Autowired
 	UserDao userDao;
 	@Autowired
-	BCryptPasswordEncoder encoder;
-	
+	BCryptPasswordEncoder encoder;		
 	// loger 변수 생성 - 로그데이터를 끌어오기 위함, 0209 김범수
-	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);	
 	// 메일 샌더 객체 생성 - 0209 김범수
 	@Autowired
-	private JavaMailSender mailSender;
-	
+	private JavaMailSender mailSender;	
 	
 	//로그인 페이지 이동 - 01.31 장재호
 	@RequestMapping("signin")
@@ -56,8 +54,38 @@ public class UserController {
 	    return "user/signin";
 	}
 	
+	// 회원정보가진 개인정보페이지 연결  23/02/16 김지혜 
+	@RequestMapping(value= "/info_mydetail")
+	public String detail(HttpSession session, Model model) {
+		// 유저 아이디를 통해 세션에서 정보 가져오기 
+		String user_id =(String) session.getAttribute("user_id").toString();		
+		UserDto dto = userService.detail(user_id); // 회원 ID를 사용하여 해당 회원의 정보를 찾아 dto에 넣는다.
+		model.addAttribute("data", dto); // 위에서 받은 회원정보를 model을 통해 view에 보내준다.
+		return "user/mydetail"; 		
+	}	
+	
+	// VIEW에서 받아온 값을 이용하여 수정페이지  _ 23/02/18~23/02/20  
+	@RequestMapping(value="/info_modify", method=RequestMethod.GET)
+	public ModelAndView detailModify( HttpSession session, ModelAndView mv) {
+	// 세션에서 정보가져오기 
+		String user_id = (String) session.getAttribute("user_id").toString();
+		UserDto list = userService.detail(user_id);
+		mv.addObject("list", list);
+		mv.setViewName("user/info_modify");
+		return mv;
+	}	
+	
+	// VIEW에서 받아온 값을 이용하여 수정페이지  _ 23/02/18~
+	@RequestMapping(value="/info_modify", method=RequestMethod.POST)
+	public String detailModify(@ModelAttribute UserDto dto) {
+		// 재 입력된 값을 받아 db 저장. (수정된 내용이던, 수정되지 않은 내용이던 수정하기 버튼을 누르면 디비에 새롭게 update되도록 처리)
+		userService.infoModify(dto);
+		return "redirect:/user/info_mydetail";
+	}
+	
 	//로그인 기능  - 01.31 장재호
 	//PW -> DB 전송 시 암호화 추가 - 02.06 장재호
+	// 시작페이지 연결을 위한 setviewname / addObject수정 - 02.19김범수 
 	@RequestMapping("signin_check")
 	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv) {
 		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재)
@@ -65,8 +93,7 @@ public class UserController {
 			session.setAttribute("user_id", userDto.getId());
 			session.setAttribute("nickname", str);
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
-			mv.setViewName("redirect:/");
-			mv.addObject("message", "success");
+			mv.setViewName("common/main"); // 리다이렉트에서 main으로 주소 변경 - 02.19 김범수
 		}else {                                    //로그인 실패
 			mv.setViewName("user/signin");
 			mv.addObject("message", "error");
@@ -110,6 +137,7 @@ public class UserController {
 	}
 	
 	//회원가입 기능 - 01.31 장재호
+	// 시작페이지 연결을 위한 주소 수정 - 02.19 김범수
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
 	public ModelAndView createPost(UserDto userDto) {
 	    //암호화하여 DB에 암호 저장
@@ -123,18 +151,10 @@ public class UserController {
 	        mav.setViewName("user/signup");
 	    }else {   //가입 성공
 	        mav.addObject("message", "success");
-	        mav.setViewName("common/main");      
+	        mav.setViewName("common/start");  // 회원가입 완료 후 시작페이지로 이동 시켜서 로그인 시킴 -02.19 김범수  
 	    }
 	    return mav;
-	}
-	
-	
-//
-	// 개인 정보 조회하기 (post 형식)
-	// 개인 수정 하기 
-	//  detail 개인 정보 목록 받아오기 
-
-	
+	}	
 	
 	// 회원정보가진 개인정보페이지 열기  23/02/16 김지혜 
 	@RequestMapping("/mydetail")
@@ -144,8 +164,7 @@ public class UserController {
 		UserDto dto = userService.detail(user_id);
 		model.addAttribute("data", dto);
 		return "user/mydetail"; 		
-	}
-	
+	}	
 
 	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
 	@RequestMapping("find")

@@ -235,12 +235,14 @@ $(function(){
          }else {
             $("#pwMsg").html("비밀번호가 일치하지 않습니다.");
             $("#password").focus();
+            alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");  
+            return;
          };
          // 아이디  (i) 비밀번호 (p) 닉네임 (n) 전화번호 (c) 동의 (d) 모두 조건을 만족할 경우(값이 1이 됨), 최종회원가입 성공. 
          if(i==1 && p==1 && n==1 && c==1 && d==1){
             alert("회원가입 최종 성공!");
             $('#submit').attr('type', 'submit'); // type속성 submit로 변환하여 넘어갈 수 있도록 함. 
-             
+            document.form1.action="/"; // 페이지 이동
          }else{
             alert("회원가입 실패. 다시 입력확인해주세요. ");
          }

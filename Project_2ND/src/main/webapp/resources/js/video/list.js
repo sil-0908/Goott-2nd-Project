@@ -1,6 +1,5 @@
-
-//이미지 슬라이드 
-   $('.slider').slick({
+//이미지 슬라이드 //
+$(".slider").not('.slick-initialized').slick({
      slidesToShow:6,
      slidesToScroll:6,    
      prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
@@ -8,7 +7,7 @@
    });
   
 
-  
+
 const search_input = document.querySelector('#search'),
 search_i = document.querySelector('#search_icon');
    
@@ -18,7 +17,85 @@ search_i = document.querySelector('#search_icon');
 
   
   
+  
+ 
+
+const searchBox = document.getElementById('search');
+  searchBox.addEventListener('input', function() {
+  });
+
+
+
+   //검색 기능구현 영역 //
+ function showImageData() {	
+
+  	  const searchText = document.getElementById('search').value.toLowerCase();
+  	  $('.slider').slick('unslick');
+      const images = document.querySelectorAll('.conta');
+  	  const searchResults = document.getElementById('search-results');
+  	  searchResults.innerHTML = ''; 
+
+  	  images.forEach(function(image) {
+  	    const title = image.querySelector('span');
+  	    if (title && title.textContent.toLowerCase().includes(searchText)) {
+  	      searchResults.appendChild(image); 
+  	      image.style.display = 'block';
+  	    } else {
+  	      image.style.display = 'none';
+  	    };
+  	  });
+      const hideElements = document.querySelectorAll('.hide');
+  	  hideElements.forEach(function(hideElement) {
+  	    hideElement.style.display = 'none';
+  	  });
+      const sub = document.querySelectorAll('.sub-menu');
+      sub.forEach(function(sub){
+    	  sub.style.display ='none';
+      })
+  };
+  
+
+
+  searchBox.addEventListener('keyup', function() {
+	  const searchText = this.value.trim().toLowerCase();
+	  if (event.key === 'Enter') {
+	
+	    showImageData(searchText);
+	  }
+	});
+  
+  
+  function resetSearch() {
+	
+	  const searchResults = document.getElementById('search-results');
+	  searchResults.innerHTML = '';
+	  const images = document.querySelectorAll('.conta');
+	  images.forEach(function(image) {
+	    image.style.display = 'block';
+	  });
+	  const hides = document.querySelectorAll('.hide');
+	  hides.forEach(function(hide) {
+	    hide.style.display = 'block';
+	  });
+	
+	
+	 
+	}
+function resetSlider() {
+	  $('.slider').slick('unslick');
+	  $(".slider").not('.slick-initialized').slick({
+	    slidesToShow:6,
+	    slidesToScroll:6,    
+	    prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
+	    nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
+	  });
+	}
+  
+  
+  
+  //애니메이션 토글 기능 영역//
  function ani_q() {
+	  resetSearch();
 	  let mainText = document.querySelectorAll(".hide .section_main_text")[0];
 	  let section = document.querySelectorAll(".hide .section")[0];
 	  
@@ -33,33 +110,37 @@ search_i = document.querySelector('#search_icon');
 	 
 	  toggleSubMenu('my-sub-menu');
 
-	  if (mainText.style.display === "none") {
-	    mainText.style.display = "block";
-	    section.style.display = "block";
-	    window.location.reload();
-	  } else {
+	  if (mainText.style.display === "block") {
 	    mainText.style.display = "none";
 	    section.style.display = "none";
-	  }
-	}
+
+	  } else {
+	    mainText.style.display = "block";
+	    section.style.display = "block";
+		location.reload();
+	  };
+	
+
+ };
 
   
   
-
-	function toggleSubMenu(subMenuId) {
+	 //영화 장르별 토글기능 영역//
+function toggleSubMenu(subMenuId) {
+	   resetSearch();
 	  var subMenus = document.getElementsByClassName('sub-menu');
 	  for (var i = 0; i < subMenus.length; i++) {
 	    if (subMenus[i].id !== subMenuId) {
 	      subMenus[i].style.display = 'none';
 	    }
-	  }
+	  };
 
 	  var subMenu = document.getElementById(subMenuId);
 	  if (subMenu.style.display === 'none') {
 	    subMenu.style.display = 'block';
 	  } else {
 	    subMenu.style.display = 'none';
-	  }
+	  };
 
 	  var hides = document.querySelectorAll('.hide .section, .hide .section_main_text');
 	  for (var j = 0; j < hides.length; j++) {
@@ -67,9 +148,34 @@ search_i = document.querySelector('#search_icon');
 	      hides[j].style.display = 'none';
 	    } else {
 	      hides[j].style.display = 'block';
-	    }
-	  }
-	}
+	    };
+	  };
+	  resetSlider();
+	};
+ 
+	
+	
+	
+function back(){
+	   window.location.reload();
+}	
+  
+
+
+
+function handleScroll() {
+    const scrolled = window.scrollY > 50;
+    const nav = document.querySelector('nav');
+    if (scrolled) {
+        nav.classList.add('scrolled');
+    }else{
+        nav.classList.remove('scrolled');
+    }
+} 
+
+
+
+window.addEventListener('scroll', handleScroll);
  
   
 
