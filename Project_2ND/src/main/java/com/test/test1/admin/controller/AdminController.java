@@ -1,5 +1,6 @@
 package com.test.test1.admin.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -75,12 +76,9 @@ public class AdminController {
 		mv.addObject("genre", algorithmService.genreRate());
 		//3. 매출
 		int total = adminService.getTotalSales() * 15000;
-		int daily = adminService.getDailySales() * 15000;
-		System.out.println("오늘 = " + total);
-		System.out.println("진짜오늘 = " + daily);
-		
+		int daily = adminService.getDailySales() * 15000;		
 		mv.addObject("totalSales", total);
-		mv.addObject("dailySales", daily);
+		mv.addObject("dailySales", daily);		
 		//4. 방문자 수
 		int totalVisit = adminService.getTotalVisit();
 		int todayVisit = adminService.getTodayVisit();
@@ -106,9 +104,8 @@ public class AdminController {
 	}
 	
 	//selectbox를 통한 다중 삭제 - 02.18 장재호
-	@RequestMapping(value="admin/userDeletes", method=RequestMethod.POST)
-	public void qnaDeletes(@RequestBody List<Integer> delArr) {
-		System.out.println("아아아아아아아아아 : " + delArr);
+	@RequestMapping(value="/admin/userDeletes", method=RequestMethod.POST)
+	public void userDeletes(@RequestBody List<Integer> delArr) {
 		adminService.deletes(delArr);
 	}
 	
@@ -133,14 +130,6 @@ public class AdminController {
 		return mv;
 	}
 	
-	//VIDEO DELETE - 02.19 장재호
-	@RequestMapping("videoDataDelete")
-	public String videoDel(int delVideoID) {
-		System.out.println(delVideoID);
-		adminService.videoDel(delVideoID);
-		return "redirect:/admin/databases/video";
-	}
-	
 	//VIDEO CREATE PAGE - 02.19 장재호
 	@RequestMapping("admin/databases/video/create")
 	public String videoCreatePage() {
@@ -150,30 +139,45 @@ public class AdminController {
 	//VIDEO CREATE - 02.19 장재호
 	@RequestMapping(value="admin/videoCreate", method=RequestMethod.POST)
 	public ModelAndView videoCreate(ModelAndView mv, AdminETCDto dto) {
-		//관리자의 입장에서 생각하기. DBA말고 그럼 필요한거? 비디오 테이블 생성 시 카테고리, 장르, 배우가 있던말던 다 짱박을거임.
-		//1. 카테고리 확인 없으면 추가먼저.
+		//1. 카테고리
 		String category_name = dto.getCategory_name();
 		adminService.addCategory(category_name);
-		//2. 장르확인 없으면 추가먼저
+		//2. 장르
 		String genre_name = dto.getGenre_name();
 		adminService.addGenre(genre_name);
-		//3. 배우 확인 없으면 추가먼저
+		//3. 배우
 		String[] actor = dto.getActor_name().split(",");
 		adminService.addActor(actor);
-		//7. 그러고 나서 비디오 등록 -> 비디오먼저 붙여야 비디오ID가 생겨서 아래 작업 가능
+		//4. 비디오
 		adminService.addVideo(dto);
-		//4. 비디오 카테고리에 해당 비디오 카테고리 추가
-		//5. 비디오 장르 마찬가지
-		//6. 비디오 액터 마찬가지
+		//5. 비디오카테고리
+		adminService.addVideoCategory(dto);
+		//6. 비디오장르 
+		adminService.addVideoGenre(dto);
+		//7. 비디오액터
+		List<String> list = new ArrayList<>();
+		for(String a : actor) {
+			list.add(a);
+		}
+		dto.setActor(list);
+		adminService.addVideoActor(dto);	
 
-		//이 모든 과정에서 dto에서 원하는 정보 뽑아써야하며 촥촥 잘 들어가게 해야함 몽말인지알지?
 		mv.setViewName("admin/admin_video");
 		return mv;
 	}
 	
+	//VIDEO DELETE - 02.19 장재호
+	@RequestMapping("videoDataDelete")
+	public String videoDel(int delVideoID) {
+		System.out.println(delVideoID);
+		adminService.videoDel(delVideoID);
+		return "redirect:/admin/databases/video";
+	}
+	
 	//체크박스 다중삭제 - 02.19 장재호	
-	@RequestMapping(value="videoDataDeletes", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/videoDataDeletes", method=RequestMethod.POST)
 	public String videoDels(@RequestBody List<Integer> delArr) {
+		System.out.println("dasdsadasdas" + delArr);
 		adminService.videoDels(delArr);
 		return "redirect:/admin/databases/video";
 	}

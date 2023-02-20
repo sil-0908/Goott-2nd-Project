@@ -94,5 +94,21 @@ public class AdminServiceImpl implements AdminService {
 	public void addVideo(AdminETCDto dto) {
 		adminDao.addVideo(dto);
 	}
+
+	@Override
+	public void addVideoCategory(AdminETCDto dto) {
+		adminDao.addVideoCategory(dto);
+	}
+
+	@Override
+	public void addVideoGenre(AdminETCDto dto) {
+		adminDao.addVideoGenre(dto);
+	}
+
+	@Override
+	public void addVideoActor(AdminETCDto dto) {
+		adminDao.addVideoActor(dto);
+	}
+
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

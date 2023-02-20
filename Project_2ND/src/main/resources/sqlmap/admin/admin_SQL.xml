@@ -105,6 +105,28 @@
 		insert into VIDEO(TITLE, SUMMARY, VIDEO_URL, IMAGE_URL, CREATE_COUNTRY, CREATE_YEAR, GRADE)
 		values (#{title}, #{summary}, #{video_url}, #{image_url}, #{create_country}, #{create_year}, #{grade})
 	</insert>
+	
+	<insert id="addVideoCategory">
+		insert into VIDEO_CATEGORY(VIDEO_ID, CATEGORY_ID)
+		values ((select VIDEO_ID from VIDEO where TITLE=#{title}),
+				(select CATEGORY_ID from CATEGORY where CATEGORY_NAME=#{category_name}))
+	</insert>
+	
+	<insert id="addVideoGenre">
+		insert into VIDEO_GENRE(VIDEO_ID, GENRE_ID)
+		values ((select VIDEO_ID from VIDEO where TITLE=#{title}),
+				(select GENRE_ID from GENRE where `GENRE_NAME(KOR)`=#{genre_name}))
+		
+	</insert>
+	
+	<insert id="addVideoActor">
+		insert into VIDEO_ACTOR(VIDEO_ID, ACTOR_ID)
+		values
+		((select V.VIDEO_ID from VIDEO V where V.TITLE=#{title}), (select A.ACTOR_ID from ACTOR A where A.`ACTOR_NAME(KOR)`=
+		<foreach collection="actor" item="actor" index="index">
+		#{actor}
+		</foreach>))	
+	</insert>
 
 	<!-- 02.18~ 장재호 -->
 </mapper>

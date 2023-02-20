@@ -38,5 +38,12 @@ public interface AdminService {
 	void addActor(String[] actor);
 
 	void addVideo(AdminETCDto dto);
+
+	void addVideoCategory(AdminETCDto dto);
+
+	void addVideoGenre(AdminETCDto dto);
+
+	void addVideoActor(AdminETCDto dto);
+
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

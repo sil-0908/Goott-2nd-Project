@@ -85,6 +85,7 @@ public class AdminDao {
 		ss.delete("admin.delGenre", genre_name);
 	}
 
+	//배우는 여러명이기 때문에 걸러냇음
 	public void addActor(String[] actor) {
 		List<String> delArr = new ArrayList<>();
 		List<String> actorArr = new ArrayList<>();
@@ -99,13 +100,26 @@ public class AdminDao {
 				}
 			}
 		}
-		System.out.println("삭제할 배열 : " + delArr);
-		System.out.println("추가 : " + actorArr);
-		ss.insert("admin.addActor", actorArr);
+		if(actorArr.size() > 0) {
+			ss.insert("admin.addActor", actorArr);
+		}
 	}
 
 	public void addVideo(AdminETCDto dto) {
 		ss.insert("admin.addVideo", dto);
 	}
+
+	public void addVideoCategory(AdminETCDto dto) {
+		ss.insert("admin.addVideoCategory", dto);
+	}
+
+	public void addVideoGenre(AdminETCDto dto) {
+		ss.insert("admin.addVideoGenre", dto);
+	}
+
+	public void addVideoActor(AdminETCDto dto) {
+		ss.insert("admin.addVideoActor", dto);
+	}
+
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/resources/css/common/table.css">
 <link href="/resources/css/admin/sb-admin-2.min.css" rel="stylesheet">
 <link rel="stylesheet" href="/resources/css/admin/main.css">
+<link rel="stylesheet" href="/resources/css/admin/user_list.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 <!-- 검색 -->
 <link rel="stylesheet" href="/resources/css/board/searchbar.css">

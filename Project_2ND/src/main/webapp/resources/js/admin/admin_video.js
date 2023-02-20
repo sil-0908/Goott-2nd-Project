@@ -24,13 +24,11 @@ function dataDelete(){
 		alert("삭제할 게시물을 선택해 주세요");
 		return;
 	}
-	
-	console.log(delArr);
-	
+		
 	//삭제 게시물 PK 전송
 	if(confirm("삭제하시겠습니까?")){
 		$.ajax({
-			url : 'userDeletes',
+			url : '/admin/videoDataDeletes',
 			data : JSON.stringify(delArr),
 			type : 'post',
 			contentType: 'application/json; charset=utf-8',	

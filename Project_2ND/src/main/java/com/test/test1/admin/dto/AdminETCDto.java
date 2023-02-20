@@ -1,11 +1,15 @@
 package com.test.test1.admin.dto;
 
 import java.util.Date;
+import java.util.List;
 
+/**************************** 02.18 장재호 ************************/
 public class AdminETCDto {
 
 	private String title, summary, video_url, image_url, create_country, create_year, grade, category_name, genre_name, actor_name;
-	private int recommand;
+	private int recommand, video_id;
+	private List<String> actor;
+	
 	public String getTitle() {
 		return title;
 	}
@@ -108,5 +112,22 @@ public class AdminETCDto {
 	public String toString() {
 		return "AdminECTDto=[title="+title+", actor_name="+actor_name+"]";
 	}
+
+	public int getVideo_id() {
+		return video_id;
+	}
+
+	public void setVideo_id(int video_id) {
+		this.video_id = video_id;
+	}
+
+	public List<String> getActor() {
+		return actor;
+	}
+
+	public void setActor(List<String> actor) {
+		this.actor = actor;
+	}
 	
 }
+/**************************** ******* ************************/
