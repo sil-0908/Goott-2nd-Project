@@ -9,9 +9,6 @@ for(var i = 1; i<comu_btn.length; i++) {
 }
 
 
-let title = document.querySelector('.info_text').children[0].innerText;
-
-
 comu_btn[0].addEventListener('click', function(){
     if(this.className.includes('fas')){ // 내보관함에서 삭제
     	$.ajax({

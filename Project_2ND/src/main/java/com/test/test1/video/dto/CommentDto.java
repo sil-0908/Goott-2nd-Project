@@ -5,7 +5,7 @@ import java.util.Date;
 public class CommentDto {
 	
 	private String commentary, nickname;
-	private int comment_id, video_id, user_id, depth, depth_lev;
+	private int comment_id, pid, video_id, user_id, depth, depth_lev;
 	private Date create_date;
 	
 	public String getCommentary() {
@@ -30,6 +30,14 @@ public class CommentDto {
 	
 	public void setComment_id(int comment_id) {
 		this.comment_id = comment_id;
+	}
+	
+	public int getPid() {
+		return pid;
+	}
+	
+	public void setPid(int pid) {
+		this.pid = pid;
 	}
 	
 	public int getVideo_id() {
@@ -77,6 +85,7 @@ public class CommentDto {
 	return "CommentDto [commentary = " + commentary
 			+ ", nickname = " + nickname
 			+ ", comment_id = " + comment_id
+			+ ", pid = " + pid
 			+ ", video_id = " + video_id
 			+ ", user_id = " + user_id
 			+ ", depth = " + depth

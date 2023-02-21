@@ -68,10 +68,10 @@
         <!-- comment wirte area start -->
         <form name="comt_write" method="post">
         	<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
-	        <div class="comment_area">
-	            <input id="comment_input" type="text" autocomplete="off" spellcheck="false" name="commentary" placeholder="댓글을 작성해 주세요">
-	            <input id="comment_write_btn" type="button" value="작성하기">
-	        </div>
+			<div class="comment_area">
+				<input id="comment_input" type="text" autocomplete="off" spellcheck="false" name="commentary" placeholder="댓글을 작성해 주세요">
+				<input id="comment_write_btn" type="button" value="작성하기">
+			</div>
         </form>
         <!-- comment wirte area end -->
 
@@ -79,28 +79,33 @@
         
         <!-- comment list area start -->
         <div class="comment_list_area">
-			<c:forEach var="comt" items="${c_dto}">
-				<table class="comment_list">
+			<table class="comment_list">
+				<c:forEach var="comt" items="${replyList}">
 					<tr>
-						<td id="com_title">${comt.nickname}&nbsp;&nbsp;</td>
-						<td id="com_data"><fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+						<td id="com_title">${comt.nickname}&nbsp;&nbsp;<fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
 					</tr>
 					<tr>
 						<td id="com_contents">${comt.commentary}</td>
 					</tr>
-				</table>
-					<div class="comment_btn">
-		                <i class="far fa-thumbs-up comm_btn" id="like"></i>
-		                <p>좋아요</p>
-		                <i class="far fa-thumbs-down comm_btn" id="bad"></i>
-		                <p>싫어요</p>
-		                <button id="co_comment_btn">답글</button>
-					</div>
-			</c:forEach>
+					<td>
+						<div class="comment_btn">
+							<i class="far fa-thumbs-up comm_btn" id="like"></i>
+							<p>좋아요</p>
+							<i class="far fa-thumbs-down comm_btn" id="bad"></i>
+							<p>싫어요</p>
+							<button id="co_comment_btn">답글</button>
+							<c:if test="${sessionScope.nickname == comt.nickname}">
+								<button type="button" id="btnUpdate">수정</button>
+								<button type="button" id="btnDelete">삭제</button>
+							</c:if>
+						</div>
+						<hr id="com_list_hr">
+					</td>
+				</c:forEach>
+			</table>
         </div>
         <hr>
         <!-- comment list area end -->
-<%--  --%>
 	</div>
 	
 <script src="/resources/js/video/detail.js"></script>

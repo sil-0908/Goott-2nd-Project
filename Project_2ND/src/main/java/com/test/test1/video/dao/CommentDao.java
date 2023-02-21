@@ -20,9 +20,16 @@ public class CommentDao {
 		sqlSession.insert("comment.insert", dto);
 	}
 
+//	video detail 내 댓글목록 불러오기 02.21 장민실
 	public List<CommentDto> replyList(int video_id) {
 		return sqlSession.selectList("comment.replyList", video_id);
 	}
+
+	public List<CommentDto> getPid(CommentDto c_dto) {
+		return sqlSession.selectList("comment.get_pid", c_dto);
+	}
+
+
 
 	
 

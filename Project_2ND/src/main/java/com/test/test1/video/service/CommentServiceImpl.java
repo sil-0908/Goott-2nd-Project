@@ -20,10 +20,18 @@ public class CommentServiceImpl implements CommentService {
 		commentDao.insert(dto);
 	}
 
+//	video detail 내 댓글목록 불러오기 02.21 장민실
 	@Override
 	public List<CommentDto> replyList(int video_id) {
 		return commentDao.replyList(video_id);
 	}
+
+	@Override
+	public List<CommentDto> getPid(CommentDto c_dto) {
+		return commentDao.getPid(c_dto);
+	}
+
+
 
 	
 

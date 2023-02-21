@@ -2,12 +2,16 @@ package com.test.test1.video.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.test1.user.service.UserService;
@@ -29,31 +33,28 @@ public class CommentController {
 	
 //	video detail 내 댓글등록 02.20 장민실
 	@RequestMapping(value="write", method=RequestMethod.POST)
-	public ModelAndView insert(CommentDto dto, HttpSession session, ModelAndView mv) {
+	public ModelAndView insert(VideoDto v_dto, CommentDto c_dto, HttpSession session, ModelAndView mv) {
 		String user_id = session.getAttribute("user_id").toString();
 		String nickname = session.getAttribute("nickname").toString();
 		int id = userService.getid(user_id);
-		dto.setUser_id(id);
-		dto.setNickname(nickname);		
-		System.out.println(dto.toString());
-		commentService.insert(dto);
-		mv.addObject("c_dto", dto);
-		mv.setViewName("video/detail");
+		
+		List<CommentDto> pidList = commentService.getPid(c_dto);
+		int pid = c_dto.getPid();
+		System.out.println("가져오는 pid : " + pid);
+		pid+=1;
+		System.out.println("현재 pid : " + pid);
+		c_dto.setPid(pid);
+//		mv.addObject("pid", pid);
+		
+		c_dto.setUser_id(id);
+		c_dto.setNickname(nickname);		
+		int video_id = v_dto.getVideo_id();
+		c_dto.setVideo_id(video_id);
+		commentService.insert(c_dto);
+		mv.addObject("c_dto", c_dto);
+		mv.setViewName("redirect:/video/detail?video_id="+video_id);
 		return mv;
 	}
-
-//	video detail 댓글목록 구현
-	@RequestMapping("reply")
-	public ModelAndView replyList(int video_id, ModelAndView mv) {
-		List<CommentDto> list = commentService.replyList(video_id);
-		mv.addObject("c_dto", list);
-		System.out.println(list.toString());
-		mv.setViewName("video/detail");
-		return mv;
-	}
-	
-	
-	
 	
 	
 	
