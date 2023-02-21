@@ -2,22 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="comment">
 
-	<select id="replyList" resultType="com.test.test1.video.dto.CommentDto">
-		<![CDATA[
-		select VC.COMMENTARY, VC.VIDEO_ID, VC.DEPTH, VC.DEPTH_LEV, VC.CREATE_DATE, U.NICKNAME
-  		  from VIDEO_COMMENT VC
-          join USER U
-            on VC.USER_ID = U.USER_ID
-  		 where VIDEO_ID=#{video_id};
-		]]>  	
-	</select>
-
-<!-- video detail 내 댓글등록 02.20 장민실  -->
+	<!-- video detail 내 댓글등록 02.20 장민실  -->
 	<insert id="insert">
 		<![CDATA[
-		insert into VIDEO_COMMENT (VIDEO_ID, USER_ID, COMMENTARY) 
-		values (#{video_id} ,#{user_id}, #{commentary})
+		insert into VIDEO_COMMENT (VIDEO_ID, USER_ID, PID, COMMENTARY) 
+		values (#{video_id} ,#{user_id}, #{pid}, #{commentary})
 		]]>
 	</insert>
+	
+	<!-- video detail 내 댓글목록 불러오기 02.21 장민실 -->
+	<select id="replyList" resultType="com.test.test1.video.dto.CommentDto">
+		<![CDATA[
+		select vc.COMMENTARY, vc.VIDEO_ID, vc.DEPTH, vc.DEPTH_LEV, vc.CREATE_DATE, u.NICKNAME
+  		  from VIDEO_COMMENT vc
+          join USER u
+            on vc.USER_ID = u.USER_ID
+  		 where vc.VIDEO_ID=#{video_id}
+		]]>  	
+	</select>
+	
+	<select id="get_pid" resultType="int">
+		select PID
+		  from VIDEO_COMMENT
+		 where VIDEO_ID=#{video_id}
+	</select>
 
 </mapper>
