@@ -43,5 +43,14 @@ function videoCreate(){
 		return;
 	}
 }
+
+$(function(){
+	const url = new URL(window.location.href);
+	const urlParams = url.searchParams;
+	if(urlParams.get('error') != null){
+		alert(urlParams.get('error'));
+	}
+})
+
 	
 

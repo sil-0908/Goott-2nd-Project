@@ -110,5 +110,10 @@ public class AdminServiceImpl implements AdminService {
 		adminDao.addVideoActor(dto);
 	}
 
+	@Override
+	public String check(AdminETCDto dto) {
+		return adminDao.check(dto);
+	}
+
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

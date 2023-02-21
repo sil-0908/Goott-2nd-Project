@@ -1,7 +1,6 @@
 /* 카테고리 장르 DB 삭제, 추가 02.19 - 장재호 */
 function delTarget(e){
 	event.target.type="submit";
-	location.href="/admin/databases/others";
 }
 /* 한번에 selectorAll하니 인식안됨 ㅡㅡ; */
 $(function(){
@@ -12,7 +11,6 @@ $(function(){
 			return;
 		}
 		event.target.type="submit";
-		location.href="/admin/databases/others"
 	})	
 	
 	$('#genreBtn').on('click',function(){
@@ -22,7 +20,6 @@ $(function(){
 			return;
 		}		
 		event.target.type="submit";
-		location.href="/admin/databases/others";
 	})	
 
 })

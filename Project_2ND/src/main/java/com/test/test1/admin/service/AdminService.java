@@ -45,5 +45,7 @@ public interface AdminService {
 
 	void addVideoActor(AdminETCDto dto);
 
+	String check(AdminETCDto dto);
+
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

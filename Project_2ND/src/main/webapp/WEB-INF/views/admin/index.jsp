@@ -195,6 +195,36 @@
 							</div>
 						</div>
 					</div>
+					
+					<div class="col-xl-6 col-lg-8">
+						<div class="card shadow mb-4">
+						<!-- Card Header - Dropdown -->
+							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+								<h6 class="m-0 font-weight-bold text-primary">주간 매출</h6>
+							</div>
+							<!-- Card Body -->
+							<div class="card-body">
+								<div class="chart-area">
+									<canvas id="salesChart"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-xl-6 col-lg-8">
+						<div class="card shadow mb-4">
+						<!-- Card Header - Dropdown -->
+							<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+								<h6 class="m-0 font-weight-bold text-primary">주간 방문자</h6>
+							</div>
+							<!-- Card Body -->
+							<div class="card-body">
+								<div class="chart-area">
+									<canvas id="visitChart"></canvas>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -203,8 +233,13 @@
 
 <input id="categoryH" type="hidden" value="${category}">
 <input id="genreH" type="hidden" value="${genre}">
+<input id="visitH" type="hidden" value="${visit}">
+<input id="salesH" type="hidden" value="${sales}">
 <script src="/resources/js/admin/category_chart.js"></script>
 <script src="/resources/js/admin/genre_chart.js"></script>
+<script src="/resources/js/admin/salesChart.js"></script>
+<script src="/resources/js/admin/visitChart.js"></script>
+
 </body>
 <script src="/resources/js/admin/admin_main.js"></script>
 </html>

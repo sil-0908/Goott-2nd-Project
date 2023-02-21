@@ -54,7 +54,7 @@ public class ApiLoginController {
 	}
 	
 	//네이버 로그인 시 로그인 데이터를 받아 가입 혹은 로그인처리 - 02.09 장재호
-	@RequestMapping(value = "naverSaved", method = RequestMethod.POST)
+	@RequestMapping(value = "naverSaved", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
 	public String naverLogin(UserDto userDto, HttpSession session) {
 		//result : 가입여부
@@ -82,5 +82,4 @@ public class ApiLoginController {
 		session.setAttribute("nickname", userDto.getNickname());
 		return "/video/list";
 	}
-
 }

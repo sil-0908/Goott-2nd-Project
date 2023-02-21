@@ -122,10 +122,9 @@
 	<insert id="addVideoActor">
 		insert into VIDEO_ACTOR(VIDEO_ID, ACTOR_ID)
 		values
-		((select V.VIDEO_ID from VIDEO V where V.TITLE=#{title}), (select A.ACTOR_ID from ACTOR A where A.`ACTOR_NAME(KOR)`=
-		<foreach collection="actor" item="actor" index="index">
-		#{actor}
-		</foreach>))	
+		<foreach collection="actor" item="actor" index="index" separator=",">
+			((select VIDEO_ID from VIDEO where TITLE=#{title}), (select ACTOR_ID from ACTOR where `ACTOR_NAME(KOR)`=#{actor}))
+		</foreach>
 	</insert>
 
 	<!-- 02.18~ 장재호 -->

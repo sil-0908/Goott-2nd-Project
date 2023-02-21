@@ -121,5 +121,9 @@ public class AdminDao {
 		ss.insert("admin.addVideoActor", dto);
 	}
 
+	public String check(AdminETCDto dto) {
+		return ss.selectOne("admin.videoCheck", dto);
+	}
+
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

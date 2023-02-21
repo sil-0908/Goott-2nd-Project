@@ -4,9 +4,28 @@ import java.util.Date;
 
 public class AlgorithmDto {
 
-	private int user_id, video_id, hit;
-	private Date last_update_date;
-	private String category_name, genre_name;
+	private int user_id, video_id, hit, amount, number;
+	private Date last_update_date, paid_date, visit_date;
+	private String category_name, genre_name;	
+	
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public Date getPaid_date() {
+		return paid_date;
+	}
+	public void setPaid_date(Date paid_date) {
+		this.paid_date = paid_date;
+	}
+	public Date getVisit_date() {
+		return visit_date;
+	}
+	public void setVisit_date(Date visit_date) {
+		this.visit_date = visit_date;
+	}
 	
 	public int getUser_id() {
 		return user_id;
@@ -45,10 +64,18 @@ public class AlgorithmDto {
 		this.genre_name = genre_name;
 	}
 	
+	public int getNumber() {
+		return number;
+	}
+	public void setNumber(int number) {
+		this.number = number;
+	}
+	
 	@Override
 	public String toString() {
 		return "{user_id : " + user_id + ", video_id : " + video_id + ", hit : " + hit + ", category_name : "
-				+ category_name + ", genre_name : " + genre_name + ", last_update_date : " + last_update_date + "}";
+				+ category_name + ", genre_name : " + genre_name + ", last_update_date : " + last_update_date + ", paid_date : " + paid_date +
+				", amount : " + amount + ", visit_date : " + visit_date + ", number : " + number + ", }";
 	}
 	
 }

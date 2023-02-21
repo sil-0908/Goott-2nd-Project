@@ -33,7 +33,8 @@ function dataDelete(){
 			type : 'post',
 			contentType: 'application/json; charset=utf-8',	
 			success:function(data){
-				alert("성공");				
+				alert("성공");
+				window.location.href="/admin/databases/video"
 			}
 		});
 	}

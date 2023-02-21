@@ -9,6 +9,7 @@ public class AdminETCDto {
 	private String title, summary, video_url, image_url, create_country, create_year, grade, category_name, genre_name, actor_name;
 	private int recommand, video_id;
 	private List<String> actor;
+	private List<Integer> videoidx;
 	
 	public String getTitle() {
 		return title;
@@ -127,6 +128,14 @@ public class AdminETCDto {
 
 	public void setActor(List<String> actor) {
 		this.actor = actor;
+	}
+
+	public List<Integer> getVideoidx() {
+		return videoidx;
+	}
+
+	public void setVideoidx(List<Integer> videoidx) {
+		this.videoidx = videoidx;
 	}
 	
 }
