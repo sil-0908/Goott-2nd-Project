@@ -31,10 +31,9 @@ public class RentalServiceImpl implements RentalService{
 		return rentalDao.getid(dto);
 	}
 
-//	미완성
-//	@Override
-//	public List<VideoDto> list(String id) {
-//		return rentalDao.list(id);
-//	}
+	@Override
+	public List<VideoDto> list(String user_id) {
+		return rentalDao.list(user_id);
+	}
 
 }
