@@ -90,10 +90,10 @@ public class VideoController {
 		
 		List<VideoDto> actor = videoService.actor(video_id);
 		
-//		detail에서 댓글목록 가져오기 start - 02.21 장민실
+//		원댓글목록 가져오기 start - 02.21 장민실
 		List<CommentDto> list = commentService.replyList(video_id);
 		mv.addObject("replyList", list);
-//		detail에서 댓글목록 가져오기 end
+//		원댓글목록 가져오기 end
 		
 		mv.addObject("dto", videoService.detail(video_id));
 		mv.addObject("detail", actor);

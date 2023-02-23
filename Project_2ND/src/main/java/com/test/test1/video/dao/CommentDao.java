@@ -15,19 +15,38 @@ public class CommentDao {
 	@Autowired
 	SqlSession sqlSession;
 
-//	video detail 내 댓글등록 02.20 장민실
+//	원댓글등록 02.20 장민실
 	public void insert(CommentDto dto) {
 		sqlSession.insert("comment.insert", dto);
 	}
+	
+//	원댓글 등록할때 pid값 자동증가를 위해 DB의 마지막 pid값 가져오기
+	public int get_pid(CommentDto c_dto) {
+		return sqlSession.selectOne("comment.get_pid", c_dto);
+	}
 
-//	video detail 내 댓글목록 불러오기 02.21 장민실
+//	원댓글목록 불러오기 02.21 장민실
 	public List<CommentDto> replyList(int video_id) {
 		return sqlSession.selectList("comment.replyList", video_id);
 	}
-
-	public List<CommentDto> getPid(CommentDto c_dto) {
-		return sqlSession.selectList("comment.get_pid", c_dto);
+	
+//	대댓글 목록 불러오기 02.23 장민실
+	public List<CommentDto> cocomList(int pid) {
+		return sqlSession.selectList("comment.cocomList", pid);
 	}
+
+//	댓글 삭제 02.23 장민실
+	public void delete(int comment_id) {
+		sqlSession.delete("comment.delete", comment_id);
+	}
+
+	public void edit(CommentDto dto) {
+		sqlSession.update("comment.edit", dto);
+	}
+
+
+
+
 
 
 

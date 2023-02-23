@@ -139,11 +139,15 @@
 	margin-left: 0.5rem;
 }
 
-#co_comment_btn {
+#co_comment_list {
 	margin-left: 0.5rem;
 }
 
-#btnUpdate {
+.cocom_list_btn {
+	margin-left: 0.5rem;
+}
+
+#comment_update {
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 }
