@@ -34,6 +34,8 @@
 		</div>
 	</div>
 </div>
+<input id="alarmSubejct" type="hidden" value="${data.q_subject}">
+<input id="alarmID" type="hidden" value="${data.id}">
 <script src="/resources/js/board/qna_answer.js"></script>
 </body>
 </html>

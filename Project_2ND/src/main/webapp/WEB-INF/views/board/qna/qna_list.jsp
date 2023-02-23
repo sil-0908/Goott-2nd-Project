@@ -15,13 +15,12 @@
 <!-- ******* -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.0-rc.3/jquery-ui.min.js"></script>
 </head>
-
 <body>
 <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
 <%@ include file="/WEB-INF/views/common/alarm.jsp" %>
 <div id="navArea"></div>
-
 <!-- 검색 -->
 <div class="s003">
 	<form name="form1">
@@ -141,6 +140,13 @@
 	<input id="optionH" type="hidden" name="option" value="${pageMaker.cri.option}">
 	</form>		
 </div>
+<!-- 알람 섹션 -->
+<div id="alarmDiv">
+<i id="alarmI" class="fas fa-bell"></i>
+<ul id="alarmUL">
+</ul>
+</div>
+
 <script src="/resources/js/board/qna_list.js"></script>
 <script src="/resources/js/board/searchbar.js"></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js></script>

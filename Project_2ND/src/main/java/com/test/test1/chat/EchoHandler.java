@@ -43,22 +43,38 @@ public class EchoHandler extends TextWebSocketHandler{
 		sessions.add(session);
 	}
 	
+	//JS에서 메세지 받을 때.
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {// 메시지
-
+	
 		for(WebSocketSession single : sessions) {
-			String id = message.getPayload();
-			int count = alarmDao.selectAlarmCount(id);
+			String msg = message.getPayload();
+			String[] str = msg.split(",");
+			//JS에서 원하는대로 send하여 해당 기능 별 알람 구현
+			//질문에 답변 달렸을 때(질문자 ID와 제목 들고옴)
+			if(str != null && str.length == 2) {
+				String id = str[0];
+				String q_subject = str[1];
+				int count = alarmDao.selectAlarmCount(id); //알람이 존재할 때
+			}		
 			
 			System.out.println(single.getId());
 			System.out.println(session.getId());
 			System.out.println(single.getAttributes().get("user_id"));
 			System.out.println(session.getAttributes().get("user_id"));
-			//리스트에 담긴 세션의 id와 메세지를 보내줄 세션의 id가 같고, uchkList가 0이 아닐 경우 메세지 전송
-			if(single.getId().equals(session.getId()) && count != 0) {
-				TextMessage sendMsg = new TextMessage(id + "님 새 알림이 있습니다");
+			
+			//세션값이 같을때, 알람보낼 것이 있을 때만 전송 -> 로그인 한 사용자가 처음으로 알람 받는 순간임
+			//해당 sendMsg에 DB정보 넣어서 체크 안된 알람 전부 전송하기
+			if(single.getId().equals(session.getId())) {
+				TextMessage sendMsg = new TextMessage("알람 발생");
 				single.sendMessage(sendMsg);
 			}
+
+			//Websocketsession을 handshake Inteceptor을 통해 httpsession값을 가져올 수 있음
+			//System.out.println(single.getAttributes().get("user_id"));
+			//System.out.println(session.getAttributes().get("user_id"));
+				
+
 		}
 	}
 	

@@ -4,6 +4,8 @@ const popup = document.querySelector('.popup');
 const contentArea = document.querySelector('#contentArea');
 const question_id = document.querySelector('input[name=question_id]').value;
 const btnCenter = document.querySelector('#btnCenter');
+const q_subject = document.querySelector('#alarmSubejct').value;
+const alarmID = document.querySelector('#alarmID').value;
 
 function modal(e){ //답변 on-off
 	//답변보기 눌렸을 때 받아와서 띄워줌		
@@ -40,15 +42,18 @@ function answerCreate(){
 		alert("답변을 입력해 주세요");
 		return;
 	}
-	console.log(question_id, contentArea.value);
+	let id = $('input[name="id"]').val();
+	
+	/* 알람 기능 추가 - 02.23 장재호 */
 	$.ajax({
-		url : '/answerCreate',
+		url : '/qna/answerCreate',
 		type : 'post',
-		data : {"question_id" : question_id, "answer" : contentArea.value},		
+		data : {"question_id" : question_id, "answer" : contentArea.value, "id" : alarmID},		
         success : function(data){
+        	/* alarm.jsp -> sock 변수 선언 해 둔 socket 생성 시 */
         	if(sock){
         		alert("소켓");
-        		let socketMsg = $('input[name="id"]').val();
+        		let socketMsg = id + "," + q_subject; /* 작성자와 question_id 보냄. */
     			alert(socketMsg);
     			sock.send(socketMsg);
         	}

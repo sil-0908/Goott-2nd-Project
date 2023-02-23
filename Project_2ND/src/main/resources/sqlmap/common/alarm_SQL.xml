@@ -5,17 +5,17 @@
 	<select id="alarmSelect" resultType="int">
 		select count(*)
 		  from ALARM
-		 where USER_ID = (select ID from USER where ID=#{id})
+		 where USER_ID = (select USER_ID from USER where ID=#{id})
 	</select>
 	
-	<select id="checkUser">
+	<select id="checkUser" resultType="String">
 		select USER_ID
 		  from USER
 		  where ID=#{id}
 	</select>
 	
 	<insert id="addQna">
-		insert into (USER_ID, CODE, PREFIX)
-		values ((select USER_ID from USER where ID=#{id}), ("NewPost"), ("QNA게시판"))
+		insert into ALARM (USER_ID, CODE, PREFIX)
+		values ((select USER_ID from USER where ID=#{id}), "NewPost", "QNA게시판")
 	</insert>
 </mapper>

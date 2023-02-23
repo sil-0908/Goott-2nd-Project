@@ -34,8 +34,52 @@ li {
 	margin-top : 10px !important;
 }
 
+/* 알람창 - 02.23 장재호 */
+@keyframes vibration {
+  0% {
+    transform: rotate(30deg);
+    color : #2426DC;
+  }
+  
+  50%{
+    transform: rotate(-30deg);
+    color : white;
+  }
+  
+  100% {
+    transform: rotate(30deg);
+    color : #2426DC;
+  }
+}
 
-/*********/
+#alarmDiv{
+	text-align : right;
+	min-width : 300px;
+	max-width : 300px;
+	position : fixed;
+	left : 82%;
+	top : 10%;
+}
+
+#alarmDiv #alarmI{
+	cursor : pointer;
+	font-size : 50px;
+	color : white;
+	animation: vibration .5s infinite;
+	will-change: transform;	
+	margin-bottom : 10px;
+}
+	
+#alarmDiv #alarmUL{
+	background-color : white;
+	visibility : hidden;
+}
+
+#alarmDiv #alarmUL visible{
+	visibility : visible;
+}
+
+/*********************************************/
 
 body {
   background-color: var(--bg);

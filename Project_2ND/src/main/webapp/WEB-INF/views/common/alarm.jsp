@@ -26,15 +26,9 @@ function connectWs(){
 	};
 
 	ws.onmessage = function(event) {
-		console.log("onmessage"+event.data);
-		let $socketAlert = $('div#socketAlert');
-		$socketAlert.html(event.data)
-		$socketAlert.css('display', 'block');
-		
-		setTimeout(function(){
-			$socketAlert.css('display','none');
-			
-		}, 5000);
+		let newAlarm = '';
+		newAlarm += '<th scope="col">' + event.data + "</th>"
+		$('#alarmUL').append(newAlarm);
 	};
 
 	ws.onclose = function() {
