@@ -106,8 +106,9 @@ public class AdminController {
 	
 	//selectbox를 통한 다중 삭제 - 02.18 장재호
 	@RequestMapping(value="/admin/userDeletes", method=RequestMethod.POST)
-	public void userDeletes(@RequestBody List<Integer> delArr) {
+	public String userDeletes(@RequestBody List<Integer> delArr) {
 		adminService.deletes(delArr);
+		return "redirect:/admin/userlist";
 	}
 	
 	//관리자 VIDEO CRUD를 위한 VIDEO DB페이지 - 02.19 장재호
@@ -232,6 +233,7 @@ public class AdminController {
 		
 		mv.addObject("data", adminService.getCategory());
 		mv.addObject("datasec", adminService.getGenre());		
+		mv.addObject("datathr", adminService.getActor());
 		mv.setViewName("admin/admin_otherdb");		
 		return mv;
 	}
@@ -249,6 +251,12 @@ public class AdminController {
 		return "redirect:/admin/databases/others";
 	}
 	
+	@RequestMapping("/admin/addActor")
+	public String addActor(String actor_name) {
+		adminService.addActorDb(actor_name);
+		return "redirect:/admin/databases/others";
+	}
+	
 	@RequestMapping("/admin/delCategory")
 	public String delCategory(String category_name) {
 		try {
@@ -263,6 +271,16 @@ public class AdminController {
 	public String delGenre(String genre_name) {
 		try {
 			adminService.delGenre(genre_name);
+		}catch(Exception e) {
+			return "redirect:/admin/databases/others";
+		}
+		return "redirect:/admin/databases/others";
+	}
+	
+	@RequestMapping("/admin/delActor")
+	public String delActor(String actor_name) {
+		try {
+			adminService.delActor(actor_name);
 		}catch(Exception e) {
 			return "redirect:/admin/databases/others";
 		}

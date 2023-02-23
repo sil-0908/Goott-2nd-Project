@@ -187,7 +187,7 @@
 			<div class="section">
 			    <div class="slider">
 					<c:forEach var="row" items="${dto}">
-						<c:if test="${row.category_id == '3' && fn:containsIgnoreCase(row.title, searchText)}">
+						<c:if test="${row.category_id == '2' && fn:containsIgnoreCase(row.title, searchText)}">
 							<div class="conta">
 								<a href="/video/detail?video_id=${row.video_id}"> <img src="${row.image_url}" alt="Image not found"></a>
 							      <span style="display:none">${row.title}</span>

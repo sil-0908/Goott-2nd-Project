@@ -14,10 +14,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!-- ******* -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 </head>
 
 <body>
 <%@ include file="/WEB-INF/views/common/navbar.jsp" %>
+<%@ include file="/WEB-INF/views/common/alarm.jsp" %>
 <div id="navArea"></div>
 
 <!-- 검색 -->
@@ -49,7 +51,7 @@
 	</form>
 </div>
 <div class="container">
-	<input class="createBtn"type="button" value="질문등록" onclick="location.href='/qna/create'">
+		<input class="createBtn"type="button" value="질문등록" onclick="location.href='/qna/create'">
 	<c:if test="${sessionScope.user_id == 'admin' && sessionScope.nickname == 'admin'}">
 		<input class="deleteBtn"type="button" value="삭제하기" onclick="qnaDelete()">
 	</c:if>
@@ -89,7 +91,7 @@
 							<input class="delID" type="hidden" value="${list.question_id}"> 
 						</th>
 						<td>
-							<c:if test="${list.password != ''}">
+							<c:if test="${list.password != '' && list.password != null}">
 								<span><i class="fa-solid fa-lock"></i></span>
 								<input class="passwordInput" type="hidden" value="${list.password}">	
 							</c:if>${list.question_id}

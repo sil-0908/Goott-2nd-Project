@@ -26,16 +26,22 @@ public interface AdminService {
 	List<AdminETCDto> getCategory();
 
 	List<AdminETCDto> getGenre();
+	
+	List<AdminETCDto> getActor();
 
 	void addCategory(String category_name);
 
 	void addGenre(String genre_name);
+	
+	void addActorDb(String actor_name);
 
 	void delCategory(String category_name);
 
 	void delGenre(String genre_name);
 
 	void addActor(String[] actor);
+	
+	void delActor(String actor_name);
 
 	void addVideo(AdminETCDto dto);
 
@@ -46,6 +52,9 @@ public interface AdminService {
 	void addVideoActor(AdminETCDto dto);
 
 	String check(AdminETCDto dto);
+
+
+
 
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

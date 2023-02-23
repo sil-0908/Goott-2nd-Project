@@ -67,6 +67,12 @@
 		select `GENRE_NAME(KOR)` as GENRE_NAME
 		  from GENRE
 	</select>
+	
+	<select id="getActor" resultType="com.test.test1.admin.dto.AdminETCDto">
+		select `ACTOR_NAME(KOR)` as ACTOR_NAME
+		  from ACTOR
+		 order by `ACTOR_NAME(KOR)` asc
+	</select>
 
 	<insert id="addCategory">
 		insert into CATEGORY(CATEGORY_NAME)
@@ -76,6 +82,11 @@
 	<insert id="addGenre">
 		insert into GENRE(`GENRE_NAME(KOR)`)
 		select #{genre_name} from dual where not exists(select `GENRE_NAME(KOR)` from GENRE where `GENRE_NAME(KOR)`=#{genre_name})
+	</insert>
+	
+	<insert id="addActorDb">
+		insert into ACTOR(`ACTOR_NAME(KOR)`)			  
+		select #{actor_name} from dual where not exists(select `ACTOR_NAME(KOR)` from ACTOR where `ACTOR_NAME(KOR)`=#{actor_name})
 	</insert>
 	
 	<delete id="delCategory">
@@ -100,6 +111,11 @@
 		values
 		<foreach collection="list" item="actor" index="index" separator=",">(#{actor})</foreach>
 	</insert>
+	
+	<delete id="delActor">
+		delete from ACTOR
+		 where `ACTOR_NAME(KOR)`=#{actor_name}
+	</delete>
 	
 	<insert id="addVideo">
 		insert into VIDEO(TITLE, SUMMARY, VIDEO_URL, IMAGE_URL, CREATE_COUNTRY, CREATE_YEAR, GRADE)

@@ -39,7 +39,24 @@ function answerCreate(){
 	if(contentArea.value == ''){
 		alert("답변을 입력해 주세요");
 		return;
-	}	
-	document.answerForm.action="answerCreate";
-	document.answerForm.submit();
+	}
+	console.log(question_id, contentArea.value);
+	$.ajax({
+		url : '/answerCreate',
+		type : 'post',
+		data : {"question_id" : question_id, "answer" : contentArea.value},		
+        success : function(data){
+        	if(sock){
+        		alert("소켓");
+        		let socketMsg = $('input[name="id"]').val();
+    			alert(socketMsg);
+    			sock.send(socketMsg);
+        	}
+        	else{
+        		alert("안됨");
+        	}
+        },error : function(error){
+        	console.log(error);
+        }
+	})
 }

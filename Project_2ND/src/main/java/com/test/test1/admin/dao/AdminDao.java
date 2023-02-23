@@ -67,6 +67,10 @@ public class AdminDao {
 	public List<AdminETCDto> getGenre() {
 		return ss.selectList("admin.getGenre");
 	}
+	
+	public List<AdminETCDto> getActor() {
+		return ss.selectList("admin.getActor");
+	}
 
 	public void addCategory(String category_name) {
 		ss.insert("admin.addCategory", category_name);	
@@ -75,6 +79,10 @@ public class AdminDao {
 
 	public void addGenre(String genre_name) {
 		ss.insert("admin.addGenre", genre_name);
+	}
+	
+	public void addActorDb(String actor_name) {
+		ss.insert("admin.addActorDb", actor_name);
 	}
 
 	public void delCategory(String category_name) {
@@ -103,6 +111,10 @@ public class AdminDao {
 		if(actorArr.size() > 0) {
 			ss.insert("admin.addActor", actorArr);
 		}
+	}
+	
+	public void delActor(String actor_name) {
+		ss.delete("admin.delActor", actor_name);
 	}
 
 	public void addVideo(AdminETCDto dto) {

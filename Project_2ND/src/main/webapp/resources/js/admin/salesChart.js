@@ -12,7 +12,6 @@ sales.forEach(function(data){
 		salesArr.push(data.split(" : ")[1]);
 	}
 })
-console.log(salesArr);
 salesArr.forEach(function(e){
 	salesArr2.push(e.split(" ")[2]);
 })

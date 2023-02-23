@@ -17,7 +17,6 @@ function dataDelete(){
 			delArr.push(e.parentElement.parentElement.nextElementSibling.textContent);
 		}
 	})
-	console.log(delArr);
 	
 	//삭제 선택 안하고 삭제 버튼만 클릭 시 막기
 	if(delArr.length == 0){

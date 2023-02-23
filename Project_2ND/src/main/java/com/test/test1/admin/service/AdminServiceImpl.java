@@ -64,6 +64,11 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminETCDto> getGenre() {
 		return adminDao.getGenre();
 	}
+	
+	@Override
+	public List<AdminETCDto> getActor() {
+		return adminDao.getActor();
+	}
 
 	@Override
 	public void addCategory(String category_name) {
@@ -73,6 +78,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void addGenre(String genre_name) {
 		adminDao.addGenre(genre_name);
+	}
+	
+	@Override
+	public void addActorDb(String actor_name) {
+		adminDao.addActorDb(actor_name);
 	}
 
 	@Override
@@ -88,6 +98,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void addActor(String[] actor) {
 		adminDao.addActor(actor);
+	}
+	
+	@Override
+	public void delActor(String actor_name) {
+		adminDao.delActor(actor_name);
 	}
 
 	@Override
@@ -114,6 +129,7 @@ public class AdminServiceImpl implements AdminService {
 	public String check(AdminETCDto dto) {
 		return adminDao.check(dto);
 	}
+
 
 }
 /****************************************** 02.18~ 장재호 ***********************************************/

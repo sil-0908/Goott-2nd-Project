@@ -20,6 +20,15 @@ $(function(){
 			return;
 		}		
 		event.target.type="submit";
+	})
+	
+	$('#actorBtn').on('click',function(){
+		//텅비었을경우 리턴
+		if(event.target.previousElementSibling.value == ''){
+			alert("입력 후 등록 버튼을 눌려주세요");
+			return;
+		}		
+		event.target.type="submit";
 	})	
 
 })
