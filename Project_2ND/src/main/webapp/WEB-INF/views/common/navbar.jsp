@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="/resources/css/common/navbar.css">
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-    
+
 </head>
 <body>
     <nav id="navbar">
@@ -75,7 +75,7 @@
     search_input.classList.toggle("view");
 });
 </script>
-    </nav>
+</nav>
 <footer></footer>
 </body>
 </html>

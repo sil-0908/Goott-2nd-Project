@@ -11,7 +11,7 @@ import com.test.test1.video.dto.VideoDto;
 
 @Service
 public class AdminServiceImpl implements AdminService {
-
+/****************************************** 02.18~ 장재호 ***********************************************/
 	@Autowired
 	AdminDao adminDao;
 	
@@ -64,6 +64,11 @@ public class AdminServiceImpl implements AdminService {
 	public List<AdminETCDto> getGenre() {
 		return adminDao.getGenre();
 	}
+	
+	@Override
+	public List<AdminETCDto> getActor() {
+		return adminDao.getActor();
+	}
 
 	@Override
 	public void addCategory(String category_name) {
@@ -73,6 +78,11 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void addGenre(String genre_name) {
 		adminDao.addGenre(genre_name);
+	}
+	
+	@Override
+	public void addActorDb(String actor_name) {
+		adminDao.addActorDb(actor_name);
 	}
 
 	@Override
@@ -85,4 +95,41 @@ public class AdminServiceImpl implements AdminService {
 		adminDao.delGenre(genre_name);
 	}
 
+	@Override
+	public void addActor(String[] actor) {
+		adminDao.addActor(actor);
+	}
+	
+	@Override
+	public void delActor(String actor_name) {
+		adminDao.delActor(actor_name);
+	}
+
+	@Override
+	public void addVideo(AdminETCDto dto) {
+		adminDao.addVideo(dto);
+	}
+
+	@Override
+	public void addVideoCategory(AdminETCDto dto) {
+		adminDao.addVideoCategory(dto);
+	}
+
+	@Override
+	public void addVideoGenre(AdminETCDto dto) {
+		adminDao.addVideoGenre(dto);
+	}
+
+	@Override
+	public void addVideoActor(AdminETCDto dto) {
+		adminDao.addVideoActor(dto);
+	}
+
+	@Override
+	public String check(AdminETCDto dto) {
+		return adminDao.check(dto);
+	}
+
+
 }
+/****************************************** 02.18~ 장재호 ***********************************************/

@@ -16,6 +16,10 @@ public interface AlgorithmService {
 
 	public List<AlgorithmDto> categoryRate();
 
-	public List<AlgorithmDto> genreRate();	
+	public List<AlgorithmDto> genreRate();
+
+	public List<AlgorithmDto> weeklyVisitor();
+
+	public List<AlgorithmDto> weeklySales();	
 	
 }

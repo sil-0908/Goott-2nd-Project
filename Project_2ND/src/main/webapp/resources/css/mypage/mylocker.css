@@ -1,32 +1,13 @@
-:root{
-    --logo-color:#FFCC00;
-    --logo-size: 60px;
-    --title-size: 25px;
-    --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-}
-
-
-body {
-    background-color: var(--bg);
-}
 
 /* section start */
 /* 내보관함 전체 영역 */
 .slider {
-	display: flex;
-	justify-content:center;
-	align-items:center;
-	height: 350px;
-	overflow: hidden;
-	position: relative;
+   display: flex;
+   justify-content:center;
+   align-items:center;
+   height: 350px;
+   overflow: hidden;
+   position: relative;
 }
 
 /* 영상 이미지 출력 영역 */
@@ -37,7 +18,7 @@ body {
 }
 
 /* 영상 이미지 크기 조정 */
-img{
+.video_div img{
    height: 270px;
    width: 90%;
 }

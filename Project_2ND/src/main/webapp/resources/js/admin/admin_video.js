@@ -17,25 +17,23 @@ function dataDelete(){
 			delArr.push(e.parentElement.parentElement.nextElementSibling.textContent);
 		}
 	})
-	console.log(delArr);
 	
 	//삭제 선택 안하고 삭제 버튼만 클릭 시 막기
 	if(delArr.length == 0){
 		alert("삭제할 게시물을 선택해 주세요");
 		return;
 	}
-	
-	console.log(delArr);
-	
+		
 	//삭제 게시물 PK 전송
 	if(confirm("삭제하시겠습니까?")){
 		$.ajax({
-			url : 'userDeletes',
+			url : '/admin/videoDataDeletes',
 			data : JSON.stringify(delArr),
 			type : 'post',
 			contentType: 'application/json; charset=utf-8',	
 			success:function(data){
-				alert("성공");				
+				alert("성공");
+				window.location.href="/admin/databases/video"
 			}
 		});
 	}

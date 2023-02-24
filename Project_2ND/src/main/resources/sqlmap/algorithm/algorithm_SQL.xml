@@ -40,5 +40,19 @@
 		group by G.GENRE_ID;
 		]]>
 	</select>
+	
+	<select id="weeklyVisitor" resultType="com.test.test1.algorithm.dto.AlgorithmDto">
+		(select VISIT_DATE, NUMBER
+		   from VISIT
+		  order by VISIT_DATE
+		   desc limit 7) order by VISIT_DATE asc		 
+	</select>
+	
+	<select id="weeklySales" resultType="com.test.test1.algorithm.dto.AlgorithmDto">
+		(select PAID_DATE, AMOUNT
+		   from PAID
+		  order by PAID_DATE
+		   desc limit 7) order by PAID_DATE asc
+	</select>
 
 </mapper>

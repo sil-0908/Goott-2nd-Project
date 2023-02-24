@@ -1,6 +1,9 @@
 .dbDiv{
 	margin : 20px;
 }
+.container-fluid{
+	display : flex;
+}
 
 table{
 	text-align : center;

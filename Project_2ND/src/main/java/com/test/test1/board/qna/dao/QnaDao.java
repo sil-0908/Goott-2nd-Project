@@ -25,7 +25,12 @@ public class QnaDao {
 	}
 	
 	public void qCreate(QnaDto qnaDto) {
-		ss.insert("qna.q_create", qnaDto);
+		if(qnaDto.getId().equals("guest")) {
+			ss.insert("qna.q_create", qnaDto);
+		}
+		else {
+			ss.insert("qna.q_create2",qnaDto);
+		}
 
 	}
 

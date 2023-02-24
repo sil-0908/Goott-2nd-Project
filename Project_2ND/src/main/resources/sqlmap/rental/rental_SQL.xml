@@ -23,7 +23,6 @@
 		]]>
 	</select>
 
-
 	<select id="list" resultType="com.test.test1.video.dto.VideoDto">
 		<![CDATA[
 		select distinct v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL
@@ -32,7 +31,7 @@
 		    on v.VIDEO_ID = r.VIDEO_ID
 		  left join USER u
 		    on r.USER_ID = u.USER_ID
-		 where u.USER_ID = (select USER_ID from USER where ID = "${id}")
+		 where u.USER_ID = (select USER_ID from USER where ID = "${user_id}")
 		]]>
 	</select>
 

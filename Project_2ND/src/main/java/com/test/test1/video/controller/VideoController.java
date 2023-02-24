@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.test1.video.dto.CommentDto;
 import com.test.test1.video.dto.RentalDTO;
 import com.test.test1.algorithm.service.AlgorithmService;
 import com.test.test1.video.dto.VideoDto;
+import com.test.test1.video.service.CommentService;
 import com.test.test1.video.service.RentalService;
 import com.test.test1.video.service.VideoService;
 
@@ -34,6 +36,9 @@ public class VideoController {
 	// 내보관함 페이지 구현 - 02.16 김범수
 	@Autowired
 	RentalService rentalService;
+	
+	@Autowired
+	CommentService commentService;
 	
 	@RequestMapping(value="/create", method = RequestMethod.GET)
 	public ModelAndView create() {
@@ -84,6 +89,12 @@ public class VideoController {
 /*--------------------------------------------------------------------------------------------------------------------*/
 		
 		List<VideoDto> actor = videoService.actor(video_id);
+		
+//		원댓글목록 가져오기 start - 02.21 장민실
+		List<CommentDto> list = commentService.replyList(video_id);
+		mv.addObject("replyList", list);
+//		원댓글목록 가져오기 end
+		
 		mv.addObject("dto", videoService.detail(video_id));
 		mv.addObject("detail", actor);
 		mv.setViewName("video/detail");
