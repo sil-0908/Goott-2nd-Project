@@ -32,7 +32,6 @@ hello
 <input type="button" value="동영상게시판" onclick="location.href='/video/list'">
 <input type="button" value="QnA" onclick="location.href='/qna/list'">
 <input type="button" value="결제하기" onclick="modal()">	
-<input type="button" value="내보관함" onclick="location.href='/mypage/mylocker'">
 </c:if>
 <c:if test="${message=='success'}">
 	<h1>

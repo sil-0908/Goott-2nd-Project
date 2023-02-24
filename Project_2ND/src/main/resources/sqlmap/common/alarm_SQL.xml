@@ -11,7 +11,7 @@
 	<select id="checkUser" resultType="String">
 		select USER_ID
 		  from USER
-		  where ID=#{id}
+		 where ID=#{id}
 	</select>
 	
 	<insert id="addQna">

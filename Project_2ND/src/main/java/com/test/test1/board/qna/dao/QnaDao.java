@@ -17,8 +17,7 @@ public class QnaDao {
 	
 	public List<QnaDto> list(Criteria cri) throws Exception {		
 		return ss.selectList("qna.q_list", cri);
-	}
-	
+	}	
 
 	public int listCount(Criteria cri) {
 		return ss.selectOne("qna.listCount", cri);

@@ -189,7 +189,6 @@ public class UserController {
 	public String findid(String email, ModelAndView mv) {
 		// email을 이용해 해당 email정보를 가진 id값을 가져옴
 		String id = userService.findid(email);
-		System.out.println(id);
 		if(id == null) {
 			return "";
 		}

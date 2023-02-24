@@ -11,30 +11,39 @@ public class AlarmDto {
 	public int getIdx() {
 		return idx;
 	}
+	
 	public void setIdx(int idx) {
 		this.idx = idx;
 	}
+	
 	public int getUser_id() {
 		return user_id;
 	}
+	
 	public void setUser_id(int user_id) {
 		this.user_id = user_id;
 	}
+	
 	public String getCode() {
 		return code;
 	}
+	
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
 	public String getChecked() {
 		return checked;
 	}
+	
 	public void setChecked(String checked) {
 		this.checked = checked;
 	}
+	
 	public String getPrefix() {
 		return prefix;
 	}
+	
 	public void setPrefix(String prefix) {
 		this.prefix = prefix;
 	}

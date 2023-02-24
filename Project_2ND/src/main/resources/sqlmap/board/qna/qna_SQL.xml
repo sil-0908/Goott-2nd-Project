@@ -78,17 +78,5 @@
 		 where QUESTION_ID=#{question_id}
 	</select>
 
-	<!-- autoincrement 초기화 쿼리문 -> 추후 수정 - 02.07 장재호 -->
-	<!-- 
-	<select id="lastNum" resultType="int">
-		select QUESTION_ID
-		  from QNA
-		 order by QUESTION_ID asc limit 1
-	</select>
-	
-	<update id="autoincrementReset">
-		alter table QNA
-		auto_increment=${asc}
-	</update> -->
 	
 </mapper>

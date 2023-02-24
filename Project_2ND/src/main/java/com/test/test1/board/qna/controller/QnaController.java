@@ -80,6 +80,7 @@ public class QnaController {
 		}
 		return mv;
 	}
+	
 	//수정하기 - 02.07 장재호
 	@RequestMapping(value="modify", method=RequestMethod.POST, produces="application/text; charset=UTF-8;")
 	@ResponseBody
@@ -93,16 +94,14 @@ public class QnaController {
 	public String qnaDelete(int question_id) {
 		qnaService.delete(question_id);
 		return "redirect:/qna/list";
-	}
-	
+	}	
 	
 	//selectbox를 통한 다중 삭제 - 02.17 장재호
 	@RequestMapping(value="qnaDeletes", method=RequestMethod.POST)
 	public String qnaDeletes(@RequestBody List<Integer> delArr) {
 		qnaService.deletes(delArr);
 		return "/qna/qna_list";
-	}
-	
+	}	
 	
 	//답변 생성 - 02.18 장재호
 	//웹소켓 알람기능 추가 - 02.23장재호
@@ -119,4 +118,6 @@ public class QnaController {
 	public String answerGet(int question_id) {
 		return qnaService.answerGet(question_id);
 	}
+	
+	
 }

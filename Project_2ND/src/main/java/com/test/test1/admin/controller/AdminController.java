@@ -201,7 +201,6 @@ public class AdminController {
 	//VIDEO DELETE - 02.19 장재호
 	@RequestMapping("/videoDataDelete")
 	public String videoDel(int delVideoID) {
-		System.out.println(delVideoID);
 		adminService.videoDel(delVideoID);
 		return "redirect:/admin/databases/video";
 	}
@@ -209,7 +208,6 @@ public class AdminController {
 	//체크박스 다중삭제 - 02.19 장재호	
 	@RequestMapping(value="/admin/videoDataDeletes", method=RequestMethod.POST)
 	public String videoDels(@RequestBody List<Integer> delArr) {
-		System.out.println("dasdsadasdas" + delArr);
 		adminService.videoDels(delArr);
 		return "redirect:/admin/databases/video";
 	}

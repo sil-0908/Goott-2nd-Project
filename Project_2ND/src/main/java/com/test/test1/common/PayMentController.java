@@ -47,7 +47,6 @@ public class PayMentController {
 	//관리자 페이지 코드 추가 - 02.19 장재호
 	@RequestMapping(value="/paySuccess", method=RequestMethod.POST)
 	public void paySuccess(String amount,String ID) {
-		System.out.println("amount = " + amount + "ID = " + ID);
 		int tmp = Integer.parseInt(amount);
 		int months = tmp/15000; //개월 수로 치환 -> 기간 갱신을 위함
 		Map<String, Object> map = new HashMap<>();

@@ -9,12 +9,15 @@ public class Criteria {
 	public String getKeyword() {
 		return keyword;
 	}
+	
 	public void setKeyword(String keyword) {
 		this.keyword = keyword;
 	}
+	
 	public String getOption() {
 		return option;
 	}
+	
 	public void setOption(String option) {
 		this.option = option;
 	}

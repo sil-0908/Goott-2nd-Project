@@ -66,9 +66,6 @@ public class QnaServiceImpl implements QnaService {
 		return qnaDao.answerGet(question_id);
 	}
 
-//	@Override
-//	public List<QnaDto> qnaSearch(Criteria cri) {
-//		return qnaDao.qnaSearch(cri);
-//	}
+
 
 }
