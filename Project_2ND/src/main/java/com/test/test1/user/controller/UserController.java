@@ -54,34 +54,7 @@ public class UserController {
 	    return "user/signin";
 	}
 	
-	// 회원정보가진 개인정보페이지 연결  23/02/16 김지혜 
-	@RequestMapping(value= "/info_mydetail")
-	public String detail(HttpSession session, Model model) {
-		// 유저 아이디를 통해 세션에서 정보 가져오기 
-		String user_id =(String) session.getAttribute("user_id").toString();		
-		UserDto dto = userService.detail(user_id); // 회원 ID를 사용하여 해당 회원의 정보를 찾아 dto에 넣는다.
-		model.addAttribute("data", dto); // 위에서 받은 회원정보를 model을 통해 view에 보내준다.
-		return "user/mydetail"; 		
-	}	
 	
-	// VIEW에서 받아온 값을 이용하여 수정페이지  _ 23/02/18~23/02/20  
-	@RequestMapping(value="/info_modify", method=RequestMethod.GET)
-	public ModelAndView detailModify( HttpSession session, ModelAndView mv) {
-	// 세션에서 정보가져오기 
-		String user_id = (String) session.getAttribute("user_id").toString();
-		UserDto list = userService.detail(user_id);
-		mv.addObject("list", list);
-		mv.setViewName("user/info_modify");
-		return mv;
-	}	
-	
-	// VIEW에서 받아온 값을 이용하여 수정페이지  _ 23/02/18~
-	@RequestMapping(value="/info_modify", method=RequestMethod.POST)
-	public String detailModify(@ModelAttribute UserDto dto) {
-		// 재 입력된 값을 받아 db 저장. (수정된 내용이던, 수정되지 않은 내용이던 수정하기 버튼을 누르면 디비에 새롭게 update되도록 처리)
-		userService.infoModify(dto);
-		return "redirect:/user/info_mydetail";
-	}
 	
 	//로그인 기능  - 01.31 장재호
 	//PW -> DB 전송 시 암호화 추가 - 02.06 장재호
@@ -132,7 +105,7 @@ public class UserController {
 		//DB 들어가서 email 중복값이 있으면 check1값은 
 		String check1 = null;
 		check1 = userService.emailCheck(email); //check : email파라미터로 DB조회 결과
-		if(check1 != null) return true;         //중복없음
+		if(check1 != null) return true;         //중복있음
 		else return false;		
 	}
 	
@@ -171,7 +144,6 @@ public class UserController {
 		Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111; // checkNum에 랜덤한 인증번호가 담김
 		logger.info("인증번호" + checkNum); 
-		
 		// 이메일 보내기 양식
         String setFrom = "GoottFlex";
         String toMail = email;
