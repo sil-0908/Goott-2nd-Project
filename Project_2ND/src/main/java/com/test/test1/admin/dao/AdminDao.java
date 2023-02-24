@@ -1,5 +1,6 @@
 package com.test.test1.admin.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,7 +12,7 @@ import com.test.test1.video.dto.VideoDto;
 
 @Repository
 public class AdminDao {
-
+/****************************************** 02.18~ 장재호 ***********************************************/
 	@Autowired
 	SqlSession ss;
 	
@@ -66,13 +67,22 @@ public class AdminDao {
 	public List<AdminETCDto> getGenre() {
 		return ss.selectList("admin.getGenre");
 	}
+	
+	public List<AdminETCDto> getActor() {
+		return ss.selectList("admin.getActor");
+	}
 
 	public void addCategory(String category_name) {
-		ss.insert("admin.addCategory", category_name);
+		ss.insert("admin.addCategory", category_name);	
+		
 	}
 
 	public void addGenre(String genre_name) {
 		ss.insert("admin.addGenre", genre_name);
+	}
+	
+	public void addActorDb(String actor_name) {
+		ss.insert("admin.addActorDb", actor_name);
 	}
 
 	public void delCategory(String category_name) {
@@ -83,4 +93,49 @@ public class AdminDao {
 		ss.delete("admin.delGenre", genre_name);
 	}
 
+	//배우는 여러명이기 때문에 걸러냇음
+	public void addActor(String[] actor) {
+		List<String> delArr = new ArrayList<>();
+		List<String> actorArr = new ArrayList<>();
+		
+		delArr = ss.selectList("admin.actorCheck", actor);
+		for(String a : actor) actorArr.add(a);
+
+		for(int i=0; i<delArr.size(); i++) {
+			for(int j=0; j<actorArr.size(); j++) {
+				if(delArr.get(i).equals(actorArr.get(j))) {
+					actorArr.remove(j);
+				}
+			}
+		}
+		if(actorArr.size() > 0) {
+			ss.insert("admin.addActor", actorArr);
+		}
+	}
+	
+	public void delActor(String actor_name) {
+		ss.delete("admin.delActor", actor_name);
+	}
+
+	public void addVideo(AdminETCDto dto) {
+		ss.insert("admin.addVideo", dto);
+	}
+
+	public void addVideoCategory(AdminETCDto dto) {
+		ss.insert("admin.addVideoCategory", dto);
+	}
+
+	public void addVideoGenre(AdminETCDto dto) {
+		ss.insert("admin.addVideoGenre", dto);
+	}
+
+	public void addVideoActor(AdminETCDto dto) {
+		ss.insert("admin.addVideoActor", dto);
+	}
+
+	public String check(AdminETCDto dto) {
+		return ss.selectOne("admin.videoCheck", dto);
+	}
+
 }
+/****************************************** 02.18~ 장재호 ***********************************************/

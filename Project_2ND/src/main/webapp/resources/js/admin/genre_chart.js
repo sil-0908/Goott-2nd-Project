@@ -2,7 +2,6 @@
 const gen = document.querySelector('#genreH').value.split(", "); //카테고리 별 조회수 값
 const hitArr2 = new Array();
 const genreArr = new Array();
-
 /* 배열에 장르 정보, 조회수 정보만 뽑아옴 */
 gen.forEach(function(data){
 	if(data.indexOf('hit') != -1){
@@ -12,6 +11,7 @@ gen.forEach(function(data){
 		genreArr.push(data.split(" : ")[1]);
 	}
 })
+
 
 /* 차트에 칼라 부여*/
 const rgb2 = new Array();

@@ -29,7 +29,7 @@ public class ApiLoginController {
 	    	return result;
 	    }
 	    else {//기가입 유저 -> 세션추가 후 로그인처리
-	    	session.setAttribute("user_email", userDto.getEmail());
+	    	session.setAttribute("user_id", userDto.getEmail());
 	    	session.setAttribute("nickname", apiLoginService.apiSignIn(userDto.getEmail()));
 	    	//nickname alert를 위한 리턴
 	    	result = session.getAttribute("nickname").toString();    	
@@ -42,7 +42,7 @@ public class ApiLoginController {
 		userDto.setCreate_type("kakao"); //create_type 입력
 		apiLoginService.apiSignUp(userDto); //가입 진행
 		//자동로그인 처리를 위한 세션에 삽입
-		session.setAttribute("user_email", userDto.getEmail()); 
+		session.setAttribute("user_id", userDto.getEmail()); 
 		session.setAttribute("nickname", userDto.getNickname());
 		return "/video/list";
 	}
@@ -54,7 +54,7 @@ public class ApiLoginController {
 	}
 	
 	//네이버 로그인 시 로그인 데이터를 받아 가입 혹은 로그인처리 - 02.09 장재호
-	@RequestMapping(value = "naverSaved", method = RequestMethod.POST)
+	@RequestMapping(value = "naverSaved", method = RequestMethod.POST, produces="application/json; charset=utf-8")
 	@ResponseBody
 	public String naverLogin(UserDto userDto, HttpSession session) {
 		//result : 가입여부
@@ -82,5 +82,4 @@ public class ApiLoginController {
 		session.setAttribute("nickname", userDto.getNickname());
 		return "/video/list";
 	}
-
 }

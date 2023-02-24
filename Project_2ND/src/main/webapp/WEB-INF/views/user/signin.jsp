@@ -66,7 +66,6 @@
 	</section>		
 	<footer>
 
-
 	</footer>
 <script src="/resources/js/api/google.js"></script>
 <script src="/resources/js/api/kakao.js"></script>
