@@ -161,6 +161,15 @@
 		   set EMAIL = #{email}, NICKNAME= #{nickname}, PHONE_NUM= #{phone_num}
          where ID = #{id}
 	</update>
+	
+	<!-- video detail 내 댓글등록 위해 유저정보 받아오기 02.20 장민실  -->
+	<select id="getid" resultType="int">
+		<![CDATA[
+		select USER_ID
+		  from USER
+		 where ID=#{user_id}
+		]]>
+	</select>
 
 
 </mapper>
