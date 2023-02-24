@@ -45,10 +45,10 @@ public class CommentServiceImpl implements CommentService {
 	}
 
 //	미완 주석처리
-//	@Override
-//	public void edit(CommentDto dto) {
-//		commentDao.edit(dto);
-//	}
+	@Override
+	public void edit(CommentDto dto) {
+		commentDao.edit(dto);
+	}
 
 	
 

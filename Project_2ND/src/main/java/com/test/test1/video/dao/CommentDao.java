@@ -41,9 +41,9 @@ public class CommentDao {
 	}
 
 //	미완 주석처리
-//	public void edit(CommentDto dto) {
-//		sqlSession.update("comment.edit", dto);
-//	}
+	public void edit(CommentDto dto) {
+		sqlSession.update("comment.edit", dto);
+	}
 
 	
 

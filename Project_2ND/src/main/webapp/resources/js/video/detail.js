@@ -35,18 +35,62 @@ comu_btn[0].addEventListener('click', function(){
 	   document.comt_write.action="/comt/write";
 	   document.comt_write.submit();
       });
-// 원댓글 작성하기 end
+//  원댓글 작성하기 end
+   
+// 댓글 수정 start   
+   function comt_edit_complete(commentary) {      
+      document.form1.action="/comt/edit";
+      document.form1.submit();
+   }
+   
+   function comt_edit_cancle() {
+      $(comt_edit_div).empty();
+   }
+   
+   $(".comment_update").on('click', function(e){
+      let comt_id = this.parentNode.children[1].value;
+      let comt_edit_div = this.parentNode.nextElementSibling.nextElementSibling;
+      let commentary = this.parentNode.nextElementSibling.nextElementSibling;
+      console.log(comt_id);
+      console.log(comt_edit_div);
+      comt_edit(comt_id, comt_edit_div, commentary);
+   });
+   
+   function comt_edit(comt_id, comt_edit_div, commentary) {
+      $.ajax({
+        data : {
+            'commentary' : commentary
+        },
+         type: "post",
+         url: "/comt/edit/" + comt_id,
+         success: function(edit) {
+            let cocomText = "";
+            console.log(edit);
+              cocomText += "<form >";
+              cocomText += "   <div class='com_edit_div'>";
+              cocomText += "      <textarea rows='3' cols='60' class='com_edit_text'>";
+              cocomText +=       commentary;
+              cocomText += "      </textarea>";
+              cocomText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete()' value='수정완료'></button>";
+              cocomText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle()' value='수정취소'></button>";
+              cocomText += "   </div>";
+              cocomText += "</form>";
+            $(cocomListDiv).html(cocomText);
+            window.location.reload();
+         }
+      });
+   }
+//  댓글 수정 end
    
 //  댓글 삭제 start 02.24 장민실
 	$(document).on('click', '.comment_delete', function(e){
 		e.preventDefault();
-		let comment_id = this.parentNode.children[1].value;
-		let video_id = this.parentNode.children[0].value;
+		let comment_id = this.parentNode.children[1].value;		
 		
 		$.ajax({
 			data : {
-				comment_id : comment_id,
-				video_id : video_id
+				comment_id : comment_id
+				
 			},
 			url : '/comt/delete',
 			type : 'POST',
@@ -96,6 +140,6 @@ comu_btn[0].addEventListener('click', function(){
 	}
 //  대댓글 불러와서 영역에 넣어주기 end
 
-
+    
 
 

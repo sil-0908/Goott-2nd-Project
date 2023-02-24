@@ -22,7 +22,7 @@ public interface CommentService {
 	void delete(int comment_id);
 
 // 미완 주석처리
-//	void edit(CommentDto dto);
+	void edit(CommentDto dto);
 
 	
 

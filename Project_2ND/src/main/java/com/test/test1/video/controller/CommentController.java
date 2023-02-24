@@ -89,15 +89,16 @@ public class CommentController {
 //	}
 	
 //	댓글 수정 - 미완 주석처리
-//	@RequestMapping(value="edit", method=RequestMethod.POST)
-//	@ResponseBody
-//	public String edit(int comment_id, String commentary, CommentDto dto) {
-//		dto.setComment_id(comment_id);
-//		dto.setCommentary(commentary);
-//		int video_id = dto.getVideo_id();
-//		commentService.edit(dto);
-//		return "redirect:/video/detail?video_id="+video_id;
-//	}
+	@RequestMapping(value="edit/{comment_id}", method=RequestMethod.POST)
+	@ResponseBody
+	public String edit(int comment_id, String commentary, CommentDto dto) {
+		System.out.println("코멘트아이디임 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ : " + comment_id);
+		dto.setComment_id(comment_id);
+		dto.setCommentary(commentary);
+		int video_id = dto.getVideo_id();
+		commentService.edit(dto);
+		return "redirect:/video/detail?video_id="+video_id;
+	}
 //	public ResponseEntity<List<CommentDto>> edit(@PathVariable("comment_id") int comment_id) {
 //		List<CommentDto> edit_list = commentService.edit(comment_id);
 //		return new ResponseEntity<List<CommentDto>>(edit_list, HttpStatus.OK);
