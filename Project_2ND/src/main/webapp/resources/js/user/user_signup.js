@@ -242,7 +242,7 @@ $(function(){
          if(i==1 && p==1 && n==1 && c==1 && d==1){
             alert("회원가입 최종 성공!");
             $('#submit').attr('type', 'submit'); // type속성 submit로 변환하여 넘어갈 수 있도록 함. 
-            document.form1.action="/"; // 페이지 이동
+            document.form1.action="user/signup"; // 페이지 이동  - 02.23 김범수 회원가입 안되서 수정
          }else{
             alert("회원가입 실패. 다시 입력확인해주세요. ");
          }

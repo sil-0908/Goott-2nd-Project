@@ -197,6 +197,10 @@ section {
 	color: red;
 }
 
+#submit_id_text{
+	color: red;
+}
+
 /* 02.11 - 팝업창 추가 */
 /* 팝업창 배경*/
 .popup{

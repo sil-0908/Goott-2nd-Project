@@ -108,3 +108,20 @@ $(function() {
 	}
 });
 
+
+//////////////////////// 추천수 정렬 - 02.21 김범수 //////////////
+$(function() {
+	$('.arrowbtn').click(function() {
+		// 내림차순 정렬
+		if(this.className == "fa-solid fa-angle-down arrowbtn"){
+			$('.sort').attr('value',"asc1"); // 내림차순 값 부여
+			$('#hit_form').submit();
+		}
+		// 오름차순 정렬
+		else {
+			$('.sort').attr('value',"desc1");
+			$('#hit_form').submit(); // 오름차순 값 부여
+		}
+	})
+	
+})

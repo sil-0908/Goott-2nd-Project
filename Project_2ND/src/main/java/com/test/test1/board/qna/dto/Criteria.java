@@ -4,7 +4,7 @@ public class Criteria {
     
     private int page;
     private int perPageNum;
-	private String keyword, option;
+	private String keyword, option, sort;
 	
 	public String getKeyword() {
 		return keyword;
@@ -44,7 +44,17 @@ public class Criteria {
         return perPageNum;
     }
     
-    public void setPerPageNum(int pageCount) {
+    //////// 추천수 정렬을 위해 추가 - 02.21 김범수 ///////////
+    public String getSort() {
+		return sort;
+	}
+    
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+	/////////////////////////////////////////////////
+	
+	public void setPerPageNum(int pageCount) {
         int cnt = this.perPageNum;
         if(pageCount != cnt) {
             this.perPageNum = cnt;
@@ -55,7 +65,7 @@ public class Criteria {
     
     @Override
     public String toString() {
-    	return "Criteria[page = " + page + ", perPageNum = " + perPageNum + "]";
+    	return "Criteria[page = " + page + ", perPageNum = " + perPageNum + ", sort =" + sort + "]";
     }
     
 }

@@ -19,19 +19,19 @@ import com.test.test1.video.service.VideoService;
 public class MypageController {
 	
 //	미완성 
-//	@Autowired
-//	RentalService rentalService;
-//	
-//	@Autowired 
-//	VideoService videoService;
-//	
-//	@RequestMapping(value="/mylocker", method = RequestMethod.GET)
-//	public ModelAndView mylocker(ModelAndView mv, HttpSession session) {
-//		String id = (String) session.getAttribute("user_id");
-//		List<VideoDto> list = rentalService.list(id);
-//		mv.addObject("dto", list);
-//		mv.setViewName("mypage/mylocker");
-//		return mv;
-//	}
+	@Autowired
+	RentalService rentalService;
+	
+	@Autowired 
+	VideoService videoService;
+	
+	@RequestMapping(value="/mylocker", method = RequestMethod.GET)
+	public ModelAndView mylocker(ModelAndView mv, HttpSession session) {
+		String id = (String) session.getAttribute("user_id");
+		List<VideoDto> list = rentalService.list(id);
+		mv.addObject("dto", list);
+		mv.setViewName("mypage/mylocker");
+		return mv;
+	}
 }
 

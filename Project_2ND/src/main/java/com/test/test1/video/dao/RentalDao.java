@@ -32,8 +32,8 @@ public class RentalDao {
 	}
 
 	// 미완성 - 해당 유저가 찜한 video 리스트를 불러옴
-//	public List<VideoDto> list(String id) {
-//		return sqlSession.selectList("rental.list", id);
-//	}
+	public List<VideoDto> list(String id) {
+		return sqlSession.selectList("rental.list", id);
+	}
 
 }

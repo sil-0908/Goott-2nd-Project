@@ -16,10 +16,10 @@
 
 body {
     background-color: var(--bg);
-    
 }
 
 /* section start */
+/* 내보관함 전체 영역 */
 .slider {
 	display: flex;
 	justify-content:center;
@@ -29,50 +29,32 @@ body {
 	position: relative;
 }
 
-.section{
-	height: 350px;
-    display: flex;
+/* 영상 이미지 출력 영역 */
+.video_div{
+   margin: 10px;
+   height: 280px;
+   width:250px;
 }
 
-.sub-menu {
-	transform: translateX(40px);
-}
-
+/* 영상 이미지 크기 조정 */
 img{
-	height: 270px;
-	width: 90%;
+   height: 270px;
+   width: 90%;
 }
 
-/* 이미지 링크 div */
-.conta{
-	margin: 10px;
-}
-
-/* 슬라이드 버튼 시작 */
+/* 슬라이드 버튼(화살표) 크기 / 색상 조정*/
 .slick-arrow {
-	padding:5px;
+    padding:5px;
     background-color: var(--bg);
-    border: none;   
-}
-
-.fa-solid {
+    border: none;
 	color: white;
 	font-size: 50px;
 }
-/* 슬라이드 버튼 끝 */
 
-/* 메인텍스트 시작 */
-.section_main_text{
-    font-size: 28px;
-    color: #ffff;
-    text-align: center;
-    align-items: center;
-}
-h1{
-   color: #ffff;
-   padding:20px 0 0 60px; 
-
+/* 내보관함 text */
+.mylocker_text{
+	font-size: var(--title-size);
+	color: var(--text-color);
+	padding: 3vh 0 0 5vw; 
 }
 /* section end */
-
-

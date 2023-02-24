@@ -32,9 +32,9 @@ public class RentalServiceImpl implements RentalService{
 	}
 
 //	미완성
-//	@Override
-//	public List<VideoDto> list(String id) {
-//		return rentalDao.list(id);
-//	}
+	@Override
+	public List<VideoDto> list(String id) {
+		return rentalDao.list(id);
+	}
 
 }
