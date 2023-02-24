@@ -97,6 +97,12 @@ public class UserServiceImpl implements UserService{
 	public void addVisit() {
 		userDao.addVisit();
 	}
+	
+//	video detail 내 댓글등록 위해 유저정보 받아오기 02.20 장민실
+	@Override
+	public int getid(String user_id) {
+		return userDao.getid(user_id);
+	}
 
 
 

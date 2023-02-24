@@ -41,6 +41,16 @@ public class AlgorithmServiceImpl implements AlgorithmService {
 		return algorithmDao.genreRate();
 	}
 
+	@Override
+	public List<AlgorithmDto> weeklyVisitor() {
+		return algorithmDao.weeklyVisitor();
+	}
+
+	@Override
+	public List<AlgorithmDto> weeklySales() {
+		return algorithmDao.weeklySales();
+	}
+
 	
 	
 }

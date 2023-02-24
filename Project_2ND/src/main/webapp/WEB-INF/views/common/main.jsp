@@ -28,11 +28,10 @@ hello
 <form action="/user/sign_out">
 	<input type="submit" value="로그아웃">
 </form>
-<input type="button" value="마이페이지" onclick="location.href='/user/info_mydetail'">
+<input type="button" value="마이페이지" onclick="location.href='/mypage/info_mydetail'">
 <input type="button" value="동영상게시판" onclick="location.href='/video/list'">
 <input type="button" value="QnA" onclick="location.href='/qna/list'">
 <input type="button" value="결제하기" onclick="modal()">	
-<input type="button" value="내보관함" onclick="location.href='/mypage/mylocker'">
 </c:if>
 <c:if test="${message=='success'}">
 	<h1>
@@ -45,9 +44,8 @@ hello
 	</h1>
 </c:if>
 
-<input type="button" value="회원 조회" onclick="location.href='user/list'">
 <form name="adminform">
-	<input type="button" value="관리자페이지" onclick="admin()">
+	<input type="button" value="관리자페이지" onclick="location.href='/admin'">
 </form>
 
 <script>
@@ -60,7 +58,7 @@ $(function(){
 	}
 })
 function admin(){
-	document.adminform.action="admin";
+	document.adminform.action="/admin";
 	document.adminform.submit();
 }
 </script>

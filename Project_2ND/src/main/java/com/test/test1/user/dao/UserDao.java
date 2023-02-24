@@ -125,4 +125,9 @@ public class UserDao {
 		else sqlSessionTemplate.update("user.todayAddVisit");
 	}
 	
+//	video detail 내 댓글등록 위해 유저정보 받아오기 02.20 장민실
+	public int getid(String user_id) {
+		return sqlSessionTemplate.selectOne("user.getid", user_id);
+	}
+	
 }

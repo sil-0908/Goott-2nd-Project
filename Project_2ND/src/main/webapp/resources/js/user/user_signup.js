@@ -20,6 +20,7 @@
    // 전화번호 표현식 맞지 않을 경우 제어_ 정규표현식   23/02/01 김지혜 
    // - (하이픈) 자동 추가 기능으로  수정  23/02/09 김지혜 
    const autoHyphen = function(target) {
+	   console.log(target);
        target.value = target.value
        .replace(/[^0-9]/g, '')
        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
@@ -33,7 +34,7 @@ $(function(){
    $("#email_btn").click(function() {
       var email = $('#email').val();
       if(!email.includes('@')){
-         $('#emailcheck').html('올바른 이메일을 입력해 주세요')
+         $('#emailcheck').html('올바른 이메일을 입력해 주세요');
       }
       else{
          $.ajax({
@@ -41,11 +42,13 @@ $(function(){
             url : 'emailCheck',
             data : {'email':email},
             success:function(tf){
-               $('#emailcheck').html("이메일 사용 가능합니다");
+            	if(tf){
+                    $('#emailcheck').html("중복된 이메일입니다.");
+                }
+            	else{
+                    $('#emailcheck').html("이메일 사용 가능합니다");
+            	}
             },
-            error : function(tf) {
-               $('#emailcheck').html("이메일이 중복되었습니다");
-            }
          })         
       }
    });   
@@ -166,7 +169,15 @@ $(function(){
       $('#emailchk').click(function(e) {
          // 일단, 시스템 자체의 submit을 막음
          e.preventDefault();
-         
+         const spanText = document.querySelector('#emailcheck'); // 이메일 중복체크관련 메시지
+         if(spanText.textContent.length == 0){
+        	 alert("이메일 중복체크를 해주세요");
+        	 return;
+         }
+         if(spanText.textContent.indexOf("중복") != -1){
+        	 alert("이미 사용중인 이메일입니다.");
+        	 return;
+         }
          // 사용자가 입력한 이메일
          email = $("#email").val();
          
@@ -221,6 +232,7 @@ $(function(){
             return;
          }
       }); // event end
+      
 }); // function end   
    
    
@@ -242,7 +254,7 @@ $(function(){
          if(i==1 && p==1 && n==1 && c==1 && d==1){
             alert("회원가입 최종 성공!");
             $('#submit').attr('type', 'submit'); // type속성 submit로 변환하여 넘어갈 수 있도록 함. 
-            document.form1.action="/"; // 페이지 이동
+            document.form1.action="user/signup"; // 페이지 이동  - 02.23 김범수 회원가입 안되서 수정
          }else{
             alert("회원가입 실패. 다시 입력확인해주세요. ");
          }
@@ -253,7 +265,7 @@ $(function(){
    
 // 호출할 PWtest함수 ----------------------------------------------------------------------------   
    
-   // 비밃번호 유효성검사 함수 (가입하기를 클릭했을 때, 비밀번호와 비밀번호확인이 같을시 이 함수 호출) 
+   // 비밀번호 유효성검사 함수 (가입하기를 클릭했을 때, 비밀번호와 비밀번호확인이 같을시 이 함수 호출) 
    function PWtest() {
    // 비밀번호 유효성검사  (23/02/08 김지혜) 
 

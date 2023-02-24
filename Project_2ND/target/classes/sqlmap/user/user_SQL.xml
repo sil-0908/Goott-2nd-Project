@@ -55,8 +55,8 @@
 	<update id="paid">
 		<![CDATA[
 		update USER
-		  set SUBSCRIBE_YN="Y", PAID_M=PAID_M+${months}, EXPIRATION_DATE=(date_add(NOW(),interval ${months} month))
-		where USER_ID = (select U.USER_ID from (select USER_ID from USER where ID="${ID}") AS U);
+		   set SUBSCRIBE_YN="Y", PAID_M=PAID_M+${months}, EXPIRATION_DATE=(date_add(NOW(),interval ${months} month))
+		 where USER_ID = (select U.USER_ID from (select USER_ID from USER where ID="${ID}") AS U);
 		]]>
 	</update>
 	
@@ -112,9 +112,9 @@
 	<!-- 유저 결제 시 PAID DB등록 - 02.19 장재호 -->
 	<select id="todayPaidCheck" resultType="String">
 		<![CDATA[
-			select PAID_DATE
-			  from PAID
-			 where date_format(PAID_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d');
+		select PAID_DATE
+		  from PAID
+		 where date_format(PAID_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d');
 		 ]]>
 	</select>
 	
@@ -125,9 +125,9 @@
 	
 	<update id="todayAddPaid">
 		<![CDATA[
-			update PAID
-			   set AMOUNT=AMOUNT+#{months}
-			 where date_format(PAID_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d')
+		update PAID
+		   set AMOUNT=AMOUNT+#{months}
+		 where date_format(PAID_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d')
 		 ]]>
 	</update>
 	<!-- 유저 결제 시 PAID DB등록 끝 -->
@@ -135,9 +135,9 @@
 	<!-- 유저 방문자수 - 02.19 장재호 -->
 	<select id="todayVisitCheck" resultType="String">
 		<![CDATA[
-			select VISIT_DATE
-			  from VISIT
-			 where date_format(VISIT_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d');
+		select VISIT_DATE
+		  from VISIT
+		 where date_format(VISIT_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d');
 		 ]]>
 	</select>
 	
@@ -148,9 +148,9 @@
 	
 	<update id="todayAddVisit">
 		<![CDATA[
-			update VISIT
-			   set NUMBER=NUMBER+1
-			 where date_format(VISIT_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d')
+		update VISIT
+		   set NUMBER=NUMBER+1
+		 where date_format(VISIT_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d')
 		 ]]>
 	</update>	
 	<!-- 유저 방문자수 끝 -->
@@ -161,6 +161,15 @@
 		   set EMAIL = #{email}, NICKNAME= #{nickname}, PHONE_NUM= #{phone_num}
          where ID = #{id}
 	</update>
+	
+	<!-- video detail 내 댓글등록 위해 유저정보 받아오기 02.20 장민실  -->
+	<select id="getid" resultType="int">
+		<![CDATA[
+		select USER_ID
+		  from USER
+		 where ID=#{user_id}
+		]]>
+	</select>
 
 
 </mapper>

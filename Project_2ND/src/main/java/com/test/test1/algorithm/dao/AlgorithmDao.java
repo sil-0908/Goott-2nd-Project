@@ -37,6 +37,14 @@ public class AlgorithmDao {
 
 	public List<AlgorithmDto> genreRate() {
 		return session.selectList("algo.genre");
+	}
+
+	public List<AlgorithmDto> weeklyVisitor() {
+		return session.selectList("algo.weeklyVisitor");
+	}
+
+	public List<AlgorithmDto> weeklySales() {
+		return session.selectList("algo.weeklySales");
 	}	
 	
 }

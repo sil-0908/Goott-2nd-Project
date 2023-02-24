@@ -1,5 +1,4 @@
 $(function() {
-	
 	/* URL을 통한 접근 시 에러 View에 alert - 02.18 장재호 */
 	const url = new URL(window.location.href);
 	const urlParams = url.searchParams;
@@ -80,7 +79,7 @@ $(function() {
 			//2.비밀번호 입력 값이 다를 경우 접근 불가
 			const passwordCheck = prompt("비밀번호를 입력하세요", "비밀번호 입력");
 			if(passwordCheck != $('.passwordInput').val()){ 
-				alert("비밀번호가 틀립니다");
+				alert("비밀번호가 일치하지 않습니다.");
 				return;
 			}
 			else location.href='/qna/list/'+locker.textContent;
@@ -118,7 +117,7 @@ function qnaDelete(){
 			type : 'post',
 			contentType: 'application/json; charset=utf-8',	
 			success:function(data){
-				location.href="/qna/list";
+				alert("삭제 완료");
 			}
 		});
 	}

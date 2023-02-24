@@ -85,18 +85,23 @@
 			<!-- Begin Page Content -->
 			<div class="container-fluid">
 				<div class="dbDiv">
-					<table>
-						<thead>
-							<th>카테고리명</th>
-						</thead>
+				<c:set var="i" value="0" />
+				<c:set var="j" value="5" />
+					<table border="1">
+					<h3>카테고리</h3>					
 						<tbody>
 						<c:forEach var="list" items="${data}">
+							<c:if test="${i%j == 0}">						
 							<tr>
+							</c:if>
 								<form name="delCategory" action="/admin/delCategory">
 									<input type="hidden" name="category_name" value="${list.category_name}">						
 									<td>${list.category_name}<button class="deleteBtn" type="button" onclick="delTarget(this)">삭제</button></td>
 								</form>
+							<c:if test="${i%j == j-1}">
 							</tr>
+							</c:if>
+							<c:set var="i" value="${i+1}" />	
 						</c:forEach>
 						</tbody>
 					</table>
@@ -107,24 +112,58 @@
 				</div>
 				
 				<div class="dbDiv">
-					<table>
-						<thead>
-							<th>장르명</th>
-						</thead>
+				<c:set var="i" value="0" />
+				<c:set var="j" value="5" />
+					<table border="1">
+					<h3>장르</h3>			
 						<tbody>
 						<c:forEach var="list" items="${datasec}">
+							<c:if test="${i%j == 0}">						
 							<tr>
+							</c:if>
 								<form name="delGenre" action="/admin/delGenre">
 									<input type="hidden" name="genre_name" value="${list.genre_name}">
 									<td>${list.genre_name}<button class="deleteBtn" type="button" onclick="delTarget(this)">삭제</button></td>
 								</form>
+							<c:if test="${i%j == j-1}">
 							</tr>
+							</c:if>
+							<c:set var="i" value="${i+1}" />							
 						</c:forEach>
 						</tbody>
 					</table>
 					<form name="newGenre" action="/admin/addGenre">
 						<input type="text" name="genre_name" placeholder="추가할  장르명">
 						<button id="genreBtn" class="deleteBtn" type="button">등록</button>
+					</form>
+				</div>
+			</div>
+			
+			<div class="container-fluid">				
+				<div class="dbDiv">
+				<c:set var="i" value="0" />
+				<c:set var="j" value="7" />
+					<table border="1">
+					<h3>배우</h3>
+						<tbody>
+						<c:forEach var="list" items="${datathr}">
+							<c:if test="${i%j == 0}">
+							<tr>
+							</c:if>
+								<form name="delActor" action="/admin/delActor">
+									<input type="hidden" name="actor_name" value="${list.actor_name}">						
+									<td>${list.actor_name}<button class="deleteBtn" type="button" onclick="delTarget(this)">삭제</button></td>
+								</form>
+							<c:if test="${i%j == j-1}">
+							</tr>
+							</c:if>
+							<c:set var="i" value="${i+1}" />
+						</c:forEach>
+						</tbody>
+					</table>
+					<form name="newActor" action="/admin/addActor">
+						<input type="text" name="actor_name" placeholder="추가할 배우명">
+						<button id="actorBtn" class="deleteBtn" type="button">등록</button>	
 					</form>
 				</div>
 			</div>

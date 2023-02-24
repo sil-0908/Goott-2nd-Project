@@ -45,7 +45,7 @@ public class PayMentController {
 	
 	//결제 완료 시 DB에 결제 완료 처리 - 02.15 장재호
 	//관리자 페이지 코드 추가 - 02.19 장재호
-	@RequestMapping("paySuccess")
+	@RequestMapping(value="/paySuccess", method=RequestMethod.POST)
 	public void paySuccess(String amount,String ID) {
 		int tmp = Integer.parseInt(amount);
 		int months = tmp/15000; //개월 수로 치환 -> 기간 갱신을 위함

@@ -17,25 +17,23 @@ function dataDelete(){
 			delArr.push(e.parentElement.parentElement.nextElementSibling.textContent);
 		}
 	})
-	console.log(delArr);
 	
 	//삭제 선택 안하고 삭제 버튼만 클릭 시 막기
 	if(delArr.length == 0){
 		alert("삭제할 게시물을 선택해 주세요");
 		return;
 	}
-	
-	console.log(delArr);
-	
+		
 	//삭제 게시물 PK 전송
 	if(confirm("삭제하시겠습니까?")){
 		$.ajax({
-			url : 'userDeletes',
+			url : '/admin/videoDataDeletes',
 			data : JSON.stringify(delArr),
 			type : 'post',
 			contentType: 'application/json; charset=utf-8',	
 			success:function(data){
-				alert("성공");				
+				alert("성공");
+				window.location.href="/admin/databases/video"
 			}
 		});
 	}
@@ -108,3 +106,20 @@ $(function() {
 	}
 });
 
+
+//////////////////////// 추천수 정렬 - 02.21 김범수 //////////////
+$(function() {
+	$('.arrowbtn').click(function() {
+		// 내림차순 정렬
+		if(this.className == "fa-solid fa-angle-down arrowbtn"){
+			$('.sort').attr('value',"asc1"); // 내림차순 값 부여
+			$('#hit_form').submit();
+		}
+		// 오름차순 정렬
+		else {
+			$('.sort').attr('value',"desc1");
+			$('#hit_form').submit(); // 오름차순 값 부여
+		}
+	})
+	
+})

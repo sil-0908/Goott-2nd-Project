@@ -127,7 +127,22 @@
 											</th>
 											<th scope="col">IDX</th>
 											<th scope="col">제목</th>
-											<th scope="col">추천수</th>
+											<!-- 추천수 정렬을 위한 a태그 추가 - 02.21 김범수 -->
+											<th scope="col" class="hit">추천수&nbsp;
+											<form id="hit_form" action="/admin/databases/video" method="get">
+											<c:choose>
+												<c:when test="${sort == 'desc1'}"> <!-- 오름차순 정렬을 진행한 경우 -->
+													<a><i class="fa-solid fa-angle-down arrowbtn"></i><input type="hidden" name="sort" class="sort"></a>
+												</c:when>
+												<c:when test="${sort == 'asc1'}"> <!-- 내림차순 정렬을 진행한 경우 -->
+													<a><i class="fa-solid fa-angle-up arrowbtn"></i><input type="hidden" name="sort" class="sort"></a>
+												</c:when>
+												<c:otherwise><!-- 처음 지정값 -->
+													<a><i class="fa-solid fa-angle-up arrowbtn"></i><input type="hidden" name="sort" class="sort"></a>
+												</c:otherwise>
+											</c:choose>
+											</form></th>
+											<!-- 02.21 김범수 -->
 											<th scope="col">등급</th>											
 											<th scope="col">생성일자</th>
 										</tr>
@@ -176,7 +191,8 @@
 						    </c:if>
 						</ul>
 					</div>
-					
+					<!-- 페이징에 정렬 값을 추가 - 02.22 김범수 -->
+					<input type="hidden" name="sort" value="${pageMaker.cri.sort}"> <!-- 페이징에 해당 정렬 값을 추가-->
 					<input id="pageH" type="hidden" name="page" value="${pageMaker.cri.page}">
 					<input id="keywordH" type="hidden" name="keyword" value="${pageMaker.cri.keyword}">
 					<input id="optionH" type="hidden" name="option" value="${pageMaker.cri.option}">
@@ -185,6 +201,7 @@
 			</div>
 		</div>
 	</div>
+
 <script src="/resources/js/admin/admin_video.js"></script>
 <script src="/resources/js/board/searchbar.js"></script>
 <!-- 

@@ -17,15 +17,19 @@ public class QnaDao {
 	
 	public List<QnaDto> list(Criteria cri) throws Exception {		
 		return ss.selectList("qna.q_list", cri);
-	}
-	
+	}	
 
 	public int listCount(Criteria cri) {
 		return ss.selectOne("qna.listCount", cri);
 	}
 	
 	public void qCreate(QnaDto qnaDto) {
-		ss.insert("qna.q_create", qnaDto);
+		if(qnaDto.getId().equals("guest")) {
+			ss.insert("qna.q_create", qnaDto);
+		}
+		else {
+			ss.insert("qna.q_create2",qnaDto);
+		}
 
 	}
 
