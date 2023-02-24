@@ -40,9 +40,14 @@ public class CommentDao {
 		sqlSession.delete("comment.delete", comment_id);
 	}
 
-	public void edit(CommentDto dto) {
-		sqlSession.update("comment.edit", dto);
-	}
+//	미완 주석처리
+//	public void edit(CommentDto dto) {
+//		sqlSession.update("comment.edit", dto);
+//	}
+
+	
+
+	
 
 
 

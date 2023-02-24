@@ -44,10 +44,15 @@ public class CommentServiceImpl implements CommentService {
 		commentDao.delete(comment_id);
 	}
 
-	@Override
-	public void edit(CommentDto dto) {
-		commentDao.edit(dto);
-	}
+//	미완 주석처리
+//	@Override
+//	public void edit(CommentDto dto) {
+//		commentDao.edit(dto);
+//	}
+
+	
+
+	
 
 
 

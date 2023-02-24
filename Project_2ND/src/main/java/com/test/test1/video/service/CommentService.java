@@ -21,7 +21,12 @@ public interface CommentService {
 //	댓글 삭제 02.23 장민실
 	void delete(int comment_id);
 
-	void edit(CommentDto dto);
+// 미완 주석처리
+//	void edit(CommentDto dto);
+
+	
+
+	
 
 
 

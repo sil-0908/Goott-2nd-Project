@@ -66,23 +66,51 @@ public class CommentController {
 	   return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
 	}
 	
-//	대댓글 작성하기
-//	대댓글임을 인식하기 위해 depth값 1로 고정해주기, 최신순 인식은 날짜로 batis에서
-//	depth=1
+//	대댓글 작성하기 - 미완 주석처리
+//	@RequestMapping(value="cocomwrite", method=RequestMethod.POST)
+//	public ModelAndView cocomInsert(VideoDto v_dto, CommentDto c_dto, HttpSession session, ModelAndView mv) {
+//		String user_id = session.getAttribute("user_id").toString();
+//		String nickname = session.getAttribute("nickname").toString();
+//		int id = userService.getid(user_id);
+//		
+//		int depth = 1;
+//		c_dto.setDepth(depth);
+//		
+//		c_dto.setUser_id(id);
+//		c_dto.setNickname(nickname);	
+//		
+//		int video_id = v_dto.getVideo_id();
+//		c_dto.setVideo_id(video_id);
+//		
+//		commentService.cocomInsert(c_dto);
+//		mv.addObject("c_dto", c_dto);
+//		mv.setViewName("redirect:/video/detail?video_id="+video_id);
+//		return mv;
+//	}
 	
-//	댓글 수정
-	@RequestMapping(value="edit", method=RequestMethod.POST)
-	public String edit(CommentDto dto) {
-		int video_id = dto.getVideo_id();
-		commentService.edit(dto);
-		return "redirect:/video/detail?video_id="+video_id;
-	}
+//	댓글 수정 - 미완 주석처리
+//	@RequestMapping(value="edit", method=RequestMethod.POST)
+//	@ResponseBody
+//	public String edit(int comment_id, String commentary, CommentDto dto) {
+//		dto.setComment_id(comment_id);
+//		dto.setCommentary(commentary);
+//		int video_id = dto.getVideo_id();
+//		commentService.edit(dto);
+//		return "redirect:/video/detail?video_id="+video_id;
+//	}
+//	public ResponseEntity<List<CommentDto>> edit(@PathVariable("comment_id") int comment_id) {
+//		List<CommentDto> edit_list = commentService.edit(comment_id);
+//		return new ResponseEntity<List<CommentDto>>(edit_list, HttpStatus.OK);
+//	}
+
 	
 //	댓글 삭제 02.23 장민실
 	@RequestMapping("delete")
+	@ResponseBody
 	public String delete(int video_id, int comment_id) {
 		commentService.delete(comment_id);
-		return "redirect:/video/detail?video_id="+video_id;
+//		return null로 준 이유 : detail.js에서 따로 페이지 새로고침 처리해서
+		return null;
 	}
 	
 	

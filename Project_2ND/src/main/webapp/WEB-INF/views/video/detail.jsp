@@ -67,11 +67,13 @@
 
         <!-- comment wirte area start -->
         <form name="comt_write" method="post">
-        	<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
-			<div class="comment_area">
-				<input id="comment_input" type="text" autocomplete="off" spellcheck="false" name="commentary" placeholder="댓글을 작성해 주세요">
-				<input id="comment_write_btn" type="button" value="작성하기">
-			</div>
+        	<c:if test="${sessionScope.nickname != null}">
+	        	<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
+				<div class="comment_area">
+					<input id="comment_input" type="text" autocomplete="off" spellcheck="false" name="commentary" placeholder="댓글을 작성해 주세요">
+					<input id="comment_write_btn" type="button" value="작성하기">
+				</div>
+			</c:if>
         </form>
         <!-- comment wirte area end -->
 
@@ -97,21 +99,23 @@
 									<i class="far fa-thumbs-down comm_btn" id="bad"></i>
 									<p>싫어요</p>
 								--%>
-									<%-- 값을 못받아와서 페이지 내에 값 넣어줌 --%>
+									<%-- 값을 못받아와서 페이지 내에 hidden으로 값 넣어줌 --%>
 									<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
-									<input type="hidden" id="c_id_input" name="comment_id" value="${comt.comment_id}">
+									<input type="hidden" class="c_id_input" name="comment_id" value="${comt.comment_id}">
 									<input type="hidden" class="c_pid_input" name="pid" value="${comt.pid}">
 									<c:if test="${sessionScope.nickname != null}">
 										<input type="button" class="cocom_write_btn" value="답글작성">
 									</c:if>
 									<input type="button" class="cocom_list_btn" value="답글보기">
 									<c:if test="${sessionScope.nickname == comt.nickname}">
-										<input type="button" id="comment_update" value="수정">
-										<input type="button" id="comment_delete" value="삭제">
+										<input type="button" class="comment_update" value="수정">
+										<input type="button" class="comment_delete" value="삭제">
 									</c:if>
 								</div>
 								<%-- 대댓글 자리 --%>
 								<div class="co_comment_list"></div>
+								<%-- 수정 자리 --%>
+								<div class="comt_edit"></div>
 								<hr id="com_list_hr">								
 							</td>						
 						</c:if>						
