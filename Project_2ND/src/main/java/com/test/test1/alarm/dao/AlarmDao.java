@@ -1,9 +1,12 @@
-package com.test.test1.common;
+package com.test.test1.alarm.dao;
+
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.test.test1.alarm.dto.AlarmDto;
 import com.test.test1.board.qna.dto.QnaDto;
 
 /* 02.23 장재호 */
@@ -21,6 +24,14 @@ public class AlarmDao {
 		if(ss.selectOne("alarm.checkUser", qnaDto) != null) {
 			ss.insert("alarm.addQna", qnaDto);
 		}
+	}
+
+	public List<AlarmDto> selectAlarm(String hsid) {
+		return ss.selectList("alarm.select", hsid);
+	}
+
+	public void alarmDel(int idx) {
+		ss.delete("alarm.delete", idx);
 	}
 
 }

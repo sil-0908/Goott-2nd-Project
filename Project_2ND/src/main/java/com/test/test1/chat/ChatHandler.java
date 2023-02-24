@@ -19,8 +19,8 @@ import com.test.test1.alarm.dto.AlarmDto;
 //Dao DI를위해 사용. 원래 해당 애너테이션도 의존성주입 다른곳에 해주려고 쓰는데 왠지 모르겠는데 DAO null됨
 // -> Bean으로 등록되어 있어서 따로 스프링의 객체라고 주입시켜줘야함.
 @Component
-@RequestMapping("/echo")
-public class EchoHandler extends TextWebSocketHandler{
+@RequestMapping("/chat")
+public class ChatHandler extends TextWebSocketHandler{
 	
 	@Autowired
 	private AlarmDao alarmDao;
@@ -50,37 +50,7 @@ public class EchoHandler extends TextWebSocketHandler{
 	
 		for(WebSocketSession single : sessions) {
             single.sendMessage(new TextMessage(message.getPayload()));
-//			String msg = message.getPayload();
-//			String[] str = msg.split(",");
-//			//JS에서 원하는대로 send하여 해당 기능 별 알람 구현
-//			//질문에 답변 달렸을 때(질문자 ID와 제목 들고옴)
-//			if(str != null && str.length == 2) {
-//				String id = str[0];
-//				String q_subject = str[1];
-//				int count = alarmDao.selectAlarmCount(id); //알람이 존재할 때
-//			}		
-			
-			//세션아이디
-			String hsid = (String) single.getAttributes().get("user_id");
-			
-			//세션값이 같을때, 알람보낼 것이 있을 때만 전송 -> 로그인 한 사용자가 처음으로 알람 받는 순간임
-			//해당 sendMsg에 DB정보 넣어서 체크 안된 알람 전부 전송하기
-			if(single.getId().equals(session.getId())) {
-				//체크 안된 알림들만 담아서 View
-				List<AlarmDto> dto = new ArrayList<>();
-				dto = alarmDao.selectAlarm(hsid);
-				for(AlarmDto alarm : dto) {
-					int idx = alarm.getIdx();
-					String prefix = alarm.getPrefix();
-					String code = alarm.getCode();
-					if(code.equals("NewPost")) {
-						code = "답변이 등록되었습니다.";
-					}
-					TextMessage sendMsg = new TextMessage("("+idx+")" + prefix + "에 " + code);
-					single.sendMessage(sendMsg);
-				}
-			}
-		}
+		}	
 	}
 	
 	@Override

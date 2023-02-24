@@ -1,3 +1,4 @@
+<!-- 02.23 장재호 -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -7,8 +8,19 @@
 </head>
 <input type="hidden" value="${sessionScope.user_id}" id="socketuserID">
 <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>    
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<link href="/resources/css/common/alarm.css" rel="stylesheet">
+<body>
+<!-- 알람 섹션 -->
+<div id="alarmDiv">
+<i id="alarmI" class="fas fa-bell"></i>
+<ul id="alarmUL">
+</ul>
+</div>
+</body>    
 <script>
+const alarmUL = document.querySelector("#alarmUL");
+const alarmI = document.querySelector("#alarmI");
 var sock = null;
 
 $(document).ready(function(){
@@ -26,9 +38,13 @@ function connectWs(){
 	};
 
 	ws.onmessage = function(event) {
-		let newAlarm = '';
-		newAlarm += '<th scope="col">' + event.data + "</th>"
-		$('#alarmUL').append(newAlarm);
+		/* 받을 알람이 있을 때 */
+		if(event.data.length>0){
+			let newAlarm = '';
+			newAlarm += '<li scope="col">' + event.data + "</li>"
+			$('#alarmUL').append(newAlarm);	
+		}
+
 	};
 
 	ws.onclose = function() {
@@ -37,6 +53,31 @@ function connectWs(){
 
 };
 
+/* 알람창 추가 */
+
+alarmI.addEventListener('click', function(){
+	alarmUL.classList.toggle('visible');
+	$(this).stop(false, false);
+});
+
+alarmUL.addEventListener('click', function(e){
+	var endIdx = e.target.textContent.indexOf(")");
+	var idx = e.target.textContent.substr(1, endIdx-1);
+
+	$.ajax({
+		url : '/alarmDel',
+		data : {"idx" : idx},
+		type : 'post',
+		success : function(data){
+			console.log(data);
+			alert("성공");
+		}
+	})
+	
+	$(e.target).remove();
+	
+})
 
 </script>
 </html>
+<!------------------------------------------------------------->

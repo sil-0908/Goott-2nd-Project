@@ -52,14 +52,13 @@ function answerCreate(){
         success : function(data){
         	/* alarm.jsp -> sock 변수 선언 해 둔 socket 생성 시 */
         	if(sock){
-        		alert("소켓");
         		let socketMsg = id + "," + q_subject; /* 작성자와 question_id 보냄. */
-    			alert(socketMsg);
     			sock.send(socketMsg);
         	}
         	else{
-        		alert("안됨");
+        		alert("소켓 전송 실패");
         	}
+        	window.location.href="/qna/list";
         },error : function(error){
         	console.log(error);
         }

@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.test1.alarm.dao.AlarmDao;
 import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.board.qna.dto.PageMaker;
 import com.test.test1.board.qna.dto.QnaDto;
 import com.test.test1.board.qna.service.QnaService;
-import com.test.test1.common.AlarmDao;
 import com.test.test1.user.service.UserService;
 
 @Controller

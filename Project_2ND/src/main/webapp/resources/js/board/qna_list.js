@@ -1,12 +1,3 @@
-/* 알람창 추가 - 02.23 장재호 */
-const alarmUL = document.querySelector("#alarmUL");
-const alarmI = document.querySelector("#alarmI");
-
-alarmI.addEventListener('click', function(){
-	alarmUL.classList.toggle('visible');
-	$(this).stop(true, true);
-})
-
 $(function() {
 	/* URL을 통한 접근 시 에러 View에 alert - 02.18 장재호 */
 	const url = new URL(window.location.href);

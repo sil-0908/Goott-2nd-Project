@@ -8,6 +8,11 @@
 		values (#{id}, #{q_subject}, #{q_content}, #{password, jdbcType=VARCHAR})
 	</insert>
 	
+	<insert id="q_create2">
+		insert into QNA(USER_ID, ID, Q_SUBJECT, Q_CONTENT, PASSWORD)
+		values ((select USER_ID from USER where ID=#{id}), #{id}, #{q_subject}, #{q_content}, #{password, jdbcType=VARCHAR})
+	</insert>
+	
 	<select id="q_list" resultType="com.test.test1.board.qna.dto.QnaDto">
 		select QUESTION_ID, ID, Q_SUBJECT, Q_CONTENT, ANSWER, Q_CREATE_DATE, PASSWORD, ISLOGINED
 		  from QNA

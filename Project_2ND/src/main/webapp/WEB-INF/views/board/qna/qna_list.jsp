@@ -140,12 +140,6 @@
 	<input id="optionH" type="hidden" name="option" value="${pageMaker.cri.option}">
 	</form>		
 </div>
-<!-- 알람 섹션 -->
-<div id="alarmDiv">
-<i id="alarmI" class="fas fa-bell"></i>
-<ul id="alarmUL">
-</ul>
-</div>
 
 <script src="/resources/js/board/qna_list.js"></script>
 <script src="/resources/js/board/searchbar.js"></script>

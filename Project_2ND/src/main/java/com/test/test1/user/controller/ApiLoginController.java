@@ -29,7 +29,7 @@ public class ApiLoginController {
 	    	return result;
 	    }
 	    else {//기가입 유저 -> 세션추가 후 로그인처리
-	    	session.setAttribute("user_email", userDto.getEmail());
+	    	session.setAttribute("user_id", userDto.getEmail());
 	    	session.setAttribute("nickname", apiLoginService.apiSignIn(userDto.getEmail()));
 	    	//nickname alert를 위한 리턴
 	    	result = session.getAttribute("nickname").toString();    	
@@ -42,7 +42,7 @@ public class ApiLoginController {
 		userDto.setCreate_type("kakao"); //create_type 입력
 		apiLoginService.apiSignUp(userDto); //가입 진행
 		//자동로그인 처리를 위한 세션에 삽입
-		session.setAttribute("user_email", userDto.getEmail()); 
+		session.setAttribute("user_id", userDto.getEmail()); 
 		session.setAttribute("nickname", userDto.getNickname());
 		return "/video/list";
 	}
