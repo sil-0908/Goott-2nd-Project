@@ -42,7 +42,9 @@
     justify-content: center;
     align-items: center;
     height: 100%; 
-    width: 40%;   
+    width: 40%;  
+    overflow: scroll;
+    overflow: auto;
 }
 
 .actor_info {
@@ -52,6 +54,8 @@
     justify-content: center;
     height: 100%;
     width: 40%;
+    overflow: scroll;
+    overflow: auto;
 }
 
 /* movie info end */
@@ -100,15 +104,21 @@
 }
 
 #comment_write_btn {
-    width: 2.5rem;
-    height: 2rem;
+    width: 3.5rem;
+    height: 1.5rem;
     margin-top: 0.5rem;
-    margin-left: 103.7rem;
+    margin-left: 102.7rem;
 }
 
 /* comment wirte area end */
 
 /* comment list area start */
+
+.comment_list_area {
+    height: 50rem;
+    width: 110rem;
+    overflow: auto;
+}
 
 .comment_list {
     font-size: 18px;
@@ -116,12 +126,30 @@
 }
 
 #com_contents {
-    line-height: 1.7rem;
+    line-height: 2rem;
+    width: 90rem;
+    word-break: break-all;
 }
 
 .comment_btn {
     display: flex;
-    margin-left: 10rem;
+}
+
+#bad {
+	margin-left: 0.5rem;
+}
+
+#co_comment_list {
+	margin-left: 0.5rem;
+}
+
+.cocom_list_btn {
+	margin-left: 0.5rem;
+}
+
+.comment_update {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
 }
 
 .comment_btn > i {
@@ -130,7 +158,11 @@
 
 .comment_btn > p {
     font-size: 15px;
-    margin: 0.3rem 0.5rem 0 0.5rem;
+}
+
+#com_list_hr {
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 
 /* comment list area end */
