@@ -82,6 +82,8 @@
 					
 					
 					<!-- checkbox start  -->
+					
+					
 					<div id="checkbox">   
 		                             <input type='checkbox' id='selectAll' value="" /> 모두 동의 합니다 <br>
 		                             	<input type='checkbox' class="checkB" id="check1" name="check" value="">  만 14세 이상입니다<br>
