@@ -13,13 +13,10 @@
     margin: 0;
     padding: 0;
 }
-.hidden {
-  display: none;
-}
 
 body {
     background-color: var(--bg);
-    
+    overflow-x:hidden; 
 }
 
 /* navbar start */
@@ -40,6 +37,8 @@ nav{
 /* 스크롤 밑으로 내릴 때 적용할 배경색 */
 nav.scrolled {
     background-color:#24292D;
+    opacity:0.9;
+    transition: all 4s;
 }
 
 ul li {
@@ -192,21 +191,22 @@ ul li {
 
 /* main video start */
 #main_video {
-    background-color:var(--bg);
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    
-}
+  transform: translateY(1vh);
+  position:relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+}
 
 /* main background video */
 #bg_video{
- width:93.5%;
- height:100%;
- object-fit:fill;
+  width: 93.5%;
+  height: 100%;
+  max-height: 72vh;
+  max-width:93.5vw;
+  object-fit: fill;
+  filter: drop-shadow(8px 8px 10px gray);
 }
 
 /* main video end */
@@ -247,7 +247,7 @@ img{
    width:250px;
 }
 
-/* 검색결과 값 div */
+/* 검색결과  div */
 #search-results{
 	display: flex;	
 	transform: translateX(50px);
