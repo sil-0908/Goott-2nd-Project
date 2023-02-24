@@ -48,8 +48,8 @@ public class VideoDao {
 
 	public List<UserDto> adminList(Criteria cri) {
 		return sqlSessionTemplate.selectList("video.adminList", cri);
-	}
-	/*************************************************************************************/
+	}		
 	
+	/*************************************************************************************/
 	
 }

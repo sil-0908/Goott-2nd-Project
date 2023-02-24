@@ -77,7 +77,7 @@
   
 	<div id="main_video">  
 		<video muted autoplay loop id="bg_video">
-			<c:forEach var="list" items="${dto}"  begin="4" end="4" step="1" varStatus="status">
+			<c:forEach var="list" items="${dto}">
 				<source src="${list.video_url} " type="video/mp4">
 			</c:forEach> 
 		</video>
@@ -85,8 +85,8 @@
   
 <!-- main video end -->
 
-	<div id="section_all">
-	  <div id="search-results"></div>
+	<div id="section_all">    
+	  <div id="search-results"></div>  <!-- 검색결과 div -->
 	<!-- movie category -->
 		<div class="hide">
 			<h1 class="section_main_text">영화</h1>
@@ -187,7 +187,7 @@
 			<div class="section">
 			    <div class="slider">
 					<c:forEach var="row" items="${dto}">
-						<c:if test="${row.category_id == '3' && fn:containsIgnoreCase(row.title, searchText)}">
+						<c:if test="${row.category_id == '2' && fn:containsIgnoreCase(row.title, searchText)}">
 							<div class="conta">
 								<a href="/video/detail?video_id=${row.video_id}"> <img src="${row.image_url}" alt="Image not found"></a>
 							      <span style="display:none">${row.title}</span>

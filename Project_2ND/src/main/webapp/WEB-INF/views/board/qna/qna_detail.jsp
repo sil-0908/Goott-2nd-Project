@@ -57,7 +57,7 @@
 						<c:if test="${sessionScope.user_id == 'admin' && sessionScope.nickname == 'admin'}">
 							<button id="adminCreate1" class="btn btn--radius-2 btn--blue-2" type="button" onclick="modal(this)">답변 등록</button>	
 						</c:if>
-						<c:if test="${data.answer != null}">
+						<c:if test="${data.answer != null && sessionScope.user_id != 'admin' && sessionScope.nickname != 'admin'}">
 							<button id="adminCreate2" class="btn btn--radius-2 btn--blue-2" type="button" onclick="modal(this)">답변 보기</button>	
 						</c:if>	
                     </div>                    

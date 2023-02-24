@@ -27,7 +27,6 @@ public interface QnaService {
 
 	String answerGet(int question_id);
 
-//	List<QnaDto> qnaSearch(Criteria cri);
 
 
 }

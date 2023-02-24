@@ -16,12 +16,10 @@ function userDelete(){
 		return;
 	}
 	
-	console.log(delArr);
-	
 	//삭제 게시물 PK 전송
 	if(confirm("삭제하시겠습니까?")){
 		$.ajax({
-			url : 'admin/userDeletes',
+			url : '/admin/userDeletes',
 			data : JSON.stringify(delArr),
 			type : 'post',
 			contentType: 'application/json; charset=utf-8',	

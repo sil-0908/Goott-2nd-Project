@@ -13,6 +13,5 @@ public interface RentalService {
 	
 	String getid(RentalDTO dto);
 
-//	미완성
-//	List<VideoDto> list(String id);
+	List<VideoDto> list(String user_id);
 }

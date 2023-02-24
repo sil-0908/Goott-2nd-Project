@@ -1,5 +1,6 @@
 package com.test.test1.admin.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -36,33 +38,24 @@ public class AdminController {
 	VideoService videoService;
 	
 	//모든 관리자 페이지 접근 URL로 불가 - 02.18 장재호
-	@RequestMapping(value= {"admin/**"})
-	public ModelAndView access(ModelAndView mv, HttpServletRequest request) {
+	//일괄처리 안되서 메서드화 후 일괄처리 - 02.21 장재호
+	public String access(HttpServletRequest request) {
 		//URL접근 차단 - 02.18 장재호
-		String result = request.getHeader("REFERER");
-		if(result == null) {
-			mv.addObject("error", "잘못된 접근입니다");
-			mv.setViewName("redirect:/");
-			return mv;
-		}
-		else{
-			mv.setViewName("redirect:/admin");
-			return mv;
-		}
+		return request.getHeader("REFERER");
 	}
 	
 	//페이지 불러왔을 때 알고리즘 정보 가져오기 - 02.15 장재호
 	//관리자 페이지의 URL 주소 접근 차단 - 02.18 장재호
-	@RequestMapping("admin")
+	@RequestMapping("/admin")
 	@ResponseBody
 	public ModelAndView adminMain(ModelAndView mv, HttpServletRequest request, HttpSession session) {
-		//URL접근 차단 - 02.18 장재호
-		String result = request.getHeader("REFERER");
-		if(result == null) {
+		//URL접근 차단 - 02.18 장재호		
+		if(access(request) == null) {
 			mv.addObject("error", "잘못된 접근입니다");
 			mv.setViewName("redirect:/");
 			return mv;
 		}
+		
 		//추가로 확실한 검증 - 02.18 장재호
 		if(session.getAttribute("user_id") != "admin" || session.getAttribute("nickname") != "admin") {
 			mv.addObject("error", "접근 권한이 없습니다");
@@ -73,12 +66,15 @@ public class AdminController {
 		mv.addObject("category", algorithmService.categoryRate());
 		//2. 장르 순위
 		mv.addObject("genre", algorithmService.genreRate());
+		/* 주간 방문자, 매출 차트 추가 - 02.21 장재호 */
+		mv.addObject("visit", algorithmService.weeklyVisitor());
+		mv.addObject("sales", algorithmService.weeklySales());
+		/**********************************/
 		//3. 매출
 		int total = adminService.getTotalSales() * 15000;
 		int daily = adminService.getDailySales() * 15000;		
-		
 		mv.addObject("totalSales", total);
-		mv.addObject("dailySales", daily);
+		mv.addObject("dailySales", daily);		
 		//4. 방문자 수
 		int totalVisit = adminService.getTotalVisit();
 		int todayVisit = adminService.getTodayVisit();
@@ -91,8 +87,14 @@ public class AdminController {
 	
 	//전체조회 - 01.31 장재호
 	//17일 취합 때 삭제되있는거 롤백(Model쪽도 싹다) - 02.18 장재호
-	@RequestMapping("admin/userlist")
-	public ModelAndView userList(ModelAndView mv, Criteria cri) throws Exception {
+	@RequestMapping("/admin/userlist")
+	public ModelAndView userList(ModelAndView mv, Criteria cri, HttpServletRequest request) throws Exception {
+		if(access(request) == null) {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri); //page, perpagenum 셋팅
 		pageMaker.setTotalCount(userService.listCount(cri)); //총 게시글 수 셋팅
@@ -104,118 +106,182 @@ public class AdminController {
 	}
 	
 	//selectbox를 통한 다중 삭제 - 02.18 장재호
-	@RequestMapping(value="admin/userDeletes", method=RequestMethod.POST)
-	public void qnaDeletes(@RequestBody List<Integer> delArr) {
-		System.out.println("아아아아아아아아아 : " + delArr);
+	@RequestMapping(value="/admin/userDeletes", method=RequestMethod.POST)
+	public String userDeletes(@RequestBody List<Integer> delArr) {
 		adminService.deletes(delArr);
+		return "redirect:/admin/userlist";
 	}
 	
 	//관리자 VIDEO CRUD를 위한 VIDEO DB페이지 - 02.19 장재호
-	@RequestMapping("admin/databases/video")
-	public ModelAndView videoList(ModelAndView mv, Criteria cri) throws Exception {
+	// 추천수 오름차순/내림차순을 위한 수정 - 02.21 김범수
+	@ResponseBody
+	@RequestMapping("/admin/databases/video")
+	public ModelAndView videoList(ModelAndView mv, Criteria cri) throws Exception { // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri); //page, perpagenum 셋팅
 		pageMaker.setTotalCount(videoService.adminListCount(cri)); //총 게시글 수 셋팅
-		
+
 		mv.addObject("pageMaker", pageMaker);
-		mv.addObject("data", videoService.adminList(cri));
-		mv.setViewName("/admin/admin_video");
+		mv.addObject("sort", cri.getSort()); // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
+		mv.addObject("data", videoService.adminList(cri)); // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
+		mv.setViewName("admin/admin_video");
 		return mv;
 	}
 	
 	//Video detail READ - 02.19 장재호
-	@RequestMapping("admin/databases/video/{video_id}")
-	public ModelAndView adminVideoDetail(ModelAndView mv, @PathVariable int video_id) {
+	@RequestMapping("/admin/databases/video/{video_id}")
+	public ModelAndView adminVideoDetail(ModelAndView mv, HttpServletRequest request, @PathVariable int video_id) {
+		if(access(request) == null) {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
 		mv.addObject("data", videoService.detail(video_id));
 		mv.setViewName("admin/admin_video_detail");
 		return mv;
 	}
 	
-	//VIDEO DELETE - 02.19 장재호
-	@RequestMapping("videoDataDelete")
-	public String videoDel(int delVideoID) {
-		System.out.println(delVideoID);
-		adminService.videoDel(delVideoID);
-		return "redirect:/admin/databases/video";
-	}
-	
 	//VIDEO CREATE PAGE - 02.19 장재호
-	@RequestMapping("admin/databases/video/create")
-	public String videoCreatePage() {
-		return "admin/admin_video_create";
+	@RequestMapping("/admin/databases/video/create")
+	public ModelAndView videoCreatePage(HttpServletRequest request, ModelAndView mv) {
+		if(access(request) == null) {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		
+		else mv.setViewName("admin/admin_video_create");
+		return mv;
 	}
 	
 	//VIDEO CREATE - 02.19 장재호
-	@RequestMapping(value="admin/videoCreate", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/videoCreate", method=RequestMethod.POST)
 	public ModelAndView videoCreate(ModelAndView mv, AdminETCDto dto) {
-		//관리자의 입장에서 생각하기. DBA말고 그럼 필요한거? 비디오 테이블 생성 시 카테고리, 장르, 배우가 있던말던 다 짱박을거임.
-		//1. 카테고리 확인 없으면 추가먼저.
-		//2. 장르확인 없으면 추가먼저
-		//3. 배우 확인 없으면 추가먼저
-		//4. 비디오 카테고리에 해당 비디오 카테고리 추가
-		//5. 비디오 장르 마찬가지
-		//6. 비디오 액터 마찬가지
-		//7. 그러고 나서 비디오 등록
-		//이 모든 과정에서 dto에서 원하는 정보 뽑아써야하며 촥촥 잘 들어가게 해야함 몽말인지알지?
-		System.out.println(dto.toString());
+		if(adminService.check(dto) != null) {
+			mv.addObject("error", "중복 된 제목이 존재합니다");
+			mv.setViewName("redirect:/admin/databases/video/create");
+			return mv;
+		}
+		//1. 카테고리
+		try {
+			String category_name = dto.getCategory_name();
+			adminService.addCategory(category_name);
+			//2. 장르
+			String genre_name = dto.getGenre_name();
+			adminService.addGenre(genre_name);
+			//3. 배우
+			String[] actor = dto.getActor_name().split(",");
+			adminService.addActor(actor);
+			//4. 비디오
+			adminService.addVideo(dto);
+			//5. 비디오카테고리
+			adminService.addVideoCategory(dto);
+			//6. 비디오장르 
+			adminService.addVideoGenre(dto);
+			//7. 비디오액터
+			List<String> list = new ArrayList<>();
+			for(String a : actor) {
+				list.add(a);
+			}
+			List<Integer> list2 = new ArrayList<>();
+			for(int i=0; i<list.size(); i++) {
+				list2.add(dto.getVideo_id());
+			}
+			dto.setActor(list);
+			dto.setVideoidx(list2);
+			adminService.addVideoActor(dto);	
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+
 		mv.setViewName("admin/admin_video");
 		return mv;
 	}
 	
+	//VIDEO DELETE - 02.19 장재호
+	@RequestMapping("/videoDataDelete")
+	public String videoDel(int delVideoID) {
+		adminService.videoDel(delVideoID);
+		return "redirect:/admin/databases/video";
+	}
+	
 	//체크박스 다중삭제 - 02.19 장재호	
-	@RequestMapping(value="videoDataDeletes", method=RequestMethod.POST)
+	@RequestMapping(value="/admin/videoDataDeletes", method=RequestMethod.POST)
 	public String videoDels(@RequestBody List<Integer> delArr) {
 		adminService.videoDels(delArr);
 		return "redirect:/admin/databases/video";
 	}
 	
 	//비디오 데이터 수정 - 02.19 장재호
-	@RequestMapping(value="videoDataModify", method=RequestMethod.POST)
+	@RequestMapping(value="/videoDataModify", method=RequestMethod.POST)
 	public String videoDataModify(ModelAndView mv, VideoDto dto) {
 		adminService.videoDataModify(dto);
 		return "redirect:/admin/databases/video";
 	}
 
 	//관리자 타 TABLE CRUD를 위한  DB페이지 - 02.19 장재호
-	@RequestMapping("admin/databases/others")
-	public ModelAndView othersDB(ModelAndView mv){		
+	@RequestMapping("/admin/databases/others")
+	public ModelAndView othersDB(ModelAndView mv, HttpServletRequest request){
+		if(access(request) == null) {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		
 		mv.addObject("data", adminService.getCategory());
 		mv.addObject("datasec", adminService.getGenre());		
+		mv.addObject("datathr", adminService.getActor());
 		mv.setViewName("admin/admin_otherdb");		
 		return mv;
 	}
 	
 	/***************** 카테고리, 장르 추가 및 삭제 - 02.19 장재호 *************/
-	@RequestMapping("admin/addCategory")
+	@RequestMapping("/admin/addCategory")
 	public String addCategory(String category_name) {
 		adminService.addCategory(category_name);
-		return "redirect:/admin/datebases/others";
+		return "redirect:/admin/databases/others";
 	}
 	
-	@RequestMapping("admin/addGenre")
+	@RequestMapping("/admin/addGenre")
 	public String addGenre(String genre_name) {
 		adminService.addGenre(genre_name);
-		return "redirect:/admin/datebases/others";
+		return "redirect:/admin/databases/others";
 	}
 	
-	@RequestMapping("admin/delCategory")
+	@RequestMapping("/admin/addActor")
+	public String addActor(String actor_name) {
+		adminService.addActorDb(actor_name);
+		return "redirect:/admin/databases/others";
+	}
+	
+	@RequestMapping("/admin/delCategory")
 	public String delCategory(String category_name) {
 		try {
 			adminService.delCategory(category_name);
 		}catch(Exception e){
-			return "redirect:/admin/datebases/others";
+			return "redirect:/admin/databases/others";
 		}
-		return "redirect:/admin/datebases/others";
+		return "redirect:/admin/databases/others";
 	}
 	
-	@RequestMapping("admin/delGenre")
+	@RequestMapping("/admin/delGenre")
 	public String delGenre(String genre_name) {
 		try {
 			adminService.delGenre(genre_name);
 		}catch(Exception e) {
-			return "redirect:/admin/datebases/others";
+			return "redirect:/admin/databases/others";
 		}
-		return "redirect:/admin/datebases/others";
+		return "redirect:/admin/databases/others";
+	}
+	
+	@RequestMapping("/admin/delActor")
+	public String delActor(String actor_name) {
+		try {
+			adminService.delActor(actor_name);
+		}catch(Exception e) {
+			return "redirect:/admin/databases/others";
+		}
+		return "redirect:/admin/databases/others";
 	}
 	/***************************************************************/
 }

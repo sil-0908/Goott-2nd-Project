@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.test1.alarm.dao.AlarmDao;
 import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.board.qna.dto.PageMaker;
 import com.test.test1.board.qna.dto.QnaDto;
@@ -27,6 +28,9 @@ public class QnaController {
 	QnaService qnaService;
 	@Autowired
 	UserService userService;
+	//02.23장재호 추가
+	@Autowired
+	AlarmDao alarmDao;
 	
 	//qna 게시판 출력 - 02.07 장재호
 	//user Key값으로 닉네임을 리스트에 출력
@@ -76,6 +80,7 @@ public class QnaController {
 		}
 		return mv;
 	}
+	
 	//수정하기 - 02.07 장재호
 	@RequestMapping(value="modify", method=RequestMethod.POST, produces="application/text; charset=UTF-8;")
 	@ResponseBody
@@ -89,21 +94,21 @@ public class QnaController {
 	public String qnaDelete(int question_id) {
 		qnaService.delete(question_id);
 		return "redirect:/qna/list";
-	}
-	
+	}	
 	
 	//selectbox를 통한 다중 삭제 - 02.17 장재호
 	@RequestMapping(value="qnaDeletes", method=RequestMethod.POST)
 	public String qnaDeletes(@RequestBody List<Integer> delArr) {
 		qnaService.deletes(delArr);
-		return "redirect:/qna/list";
-	}
-	
+		return "/qna/qna_list";
+	}	
 	
 	//답변 생성 - 02.18 장재호
-	@RequestMapping("answerCreate")
+	//웹소켓 알람기능 추가 - 02.23장재호
+	@RequestMapping(value="answerCreate", method=RequestMethod.POST)
 	public String answerCreate(QnaDto qnaDto) {
 		qnaService.answerCreate(qnaDto);
+		alarmDao.addQnaAlarm(qnaDto); //웹소켓 알람기능 추가 - 02.23장재호
 		return "redirect:/qna/list";		
 	}
 	
@@ -111,7 +116,8 @@ public class QnaController {
 	@RequestMapping(value="answerGet", method=RequestMethod.POST, produces="application/text; charset=UTF-8;")
 	@ResponseBody
 	public String answerGet(int question_id) {
-		System.out.println(qnaService.answerGet(question_id));
 		return qnaService.answerGet(question_id);
 	}
+	
+	
 }

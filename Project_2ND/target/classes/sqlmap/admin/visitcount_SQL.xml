@@ -11,11 +11,11 @@
 	</select>
 	
 	<select id="today">
-	<![CDATA[
+		<![CDATA[
 		select count(*)
 		  from VISITOR
 		 where date_format(V_DATE, '%Y%m%d') = date_format(now(), '%Y%m%d')
-	 ]]>
+	 	]]>
 	</select>
 	
 </mapper>

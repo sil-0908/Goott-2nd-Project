@@ -22,7 +22,7 @@
 	<section>
 		<div class="section_loginform">
 			<span class="login"><span class="login_text">로그인</span><small><a href="/user/find">비밀번호를 잊어버리셨나요?</a></small></span>
-			<form method="post" action="signin_check">
+			<form method="post" action="signin_check" class="login_form">
 				<div>
 					<div class="input_text">
 						<input type="text" name="id" placeholder="ID" autocomplete="off" class="input_size">
@@ -36,8 +36,11 @@
 					</div>
 					<button class="login_submit">로그인</button>
 					<c:if test="${message == 'error' }">
-            				<div class="error_text">아이디 또는 비밀번호가 일치하지 않습니다.</div>
-         			</c:if>                    
+            			<div class="error_text">아이디 또는 비밀번호가 일치하지 않습니다.</div>
+         			</c:if>
+         			<c:if test="${message == 'success' }">
+            			<div class="error_text"></div>
+         			</c:if>
 				</div> 
 			</form>
 			
@@ -64,10 +67,7 @@
 			</div>
 		</div>
 	</section>		
-	<footer>
-
-
-	</footer>
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 <script src="/resources/js/api/google.js"></script>
 <script src="/resources/js/api/kakao.js"></script>
 <script src="/resources/js/api/naver.js"></script>
