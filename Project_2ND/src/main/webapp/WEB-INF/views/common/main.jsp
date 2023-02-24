@@ -45,7 +45,6 @@ hello
 	</h1>
 </c:if>
 
-<input type="button" value="회원 조회" onclick="location.href='user/list'">
 <form name="adminform">
 	<input type="button" value="관리자페이지" onclick="location.href='/admin'">
 </form>
@@ -59,6 +58,10 @@ $(function(){
 		alert(urlParams.get('error'));
 	}
 })
+function admin(){
+	document.adminform.action="/admin";
+	document.adminform.submit();
+}
 </script>
 </body>
 </html>

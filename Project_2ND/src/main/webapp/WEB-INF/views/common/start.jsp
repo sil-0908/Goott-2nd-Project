@@ -47,6 +47,11 @@
         </div>
         <img src ="https://an2-img.amz.wtchn.net/image/v2/llh5gNLQ8b52zGFpsikOhQ.webp?jwt=ZXlKaGJHY2lPaUpJVXpJMU5pSjkuZXlKdmNIUnpJanBiSW1KbklsMHNJbkFpT2lJdmRqSXZjM1J2Y21VdmFXMWhaMlV2TVRZek9UTTNOakl3T0RReU9USXhPVEkwTXlKOS42ZW94UDcwMS1EblFUcVdldEhzZlRoQlV1c3Z0NmNMejRHQkRJRkxiMGNV"
         id="img1">
+        <div class="scroll_btn">
+        	<div class="btn" id="btn1"></div>
+        	<div class="btn" id="btn2"></div>
+        	<div class="btn" id="btn3"></div>
+        </div>
     </div>
     <!-- sectionA end -->
 

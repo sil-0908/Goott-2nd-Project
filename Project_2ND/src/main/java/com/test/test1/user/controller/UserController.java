@@ -188,9 +188,14 @@ public class UserController {
 	// email - view단에서 입력된 email을 가져옴
 	public String findid(String email, ModelAndView mv) {
 		// email을 이용해 해당 email정보를 가진 id값을 가져옴
-		String id = userService.findid(email); 
-		return id;
-		
+		String id = userService.findid(email);
+		System.out.println(id);
+		if(id == null) {
+			return "";
+		}
+		else {
+			return id;
+		}
 	}
 	
 	// 비밀번호 찾기 - 02.10 김범수

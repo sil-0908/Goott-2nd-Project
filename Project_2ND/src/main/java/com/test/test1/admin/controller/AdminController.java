@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -112,20 +113,18 @@ public class AdminController {
 	}
 	
 	//관리자 VIDEO CRUD를 위한 VIDEO DB페이지 - 02.19 장재호
+	// 추천수 오름차순/내림차순을 위한 수정 - 02.21 김범수
+	@ResponseBody
 	@RequestMapping("/admin/databases/video")
-	public ModelAndView videoList(ModelAndView mv, Criteria cri, HttpServletRequest request, String button) throws Exception {
-		if(access(request) == null) {
-			mv.addObject("error", "잘못된 접근입니다");
-			mv.setViewName("redirect:/");
-			return mv;
-		}
+	public ModelAndView videoList(ModelAndView mv, Criteria cri) throws Exception { // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri); //page, perpagenum 셋팅
 		pageMaker.setTotalCount(videoService.adminListCount(cri)); //총 게시글 수 셋팅
-		
+
 		mv.addObject("pageMaker", pageMaker);
-		mv.addObject("data", videoService.adminList(cri));
-		mv.setViewName("/admin/admin_video");
+		mv.addObject("sort", cri.getSort()); // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
+		mv.addObject("data", videoService.adminList(cri)); // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
+		mv.setViewName("admin/admin_video");
 		return mv;
 	}
 	
