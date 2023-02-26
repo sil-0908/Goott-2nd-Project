@@ -37,49 +37,37 @@ comu_btn[0].addEventListener('click', function(){
       });
 //  원댓글 작성하기 end
    
-// 댓글 수정 start   
-   function comt_edit_complete(commentary) {      
-      document.form1.action="/comt/edit";
-      document.form1.submit();
-   }
-   
+// 댓글 수정 start      
    function comt_edit_cancle() {
+	   let comt_edit_div = this.parentNode;
       $(comt_edit_div).empty();
    }
    
    $(".comment_update").on('click', function(e){
-      let comt_id = this.parentNode.children[1].value;
-      let comt_edit_div = this.parentNode.nextElementSibling.nextElementSibling;
-      let commentary = this.parentNode.nextElementSibling.nextElementSibling;
-      console.log(comt_id);
-      console.log(comt_edit_div);
-      comt_edit(comt_id, comt_edit_div, commentary);
-   });
+	      let comment_id = this.parentNode.children[1].value;
+	      let comt_edit_div = this.parentNode.nextElementSibling.nextElementSibling;
+	      comt_edit(comment_id, comt_edit_div);
+	   });
    
-   function comt_edit(comt_id, comt_edit_div, commentary) {
-      $.ajax({
-        data : {
-            'commentary' : commentary
-        },
-         type: "post",
-         url: "/comt/edit/" + comt_id,
-         success: function(edit) {
-            let cocomText = "";
-            console.log(edit);
-              cocomText += "<form >";
-              cocomText += "   <div class='com_edit_div'>";
-              cocomText += "      <textarea rows='3' cols='60' class='com_edit_text'>";
-              cocomText +=       commentary;
-              cocomText += "      </textarea>";
-              cocomText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete()' value='수정완료'></button>";
-              cocomText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle()' value='수정취소'></button>";
-              cocomText += "   </div>";
-              cocomText += "</form>";
-            $(cocomListDiv).html(cocomText);
-            window.location.reload();
-         }
-      });
-   }
+   function comt_edit(comment_id, comt_edit_div) {
+	   $.ajax({
+	      type: "get",
+	      url: "/comt/edit/" + comment_id,
+	      success: function(edit) {
+	    	  console.log(comment_id);
+	         let comtEditText = "";
+	         console.log(edit);
+	         comtEditText += "<form name='comt_edit' method='post'>";
+	         comtEditText += "      <textarea rows='3' cols='60' class='com_edit_text'>";
+
+	         comtEditText += "      </textarea>";
+	         comtEditText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete()'>수정완료</button>";
+	         comtEditText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle()'>수정취소</button>";
+	         comtEditText += "</form>";
+	         $(comt_edit_div).html(comtEditText);
+	      }
+	   });
+	}   
 //  댓글 수정 end
    
 //  댓글 삭제 start 02.24 장민실
@@ -89,8 +77,7 @@ comu_btn[0].addEventListener('click', function(){
 		
 		$.ajax({
 			data : {
-				comment_id : comment_id
-				
+				comment_id : comment_id				
 			},
 			url : '/comt/delete',
 			type : 'POST',
@@ -109,7 +96,10 @@ comu_btn[0].addEventListener('click', function(){
 		let pid_num = this.parentNode.children[2].value;
 		let cocomListDiv = this.parentNode.nextElementSibling;
 		
-		if(cocom_list_tf===false) { 
+		if(cocom_list_tf===false && commentary===null && commentary==='') {
+			alert("등록된 댓글이 없습니다.");
+		}
+		else if(cocom_list_tf===false) { 
 			cocomt_list(pid_num, cocomListDiv);
 			cocom_list_tf=true;
 		}
@@ -117,6 +107,7 @@ comu_btn[0].addEventListener('click', function(){
 			$(cocomListDiv).empty();
 			cocom_list_tf=false;
 		}
+
 	})
 	
 	function cocomt_list(pid_num, cocomListDiv) {

@@ -89,11 +89,10 @@ public class CommentController {
 //	}
 	
 //	댓글 수정 - 미완 주석처리
-	@RequestMapping(value="edit/{comment_id}", method=RequestMethod.POST)
+	@RequestMapping("edit/{comment_id}")
 	@ResponseBody
-	public String edit(int comment_id, String commentary, CommentDto dto) {
-		System.out.println("코멘트아이디임 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ : " + comment_id);
-		dto.setComment_id(comment_id);
+	public String edit(String commentary, CommentDto dto) {
+//		System.out.println("코멘트아이디임 ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ : " + comment_id);
 		dto.setCommentary(commentary);
 		int video_id = dto.getVideo_id();
 		commentService.edit(dto);
@@ -113,6 +112,42 @@ public class CommentController {
 //		return null로 준 이유 : detail.js에서 따로 페이지 새로고침 처리해서
 		return null;
 	}
+	
+	
+	
+//	   $(".comment_update").on('click', function(e){
+//		      let comt_id = this.parentNode.children[1].value;
+//		      let comt_edit_div = this.parentNode.nextElementSibling.nextElementSibling;
+//		      let commentary = this.parentNode.nextElementSibling.nextElementSibling;
+//		      console.log(comt_id);
+//		      console.log(comt_edit_div);
+//		      comt_edit(comt_id, comt_edit_div, commentary);
+//		   });
+//		   
+//		   function comt_edit(comt_id, comt_edit_div, commentary) {
+//		      $.ajax({
+//		        data : {
+//		            'commentary' : commentary
+//		        },
+//		         type: "post",
+//		         url: "/comt/edit/" + comt_id,
+//		         success: function(edit) {
+//		            let cocomText = "";
+//		            console.log(edit);
+//		              cocomText += "<form >";
+//		              cocomText += "   <div class='com_edit_div'>";
+//		              cocomText += "      <textarea rows='3' cols='60' class='com_edit_text'>";
+//		              cocomText +=       commentary;
+//		              cocomText += "      </textarea>";
+//		              cocomText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete()' value='수정완료'></button>";
+//		              cocomText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle()' value='수정취소'></button>";
+//		              cocomText += "   </div>";
+//		              cocomText += "</form>";
+//		            $(cocomListDiv).html(cocomText);
+//		            window.location.reload();
+//		         }
+//		      });
+//		   }
 	
 	
 	
