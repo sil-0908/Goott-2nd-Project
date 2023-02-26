@@ -140,7 +140,9 @@
 	<input id="optionH" type="hidden" name="option" value="${pageMaker.cri.option}">
 	</form>		
 </div>
-
+<div>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+</div>
 <script src="/resources/js/board/qna_list.js"></script>
 <script src="/resources/js/board/searchbar.js"></script>
 <script src=https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js></script>

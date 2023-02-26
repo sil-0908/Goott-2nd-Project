@@ -22,7 +22,6 @@ function modal(e){ //답변 on-off
 		})
 	})
 	if(e.textContent == "답변 보기"){
-		btnCenter.style.display = 'none';
 		contentArea.readOnly = true;
 	}
 	else{
