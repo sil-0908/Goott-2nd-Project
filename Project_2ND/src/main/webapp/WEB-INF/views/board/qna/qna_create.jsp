@@ -8,9 +8,7 @@
 <link rel="stylesheet" href="/resources/css/board/qna_create.css">
 </head>
 <body>
-<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
-<div id="navArea"></div>
-
+<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
 <!-- 질문등록 폼 -->
 <div class="page-wrapper p-t-100 p-b-50">
     <div class="wrapper wrapper--w900">

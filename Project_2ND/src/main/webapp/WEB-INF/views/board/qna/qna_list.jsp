@@ -18,9 +18,9 @@
 <script src="https://code.jquery.com/ui/1.13.0-rc.3/jquery-ui.min.js"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
+<!-- 네비바 추가 0227 김지혜 -->
+<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
 <%@ include file="/WEB-INF/views/common/alarm.jsp" %>
-<div id="navArea"></div>
 <!-- 검색 -->
 <div class="s003">
 	<form name="form1">

@@ -188,8 +188,8 @@ body{
     border: none;
     cursor: pointer;
     height: 30px;
-    width: 100px;
-    margin-bottom: 1vh;
+    width: 12vh;
+    margin-top: -1vh;  
 }
 
 /***********************************************************************/
@@ -198,9 +198,16 @@ body{
 	height : 6rem;
 }
 
-/* 내정보 화면 정보  & 입력창테두리 & 모달탕에 버튼 안 글씨 설정  */
-span, input[name="id"], button{
+/* 내정보 화면 정보  & 입력창테두리 & 모달창 버튼에 글씨 설정  */
+input[name="id"], button{
 	color : black;
+}
+
+/* 이메일 중복체크 결과 text & 닉네임 */
+span{
+    color: var(--text-color);
+    font-size: 0.8rem;
+    margin: 10px 0 10px 0px;	
 }
 
 /* 내정보 화면 정보  간격 설정  */

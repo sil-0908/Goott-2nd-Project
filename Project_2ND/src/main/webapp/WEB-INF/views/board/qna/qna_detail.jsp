@@ -11,9 +11,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
-<div id="navArea"></div>
-
+<!-- 네비바 start -->
+<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
+<!-- 네비바  end -->
 <div class="page-wrapper p-t-100 p-b-50">
     <div class="wrapper wrapper--w900">
         <div class="card card-6">

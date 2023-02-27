@@ -11,24 +11,11 @@
 <script src="/resources/js/common/start.js"></script>
 </head>
 <body>
-    <!-- header start -->
-    <nav id="navbar">
-    	<!-- 로고영역 -->
-        <div class="logo">
-            <img src="/resources/img/user/logo.png" alt="">
-        </div>
-        <!-- 다국어 지원 기능 영역 -->
-        <div class="langdropdown">
-            <select name="language" class="selectbox">
-                <option value="none" class="select">=== 선택 ===</option>
-                <option value="korean" class="select" selected> 한국어 </option>
-                <option value="english" class="select"> English </option>
-            </select>
-        </div>
-    </nav>
-    <!-- header end -->
+<!-- 네비바  start _ 02/27 김지혜 네비바 수정 -->
 
+<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
 
+<!-- 네비바  end -->
     <!-- sectionA start -->
     <!-- 첫번째_화면 -->
     <div class="sectionA">
@@ -101,8 +88,7 @@
 	<!-- sectionC end -->
 
     <!-- footer start -->
-	<div class="footer">
-	</div>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	<!-- footer end -->
 	<script>
 	$(function(){

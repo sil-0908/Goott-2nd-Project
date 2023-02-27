@@ -45,5 +45,5 @@ footer{
 
 #f_Con2 p{
 	font-size: var(--text-size);
-	color: var(--text-color)
+	color: var(--text-color);
 }

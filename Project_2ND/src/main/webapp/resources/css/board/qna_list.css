@@ -8,10 +8,6 @@
     --bg:#24292D;
 }
 
-#navArea{
-	height : 10rem;
-}
-
 /* 페이징 */
 #pageUL{
 	margin-left : 45%;
