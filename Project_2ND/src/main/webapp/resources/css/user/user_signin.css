@@ -32,28 +32,16 @@
 body{
     background-color: var(--bg);
 }
-
-/*header area*/
-/* 헤더 영역 설정 */ 
-header {
-    width: 100%;
-    height: 10vh;
+/* 네비바영역 추가 _ 02/27 김지혜 네비바 수정  */ 
+header{
+	height: 5vh;
 }
-
-/* logo크기 조정 */ 
-.header_logo img{
-    width: 20rem;
-    height: 9rem;
-    cursor: pointer;
-}
-/*header area end*/
-
 /*section area*/
 /* 섹션 영역 설정, 로그인창 가운데 정렬 */ 
 section {
     width: 100%;
     height: 100vh;
-    margin-top: 20vh;
+    margin-top: 15vh;    /* 네비바 영역 설정에 영향을 주어 수정 _ 02/27 김지혜 */ 
     display: flex;
     justify-content: center;
 }

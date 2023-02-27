@@ -37,6 +37,14 @@ public class ApiLoginController {
 	    }
 	}
 	
+	//로그인 시 DB닉네임 출력 - 02.27 장재호
+	@RequestMapping(value = "kakaoLogins", method = RequestMethod.POST, produces="application/json; charset=utf-8")
+	@ResponseBody
+	public String kakaoLogins(String id) {
+		return apiLoginService.getNick(id);
+	}
+	
+	
 	@RequestMapping(value = "kakaoSignUp", method = RequestMethod.POST)
 	public String kakaoSignUp(UserDto userDto, HttpSession session) {
 		userDto.setCreate_type("kakao"); //create_type 입력

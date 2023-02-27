@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.test.test1.algorithm.dao.AlgorithmDao;
 import com.test.test1.algorithm.dto.AlgorithmDto;
+import com.test.test1.video.dto.VideoDto;
 
 //알고리즘 구현을 위한 서비스 - 02.15 장재호
 @Service
@@ -51,6 +52,10 @@ public class AlgorithmServiceImpl implements AlgorithmService {
 		return algorithmDao.weeklySales();
 	}
 
-	
+////////////////////02.27 시청기록 구현 - 김범수 //////////////////////
+	@Override
+	public List<VideoDto> userlist(String user_id) {
+		return algorithmDao.userlist(user_id);
+	}
 	
 }

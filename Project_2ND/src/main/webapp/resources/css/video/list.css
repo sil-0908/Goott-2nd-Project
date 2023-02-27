@@ -1,4 +1,3 @@
-
 :root{
     --logo-color:#FFCC00;
     --logo-size: 60px;
@@ -10,6 +9,7 @@
 }
 
 * {
+	color : var(--text-color);
     margin: 0;
     padding: 0;
 }
@@ -22,7 +22,6 @@ body {
 /* navbar start */
 
 nav {
-
     display: flex;
     position: fixed;
     height: 6rem;
@@ -30,6 +29,7 @@ nav {
     align-items: center;
     z-index: 1000;
 }
+
 nav{
     background-color: transparent;
 }
@@ -42,7 +42,7 @@ nav.scrolled {
 }
 
 ul li {
-    list-style: none;       /* 전체 ul, li 일괄 효과 적용 */
+    list-style: none;      /* 전체 ul, li 일괄 효과 적용 */
     text-align: center;
     line-height: 50px;
     color: var(--text-color);
@@ -58,8 +58,6 @@ ul li {
     color: #FFCC00;
 }
 
-/* logo start */
-
 #logo {
     color: var(--logo-color);
     font-size: var(--logo-size);
@@ -68,7 +66,7 @@ ul li {
     cursor: pointer;
 }
 
-/* logo end */
+/* navbar end */
 
 /* menu start */
 
@@ -188,7 +186,6 @@ ul li {
 
 /* navbar end */
 
-
 /* main video start */
 #main_video {
   transform: translateY(1vh);
@@ -203,7 +200,7 @@ ul li {
 #bg_video{
   width: 93.5%;
   height: 100%;
-  max-height: 72vh;
+  max-height: 70vh;
   max-width:93.5vw;
   object-fit: fill;
   filter: drop-shadow(8px 8px 10px gray);
@@ -224,21 +221,64 @@ ul li {
 .section{
     height: 350px;
     display: flex;
-    
-   
 }
+
+/* Top 5 recommendations */
+#top_5{
+	display: flex;  
+    position: relative;
+    transform: translateX(40px);
+    height:auto; 
+    width: 100%;  
+}
+#top_5 .conta{
+	height: 380px;
+	width: 350px;
+	position: relative;
+    transform: translateY(-30px);
+}
+/* Top 5 recommendations end */
+
+
+/* Top 5 recommendations text */
+#top5_text{
+	padding-top:30px;
+    transform: translateY(-40px);
+}
+
+.hide_2{
+	padding-top: 50px;
+}
+
+.number {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 150px;
+  font-weight: bold;
+  color: #CCCCCC;
+  padding: 20px;
+  border-radius: 50%;
+  width: 40px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 8px 10px 10px rgba(0, 0, 0); /* add a subtle text shadow */
+}
+
+/* Top 5 recommendations text  end*/
 
 /* 장르 토글영역 div */
 .sub-menu {
   transform: translateX(40px);
 }
 
-img{
+.conta img{
    height: 270px;
    width: 90%;
-
 }
-
 
 /* 이미지 링크 div */
 .conta{
@@ -252,11 +292,7 @@ img{
 	display: flex;	
 	transform: translateX(50px);
 	padding-top:50px;
-
 }
-
-
-
 
 /* 슬라이드 버튼 시작 */
 .slick-arrow {
@@ -270,9 +306,6 @@ img{
   font-size: 50px;
 }
 /* 슬라이드 버튼 끝 */
-   
-   
-}
 
 /* 메인텍스트 시작 */
 .section_main_text{
@@ -281,12 +314,11 @@ img{
     text-align: center;
     align-items: center;
 }
+
 h1{
    color: #ffff;
-   padding:20px 0 0 60px; 
-
+   padding:0 0 0 60px; 
 }
-
 /* 메인텍스트 끝*/
 
 /* section end */
@@ -303,25 +335,11 @@ h1{
 
 /* adv area end */
 
-/* footer start */
-
-footer{
-   height: 300px;
+map img{
+	height: 14px;
+	width : 13px;
 }
 
-#map{
-   border : solid red 3px;
-   width : 600px;
-   height : 300px;
+a{
+	text-decoration : none;
 }
-
-#f_Con1{
-   margin-left : 20%;
-   margin-right : 20%;
-   display : flex;
-}
-#f_Con2{
-   margin-right : 20%;
-}
-/* footer end */
-

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.test.test1.board.qna.dto.Criteria;
+import com.test.test1.mypage.dto.ImgDto;
 import com.test.test1.user.dto.UserDto;
 
 public interface UserService {
@@ -44,6 +45,8 @@ public interface UserService {
 	
 //	video detail 내 댓글등록 위해 유저정보 받아오기 02.20 장민실
 	int getid(String user_id);
+
+	void img_update(ImgDto dto);
 	
 	
 

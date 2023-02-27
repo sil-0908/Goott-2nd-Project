@@ -10,15 +10,13 @@
 	<link href="/resources/css/user/user_signup.css" rel="stylesheet">
 </head>
 <body>
-
+<!--네비바 추가 0227 김지혜  -->   
+<div id="navSection">
+<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
+</div>
+<!--네비바 end  -->  
 
 <div class="container_j"> 
-	<div class="background_j">
-		<div class="header_j">
-			<div class="headerLogo_j">LOGO</div>
-		</div> <!-- <div id="header_j"> end -->
-		
-		
 		<div id="mainDiv_j">
 	        <div id="viewDiv_j">
 				<span id="signUpText_j">LOGO 회원가입</span>
@@ -94,15 +92,15 @@
 	            <input id="submit" type="button" value="가입하기" >
 	            <c:if test="${message=='fault'}">
 				</c:if>
-				</form>
-					<!-- form end  -->
-	        </div>  
-	      </div> <!--<div id="mainDiv_j"> end -->
-                   
-	</div>
-             
+				</form> <!-- form end  -->	
+		</div>  
+	</div> <!--<div id="mainDiv_j"> end --> 
 </div> <!-- <div id="container_j"> end -->
-  
+<!-- footer start  -->  
+  <div id="signUpF">
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+  </div>
+<!-- footer end  -->
 	<script src="/resources/js/user/user_signup.js"></script>
 </body>
 </html>

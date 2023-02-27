@@ -34,8 +34,18 @@ function kakaoLogin() {
         				  }
         			  }
         			  else{
-        				  alert(nickname + "님 반갑습니다.")
-        				  location.href = "/video/list"
+        				  $.ajax({
+        					  url : '/user/kakaoLogins',
+        					  data : {"id" : id},
+        					  dataType : 'text',
+        					  type : 'post',
+        					  success : function(data){
+        						  console.log(data);
+                				  alert(data + "님 반갑습니다.")
+                				  location.href = "/video/list";
+        					  }
+        				  })
+
         			  }
         		  }
         		  

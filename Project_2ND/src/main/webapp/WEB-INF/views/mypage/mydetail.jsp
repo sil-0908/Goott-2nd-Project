@@ -13,15 +13,31 @@
 	<script src="https://kit.fontawesome.com/885ba80ba8.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<!--네비바 추가 0227 김지혜  -->   
 <div id="navSection">
-<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
+<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
 </div>
-
+<!--네비바 end  -->  
     <div class="container">
         <div class="card">
             <div class="form">
                 <div class="left-side">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU alt=">
+                	<!-- 02.24 김범수 - 프로필 작업으로 수정 -->
+	                <c:choose>
+	                	<c:when test="${data.img != null && data.img != ''}">
+	                		<img src="${data.img}" id="img_onload" class="img_tag"> 
+	                		<%--<img src="/mypage/display?fileName=${data.img}" class="img_tag"> 
+	                			<img src="/mypage/display?fileName=${URLEncoder.encode(data.img, 'UTF-8')}">
+	                		--%>
+	                	</c:when>
+	                	<c:when test="${data.img == null}">
+	                		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="img_tag">
+	                	</c:when>
+	                </c:choose>
+	                <div class="input_file_box">
+	                	<label class="input_button" for="uploadFile">프로필 변경</label>
+						<input type="file" name='uploadFile' id="uploadFile">
+	                </div>
                 </div>
                 <div class="right-side">
                     <div class="input_text2"><span>ID</span><input type="text" name="id" value="${data.id}" disabled></div>
@@ -89,7 +105,7 @@
         </form>
     </div>
 	<hr>
-	   <!-- 내보관함 리스트 -02.18 김범수 -->
+<!-- 내보관함 리스트 -02.18 김범수 -->
    <!-- 보관함 리스트 영역-->
    <div class="section">
       <!-- 내보관함 text -->
@@ -104,10 +120,30 @@
          </c:forEach>
          
       </div>
+   </div>    
+   <hr>
+<!-- 내보관함 리스트 -02.18 김범수 -->
+   <!-- 보관함 리스트 영역-->
+   <div class="section">
+      <!-- 내보관함 text -->
+      <h1 class="mylocker_text">시청기록</h1>
+      <!-- 내보관함 슬라이드 - 양옆 버튼 추가 + 버튼 누르면 케러셀처럼 넘어감-->
+      <div class="slider">
+         <!-- 내보관함 리스트 출력 영역-->
+         <c:forEach var="userlist" items="${userlist}">
+            <div class="video_div">
+               <a href="/video/detail?video_id=${userlist.video_id}"> <img src="${userlist.image_url}" alt="Image not found"></a>
+            </div> 
+         </c:forEach>
+         
+      </div>
    </div>  
+   
+<!-- footer start  -->
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<!-- footer end  -->
 
 	<script src="/resources/js/mypage/user_mydetail.js"></script>
 	<script src="/resources/js/mypage/user_info_modify.js"></script>	  
-	<script src="/resources/js/mypage/mylocker.js"></script>
 </body>
 </html>

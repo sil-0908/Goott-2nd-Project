@@ -7,85 +7,6 @@ $(".slider").not('.slick-initialized').slick({
    });
   
 
-
-const search_input = document.querySelector('#search'),
-search_i = document.querySelector('#search_icon');
-   
-  search_i.addEventListener('click', function() {
-        search_input.classList.toggle("view");
-     });
-
-  
-  
-  
- 
-
-const searchBox = document.getElementById('search');
-  searchBox.addEventListener('input', function() {
-  });
-
-
-
-   //video 검색 기능  //
-  function showImageData() {	
-	  const searchText = document.getElementById('search').value.toLowerCase();
-	  if (searchText.trim() === '') {
-	    return;
-	  };
-	  $('.slider').slick('unslick');
-	  const images = document.querySelectorAll('.conta');
-	  const searchResults = document.getElementById('search-results');
-	  searchResults.innerHTML = ''; 
-
-	  images.forEach(function(image) {
-	    const title = image.querySelector('span');
-	    if (title && title.textContent.toLowerCase().replace(/\s+/g, '').includes(searchText.replace(/\s+/g, ''))) {
-	      searchResults.appendChild(image); 
-	      image.style.display = 'block';
-	    } else {
-	      image.style.display = 'none';
-	    };
-	  });
-	  const hideElements = document.querySelectorAll('.hide');
-	  hideElements.forEach(function(hideElement) {
-	    hideElement.style.display = 'none';
-	  });
-	  const sub = document.querySelectorAll('.sub-menu');
-	  sub.forEach(function(sub){
-	    sub.style.display ='none';
-	  });
-	};
-
-
-  searchBox.addEventListener('keyup', function() {
-	  const searchText = this.value.trim().toLowerCase();
-	  if (event.key === 'Enter') {
-	
-	    showImageData(searchText);
-	  }
-	});
-  
-  
-  
-  // 검색결과 초기화 기능 //
-function resetSearch() {
-	
-	  const searchResults = document.getElementById('search-results');
-	  searchResults.innerHTML = '';
-	  const images = document.querySelectorAll('.conta');
-	  images.forEach(function(image) {
-	    image.style.display = 'block';
-	  });
-	  const hides = document.querySelectorAll('.hide');
-	  hides.forEach(function(hide) {
-	    hide.style.display = 'block';
-	  });
-	
-	
-	 
-	}
-
-
 //슬라이더 초기화 기능 
 function resetSlider() {
 	  $('.slider').slick('unslick');
@@ -95,15 +16,13 @@ function resetSlider() {
 	    prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
 	    nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
 	  });
-	}
-  
-  
+	}  
   
   //애니메이션 토글 기능 //
 function ani_q() {
 	  resetSearch();
-	  let mainText = document.querySelectorAll(".hide .section_main_text")[1];
-	  let section = document.querySelectorAll(".hide .section")[1];
+	  let mainText = document.querySelectorAll(".hide .section_main_text")[2];
+	  let section = document.querySelectorAll(".hide .section")[2];
 	  
 	  let subMenu = document.getElementById('my-sub-menu');
 	  if (!subMenu) {
@@ -157,14 +76,11 @@ function toggleSubMenu(subMenuId) {
 	};
  
 	
-	
-	
 	// 로고 클릭시 페이지 새로고침 
 function back(){
 	   window.location.reload();
 }	
   
-
 
      // 네비바 스크롤시 백그라운드 적용 
 function handleScroll() {
@@ -176,8 +92,6 @@ function handleScroll() {
         nav.classList.remove('scrolled');
     }
 } 
-
-
 
 window.addEventListener('scroll', handleScroll);
  
