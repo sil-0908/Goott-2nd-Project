@@ -14,7 +14,7 @@
 </head>
 <body>
 <div id="navSection">
-<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
+<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
 </div>
 
     <div class="container">

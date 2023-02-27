@@ -20,7 +20,6 @@
    // 전화번호 표현식 맞지 않을 경우 제어_ 정규표현식   23/02/01 김지혜 
    // - (하이픈) 자동 추가 기능으로  수정  23/02/09 김지혜 
    const autoHyphen = function(target) {
-	   console.log(target);
        target.value = target.value
        .replace(/[^0-9]/g, '')
        .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3").replace(/(\-{1,2})$/g, "");
@@ -201,7 +200,6 @@ $(function(){
             url : "mailCheck?email=" + email, // 해당 메소드에 email값을 보냄
             success:function(data){
                code = data; // 인증 번호가 담기는 구역
-               console.log(code)
             } // success end
          }); // ajax end
       }); //event function end
@@ -254,7 +252,7 @@ $(function(){
          if(i==1 && p==1 && n==1 && c==1 && d==1){
             alert("회원가입 최종 성공!");
             $('#submit').attr('type', 'submit'); // type속성 submit로 변환하여 넘어갈 수 있도록 함. 
-            document.form1.action="common/start"; // 페이지 이동  - 02.23 김범수 회원가입 안되서 수정 _ 02/27김지혜 로그인창으로 넘어가도록 주소 재수정
+            document.form1.action="/user/signup"; // 페이지 이동  - 02.23 김범수 회원가입 안되서 수정 _ 02/27김지혜 로그인창으로 넘어가도록 주소 재수정 > 건들지마
          }else{
             alert("회원가입 실패. 다시 입력확인해주세요. ");
          }
