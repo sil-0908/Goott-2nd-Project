@@ -55,4 +55,13 @@
 		   desc limit 7) order by PAID_DATE asc
 	</select>
 
+	<!-- 시청기록 - 02.27 김범수 -->
+	<select id="userlist" resultType="com.test.test1.video.dto.VideoDto">
+         select v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL
+           from VIDEO v
+           join ALGORITHM a
+          where v.VIDEO_ID = a.VIDEO_ID
+            and a.USER_ID = (select USER_ID from USER where ID=#{user_id})
+		 order by LAST_UPDATE_DATE desc
+	</select>
 </mapper>

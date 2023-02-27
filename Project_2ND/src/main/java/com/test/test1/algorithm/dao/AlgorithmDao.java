@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.test.test1.algorithm.dto.AlgorithmDto;
+import com.test.test1.video.dto.VideoDto;
 
 @Repository
 public class AlgorithmDao {
@@ -45,6 +46,11 @@ public class AlgorithmDao {
 
 	public List<AlgorithmDto> weeklySales() {
 		return session.selectList("algo.weeklySales");
+	}
+
+////////////////////02.27 시청기록 구현 - 김범수 //////////////////////
+	public List<VideoDto> userlist(String user_id) {
+		return session.selectList("algo.userlist", user_id);
 	}	
 	
 }

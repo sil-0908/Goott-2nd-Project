@@ -14,67 +14,10 @@
 <script src="https://kit.fontawesome.com/885ba80ba8.js" crossorigin="anonymous"></script>
 </head>
 <body> 
-    
-<!-- navbar start -->
-    <nav id="navbar">
-        <h1 id="logo" onclick="back()">LOGO</h1>
-          <!-- menu start -->
-        <div class="menu">
-            <ul class="menu_ul">
-                <li class="menu_text_li" id="menu1">
-                   <p>MOVIE</p>
-               <ul class="drop_menu_ul">
-                 <li class="drop_menu_li" onclick="toggleSubMenu('actionSubMenu')">ACTION</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('dramaSubMenu')">DRAMA</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('fantasySubMenu')">FANTASY</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('sfSubMenu')">SF</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('crimeSubMenu')">CRIME</li>
-               </ul>
-                </li>
-                <li class="menu_text_li" id="menu2" onclick="ani_q()"> 
-                    <p>애니메이션</p>    
-                    <!-- <ul class="drop_menu_ul">
-                        <li class="drop_menu_li">ROMANCE</li>
-                        <li class="drop_menu_li">SF/FANTASY</li>
-                        <li class="drop_menu_li">ACTION</li>
-                        <li class="drop_menu_li">COMEDY</li>
-                        <li class="drop_menu_li">HORROR</li>
-                        <li class="drop_menu_li">CRIME</li>
-                    </ul> -->
-                </li>
-            </ul>
-        </div>
-<!-- menu end -->
-
-<!-- search start -->
-        <div class="search_area">
-            <input type="search" id="search">
-            <i class="fas fa-search fa-lg icons" id="search_icon"></i>
-        </div>
-<!-- search end -->
-
-<!-- my info start -->
-        <div class="info">
-            <ul class="info_ul">
-                <li class="info_li">
-                    <i class="fas fa-user fa-2x icons" id="info_icon"></i>
-                    <ul class="drop_menu_ul">
-                        <li class="drop_menu_li">내채널</li>
-                        <li class="drop_menu_li">회원정보수정</li>
-                        <li class="drop_menu_li">Language</li>
-                        <li class="drop_menu_li">고객센터</li>
-                        <li class="drop_menu_li">로그아웃</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-<!-- my info end -->
-    </nav>   
-<!-- navbar end -->
-
-  
+<!--네비바 추가 0227 김지혜  -->   
+	<%@ include file="/WEB-INF/views/common/navbar2.jsp" %>  
+<!--네비바 end  -->  
 <!-- main video start -->    
-  
 	<div id="main_video">  
 		<video muted autoplay loop id="bg_video">
 			<c:forEach var="list" items="${dto}">
@@ -84,11 +27,35 @@
 	</div>
   
 <!-- main video end -->
-
 	<div id="section_all">    
 	  <div id="search-results"></div>  <!-- 검색결과 div -->
+	 
+	    <div class="hide">
+	        <h1 class="section_main_text" id="top5_text">TOP 5</h1>
+	        <div class="section">
+	         <div id="top_5">
+	            <c:set var="counter" value="0" />
+	            <c:forEach var="row" items="${dto}">
+	                <c:if test="${fn:containsIgnoreCase(row.title, searchText)}">
+	                    <c:if test="${counter < 5}">
+	                       <div class="conta">
+	                          <span class="number">${counter + 1}</span>
+	                           <a href="/video/detail?video_id=${row.video_id}">
+	                                <img src="${row.image_url}" alt="Image not found">
+	                            </a>
+	                            <span style="display:none">${row.title}</span>
+	                        </div>
+	                        <c:set var="counter" value="${counter + 1}" />
+	                    </c:if>
+	                </c:if> 
+	            </c:forEach>
+	        </div>
+	    </div>
+	</div>
+	  
+	  
 	<!-- movie category -->
-		<div class="hide">
+		<div class="hide hide_2">
 			<h1 class="section_main_text">영화</h1>
 			<div class="section">
 		       <div class="slider">
@@ -211,18 +178,9 @@
     </div> -->
 <!-- adv area end -->
 
-<footer>
-
-<!-- footer start -->
-   <!--  <div id="f_Con1">
-   <div id="f_Con2">   
-      <h1>김범수</h1><span>보고싶다</span>
-   </div>
-   <div id="map"></div>
-</div> -->
-<!-- footer end -->
-    
-</footer>
+<!-- footer start  -->
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>	
+<!-- footer end  -->
 <script src="/resources/js/video/list.js"></script>
 
 </body>

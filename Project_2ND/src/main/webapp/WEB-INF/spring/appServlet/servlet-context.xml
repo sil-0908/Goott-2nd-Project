@@ -38,20 +38,10 @@
 	</beans:bean>
 	
 	<!-- 웹소켓 -->
-	<beans:bean id="echoHandler" class="com.test.test1.chat.EchoHandler" />        
+	<beans:bean id="echoHandler" class="com.test.test1.chat.util.EchoHandler" />        
 	
 	<websocket:handlers>
 		<websocket:mapping handler="echoHandler" path="/echo"/>
-		<websocket:handshake-interceptors>
-			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
-		</websocket:handshake-interceptors>
-		<websocket:sockjs />
-	</websocket:handlers>   
-	
-	<beans:bean id="chatHandler" class="com.test.test1.chat.ChatHandler" />        
-	
-	<websocket:handlers>
-		<websocket:mapping handler="chatHandler" path="/chat"/>
 		<websocket:handshake-interceptors>
 			<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"/>
 		</websocket:handshake-interceptors>

@@ -38,7 +38,7 @@
 				<i class="fas fa-fw fa-tachometer-alt"></i>
 				<span>회원 관리</span>
 			</a>
-		</li>	
+		</li>				
 		<!-- Divider -->
 		<hr class="sidebar-divider">
 		
@@ -46,6 +46,19 @@
 		<div class="sidebar-heading">
 		    databases
 		</div>
+		
+		<hr class="sidebar-divider">
+		<div class="sidebar-heading">
+		    1:1chat
+		</div>
+		
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+		    <a id="dropdownLI" class="nav-link collapsed" aria-expanded="true" aria-controls="collapseTwo" href="/admin/adminchat">
+		        <i class="fas fa-fw fa-cog"></i>
+		        <span>Chat</span>
+		    </a>
+		</li>	
 		
 		<!-- Nav Item - Pages Collapse Menu -->
 		<li class="nav-item">

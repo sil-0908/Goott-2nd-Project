@@ -33,44 +33,6 @@ body{
 }
    
 
-/* =================================== header 영역 start ===================================*/
-/* 네비바 - 로고/다국어지원기능 들어감 */
-nav {
-    display: flex;
-    height: 6rem;
-    width: 100%;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-    position: fixed;
-}
-
-/* 네비바 - 로고/다국어지원기능 들어감 */
-.logo img{
-    width: 20rem;
-    height: 9rem;
-}
-
-/* 다국어지원기능 영역 */
-.langdropdown{
-    margin-right: 1rem;
-    background-color: var(--bg);
-    border-radius: 10px;
-}
-
-/* 다국어지원기능 셀렉트 크기 조정 */
-.selectbox{
-    width: 150px;
-    height: 30px;
-    padding-left: 5px;
-    font-size: var(--text-size);
-    border-radius: 3px;
-    background-color: var(--bg);
-    outline: 0 none;
-}
-
-/* =================================== header 영역 end ===================================*/
-
 /* =================================== section 영역 start ===================================*/
 /* 구역 3개로 나눔 - 이미지가 들어갈 영역 */
 .sectionA, .sectionB, .sectionC{

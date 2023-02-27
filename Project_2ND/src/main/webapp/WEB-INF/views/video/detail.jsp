@@ -103,6 +103,7 @@
 									<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
 									<input type="hidden" class="c_id_input" name="comment_id" value="${comt.comment_id}">
 									<input type="hidden" class="c_pid_input" name="pid" value="${comt.pid}">
+									<input type="hidden" class="u_nickname" name="u_nickname" value="${sessionScope.nickname}">
 									<c:if test="${sessionScope.nickname != null}">
 										<input type="button" class="cocom_write_btn" value="답글작성">
 									</c:if>
@@ -112,10 +113,12 @@
 										<input type="button" class="comment_delete" value="삭제">
 									</c:if>
 								</div>
-								<%-- 대댓글 자리 --%>
-								<div class="co_comment_list"></div>
-								<%-- 수정 자리 --%>
+								<%-- 대댓글 작성 자리 --%>
+								<div class="cocomt_insert"></div>
+								<%-- 댓글 수정 자리 --%>
 								<div class="comt_edit"></div>
+								<%-- 대댓글 목록 자리 --%>
+								<div class="co_comment_list"></div>
 								<hr id="com_list_hr">								
 							</td>						
 						</c:if>						
@@ -128,5 +131,9 @@
 	</div>
 	
 <script src="/resources/js/video/detail.js"></script>
+<script>
+// js에서 sessionScope 값에 대해 불러오질 못하고 c태그 자체를 기능이 아닌 text로 인식하여 기능이 작동하지 않아 jsp 내에 전역으로 변수생성
+var session = '<c:out value="${sessionScope.nickname}"/>';
+</script>
 </body>
 </html>

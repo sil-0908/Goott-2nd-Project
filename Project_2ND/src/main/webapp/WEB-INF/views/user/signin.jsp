@@ -14,11 +14,12 @@
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"charset="utf-8"></script>
 </head>
 <body>
+<!--네비바 추가 0227 김지혜  -->   
 	<header>
-		<div class="header_logo">
-			<img src="/resources/img/user/logo.png" alt="">
-		</div>
+		<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
 	</header>
+
+    <!-- header end -->
 	<section>
 		<div class="section_loginform">
 			<span class="login"><span class="login_text">로그인</span><small><a href="/user/find">비밀번호를 잊어버리셨나요?</a></small></span>
@@ -66,8 +67,10 @@
 				</form>
 			</div>
 		</div>
-	</section>		
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	</section>
+<!-- footer start  -->
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>	
+<!-- footer end  -->
 <script src="/resources/js/api/google.js"></script>
 <script src="/resources/js/api/kakao.js"></script>
 <script src="/resources/js/api/naver.js"></script>
