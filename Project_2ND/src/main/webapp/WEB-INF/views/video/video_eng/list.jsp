@@ -32,7 +32,7 @@
                </ul>
                 </li>
                 <li class="menu_text_li" id="menu2" onclick="ani_q()"> 
-                    <p>애니메이션</p>    
+                    <p>ANIMATION</p>    
                     <!-- <ul class="drop_menu_ul">
                         <li class="drop_menu_li">ROMANCE</li>
                         <li class="drop_menu_li">SF/FANTASY</li>
@@ -59,11 +59,11 @@
                 <li class="info_li">
                     <i class="fas fa-user fa-2x icons" id="info_icon"></i>
                     <ul class="drop_menu_ul">
-                        <li class="drop_menu_li">내채널</li>
-                        <li class="drop_menu_li">회원정보수정</li>
+                        <li class="drop_menu_li">My channel</li>
+                        <li class="drop_menu_li">Modifying member information</li>
                         <li class="drop_menu_li">Language</li>
-                        <li class="drop_menu_li">고객센터</li>
-                        <li class="drop_menu_li">로그아웃</li>
+                        <li class="drop_menu_li">Customer Service</li>
+                        <li class="drop_menu_li">Sign out</li>
                     </ul>
                 </li>
             </ul>
@@ -87,34 +87,9 @@
 
 	<div id="section_all">    
 	  <div id="search-results"></div>  <!-- 검색결과 div -->
-	 
-	    <div class="hide">
-	        <h1 class="section_main_text" id="top5_text">TOP 5</h1>
-	        <div class="section">
-	         <div id="top_5">
-	            <c:set var="counter" value="0" />
-	            <c:forEach var="row" items="${dto}">
-	                <c:if test="${fn:containsIgnoreCase(row.title, searchText)}">
-	                    <c:if test="${counter < 5}">
-	                       <div class="conta">
-	                          <span class="number">${counter + 1}</span>
-	                           <a href="/video/detail?video_id=${row.video_id}">
-	                                <img src="${row.image_url}" alt="Image not found">
-	                            </a>
-	                            <span style="display:none">${row.title}</span>
-	                        </div>
-	                        <c:set var="counter" value="${counter + 1}" />
-	                    </c:if>
-	                </c:if> 
-	            </c:forEach>
-	        </div>
-	    </div>
-	</div>
-	  
-	  
 	<!-- movie category -->
-		<div class="hide hide_2">
-			<h1 class="section_main_text">영화</h1>
+		<div class="hide">
+			<h1 class="section_main_text">MOVIE</h1>
 			<div class="section">
 		       <div class="slider">
 					<c:forEach var="row" items="${dto}">
@@ -131,7 +106,7 @@
 		
 		<!-- action genre -->
 		<div id="actionSubMenu" class="sub-menu" style="display:none">
-			<h1 class="section_main_text">액션</h1>
+			<h1 class="section_main_text">ACTION</h1>
 			<div class="section">
 				<c:forEach var="row" items="${dto}">
 					<c:if test="${row.genre_id == '1'}"> 
@@ -146,7 +121,7 @@
 	                         
 		<!-- drama genre -->
 		<div id="dramaSubMenu" class="sub-menu" style="display:none">
-			<h1 class="section_main_text">드라마</h1>
+			<h1 class="section_main_text">DRAMA</h1>
 			<div class="section">
 				<c:forEach var="row" items="${dto}">
 					<c:if test="${row.genre_id == '2'}"> 
@@ -161,7 +136,7 @@
 	                
 		<!-- fantasy genre -->
 		<div id="fantasySubMenu" class="sub-menu" style="display:none">
-			<h1 class="section_main_text">판타지</h1>
+			<h1 class="section_main_text">FANTASY</h1>
 			<div class="section">
 				<c:forEach var="row" items="${dto}">
 					<c:if test="${row.genre_id == '3'}"> 
@@ -191,7 +166,7 @@
 	               
 		<!-- crime genre -->
 		<div id="crimeSubMenu" class="sub-menu" style="display:none">
-			<h1 class="section_main_text">범죄</h1>
+			<h1 class="section_main_text">CRIME</h1>
 			<div class="section">
 				<c:forEach var="row" items="${dto}">
 					<c:if test="${row.genre_id == '5'}"> 
@@ -208,7 +183,7 @@
 
 		<!-- animation category -->
 		<div class="hide">
-			<h1 class="section_main_text">애니메이션</h1>
+			<h1 class="section_main_text">ANIMATION</h1>
 			<div class="section">
 			    <div class="slider">
 					<c:forEach var="row" items="${dto}">

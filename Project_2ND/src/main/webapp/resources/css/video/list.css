@@ -34,6 +34,7 @@ nav{
     background-color: transparent;
 }
 
+
 /* 스크롤 밑으로 내릴 때 적용할 배경색 */
 nav.scrolled {
     background-color:#24292D;
@@ -42,7 +43,7 @@ nav.scrolled {
 }
 
 ul li {
-    list-style: none;       /* 전체 ul, li 일괄 효과 적용 */
+    list-style: none;      /* 전체 ul, li 일괄 효과 적용 */
     text-align: center;
     line-height: 50px;
     color: var(--text-color);
@@ -203,7 +204,7 @@ ul li {
 #bg_video{
   width: 93.5%;
   height: 100%;
-  max-height: 72vh;
+  max-height: 70vh;
   max-width:93.5vw;
   object-fit: fill;
   filter: drop-shadow(8px 8px 10px gray);
@@ -228,13 +229,65 @@ ul li {
    
 }
 
+
+/* Top 5 recommendations */
+#top_5{
+	display: flex;  
+    position: relative;
+    transform: translateX(40px);
+    height:auto; 
+    width: 100%;  
+}
+#top_5 .conta{
+	height: 380px;
+	width: 350px;
+	position: relative;
+    transform: translateY(-30px);
+}
+/* Top 5 recommendations end */
+
+
+/* Top 5 recommendations text */
+#top5_text{
+	padding-top:30px;
+    transform: translateY(-40px);
+
+	
+  
+}
+
+
+.hide_2{
+	padding-top: 50px;
+}
+
+.number {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 150px;
+  font-weight: bold;
+  color: #CCCCCC;
+  padding: 20px;
+  border-radius: 50%;
+  width: 40px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-shadow: 8px 10px 10px rgba(0, 0, 0); /* add a subtle text shadow */
+}
+
+/* Top 5 recommendations text  end*/
+
 /* 장르 토글영역 div */
 .sub-menu {
   transform: translateX(40px);
 }
 
 img{
-   height: 270px;
+   height: 100%;
    width: 90%;
 
 }
@@ -283,11 +336,12 @@ img{
 }
 h1{
    color: #ffff;
-   padding:20px 0 0 60px; 
+   padding:0 0 0 60px; 
 
 }
-
 /* 메인텍스트 끝*/
+
+
 
 /* section end */
 
