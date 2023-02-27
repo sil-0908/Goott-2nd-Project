@@ -103,7 +103,7 @@
 									<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
 									<input type="hidden" class="c_id_input" name="comment_id" value="${comt.comment_id}">
 									<input type="hidden" class="c_pid_input" name="pid" value="${comt.pid}">
-									<input type="text" class="u_nickname" name="u_nickname" value="${sessionScope.nickname}">
+									<input type="hidden" class="u_nickname" name="u_nickname" value="${sessionScope.nickname}">
 									<c:if test="${sessionScope.nickname != null}">
 										<input type="button" class="cocom_write_btn" value="답글작성">
 									</c:if>
