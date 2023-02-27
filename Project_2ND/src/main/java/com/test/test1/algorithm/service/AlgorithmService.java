@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.test.test1.algorithm.dto.AlgorithmDto;
+import com.test.test1.video.dto.VideoDto;
 
 //알고리즘 구현을 위한 서비스 인터페이스 - 02.15 장재호
 public interface AlgorithmService {
@@ -20,6 +21,8 @@ public interface AlgorithmService {
 
 	public List<AlgorithmDto> weeklyVisitor();
 
-	public List<AlgorithmDto> weeklySales();	
+	public List<AlgorithmDto> weeklySales();
+
+	public List<VideoDto> userlist(String user_id);	
 	
 }

@@ -80,7 +80,7 @@
 
 <!--    개인정보 상세조회	 _ 23/02/17 김지혜  -->
 	<select id="detail" resultType = "com.test.test1.user.dto.UserDto">
-		select ID, EMAIL, NICKNAME, PHONE_NUM
+		select ID, EMAIL, NICKNAME, PHONE_NUM, IMG
 		  from USER
 		 where ID=#{user_id}
 	</select>
@@ -171,5 +171,10 @@
 		]]>
 	</select>
 
+	<update id="img_update">
+		update USER
+		   set IMG = #{saveFilestr}
+		 where ID = #{id}
+	</update>
 
 </mapper>
