@@ -23,6 +23,7 @@
 	position : fixed;
 	left : 82%;
 	top : 10%;
+	visibility : hidden;
 }
 
 #alarmDiv #alarmI{
