@@ -34,8 +34,14 @@ public class CommentServiceImpl implements CommentService {
 	
 //	대댓글 목록 불러오기 02.23 장민실
 	@Override
-	public List<CommentDto> cocomList(int pid) {
-		return commentDao.cocomList(pid);
+	public List<CommentDto> cocomList(CommentDto dto) {
+		return commentDao.cocomList(dto);
+	}
+	
+//	댓글 수정 02.27 장민실
+	@Override
+	public void edit(CommentDto dto) {
+		commentDao.edit(dto);
 	}
 
 //	댓글 삭제 02.23 장민실
@@ -44,11 +50,10 @@ public class CommentServiceImpl implements CommentService {
 		commentDao.delete(comment_id);
 	}
 
-//	미완 주석처리
-	@Override
-	public void edit(CommentDto dto) {
-		commentDao.edit(dto);
-	}
+//	@Override
+//	public void cocomInsert(CommentDto c_dto) {
+//		commentDao.cocomInsert(c_dto);
+//	}
 
 	
 
