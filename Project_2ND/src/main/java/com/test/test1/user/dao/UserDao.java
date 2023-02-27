@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import com.test.test1.board.qna.dto.Criteria;
+import com.test.test1.mypage.dto.ImgDto;
 import com.test.test1.user.dto.UserDto;
 
 @Repository
@@ -128,6 +129,10 @@ public class UserDao {
 //	video detail 내 댓글등록 위해 유저정보 받아오기 02.20 장민실
 	public int getid(String user_id) {
 		return sqlSessionTemplate.selectOne("user.getid", user_id);
+	}
+
+	public void img_update(ImgDto dto) {
+		sqlSessionTemplate.selectOne("user.img_update" , dto);
 	}
 	
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.test1.board.qna.dto.Criteria;
+import com.test.test1.mypage.dto.ImgDto;
 import com.test.test1.user.dao.UserDao;
 import com.test.test1.user.dto.UserDto;
 
@@ -102,6 +103,12 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public int getid(String user_id) {
 		return userDao.getid(user_id);
+	}
+
+// 프로필 이미지 변경 - 02.24 김범수
+	@Override
+	public void img_update(ImgDto dto) {
+		userDao.img_update(dto);
 	}
 
 
