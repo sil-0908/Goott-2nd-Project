@@ -16,13 +16,15 @@ public interface CommentService {
 	List<CommentDto> replyList(int video_id);
 	
 //	대댓글 목록 불러오기 02.23 장민실
-	List<CommentDto> cocomList(int pid);
+	List<CommentDto> cocomList(CommentDto dto);
+	
+//	댓글 수정 02.27 장민실
+	void edit(CommentDto dto);
 
 //	댓글 삭제 02.23 장민실
 	void delete(int comment_id);
 
-// 미완 주석처리
-//	void edit(CommentDto dto);
+//	void cocomInsert(CommentDto c_dto);
 
 	
 
