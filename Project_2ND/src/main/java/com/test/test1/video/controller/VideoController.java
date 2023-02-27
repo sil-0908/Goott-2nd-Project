@@ -40,25 +40,6 @@ public class VideoController {
 	@Autowired
 	CommentService commentService;
 	
-	@RequestMapping(value="/create", method = RequestMethod.GET)
-	public ModelAndView create() {
-	    return new ModelAndView("/video/create");
-	}	
-	
-	@RequestMapping(value = "/create", method = RequestMethod.POST)
-	public ModelAndView createPost(@RequestParam Map<String, Object> map) {
-	    ModelAndView mav = new ModelAndView();
-
-	    String videoId = this.videoService.create(map);
-	    if (videoId == null) {
-	        mav.setViewName("redirect:/video/create");
-	    }else {
-	        mav.setViewName("redirect:/detail?videoId=" + videoId); 
-	    }  
-
-	    return mav;
-	}
-	
 //	영상 전체조회 페이지 - 02.07 배철우
 //	DTO 생성 후 DTO 활용하여 코드재생성 - 02.10 장민실
 	@RequestMapping("list")
@@ -99,8 +80,7 @@ public class VideoController {
 		mv.addObject("detail", actor);
 		mv.setViewName("video/detail");
 		return mv; 
-	}
-	
+	}	
 	
 //	 내보관함 기능 구현 - 02.15 김범수
 	@RequestMapping(value = {"mylocker_in", "mylocker_de"}, method = RequestMethod.POST)
@@ -128,8 +108,7 @@ public class VideoController {
 			String rental_id = rentalService.getid(dto);
 			mv.addObject("rental_id",rental_id);
 			mv.setViewName("video/detail");
-		}
-		
+		}		
 		return mv;	
 	}
 	     

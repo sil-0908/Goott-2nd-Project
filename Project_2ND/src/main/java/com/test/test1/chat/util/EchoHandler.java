@@ -1,4 +1,4 @@
-package com.test.test1.chat;
+package com.test.test1.chat.util;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +49,6 @@ public class EchoHandler extends TextWebSocketHandler{
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {// 메시지
 	
 		for(WebSocketSession single : sessions) {
-            single.sendMessage(new TextMessage(message.getPayload()));
 //			String msg = message.getPayload();
 //			String[] str = msg.split(",");
 //			//JS에서 원하는대로 send하여 해당 기능 별 알람 구현

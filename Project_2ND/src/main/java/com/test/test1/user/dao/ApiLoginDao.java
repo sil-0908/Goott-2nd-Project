@@ -24,6 +24,8 @@ public class ApiLoginDao {
 		return session.selectOne("apiUser.apiSignIn", email);
 	}
 
-	
+	public String getNick(String id) {
+		return session.selectOne("apiUser.getNick", id);
+	}	
 	
 }

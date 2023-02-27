@@ -31,8 +31,13 @@ public class CommentDao {
 	}
 	
 //	대댓글 목록 불러오기 02.23 장민실
-	public List<CommentDto> cocomList(int pid) {
-		return sqlSession.selectList("comment.cocomList", pid);
+	public List<CommentDto> cocomList(CommentDto dto) {
+		return sqlSession.selectList("comment.cocomList", dto);
+	}
+	
+//	댓글 수정 02.27 장민실
+	public void edit(CommentDto dto) {
+		sqlSession.update("comment.edit", dto);
 	}
 
 //	댓글 삭제 02.23 장민실
@@ -40,9 +45,8 @@ public class CommentDao {
 		sqlSession.delete("comment.delete", comment_id);
 	}
 
-//	미완 주석처리
-//	public void edit(CommentDto dto) {
-//		sqlSession.update("comment.edit", dto);
+//	public void cocomInsert(CommentDto c_dto) {
+//		sqlSession.insert("comment.cocomInsert", c_dto);
 //	}
 
 	

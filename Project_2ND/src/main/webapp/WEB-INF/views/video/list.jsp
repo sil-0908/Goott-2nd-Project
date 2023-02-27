@@ -29,8 +29,33 @@
 <!-- main video end -->
 	<div id="section_all">    
 	  <div id="search-results"></div>  <!-- 검색결과 div -->
+	 
+	    <div class="hide">
+	        <h1 class="section_main_text" id="top5_text">TOP 5</h1>
+	        <div class="section">
+	         <div id="top_5">
+	            <c:set var="counter" value="0" />
+	            <c:forEach var="row" items="${dto}">
+	                <c:if test="${fn:containsIgnoreCase(row.title, searchText)}">
+	                    <c:if test="${counter < 5}">
+	                       <div class="conta">
+	                          <span class="number">${counter + 1}</span>
+	                           <a href="/video/detail?video_id=${row.video_id}">
+	                                <img src="${row.image_url}" alt="Image not found">
+	                            </a>
+	                            <span style="display:none">${row.title}</span>
+	                        </div>
+	                        <c:set var="counter" value="${counter + 1}" />
+	                    </c:if>
+	                </c:if> 
+	            </c:forEach>
+	        </div>
+	    </div>
+	</div>
+	  
+	  
 	<!-- movie category -->
-		<div class="hide">
+		<div class="hide hide_2">
 			<h1 class="section_main_text">영화</h1>
 			<div class="section">
 		       <div class="slider">

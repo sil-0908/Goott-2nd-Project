@@ -16,7 +16,85 @@ function resetSlider() {
 	    prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
 	    nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
 	  });
-	}
+	}  
+  
+  //애니메이션 토글 기능 //
+function ani_q() {
+	  resetSearch();
+	  let mainText = document.querySelectorAll(".hide .section_main_text")[2];
+	  let section = document.querySelectorAll(".hide .section")[2];
+	  
+	  let subMenu = document.getElementById('my-sub-menu');
+	  if (!subMenu) {
+	    subMenu = document.createElement('div');
+	    subMenu.classList.add('sub-menu');
+	    subMenu.id = 'my-sub-menu';
+	    subMenu.style.display = 'none'; 
+	    document.body.appendChild(subMenu);
+	  }
+	  toggleSubMenu('my-sub-menu'); 
+	  
+	  if (mainText.style.display === "none") {
+	    mainText.style.display = "block";
+	    section.style.display = "block";
+	    resetSlider();
+	  } else {
+	    let hides = document.querySelectorAll('.hide');
+	    for (let i = 0; i < hides.length; i++) {
+	      hides[i].style.display = 'block';
+	    }
+	  };
+	};
+  
+  
+	 //영화 장르별 토글기능 //
+function toggleSubMenu(subMenuId) {
+	   resetSearch();
+	  var subMenus = document.getElementsByClassName('sub-menu');
+	  for (var i = 0; i < subMenus.length; i++) {
+	    if (subMenus[i].id !== subMenuId) {
+	      subMenus[i].style.display = 'none';
+	    }
+	  };
+
+	  var subMenu = document.getElementById(subMenuId);
+	  if (subMenu.style.display === 'none') {
+	    subMenu.style.display = 'block';
+	  } else {
+	    subMenu.style.display = 'none';
+	  };
+
+	  var hides = document.querySelectorAll('.hide .section, .hide .section_main_text');
+	  for (var j = 0; j < hides.length; j++) {
+	    if (subMenu.style.display === 'block') {
+	      hides[j].style.display = 'none';
+	    } else {
+	      hides[j].style.display = 'block';
+	    };
+	  };
+	  resetSlider();
+	};
+ 
+	
+	// 로고 클릭시 페이지 새로고침 
+function back(){
+	   window.location.reload();
+}	
+  
+
+     // 네비바 스크롤시 백그라운드 적용 
+function handleScroll() {
+    const scrolled = window.scrollY > 50;
+    const nav = document.querySelector('nav');
+    if (scrolled) {
+        nav.classList.add('scrolled');
+    }else{
+        nav.classList.remove('scrolled');
+    }
+} 
+
+window.addEventListener('scroll', handleScroll);
+ 
   
 
 // 페이지 로딩시 랜덤비디오 출력 //

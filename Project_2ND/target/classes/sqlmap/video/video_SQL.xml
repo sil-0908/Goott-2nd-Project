@@ -12,7 +12,7 @@
 	<!-- 비디오  전체조희 쿼리문  -->
 	<select id="list" resultType="com.test.test1.video.dto.VideoDto">
 		<![CDATA[
-		select distinct v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL, c.CATEGORY_ID, g.GENRE_ID
+		select distinct v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL,v.RECOMMAND, c.CATEGORY_ID, g.GENRE_ID
           from VIDEO v 
 		  left join VIDEO_CATEGORY c
 		    on v.VIDEO_ID = c.VIDEO_ID
@@ -22,6 +22,7 @@
 		   and (c.CATEGORY_ID = 1 OR c.CATEGORY_ID = 3)
 		   and (g.GENRE_ID = 1 or g.GENRE_ID = 2 or g.GENRE_ID = 3 or g.GENRE_ID = 4 or g.GENRE_ID = 5)
 		    or g.GENRE_ID is null
+		    ORDER BY recommand DESC
 		]]>
 	</select>
 	

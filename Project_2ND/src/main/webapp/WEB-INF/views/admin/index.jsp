@@ -66,6 +66,19 @@
 		        </div>
 		    </div>
 		</li>
+		
+		<hr class="sidebar-divider">
+		<div class="sidebar-heading">
+		    1:1chat
+		</div>
+		
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+		    <a id="dropdownLI" class="nav-link collapsed" aria-expanded="true" aria-controls="collapseTwo" href="/admin/adminchat">
+		        <i class="fas fa-fw fa-cog"></i>
+		        <span>Chat</span>
+		    </a>
+		</li>
 		<!-- Divider -->
 	    <hr class="sidebar-divider d-none d-md-block">
 	</ul>
