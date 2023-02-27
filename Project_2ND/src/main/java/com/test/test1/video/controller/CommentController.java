@@ -61,48 +61,41 @@ public class CommentController {
 //	대댓글 목록 불러오기 02.23 장민실
 	@RequestMapping("cocomList/{pid}")
 	@ResponseBody
-	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid) {
-	   List<CommentDto> cocom_list = commentService.cocomList(pid);
-	   return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
+	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid, int video_id, CommentDto dto) {
+		System.out.println(dto.toString());
+		List<CommentDto> cocom_list = commentService.cocomList(dto);
+		return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
 	}
 	
 //	대댓글 작성하기 - 미완 주석처리
 //	@RequestMapping(value="cocomwrite", method=RequestMethod.POST)
-//	public ModelAndView cocomInsert(VideoDto v_dto, CommentDto c_dto, HttpSession session, ModelAndView mv) {
+//	public ModelAndView cocomInsert(int video_id, CommentDto dto, HttpSession session, ModelAndView mv) {
 //		String user_id = session.getAttribute("user_id").toString();
 //		String nickname = session.getAttribute("nickname").toString();
 //		int id = userService.getid(user_id);
-//		
+//
 //		int depth = 1;
-//		c_dto.setDepth(depth);
+//		dto.setDepth(depth);
 //		
-//		c_dto.setUser_id(id);
-//		c_dto.setNickname(nickname);	
+//		dto.setUser_id(id);
+//		dto.setNickname(nickname);	
 //		
-//		int video_id = v_dto.getVideo_id();
-//		c_dto.setVideo_id(video_id);
-//		
-//		commentService.cocomInsert(c_dto);
-//		mv.addObject("c_dto", c_dto);
+//		commentService.cocomInsert(dto);
+//		mv.addObject("cocom_dto", dto);
 //		mv.setViewName("redirect:/video/detail?video_id="+video_id);
 //		return mv;
 //	}
 	
-//	댓글 수정 - 미완 주석처리
-//	@RequestMapping(value="edit", method=RequestMethod.POST)
-//	@ResponseBody
-//	public String edit(int comment_id, String commentary, CommentDto dto) {
-//		dto.setComment_id(comment_id);
-//		dto.setCommentary(commentary);
-//		int video_id = dto.getVideo_id();
-//		commentService.edit(dto);
-//		return "redirect:/video/detail?video_id="+video_id;
-//	}
-//	public ResponseEntity<List<CommentDto>> edit(@PathVariable("comment_id") int comment_id) {
-//		List<CommentDto> edit_list = commentService.edit(comment_id);
-//		return new ResponseEntity<List<CommentDto>>(edit_list, HttpStatus.OK);
-//	}
-
+//	댓글 수정 02.27 장민실
+	@RequestMapping("edit/{comment_id}")
+	@ResponseBody
+	public String edit(int comment_id, String commentary, CommentDto dto) {
+		dto.setComment_id(comment_id);
+		dto.setCommentary(commentary);
+		commentService.edit(dto);
+//		return null로 준 이유 : detail.js에서 따로 페이지 새로고침 처리해서
+		return null;
+	}
 	
 //	댓글 삭제 02.23 장민실
 	@RequestMapping("delete")
@@ -112,11 +105,6 @@ public class CommentController {
 //		return null로 준 이유 : detail.js에서 따로 페이지 새로고침 처리해서
 		return null;
 	}
-	
-	
-	
-	
-	
 	
 	
 	
