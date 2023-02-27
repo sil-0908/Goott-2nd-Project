@@ -6,5 +6,3 @@ var naverLogin = new naver.LoginWithNaverId({
 });
 
 naverLogin.init();/* 설정정보를 초기화하고 연동을 준비 */
-
-

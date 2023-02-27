@@ -10,4 +10,6 @@ public interface ApiLoginService {
 
 	String apiSignIn(String email);
 
+	String getNick(String id);
+
 }

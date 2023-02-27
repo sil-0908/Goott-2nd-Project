@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<body style="background-color:red;">
-
+<body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 <script>
@@ -29,7 +28,7 @@
 				const nickName = naverLogin.user.getNickName();
 				const id = naverLogin.user.getId();
 				
-				console.log(naverLogin);
+				console.log(naverLogin);				
 				
 				$.ajax({
 					type : 'post',

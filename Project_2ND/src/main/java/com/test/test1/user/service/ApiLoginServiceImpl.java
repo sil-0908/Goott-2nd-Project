@@ -27,4 +27,9 @@ public class ApiLoginServiceImpl implements ApiLoginService {
 		return apiLoginDao.apiSignIn(email);
 	}
 
+	@Override
+	public String getNick(String id) {
+		return apiLoginDao.getNick(id);
+	}
+
 }
