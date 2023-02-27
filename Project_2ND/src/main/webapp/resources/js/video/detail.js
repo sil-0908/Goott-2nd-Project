@@ -30,6 +30,10 @@ comu_btn[0].addEventListener('click', function(){
     }
 });
 
+///////////////////////////////// 영상 좋아요, 싫어요  ///////////////////////////////////////
+
+///////////////////////////////// 영상 좋아요, 싫어요  ///////////////////////////////////////
+
 ///////////////////////////////// 댓글, 대댓글 공통  ///////////////////////////////////////
 
 	// 댓글, 대댓글 수정 중 수정취소 버튼클릭시 영역 없애기 start
@@ -109,30 +113,31 @@ comu_btn[0].addEventListener('click', function(){
 	// 대댓글 작성하기 start
 	$(".cocom_write_btn").on('click', function(e){
 		let cocom_insert_div = this.parentNode.nextElementSibling;
-//			let cocom_text = document.querySelector('.cocom_text').innerHTML;
 		let cocomForm = "";
-		cocomForm += "<p>대댓글 작성하기</p>"
-		cocomForm += "<form name='comt_edit' method='post'>";
+		cocomForm += "<p>답글 작성하기</p>"
+		cocomForm += "<form name='cocom_write' method='post'>";
 		cocomForm += "      <textarea rows='3' cols='60' class='cocom_text'></textarea>";
-		cocomForm += "      <button type='button' class='cocom_complete' onclick='cocom_complete()'>수정완료</button>";
-		cocomForm += "      <button type='button' class='cocom_cancle' onclick='comt_edit_cancle(this)'>수정취소</button>";
+		cocomForm += "      <button type='button' class='cocom_complete' onclick='cocom_complete()'>답글등록</button>";
+		cocomForm += "      <button type='button' class='cocom_cancle' onclick='comt_edit_cancle(this)'>등록취소</button>";
 		cocomForm += "</form>";
 		$(cocom_insert_div).html(cocomForm);
 	});   
 	   
 	function cocom_complete() {
-		let comment_id = document.querySelector('.c_id_input').value;
-		let commentary = document.querySelector('.com_edit_text').value;
+//		let comment_id = document.querySelector('.c_id_input').value;
+		let pid = document.querySelectorAll('.c_pid_input').value;
+//		let commentary = document.querySelector('.com_edit_text').value;
+		console.log(pid);
 		   
-		$.ajax({
-			data : { comment_id : comment_id, commentary : commentary },
-			url : "/comt/cocomwrite",
-			type : 'POST',
-			success : function(){
-				window.location.reload();
-				alert("대댓글 작성이 완료되었습니다.");
-			}
-		});		
+//		$.ajax({
+//			data : { pid : pid, commentary : commentary },
+//			url : "/comt/cocomwrite",
+//			type : 'POST',
+//			success : function(){
+//				window.location.reload();
+//				alert("답글 작성이 완료되었습니다.");
+//			}
+//		});		
 	};
 	// 대댓글 작성하기 end
 		
@@ -163,7 +168,7 @@ comu_btn[0].addEventListener('click', function(){
 				let cocomText = "";
 				
 				if(list.length===0) {
-					alert("등록된 댓글이 없습니다.");
+					alert("등록된 답글이 없습니다.");
 				}	// 대댓글 없을때 if end
 		         
 				else {		        	 

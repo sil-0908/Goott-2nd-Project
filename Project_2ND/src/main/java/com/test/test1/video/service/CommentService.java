@@ -24,7 +24,7 @@ public interface CommentService {
 //	댓글 삭제 02.23 장민실
 	void delete(int comment_id);
 
-//	void cocomInsert(CommentDto c_dto);
+	void cocomInsert(CommentDto c_dto);
 
 	
 

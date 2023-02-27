@@ -68,23 +68,24 @@ public class CommentController {
 	}
 	
 //	대댓글 작성하기 - 미완 주석처리
-//	@RequestMapping(value="cocomwrite", method=RequestMethod.POST)
-//	public ModelAndView cocomInsert(int video_id, CommentDto dto, HttpSession session, ModelAndView mv) {
-//		String user_id = session.getAttribute("user_id").toString();
-//		String nickname = session.getAttribute("nickname").toString();
-//		int id = userService.getid(user_id);
-//
-//		int depth = 1;
-//		dto.setDepth(depth);
-//		
-//		dto.setUser_id(id);
-//		dto.setNickname(nickname);	
-//		
-//		commentService.cocomInsert(dto);
-//		mv.addObject("cocom_dto", dto);
-//		mv.setViewName("redirect:/video/detail?video_id="+video_id);
-//		return mv;
-//	}
+	@RequestMapping(value="cocomwrite", method=RequestMethod.POST)
+	public ModelAndView cocomInsert(int video_id, int pid, CommentDto dto, HttpSession session, ModelAndView mv) {
+		String user_id = session.getAttribute("user_id").toString();
+		String nickname = session.getAttribute("nickname").toString();
+		int id = userService.getid(user_id);
+
+		int depth = 1;
+		dto.setDepth(depth);
+		dto.setPid(pid);
+		
+		dto.setUser_id(id);
+		dto.setNickname(nickname);	
+		
+		commentService.cocomInsert(dto);
+		mv.addObject("cocom_dto", dto);
+		mv.setViewName("redirect:/video/detail?video_id="+video_id);
+		return mv;
+	}
 	
 //	댓글 수정 02.27 장민실
 	@RequestMapping("edit/{comment_id}")
@@ -100,7 +101,7 @@ public class CommentController {
 //	댓글 삭제 02.23 장민실
 	@RequestMapping("delete")
 	@ResponseBody
-	public String delete(int video_id, int comment_id) {
+	public String delete(int comment_id) {
 		commentService.delete(comment_id);
 //		return null로 준 이유 : detail.js에서 따로 페이지 새로고침 처리해서
 		return null;

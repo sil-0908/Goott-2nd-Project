@@ -45,9 +45,9 @@ public class CommentDao {
 		sqlSession.delete("comment.delete", comment_id);
 	}
 
-//	public void cocomInsert(CommentDto c_dto) {
-//		sqlSession.insert("comment.cocomInsert", c_dto);
-//	}
+	public void cocomInsert(CommentDto c_dto) {
+		sqlSession.insert("comment.cocomInsert", c_dto);
+	}
 
 	
 

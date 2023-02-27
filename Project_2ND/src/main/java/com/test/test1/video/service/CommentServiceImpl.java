@@ -50,10 +50,10 @@ public class CommentServiceImpl implements CommentService {
 		commentDao.delete(comment_id);
 	}
 
-//	@Override
-//	public void cocomInsert(CommentDto c_dto) {
-//		commentDao.cocomInsert(c_dto);
-//	}
+	@Override
+	public void cocomInsert(CommentDto c_dto) {
+		commentDao.cocomInsert(c_dto);
+	}
 
 	
 
