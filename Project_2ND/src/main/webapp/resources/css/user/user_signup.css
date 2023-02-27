@@ -20,7 +20,7 @@
     margin: auto;
     box-sizing: border-box;
     font-family:'NanumBarunGothic'; 
-   
+    color : var(--text-color);
 }
 
 body{
@@ -31,39 +31,14 @@ body{
 /* 회원가입 전체페이지  */
 .container_j {
     width: 100%;
-    display: grid;
-    grid-template-areas:
-    "header"
-    "main"
-    "footer";
-}
-/* 회원가입 전체페이지 위치 조정 */
-.background_j {
-    position: absolute;
-    width: 100%;
-    height: 140vh;
-    z-index: -1;
-    background-position: center;
-    background-size: cover;
-    filter:brightness(1);
+    display: flex;
+	margin-left: 30vw;
+
 }
 
-/* 헤더영역  */
-.header_j {
-    width: 100%;
-    height: 10vh;
-    grid-area: header;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(255,255,255, 0));    
-}
-  
-/* 로고 */
-.headerLogo_j{
-    font-size: 60px;
-    color: #FFCC00;
-    width: 15vw;
-    height: 10vh;
-    display: inline-block;
-    justify-self: start;
+/* 네비바 영역지정  */
+#navSection{
+	height : 6rem;
 }
 
 
@@ -82,10 +57,8 @@ body{
 #mainDiv_j{
     width: 50%;
     height: 100vh;
-    grid-area: main;
     justify-self: center;
     padding: 5vh 5vw 5vh 5vw;
-    display: grid;
 } 
 /* 회원가입폼 담는 박스 (핸드폰모양틀) */
 #viewDiv_j{
@@ -93,9 +66,7 @@ body{
     height: 1100px;
     background-color: rgba(0, 0, 0, 0.8);
     border-radius: 5px;
-    place-self: center;
     padding: 60px;
-    display: grid;
     border-radius: 60px 60px;
 }
 
@@ -119,6 +90,7 @@ body{
 	cursor: pointer;
 	font-size: 13px;
 	margin : 1vh 0;
+	color : black;
 }
 
 /* 이메일 입력란 공간 */
@@ -164,7 +136,6 @@ body{
 /* span : 아이디 & 이메일 & 닉네임 - 유효성검사/중복처리 확인 메시지글   */
 span{
 	font-size: 0.8rem;
-	color : red;
 }
 
 /* span : 비밀번호 - 유효성검사/중복처리 확인 메시지글   */
@@ -221,6 +192,7 @@ span{
     height: 30px;
     width: 100px;
     margin-bottom: 1vh;
+    color:black;
 }
 
 
@@ -248,4 +220,10 @@ span{
     height: 30px;
     border-radius: 10px;
     cursor: pointer;
+    color:black;
+}
+
+/* footer 영역 추가  02/27 김지혜 */
+#signUpF{
+	margin-top : 20rem;
 }

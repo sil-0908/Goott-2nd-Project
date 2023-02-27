@@ -26,13 +26,21 @@ body {
     z-index : 1000;
 }
 
-nav {
-    /* background-color: dimgrey; */
+/* 네비바 수정  02/27 김지혜  */
+/* 네비바 - 로고/다국어지원기능 들어감 */
+#navbar {
     display: flex;
-    position: fixed;
     height: 6rem;
     width: 100%;
     align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+}
+
+/* 네비바 - 로고/다국어지원기능 들어감 */
+.logo img{
+    width: 20rem;
+    height: 9rem;
 }
 
 ul li {

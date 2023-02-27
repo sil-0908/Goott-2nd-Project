@@ -13,10 +13,11 @@
 	<script src="https://kit.fontawesome.com/885ba80ba8.js" crossorigin="anonymous"></script>
 </head>
 <body>
+<!--네비바 추가 0227 김지혜  -->   
 <div id="navSection">
-<%@ include file="/WEB-INF/views/common/navbar.jsp" %>
+<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
 </div>
-
+<!--네비바 end  -->  
     <div class="container">
         <div class="card">
             <div class="form">
@@ -105,7 +106,9 @@
          
       </div>
    </div>  
-
+<!-- footer start  -->
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<!-- footer end  -->
 	<script src="/resources/js/mypage/user_mydetail.js"></script>
 	<script src="/resources/js/mypage/user_info_modify.js"></script>	  
 	<script src="/resources/js/mypage/mylocker.js"></script>
