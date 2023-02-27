@@ -102,8 +102,8 @@ function resetSlider() {
   //애니메이션 토글 기능 //
 function ani_q() {
 	  resetSearch();
-	  let mainText = document.querySelectorAll(".hide .section_main_text")[1];
-	  let section = document.querySelectorAll(".hide .section")[1];
+	  let mainText = document.querySelectorAll(".hide .section_main_text")[2];
+	  let section = document.querySelectorAll(".hide .section")[2];
 	  
 	  let subMenu = document.getElementById('my-sub-menu');
 	  if (!subMenu) {
