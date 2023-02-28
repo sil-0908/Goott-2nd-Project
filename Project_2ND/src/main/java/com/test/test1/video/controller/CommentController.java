@@ -58,18 +58,9 @@ public class CommentController {
 		return mv;
 	}
 	
-//	대댓글 목록 불러오기 02.23 장민실
-	@RequestMapping("cocomList/{pid}")
-	@ResponseBody
-	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid, int video_id, CommentDto dto) {
-		System.out.println(dto.toString());
-		List<CommentDto> cocom_list = commentService.cocomList(dto);
-		return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
-	}
-	
-//	대댓글 작성하기 - 미완 주석처리
+//	대댓글 작성하기 - 02.28 장민실
 	@RequestMapping(value="cocomwrite", method=RequestMethod.POST)
-	public ModelAndView cocomInsert(int video_id, int pid, CommentDto dto, HttpSession session, ModelAndView mv) {
+	public ModelAndView cocomInsert(int pid, CommentDto dto, HttpSession session, ModelAndView mv) {
 		String user_id = session.getAttribute("user_id").toString();
 		String nickname = session.getAttribute("nickname").toString();
 		int id = userService.getid(user_id);
@@ -83,8 +74,16 @@ public class CommentController {
 		
 		commentService.cocomInsert(dto);
 		mv.addObject("cocom_dto", dto);
-		mv.setViewName("redirect:/video/detail?video_id="+video_id);
-		return mv;
+		return null;
+	}	
+	
+//	대댓글 목록 불러오기 02.23 장민실
+	@RequestMapping("cocomList/{pid}")
+	@ResponseBody
+	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid, int video_id, CommentDto dto) {
+		System.out.println(dto.toString());
+		List<CommentDto> cocom_list = commentService.cocomList(dto);
+		return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
 	}
 	
 //	댓글 수정 02.27 장민실
@@ -98,7 +97,7 @@ public class CommentController {
 		return null;
 	}
 	
-//	댓글 삭제 02.23 장민실
+//	댓글,대댓글 삭제 02.23 장민실
 	@RequestMapping("delete")
 	@ResponseBody
 	public String delete(int comment_id) {
