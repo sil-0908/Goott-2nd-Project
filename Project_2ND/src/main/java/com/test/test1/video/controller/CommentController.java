@@ -65,7 +65,7 @@ public class CommentController {
 		String nickname = session.getAttribute("nickname").toString();
 		int id = userService.getid(user_id);
 
-		int depth = 1;
+		int depth = 1;          // depth=0 원댓글, depth=1 대댓글
 		dto.setDepth(depth);
 		dto.setPid(pid);
 		

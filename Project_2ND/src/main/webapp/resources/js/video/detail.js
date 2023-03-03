@@ -200,7 +200,7 @@ comu_btn[0].addEventListener('click', function(){
 	};
 //  대댓글 수정 영역 end
 		
-	// db의 대댓글 불러와서 영역에 넣어주기 start 02.24 장민실
+	// DB의 대댓글 불러와서 영역에 넣어주기 start 02.24 장민실
 	let cocom_list_tf = false;
 		
 	$(".cocom_list_btn").on('click', function(e){
@@ -255,6 +255,6 @@ comu_btn[0].addEventListener('click', function(){
 		      }
 		   });
 		}
-		// db의 대댓글 불러와서 영역에 넣어주기 end
+		// DB의 대댓글 불러와서 영역에 넣어주기 end
 		
 ///////////////////////////////// 대댓글  ///////////////////////////////////////

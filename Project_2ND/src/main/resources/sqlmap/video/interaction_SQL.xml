@@ -15,10 +15,12 @@
 		values (#{user_id}, #{video_id}, #{like})
 	</insert>
 	
+	<!-- 
 	<insert>
 		insert into VIDEO (RECOMMAND, `LIKE`, UNLIKE)
 		values (())
 	</insert>
+	 -->
 	
 
 
