@@ -1,11 +1,13 @@
-:root{
-    --logo-color:#FFCC00;
-    --logo-size: 60px;
-    --title-size: 25px;
-    --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
+:root {
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
 }
 
 @font-face {
@@ -20,7 +22,7 @@
     margin: auto;
     box-sizing: border-box;
     font-family:'NanumBarunGothic'; 
-    color : var(--text-color);
+    color : var(--main-text-color);
 }
 
 body{
@@ -73,8 +75,8 @@ body{
 
 /* 회원가입폼에 주제 "LOGO 회원가입"텍스트 */
 #signUpText_j{
-	color: #CCCCCC;
-	font-size: 24px;
+	color:var(--main-text-color);
+	font-size:var(--large-text-size);
 	display: block;
 	margin: 30px;
 	height: 50px;
@@ -88,9 +90,10 @@ body{
 	border-radius: 5px;
 	border: none;
 	cursor: pointer;
-	font-size: 13px;
+	font-size:var(--small-text-size);
 	margin : 1vh 0;
-	color : black;
+	color :var(--main-text-color);
+	background-color: var(--btn_bg);
 }
 
 /* 이메일 입력란 공간 */
@@ -115,10 +118,10 @@ body{
 .wrapInput input{
     width: 380px;
     height: 50px;
-    font-size: 13px;
+    font-size:var(--small-text-size);
     padding: 0 0 0 20px;
     background-color: rgb(25, 26, 30);
-    color: #CCCCCC;
+    color:var(--main-text-color);
     border: none;
     border-radius:  10px;
     
@@ -135,7 +138,7 @@ body{
 
 /* span : 아이디 & 이메일 & 닉네임 - 유효성검사/중복처리 확인 메시지글   */
 span{
-	font-size: 0.8rem;
+	font-size:var(--small-text-size);
 }
 
 /* span : 비밀번호 - 유효성검사/중복처리 확인 메시지글   */
@@ -147,8 +150,8 @@ span{
 /* ====================================== 체크박스 ========================================================  */
 /* 체크박스 전체 담고있는 박스 */
 #checkbox{
-    color: #CCCCCC;
-    font-size: var(--text-size);
+    color:var(--main-text-color);
+    font-size: var(--medium-text-size);
     text-align: start;
     margin: 10px 0 10px 10px;
 
@@ -163,10 +166,10 @@ span{
 #submit{
     width: 380px;
     height: 50px;
-    background-color:#F82F62;
+    background-color:var(--btn_bg);
     border-radius: 10px;
-    color: #CCCCCC;
-    font-size: 17px;
+    color: var(--main-text-color);
+    font-size:var(--medium-text-size);
     border: none;
     cursor: pointer;
     margin: 20px 0 0 0;
@@ -180,19 +183,20 @@ span{
 /* 이메일 인증 상태 메세지  */
 .formSpans {
     display: inline-block;
-    font-size: 0.8rem;
+    font-size:var(--small-text-size);
 }
 
 /* 이메일인증 (이메일인증번호 발송)버튼 */
 .email_checkbtn{
-    font-size : 15px;
+    font-size :var(--medium-text-size);
     border-radius: 5px;
     border: none;
     cursor: pointer;
     height: 30px;
     width: 100px;
     margin-bottom: 1vh;
-    color:black;
+    color:var(--main-text-color);
+    background-color: var(--btn_bg);
 }
 
 
@@ -205,7 +209,7 @@ span{
     border-radius:  10px;
     padding: 0 0 0 20px;
     margin-bottom : 10px;
-    color: white;
+    color:var(--main-text-color);
 }
 
 /* 인증번호 입력창 focus 효과 추가*/
@@ -220,7 +224,8 @@ span{
     height: 30px;
     border-radius: 10px;
     cursor: pointer;
-    color:black;
+    color:var(--main-text-color);
+    background-color: var(--btn_bg);
 }
 
 /* footer 영역 추가  02/27 김지혜 */

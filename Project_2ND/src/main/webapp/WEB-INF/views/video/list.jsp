@@ -39,11 +39,10 @@
 	                <c:if test="${fn:containsIgnoreCase(row.title, searchText)}">
 	                    <c:if test="${counter < 5}">
 	                       <div class="conta">
-	                          <span class="number">${counter + 1}</span>
+	                          <p class="number">${counter + 1}</p>
 	                           <a href="/video/detail?video_id=${row.video_id}">
 	                                <img src="${row.image_url}" alt="Image not found">
-	                            </a>
-	                            <span style="display:none">${row.title}</span>
+	                           </a>
 	                        </div>
 	                        <c:set var="counter" value="${counter + 1}" />
 	                    </c:if>

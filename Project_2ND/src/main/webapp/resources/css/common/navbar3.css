@@ -5,13 +5,17 @@
 */
 
 :root{
-    --logo-color:#FFCC00;
+	--logo-color:#FFCC00;
     --logo-size: 60px;
-    --title-size: 25px;
-    --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
 }
 
 * {
@@ -35,6 +39,7 @@ body {
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
+    position: relative;
 }
 
 /* 네비바 - 로고/다국어지원기능 들어감 */
@@ -49,17 +54,17 @@ ul li {
     list-style: none;       /* 전체 ul, li 일괄 효과 적용 */
     text-align: center;
     line-height: 50px;
-    color: var(--text-color);
+    color: var(--main-text-color);
     cursor: pointer;
 }
 
 .icons {
-    color: var(--text-color);       /* 전체아이콘(검색,내정보) 일괄 효과 적용 */
+    color: var(--main-text-color);       /* 전체아이콘(검색,내정보) 일괄 효과 적용 */
     cursor: pointer;
 }
 
 .icons:hover {
-    color: #FFCC00;
+    color:var(--btn_hover_bg);
 }
 
 /* logo start */
@@ -76,14 +81,16 @@ ul li {
 
 /* menu start */
 .drop_menu_ul {
-    font-size: 15px;
+    font-size:var(--medium-text-size);
     position: absolute;
     z-index: 1;
+    right : 10px;
 }
 
 .drop_menu_ul > li {
     background-color: var(--bg);
     width: 100px;
+
 }
 
 /* menu end */
@@ -125,7 +132,7 @@ ul li {
 }
 
 .drop_menu_li:hover {
-    color: #FFCC00;
+    color:var(--btn_hover_bg);
 }
 
 /* drop down end */

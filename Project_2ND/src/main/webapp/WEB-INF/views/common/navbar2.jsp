@@ -27,7 +27,7 @@
             <ul class="menu_ul">
                 <li class="menu_text_li" id="menu1">
                    <p>영화</p>
-               <ul class="drop_menu_ul">
+               <ul class="drop_menu_ul drop_menu_ul_1">
                  <li class="drop_menu_li" onclick="toggleSubMenu('actionSubMenu')">액션</li>
                  <li class="drop_menu_li" onclick="toggleSubMenu('dramaSubMenu')">드라마</li>
                  <li class="drop_menu_li" onclick="toggleSubMenu('fantasySubMenu')">판타지</li>

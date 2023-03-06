@@ -3,21 +3,24 @@
 2. 메뉴의 drop down과 info의 drop down은 최하단 drop down 나눠놓은 영역에서 일괄처리
 (class로 겹치는 부분이 있기때문에 나눠놓으면 보기 더 불편할 것 같아서)
 */
-
-:root{
-    --logo-color:#FFCC00;
-    --logo-size: 60px;
-    --title-size: 25px;
-    --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
+:root {
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
 }
+
+
 
 * {
     margin: 0;
     padding: 0;
-    color : var(--text-color);
+    color : var(--main-text-color);
 }
 
 body {
@@ -69,7 +72,7 @@ nav {
     width: 150px;
     height: 30px;
     padding-left: 5px;
-    font-size: var(--text-size);
+    font-size: var(--medium-text-size);
     border-radius: 3px;
     background-color: var(--bg);
     outline: 0 none;
