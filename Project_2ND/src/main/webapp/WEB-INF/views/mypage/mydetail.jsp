@@ -7,6 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
 	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 	<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<link href="/resources/css/mypage/user_mydetail.css" rel="stylesheet">
@@ -15,7 +16,7 @@
 <body>
 <!--네비바 추가 0227 김지혜  -->   
 <div id="navSection">
-<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
+
 </div>
 <!--네비바 end  -->  
     <div class="container">
@@ -26,9 +27,6 @@
 	                <c:choose>
 	                	<c:when test="${data.img != null && data.img != ''}">
 	                		<img src="${data.img}" id="img_onload" class="img_tag"> 
-	                		<%--<img src="/mypage/display?fileName=${data.img}" class="img_tag"> 
-	                			<img src="/mypage/display?fileName=${URLEncoder.encode(data.img, 'UTF-8')}">
-	                		--%>
 	                	</c:when>
 	                	<c:when test="${data.img == null}">
 	                		<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="img_tag">
@@ -109,7 +107,7 @@
    <!-- 보관함 리스트 영역-->
    <div class="section">
       <!-- 내보관함 text -->
-      <h1 class="mylocker_text">내보관함</h1>
+      <div><h1 class="mylocker_text">내보관함</h1></div>
       <!-- 내보관함 슬라이드 - 양옆 버튼 추가 + 버튼 누르면 케러셀처럼 넘어감-->
       <div class="slider">
          <!-- 내보관함 리스트 출력 영역-->

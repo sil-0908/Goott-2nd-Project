@@ -11,6 +11,9 @@
    }
    
 /* video area start */
+body{
+	background-color: var(--bg);
+}
 
 .video_area {
 	display: flex;

@@ -253,11 +253,11 @@ span{
 /* 내 정보 박스에 왼쪽 영역(이미지) */
 .container .card .left-side img {
     border-radius: 100%;
-    max-width:100%;
-    max-height:100%;
+    /* 프로필 이미지 영역 크기 변경 - 02.28 김범수  */
+	width : 200px;
+	height : 200px;
     position: relative;
     cursor: pointer;
-    border: 2px solid red;
 }
 
 /* 내 정보 박스에 오른쪽 영역  */
@@ -353,12 +353,24 @@ hr{
 }
 
 
-/* 이미지 변경 css - 02.24 김범수*/
-#fileItem{
-	margin-left: 4vw;
-	margin-top: 1vh;
+/* 프로필 이미지 변경 버튼 - 02.28 김범수  */
+#uploadFile{
+	display: none;
 }
 
+.input_file_box{
+	width: 100px;
+    height: 20px;
+    background-color: gray;
+    border-radius: 4px;
+    margin-left: 5.7vw;
+	margin-top: 1vh;
+}
+/* 네비바 영역 조정- 02.28 김범수  */
+.drop_menu_ul {
+	margin-top: -2.2vh;
+	margin-left: -1vw;
+}
 
 /* section end */
 
