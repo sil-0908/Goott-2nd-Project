@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="interaction">
-
+	
 	<!-- video 좋아요, 싫어요 전체값 가져오기 02.28 장민실 -->
+	<!-- 미완성 주석
 	<select id="video_check_list" resultType="com.test.test1.video.dto.InteractionDto">
 		select USER_ID, VIDEO_ID, `LIKE`, UNLIKE
 		  from VIDEO_USER_LIKE
 		 where USER_ID=#{user_id}
 		   and VIDEO_ID=#{video_id}
 	</select>
-
+	
 	<insert id="video_like">
 		insert into VIDEO_USER_LIKE (USER_ID, VIDEO_ID, `LIKE`)
 		values (#{user_id}, #{video_id}, #{like})
 	</insert>
-	
-	<!-- 
+	 
 	<insert>
 		insert into VIDEO (RECOMMAND, `LIKE`, UNLIKE)
 		values (())

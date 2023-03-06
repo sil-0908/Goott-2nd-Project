@@ -85,13 +85,13 @@ public class VideoController {
 //		원댓글목록 가져오기 end
 		
 //		영상 좋아요, 싫어요 정보 가져오기 start 02.28 장민실
-		String user_id = session.getAttribute("user_id").toString();
-		int id2 = userService.getid(user_id);
-		Map<String, Object> map2 = new HashMap<>();
-		map2.put("user_id", id2);
-		map2.put("video_id", video_id);
-		List<InteractionDto> i_dto = interactionService.video_check_list(map2); 		
-		mv.addObject("i_dto", i_dto);
+//		String user_id = session.getAttribute("user_id").toString();
+//		int id2 = userService.getid(user_id);
+//		Map<String, Object> map2 = new HashMap<>();
+//		map2.put("user_id", id2);
+//		map2.put("video_id", video_id);
+//		List<InteractionDto> i_dto = interactionService.video_check_list(map2); 		
+//		mv.addObject("i_dto", i_dto);
 //		영상 좋아요, 싫어요 정보 가져오기 end
 		
 		mv.addObject("dto", videoService.detail(video_id));

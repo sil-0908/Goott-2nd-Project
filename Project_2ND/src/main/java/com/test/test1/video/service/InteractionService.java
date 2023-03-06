@@ -7,8 +7,8 @@ import com.test.test1.video.dto.InteractionDto;
 
 public interface InteractionService {
 
-	void video_like(InteractionDto i_dto);
-
-	List<InteractionDto> video_check_list(Map<String, Object> map2);
+//	void video_like(InteractionDto i_dto);
+//
+//	List<InteractionDto> video_check_list(Map<String, Object> map2);
 
 }
