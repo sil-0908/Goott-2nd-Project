@@ -19,7 +19,7 @@
 <!-- navbar start -->
     <nav id="navbar">
         <div class="logo">
-            <img src="/resources/img/user/logo3.png" id="logo" onclick="back()" alt="">
+            <img src="/resources/img/user/logo4.png" id="logo" onclick="back()" alt="">
         </div>
 
 <!-- my info start -->
