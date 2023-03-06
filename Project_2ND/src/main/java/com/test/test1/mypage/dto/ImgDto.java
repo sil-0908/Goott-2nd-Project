@@ -19,8 +19,6 @@ public class ImgDto {
 	
 	private String id;
 	
-	private ResponseEntity<ImgDto> result;
-	
 
 	public String getUploadPath() {
 		return uploadPath;

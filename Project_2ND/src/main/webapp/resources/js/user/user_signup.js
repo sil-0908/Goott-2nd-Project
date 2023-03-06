@@ -147,6 +147,7 @@ $(function(){
                data : {'id' : id}, // 입력한 id data
                dataType : 'text', 
                success : function(result){
+            	   console.log(result);
                   //result가 text 형태로 와서 false가 text 형태로 비교
                   if(result == 'false'){      //false = 사용가능
                      $('#idcheck').html('사용 가능한 아이디입니다');

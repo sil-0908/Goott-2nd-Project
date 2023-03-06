@@ -55,8 +55,9 @@ nav {
 
 /* 네비바 - 로고/다국어지원기능 들어감 */
 .logo img{
+	margin-top : 5vh;
     width: 20rem;
-    height: 9rem;
+    height: 20rem;
 }
 
 /* 다국어지원기능 영역 */

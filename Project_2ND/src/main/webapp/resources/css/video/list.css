@@ -31,7 +31,6 @@ body {
 }
 
 /* navbar start */
-
 nav {
     display: flex;
     position: fixed;
@@ -365,4 +364,10 @@ map img{
 
 a{
 	text-decoration : none;
+}
+
+/* 네비바 영역 조정- 02.28 김범수  */
+.drop_menu_ul {
+	margin-left: 1vw;
+	margin-top: -1.9vh;
 }

@@ -1,3 +1,4 @@
+// nav바 작업으로 nav1 이름으로 변경 - 02.28 김범수
 const search_input = document.querySelector('#search'),
 search_i = document.querySelector('#search_icon');
    
@@ -162,3 +163,29 @@ const searchBox = document.getElementById('search');
 
 
   window.addEventListener('scroll', handleScroll);
+  
+////////////////////////02.28 김범수 네비바 작업 ////////////////////
+// 02.28 네비바 작업
+function signout() {
+	$.ajax({
+		url : "/user/sign_out",
+		success : function() {
+			location.href = "/"
+		}
+	})
+};
+
+//이미지 로딩 위한 메서드 - 02.24김범수
+$(function() {
+	$('.img_tag').ready(function() {
+		$.ajax({
+			url : '/user/navbarImg1',
+			dataType : 'text',
+			success : function(result1) {
+				if(result1 == "" || result1 == null){return}
+				let fileCallPath = encodeURI(result1); // 해당 파일의 이름
+				$('.img_tag').attr('src', "/mypage/display?fileName=" + fileCallPath);
+			}
+		});
+	})
+});

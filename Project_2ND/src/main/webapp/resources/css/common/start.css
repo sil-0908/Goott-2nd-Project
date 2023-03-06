@@ -60,7 +60,7 @@ body{
     z-index: 1000;
     font-size: var(--large-text-size);
 }
-
+/*rgba(252, 46, 46, 0.85)*/
 /* 로그인 버튼 */
 .center_btn {
     width: 300px;

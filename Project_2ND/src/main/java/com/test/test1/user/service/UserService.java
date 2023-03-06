@@ -47,6 +47,8 @@ public interface UserService {
 	int getid(String user_id);
 
 	void img_update(ImgDto dto);
+
+	String navbarImg(String id);
 	
 	
 
