@@ -40,10 +40,10 @@
 	                </div>
                 </div>
                 <div class="right-side">
-                    <div class="input_text2"><span>ID</span><input type="text" name="id" value="${data.id}" disabled></div>
-                    <div class="input_text2"><span>EMAIL</span><input type="text" name="id" value="${data.email}" disabled></div>
-                    <div class="input_text2"><span>NICKNAME</span><input type="text" name="id" value="${data.nickname}" disabled></div>
-                    <div class="input_text2"><span>PHONE_NUM</span><input type="text" name="id" value="${data.phone_num}" disabled></div>
+                    <div class="input_text2"><span>ID</span><input type="text" name="Info_Id" value="${data.id}" disabled></div>
+                    <div class="input_text2"><span>EMAIL</span><input type="text" name="Info_Email" value="${data.email}" disabled></div>
+                    <div class="input_text2"><span>NICKNAME</span><input type="text" name="Info_Nickname" value="${data.nickname}" disabled></div>
+                    <div class="input_text2"><span>PHONE_NUM</span><input type="text" name="Info_Phone_num" value="${data.phone_num}" disabled></div>
 
                     <button type="button" id="btnWrite" >수정하기</button>
                 </div>
