@@ -4,13 +4,15 @@
 }
 
 :root{
-    --logo-color:#FFCC00;
-    --logo-size: 60px;
-    --title-size: 25px;
-    --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
 }
 
 footer{
@@ -22,6 +24,12 @@ footer{
 	height: 100px;
 	text-align: center;
 	line-height: 100px;
+}
+.link_box a{
+	color: var(--main-text-color);
+}
+.link_box a:hover{
+	color: var(--btn_hover_bg);
 }
 
 #map{
@@ -41,9 +49,10 @@ footer{
 	margin-left : -15%;
 	width: 55%;
 	text-align: center;
+    color: var(--main-text-color);
 }
 
 #f_Con2 p{
-	font-size: var(--text-size);
-	color: var(--text-color);
+	font-size: var(--medium-text-size);
+	color: var(--main-text-color);
 }

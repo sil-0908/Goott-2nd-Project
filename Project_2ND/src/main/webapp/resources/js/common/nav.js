@@ -21,15 +21,22 @@ const searchBox = document.getElementById('search');
 	  const searchResults = document.getElementById('search-results');
 	  searchResults.innerHTML = ''; 
 
+	  let foundResults = false;
 	  images.forEach(function(image) {
 	    const title = image.querySelector('span');
 	    if (title && title.textContent.toLowerCase().replace(/\s+/g, '').includes(searchText.replace(/\s+/g, ''))) {
 	      searchResults.appendChild(image); 
 	      image.style.display = 'block';
+	      foundResults = true;
 	    } else {
 	      image.style.display = 'none';
 	    };
 	  });
+
+	  if (!foundResults) {
+	    searchResults.innerHTML = '<h1 style="text-align: right; margin-right: 40px; color: #cccccc;"> 검색 결과가 없습니다. 새로운 검색어를 찾아보세요.</h1>';
+	  }
+
 	  const hideElements = document.querySelectorAll('.hide');
 	  hideElements.forEach(function(hideElement) {
 	    hideElement.style.display = 'none';
@@ -39,6 +46,7 @@ const searchBox = document.getElementById('search');
 	    sub.style.display ='none';
 	  });
 	};
+
 
 
   searchBox.addEventListener('keyup', function() {

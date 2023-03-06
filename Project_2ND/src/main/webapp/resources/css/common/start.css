@@ -8,13 +8,17 @@
 
 /* 기본 설정 -> 변수로 사용 */ 
 :root{
-    --logo-color:#FFCC00;
-    --logo-size: 60px;
-    --title-size: 25px;
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
     --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
+   
 }
 
 /* 전체 적용 - 기본 margin/padding제외, 박스 사이즈 조정(테두리 기준 크기 설정), 글씨체, 글씨 컬러, 링크밑줄 제거  */
@@ -23,7 +27,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family:'NanumBarunGothic'; 
-    color: var(--text-color);
+    color: var(--main-text-color);
     text-decoration: none;
 }
 
@@ -54,16 +58,16 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    font-size: var(--title-size);
+    font-size: var(--large-text-size);
 }
 
 /* 로그인 버튼 */
 .center_btn {
     width: 300px;
     height: 50px;
-    background-color:rgba(252, 46, 46, 0.85);
+    background-color:var(--btn_bg);
     border-radius: 10px;
-    font-size: var(--text-size);
+    font-size: var(--medium-text-size);
     border: none;
     cursor: pointer;
 }
