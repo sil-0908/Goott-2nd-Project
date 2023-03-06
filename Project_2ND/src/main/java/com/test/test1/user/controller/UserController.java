@@ -94,8 +94,9 @@ public class UserController {
 		//DB 들어가서 id 중복값이 있나 들고나옴
 		String check = null;
 		check = userService.idCheck(id); //check : id파라미터로 DB조회 결과
-		if(check != null) return true;         //중복없음
-		else return false;		
+		System.out.println(check);
+		if(check != null) return true;        //중복없음
+		else return false;	
 	}
 	
 	// 이메일 중복확인 버튼 기능 - 02-13 김지혜 
