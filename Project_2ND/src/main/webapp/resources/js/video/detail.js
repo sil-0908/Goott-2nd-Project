@@ -8,8 +8,8 @@ for(var i = 1; i<comu_btn.length; i++) {
     });
 }
 
-
 comu_btn[0].addEventListener('click', function(){
+	let title = $('#title_data').val(); // 찜하기 버튼 value - 02.28 김범수
     if(this.className.includes('fas')){ // 내보관함에서 삭제
     	$.ajax({
     		url : 'mylocker_de',
@@ -30,13 +30,39 @@ comu_btn[0].addEventListener('click', function(){
     }
 });
 
+///////////////////////////////// 영상 좋아요, 싫어요  ///////////////////////////////////////
+
+	// 영상 좋아요
+	$("#video_like").on('click', function(event){ 
+		document.comt_write.action="/inter/video_like";
+		document.comt_write.submit();
+	});
+
+///////////////////////////////// 영상 좋아요, 싫어요  ///////////////////////////////////////
+
+///////////////////////////////// 댓글 좋아요, 싫어요  ///////////////////////////////////////
+
+///////////////////////////////// 댓글 좋아요, 싫어요  ///////////////////////////////////////
+
 ///////////////////////////////// 댓글, 대댓글 공통  ///////////////////////////////////////
+
+	// 부모요소와 자식요소 찾아가기 start
+	function findid(element, parentSelector, childSelector) {
+		const parent = element.closest(parentSelector);
+		if (parent) {
+			const child = parent.querySelector(childSelector);
+			if (child) {
+				return child.value;
+			}
+		}
+		return null;
+	}
+	// 부모요소와 자식요소 찾아가기 end
 
 	// 댓글, 대댓글 수정 중 수정취소 버튼클릭시 영역 없애기 start
 	function comt_edit_cancle(e) {
 	   e.setAttribute('class', 'on');
 	   let text_div = e.parentNode;
-	   console.log(text_div);
 	   $(text_div).empty();
 	}
 	// 댓글, 대댓글 수정 중 수정취소 버튼클릭시 영역 없애기 end
@@ -44,7 +70,7 @@ comu_btn[0].addEventListener('click', function(){
 	// 댓글, 대댓글 삭제 start 02.24 장민실
 	$(document).on('click', '.comment_delete', function(e){
 		e.preventDefault();
-		let comment_id = this.parentNode.children[1].value;		
+		let comment_id = findid(e.target, '.comment_btn', '.c_id_input');
 		
 		$.ajax({
 			data : { comment_id : comment_id },
@@ -52,11 +78,11 @@ comu_btn[0].addEventListener('click', function(){
 			type : 'POST',
 			success : function(){
 				window.location.reload();
-				alert("댓글 삭제가 완료되었습니다.");
+				alert("삭제가 완료되었습니다.");
 			}
 		});		
 	});
-	// 댓글, 대댓글 삭제 end
+	// 댓글, 대댓글 삭제 end	
 	
 ///////////////////////////////// 댓글, 대댓글 공통  ///////////////////////////////////////
 	
@@ -70,25 +96,27 @@ comu_btn[0].addEventListener('click', function(){
 	// 원댓글 작성하기 end
 	   
 // 댓글 수정 영역 start 02.27 장민실 
-	   
+	
 	// 댓글 수정버튼 눌렀을때 수정 폼 가져오기
 	$(".comment_update").on('click', function(e){
+		console.log("dfjdkfjlkdf");
 		let comt_edit_div = this.parentNode.nextElementSibling.nextElementSibling;
-		let comt_text = document.querySelector('#com_contents').innerHTML;
+		let comt_text = this.parentNode.parentNode.parentNode.previousElementSibling.innerText;
 		let comtEditText = "";
 		comtEditText += "<p>댓글 수정하기</p>";
 		comtEditText += "<form name='comt_edit' method='post'>";
 		comtEditText += "      <textarea rows='3' cols='60' class='com_edit_text'>" + comt_text + "</textarea>";
-		comtEditText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete()'>수정완료</button>";
+		comtEditText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete(this)'>수정완료</button>";
 		comtEditText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle(this)'>수정취소</button>";
 		comtEditText += "</form>";
 		$(comt_edit_div).html(comtEditText);
 	});
 	   
 	// 댓글 수정완료 버튼클릭
-	function comt_edit_complete() {
-		let comment_id = document.querySelector('.c_id_input').value;
-		let commentary = document.querySelector('.com_edit_text').value;
+	function comt_edit_complete(e) {
+		e.setAttribute('class', 'on');
+		let comment_id = e.parentNode.parentNode.children[1].children[1].value;
+		let commentary = e.parentNode.children[1].value;
 		   
 		$.ajax({
 			data : { comment_id : comment_id, commentary : commentary },
@@ -100,7 +128,7 @@ comu_btn[0].addEventListener('click', function(){
 			}
 		});		
 	};
-	//  댓글 수정 영역 end
+//  댓글 수정 영역 end
 	
 ///////////////////////////////// 원댓글  ///////////////////////////////////////
 		
@@ -109,34 +137,70 @@ comu_btn[0].addEventListener('click', function(){
 	// 대댓글 작성하기 start
 	$(".cocom_write_btn").on('click', function(e){
 		let cocom_insert_div = this.parentNode.nextElementSibling;
-//			let cocom_text = document.querySelector('.cocom_text').innerHTML;
 		let cocomForm = "";
-		cocomForm += "<p>대댓글 작성하기</p>"
-		cocomForm += "<form name='comt_edit' method='post'>";
+		cocomForm += "<p>답글 작성하기</p>"
+		cocomForm += "<form name='cocom_write' method='post'>";
 		cocomForm += "      <textarea rows='3' cols='60' class='cocom_text'></textarea>";
-		cocomForm += "      <button type='button' class='cocom_complete' onclick='cocom_complete()'>수정완료</button>";
-		cocomForm += "      <button type='button' class='cocom_cancle' onclick='comt_edit_cancle(this)'>수정취소</button>";
+		cocomForm += "      <button type='button' class='cocom_complete' onclick='cocom_complete(this)'>답글등록</button>";
+		cocomForm += "      <button type='button' class='cocom_cancle' onclick='comt_edit_cancle(this)'>등록취소</button>";
 		cocomForm += "</form>";
 		$(cocom_insert_div).html(cocomForm);
-	});   
+	});   	
 	   
-	function cocom_complete() {
-		let comment_id = document.querySelector('.c_id_input').value;
-		let commentary = document.querySelector('.com_edit_text').value;
+	function cocom_complete(e) {
+		e.setAttribute('class', 'on');
+		let video_id = document.querySelector('#v_input').value;
+		let pid = e.parentNode.parentNode.children[1].children[2].value;
+		let commentary = e.parentNode.children[1].value;
 		   
 		$.ajax({
-			data : { comment_id : comment_id, commentary : commentary },
+			data : { video_id : video_id, pid : pid, commentary : commentary },
 			url : "/comt/cocomwrite",
 			type : 'POST',
 			success : function(){
 				window.location.reload();
-				alert("대댓글 작성이 완료되었습니다.");
+				alert("답글 작성이 완료되었습니다.");
+			}
+		});			   
+		   
+	}		
+	// 대댓글 작성하기 end
+	
+//  대댓글 수정 영역 start
+	// 대댓글 수정버튼 눌렀을때 수정 폼 가져오기
+	$(document).on('click', '.cocomt_update', function(e){
+		e.preventDefault();
+		let cocom_edit_div = this.parentNode.nextElementSibling;
+		let comt_text = this.parentNode.parentNode.parentNode.previousElementSibling.innerText;
+		let comtEditText = "";
+		comtEditText += "<p>댓글 수정하기</p>";
+		comtEditText += "<form name='comt_edit' method='post'>";
+		comtEditText += "      <textarea rows='3' cols='60' class='com_edit_text'>" + comt_text + "</textarea>";
+		comtEditText += "      <button type='button' class='edit_complete' onclick='cocom_edit_complete(this)'>수정완료</button>";
+		comtEditText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle(this)'>수정취소</button>";
+		comtEditText += "</form>";
+		$(cocom_edit_div).html(comtEditText);
+	});
+	
+	// 대댓글 수정완료 버튼클릭
+	function cocom_edit_complete(e) {
+		e.setAttribute('class', 'on');
+		let comment_id = e.parentNode.parentNode.children[0].children[0].value;
+		let commentary = e.parentNode.children[1].value;
+		   
+		$.ajax({
+			data : { comment_id : comment_id, commentary : commentary },
+			url : "/comt/edit/" + comment_id,
+			type : 'POST',
+			success : function(){
+				window.location.reload();
+				alert("댓글 수정이 완료되었습니다.");
 			}
 		});		
 	};
-	// 대댓글 작성하기 end
+//  대댓글 수정 영역 end
 		
-	// db의 대댓글 불러와서 영역에 넣어주기 start 02.24 장민실
+	// DB의 대댓글 불러와서 영역에 넣어주기 start 02.24 장민실
 	let cocom_list_tf = false;
 		
 	$(".cocom_list_btn").on('click', function(e){
@@ -160,46 +224,37 @@ comu_btn[0].addEventListener('click', function(){
 			url: "/comt/cocomList/" + pid,
 			data: { video_id : video_id },
 			success: function(list) {
+
 				let cocomText = "";
 				
 				if(list.length===0) {
-					alert("등록된 댓글이 없습니다.");
+					alert("등록된 답글이 없습니다.");
 				}	// 대댓글 없을때 if end
 		         
-				else {		        	 
-					if(session==='') {
-						$(list).each(function(){
-							cocomText += "<tr>";
-							cocomText += "	<td id='com_title'>" + this.nickname + "&nbsp;&nbsp;<fmt:formatDate value='" + this.create_date + "' pattern='yyyy-MM-dd a HH:mm:ss' /></td>";
-							cocomText += "</tr>";
-							cocomText += "<tr>";
-							cocomText += "	<td id='com_contents'>" + this.commentary + "</td>";
-							cocomText += "</tr>";
-						});
-						$(cocomListDiv).html(cocomText);
-					}	// 대댓글 작성자와 session nickname이 다를경우 대댓글 목록만 보여주기 if end
-		        	 
-					else if (true) {
-						$(list).each(function(){
-		     	        	cocomText += "<tr>";
-		     	        	cocomText += "	<td id='com_title'>" + this.nickname + "&nbsp;&nbsp;<fmt:formatDate value='" + this.create_date + "' pattern='yyyy-MM-dd a HH:mm:ss' /></td>";
-		     	        	cocomText += "</tr>";
-		     	        	cocomText += "<tr>";
-		     	        	cocomText += "	<td id='com_contents'>" + this.commentary + "</td>";
-		     	        	cocomText += "</tr>";
-		     	        	cocomText += "<td>";
-		                    cocomText += "   <div class='comment_btn'>";
-		                    cocomText += "		<input type='button' class='comment_update' value='수정'>";
-		                    cocomText += "		<input type='button' class='comment_update' value='삭제'>";
-		                    cocomText += "   </div>"
-		                    cocomText += "</td>";
-		     	         });
-						$(cocomListDiv).html(cocomText);
-		       		}	// 대댓글 작성자와 session nickname이 같을경우 대댓글 목록 + 수정,삭제 버튼까지 보여주기 else if end
+				else {
+					$(list).each(function(){
+						cocomText += "<tr>";
+		     	        cocomText += "	<td id='com_title'>" + this.nickname + "&nbsp;&nbsp;<fmt:formatDate value='" + this.create_date + "' pattern='yyyy-MM-dd a HH:mm:ss' /></td>";
+		     	        cocomText += "</tr>";
+		     	        cocomText += "<tr>";
+		     	        cocomText += "	<td id='com_contents'>" + this.commentary + "</td>";
+		     	        cocomText += "</tr>";
+		     	       if (this.nickname === session) {
+		     	    	   cocomText += "<td>";
+		     	    	   cocomText += "   <div class='comment_btn'>";
+		     	    	   cocomText += "		<input type='hidden' class='c_id_input' name='comment_id' value=" + this.comment_id + ">";
+		     	    	   cocomText += "		<input type='button' class='cocomt_update' value='수정'>";
+		     	    	   cocomText += "		<input type='button' class='comment_delete' value='삭제'>";
+		     	    	   cocomText += "   </div>";
+		     	    	   cocomText += "<div class='cocom_edit'></div>";
+		     	    	   cocomText += "</td>";
+		     	       }	// 로그인유저와 대댓글 작성자가 같을때 if end
+					});
+					$(cocomListDiv).html(cocomText);
 		         }	// 대댓글 있을때 else end
 		      }
 		   });
 		}
-		// db의 대댓글 불러와서 영역에 넣어주기 end
+		// DB의 대댓글 불러와서 영역에 넣어주기 end
 		
 ///////////////////////////////// 대댓글  ///////////////////////////////////////

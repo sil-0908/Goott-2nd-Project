@@ -134,5 +134,9 @@ public class UserDao {
 	public void img_update(ImgDto dto) {
 		sqlSessionTemplate.selectOne("user.img_update" , dto);
 	}
+
+	public String navbarImg(String id) {
+		return sqlSessionTemplate.selectOne("user.navbarImg" , id);
+	}
 	
 }

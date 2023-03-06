@@ -125,7 +125,7 @@
     margin-left: 10rem;
 }
 
-#com_contents {
+.com_contents {
     line-height: 2rem;
     width: 90rem;
     word-break: break-all;
@@ -148,6 +148,11 @@
 }
 
 .comment_update {
+	margin-left: 0.5rem;
+	margin-right: 0.5rem;
+}
+
+.cocomt_update {
 	margin-left: 0.5rem;
 	margin-right: 0.5rem;
 }

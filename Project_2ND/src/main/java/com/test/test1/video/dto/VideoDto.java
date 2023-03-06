@@ -39,6 +39,13 @@ public class VideoDto {
 		this.summary = summary;
 	}
 	
+	public String getCreate_country() {
+		return create_country;
+	}
+
+	public void setCreate_country(String create_country) {
+		this.create_country = create_country;
+	} 
 	
 	public String getGrade() {
 		return grade;
@@ -95,23 +102,7 @@ public class VideoDto {
 	public void setCategory_id(int category_id) {
 		this.category_id = category_id;
 	}
-
-	@Override
-	public String toString() {
-	return "VideoDto [title = " + title
-			+ ", video_url = " + video_url
-			+ ", image_url = " + image_url
-			+ ", summary = " + summary
-			+ ", country = " + create_country
-			+ ", grade = " + grade
-			+ ", actor = " + actor
-			+ ", genre_id = " + genre_id
-			+ ", video_id = " + video_id
-			+ ", create_year = " + create_year
-			+ ", recommand = " + recommand
-			+ ", category_id = " + category_id + "]";
-	}
-
+	
 	public Date getUpload_date() {
 		return upload_date;
 	}
@@ -120,13 +111,21 @@ public class VideoDto {
 		this.upload_date = upload_date;
 	}
 
-	public String getCreate_country() {
-		return create_country;
+	@Override
+	public String toString() {
+	return "VideoDto [title = " + title
+			+ ", video_url = " + video_url
+			+ ", image_url = " + image_url
+			+ ", summary = " + summary
+			+ ", create_country = " + create_country
+			+ ", grade = " + grade
+			+ ", actor = " + actor
+			+ ", genre_id = " + genre_id
+			+ ", video_id = " + video_id
+			+ ", create_year = " + create_year
+			+ ", recommand = " + recommand
+			+ ", category_id = " + category_id + "]";
 	}
-
-	public void setCreate_country(String create_country) {
-		this.create_country = create_country;
-	} 
 	
 	
 	

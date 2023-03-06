@@ -12,7 +12,7 @@
 	<!-- 비디오  전체조희 쿼리문  -->
 	<select id="list" resultType="com.test.test1.video.dto.VideoDto">
 		<![CDATA[
-		select distinct v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL,v.RECOMMAND, c.CATEGORY_ID, g.GENRE_ID
+		select distinct v.VIDEO_ID, v.TITLE, v.IMAGE_URL, v.VIDEO_URL, v.RECOMMAND, c.CATEGORY_ID, g.GENRE_ID
           from VIDEO v 
 		  left join VIDEO_CATEGORY c
 		    on v.VIDEO_ID = c.VIDEO_ID
@@ -51,7 +51,7 @@
 	<!-- 내보관함 기능 구현 위한 video_id 받아오기 -->
 	<select id="getid" resultType="int">
 		<![CDATA[
-		select video_id
+		select VIDEO_ID
   		  from VIDEO
     	 where TITLE = #{title}
  		]]>

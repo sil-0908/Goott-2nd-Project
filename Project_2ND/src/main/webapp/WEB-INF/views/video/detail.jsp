@@ -46,6 +46,7 @@
         <div class="comunication_btn">
       
       		<!-- 보관함 구현을 위한 정보를 전송 02.16 김범수 -->
+      		<input type="hidden" id="title_data" value="${dto.title}"><!-- 찜하기 버튼 value - 02.28 김범수 -->
       		<c:set var="rental_id" value="${rental_id}"/>
 			<c:choose>
 				<c:when test="${rental_id ne null}"> <!-- rental_id가 null값이 아닐 경우 -->
@@ -56,9 +57,9 @@
 				</c:otherwise>
      		</c:choose>
             <p>찜하기</p>
-            <i class="far fa-thumbs-up comu_btn" id="like"></i>
+			<i class="far fa-thumbs-up comu_btn" id="video_like"></i>         
             <p>좋아요</p>
-            <i class="far fa-thumbs-down comu_btn" id="bad"></i>
+            <i class="far fa-thumbs-down comu_btn" id="video_bad"></i>
             <p>싫어요</p>
             <i class="fa-solid fa-coins comu_btn" id="payment"></i>
             <p>결제</p>
@@ -85,25 +86,26 @@
 				<table class="comment_list">
 					<c:forEach var="comt" items="${replyList}">
 						<c:if test="${comt.depth=='0'}">
-							<tr>
-								<td id="com_title">${comt.nickname}&nbsp;&nbsp;<fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
+							<tr class="com_tr">
+								<td class="com_title">
+								<div class="user_img_area"></div>
+								${comt.nickname}&nbsp;&nbsp;<fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
 							</tr>
 							<tr>
-								<td id="com_contents">${comt.commentary}</td>
+								<td class="com_contents">${comt.commentary}</td>
 							</tr>
 							<td>
-								<div class="comment_btn">
-								<%-- 사용여부 차후 결정 예정
-									<i class="far fa-thumbs-up comm_btn" id="like"></i>
+								<div class="comt_like_bad_btn">
+									<i class="far fa-thumbs-up comm_btn" class="comt_like"></i>
 									<p>좋아요</p>
-									<i class="far fa-thumbs-down comm_btn" id="bad"></i>
+									<i class="far fa-thumbs-down comm_btn" class="comt_bad"></i>
 									<p>싫어요</p>
-								--%>
+								</div>
+								<div class="comment_btn">
 									<%-- 값을 못받아와서 페이지 내에 hidden으로 값 넣어줌 --%>
 									<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
 									<input type="hidden" class="c_id_input" name="comment_id" value="${comt.comment_id}">
 									<input type="hidden" class="c_pid_input" name="pid" value="${comt.pid}">
-									<input type="hidden" class="u_nickname" name="u_nickname" value="${sessionScope.nickname}">
 									<c:if test="${sessionScope.nickname != null}">
 										<input type="button" class="cocom_write_btn" value="답글작성">
 									</c:if>

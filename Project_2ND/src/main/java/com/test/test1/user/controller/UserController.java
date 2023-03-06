@@ -11,6 +11,9 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -66,7 +69,7 @@ public class UserController {
 			session.setAttribute("user_id", userDto.getId());
 			session.setAttribute("nickname", str);
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
-			mv.setViewName("common/main"); // 리다이렉트에서 main으로 주소 변경 - 02.19 김범수
+			mv.setViewName("redirect:/video/list"); // 리다이렉트에서 main으로 주소 변경 - 02.19 김범수
 		}else {                                    //로그인 실패
 			mv.setViewName("user/signin");
 			mv.addObject("message", "error");
@@ -94,8 +97,9 @@ public class UserController {
 		//DB 들어가서 id 중복값이 있나 들고나옴
 		String check = null;
 		check = userService.idCheck(id); //check : id파라미터로 DB조회 결과
-		if(check != null) return true;         //중복없음
-		else return false;		
+		System.out.println(check);
+		if(check != null) return true;        //중복없음
+		else return false;	
 	}
 	
 	// 이메일 중복확인 버튼 기능 - 02-13 김지혜 
@@ -143,7 +147,7 @@ public class UserController {
 		//인증번호 생성(난수)
 		Random random = new Random();
 		int checkNum = random.nextInt(888888) + 111111; // checkNum에 랜덤한 인증번호가 담김
-		logger.info("인증번호" + checkNum); 
+
 		// 이메일 보내기 양식
         String setFrom = "GoottFlex";
         String toMail = email;
@@ -221,7 +225,22 @@ public class UserController {
 		return "redirect:/user/signin"; // 비밀번호 변경이 끝나면 로그인페이지로 이동시킴
 	}
 	
-	
+	// 네비바 프로필 이미지 호출 - 02.27 김범수
+	@RequestMapping(value={"navbarImg1", "navbarImg2"}, produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> navbarImg(HttpSession session, UserDto dto, HttpServletRequest request) {
+		String requestUrl = request.getRequestURL().toString();
+		if(requestUrl.contains("navbarImg1")) {
+			String id =(String) session.getAttribute("user_id").toString();
+			String img = userService.navbarImg(id);
+			ResponseEntity<String> result1 = new ResponseEntity<String>(img, HttpStatus.OK); // 이미지 값을 ResponseEntity로 변환
+			return result1;
+		}
+		else {
+			String id =(String) session.getAttribute("user_id").toString();
+			String img = userService.navbarImg(id);
+			ResponseEntity<String> result2 = new ResponseEntity<String>(img, HttpStatus.OK);
+			return result2;
+		}
 
-	
+	}
 }

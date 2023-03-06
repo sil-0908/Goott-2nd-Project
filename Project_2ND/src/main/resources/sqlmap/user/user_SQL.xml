@@ -177,4 +177,12 @@
 		 where ID = #{id}
 	</update>
 
+	<!-- 네비바 이미지 불러오기 - 02.28 김범수 -->
+	<select id="navbarImg" resultType="String">
+		<![CDATA[
+		select IMG
+		  from USER
+		 where ID=#{user_id}
+		]]>
+	</select>
 </mapper>

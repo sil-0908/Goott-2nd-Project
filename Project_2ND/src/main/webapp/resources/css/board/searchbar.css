@@ -1,3 +1,18 @@
+:root {
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
+}
+
+
+
+
 @charsehtml {
   line-height: 1.15;
   /* 1 */
@@ -967,7 +982,7 @@ legend {
   color: #fff;
   border: 0;
   cursor: pointer;
-  background: #FFCC00;
+  background:var(--btn_bg);
   transition: all .2s ease-out, color .2s ease-out;
 }
 
@@ -976,7 +991,7 @@ legend {
 }
 
 .s003 form .inner-form .input-field.third-wrap .btn-search:hover {
-  background: #ed7009;
+  background:var(--btn_hover_bg);
 }
 
 .s003 form .inner-form .input-field.third-wrap .btn-search:focus {
