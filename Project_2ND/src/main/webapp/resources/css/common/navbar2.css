@@ -39,8 +39,10 @@ body {
 
 /* 네비바 - 로고/다국어지원기능 들어감 */
 .logo img{
+	margin-bottom : -6vh;
+	margin-top : 5vh;
     width: 20rem;
-    height: 9rem;
+    height: 20rem;
 }
 
 ul li {
@@ -93,11 +95,11 @@ ul li {
 }
 
 .menu_text_li > p:hover {
-    color: #FFCC00;
+    color: #e56b6f;
 }
 
 .drop_menu_ul {
-    font-size: 15px;
+    font-size: var(--text-size);
     position: absolute;
     z-index: 1;
 }
@@ -182,7 +184,14 @@ ul li {
 }
 
 .drop_menu_li:hover {
-    color: #FFCC00;
+    color: #e56b6f;
 }
 
 /* drop down end */
+
+/* 네비바 이미지 영역 크기 조정 - 02.28 김범수 */
+.img_tag{
+	width: 4rem;
+	height: 4rem;
+	border-radius: 50%;
+}

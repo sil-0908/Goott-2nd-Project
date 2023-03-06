@@ -8,8 +8,8 @@ for(var i = 1; i<comu_btn.length; i++) {
     });
 }
 
-
 comu_btn[0].addEventListener('click', function(){
+	let title = $('#title_data').val(); // 찜하기 버튼 value - 02.28 김범수
     if(this.className.includes('fas')){ // 내보관함에서 삭제
     	$.ajax({
     		url : 'mylocker_de',

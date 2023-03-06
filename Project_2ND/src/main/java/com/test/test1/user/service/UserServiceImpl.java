@@ -64,11 +64,13 @@ public class UserServiceImpl implements UserService{
 	public String emailCheck(String email) {
 		return userDao.emailCheck(email);
 	}
-
+	
+	@Override
 	public void paid(Map<String, Object> map) {
 		userDao.paid(map);
 	}
-
+	
+	@Override
 	public void changepw(UserDto dto) {
 		userDao.changepw(dto);
 	}
@@ -111,7 +113,10 @@ public class UserServiceImpl implements UserService{
 		userDao.img_update(dto);
 	}
 
-
+	@Override
+	public String navbarImg(String id) {
+		return userDao.navbarImg(id);
+	}
 
 
 }
