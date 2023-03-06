@@ -13,15 +13,26 @@
 	// 모달창 열기 버튼 클릭 시 모달창 보이기
 	modifyBtn.onclick = function() {
 
-	  modal.style.display = "block";
-	  modalTf = true; // 모달 창이 보일 경우 true로 설정
+		// 수정하여 DB에 저장전, form에 저장되어 있는 값을 항상 불러오도록 함. 수정 23/03/06 김지혜 
+		let fix_email = $("input[name='Info_Email']").val();  // 내 정보에 담겨있는 이메일값
+		let modal_email = $('input[name="email"]');   // 모달창에 담겨있을 이메일값
+		let fix_nickname = $('input[name="Info_Nickname"]').val(); // 내 정보에 담겨있는 닉네임값
+		let modal_nickname = $('input[name="nickname"]');	// 모달창에 담겨있을 닉네임값
+		let fix_phone_num = $('input[name="Info_Phone_num"]').val(); // 내 정보에 담겨있는 핸드폰번호값
+		let modal_phone_num = $('input[name="phone_num"]'); // 모달창에 담겨있을 핸드폰번호값
+		modal_email.val(fix_email);   
+		modal_nickname.val(fix_nickname);
+		modal_phone_num.val(fix_phone_num);
+		
+		modal.style.display = "block";
+		modalTf = true; // 모달 창이 보일 경우 true로 설정
 	}
 
 	
 	// 모달창 닫기 버튼 클릭 시 모달창 닫기
 	closeBtn.onclick = function() {
-	  modal.style.display = "none";
-	  modalTf = false;// 모달 창이 보이지 않을 경우 false로 설정
+		modal.style.display = "none";
+		modalTf = false;// 모달 창이 보이지 않을 경우 false로 설정
 	}
 
 /////////////////////////////////////////////////////////////
