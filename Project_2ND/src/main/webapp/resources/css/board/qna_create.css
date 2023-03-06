@@ -1,11 +1,13 @@
-:root{
-    --logo-color:#FFCC00;
-    --logo-size: 60px;
-    --title-size: 25px;
-    --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
+:root {
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
 }
 
 .centerBtn{
@@ -96,7 +98,7 @@
 .form-row .name {
   width: 188px;
   color: #333;
-  font-size: 15px;
+  font-size:var(--medium-text-size);
   font-weight: 700;
   margin-top: 11px;
 }
@@ -206,7 +208,7 @@ button {
 body {
   font-family: "Open Sans", "Arial", "Helvetica Neue", sans-serif;
   font-weight: 400;
-  font-size: 14px;
+  font-size:var(--small-text-size);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -370,10 +372,10 @@ h6 {
   -moz-transition: all 0.4s ease;
   transition: all 0.4s ease;
   cursor: pointer;
-  font-size: 15px;
+  font-size:var(--medium-text-size);
   text-transform: capitalize;
   font-weight: 700;
-  color: #000000;
+  color:var(--main-text-color);
   font-family: inherit;
   margin-top : 20px;
   margin-left : auto;
@@ -416,12 +418,12 @@ h6 {
 
 .btn--blue-2 {
 /*  background: #2c6ed5; */
-	background : var(--logo-color);
+	background : var(--btn_bg);
 }
 
 .btn--blue-2:hover {
 /*  background: #185ac1; */
-	background : #ed7009;
+	background :var(--btn_hover_bg);
 }
 
 .btn--red {
@@ -634,7 +636,7 @@ textarea {
   font-size: 36px;
   font-weight: 700;
   text-align: left;
-  color: #fff;
+  color:var(--main-text-color);
   margin-bottom: 24px;
 }
 
@@ -708,4 +710,10 @@ textarea {
   .card-6 .card-footer {
     padding: 50px 30px;
   }
+}
+
+/* 네비바 영역 조정- 02.28 김범수  */
+.drop_menu_ul {
+	margin-left: -0.9vw;
+	margin-top: -2vh;
 }

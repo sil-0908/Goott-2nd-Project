@@ -46,6 +46,7 @@
         <div class="comunication_btn">
       
       		<!-- 보관함 구현을 위한 정보를 전송 02.16 김범수 -->
+      		<input type="hidden" id="title_data" value="${dto.title}"><!-- 찜하기 버튼 value - 02.28 김범수 -->
       		<c:set var="rental_id" value="${rental_id}"/>
 			<c:choose>
 				<c:when test="${rental_id ne null}"> <!-- rental_id가 null값이 아닐 경우 -->

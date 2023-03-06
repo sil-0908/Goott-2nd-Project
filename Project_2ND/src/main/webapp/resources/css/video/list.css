@@ -1,15 +1,26 @@
-:root{
-    --logo-color:#FFCC00;
-    --logo-size: 60px;
-    --title-size: 25px;
-    --title-border: 600px;
-    --text-color:#CCCCCC;
-    --text-size: 17px;
-    --bg:#24292D;
+@font-face {
+    font-family: 'NanumBarunGothic';
+    font-style: normal;
+    font-weight: 400;
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot');
+    src: url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.eot?#iefix') format('embedded-opentype'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.woff') format('woff'), url('//cdn.jsdelivr.net/font-nanumlight/1.0/NanumBarunGothicWeb.ttf') format('truetype');
+   }
+
+
+:root {
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
 }
 
 * {
-	color : var(--text-color);
+	font-family: 'NanumBarunGothic';
     margin: 0;
     padding: 0;
 }
@@ -20,7 +31,6 @@ body {
 }
 
 /* navbar start */
-
 nav {
     display: flex;
     position: fixed;
@@ -38,7 +48,7 @@ nav{
 nav.scrolled {
     background-color:#24292D;
     opacity:0.9;
-    transition: all 4s;
+    transition: all 2s;
 }
 
 ul li {
@@ -229,14 +239,21 @@ ul li {
     position: relative;
     transform: translateX(40px);
     height:auto; 
-    width: 100%;  
+    width: 95%;  
 }
 #top_5 .conta{
-	height: 380px;
-	width: 350px;
-	position: relative;
+	height: 360px;
+    width: 100vh;
+    position: relative;
     transform: translateY(-30px);
 }
+#top_5 .conta img{
+	height: 100%;
+	width: 100%;
+}
+
+
+
 /* Top 5 recommendations end */
 
 
@@ -247,17 +264,17 @@ ul li {
 }
 
 .hide_2{
-	padding-top: 50px;
-}
+	padding-top: 10px;
+} 
 
 .number {
   position: absolute;
-  top: 50%;
+  top: 80%;
   left: 0;
   transform: translateY(-50%);
   font-size: 150px;
   font-weight: bold;
-  color: #CCCCCC;
+  color:var(--main-text-color);
   padding: 20px;
   border-radius: 50%;
   width: 40px;
@@ -265,7 +282,7 @@ ul li {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-shadow: 8px 10px 10px rgba(0, 0, 0); /* add a subtle text shadow */
+  text-shadow: 8px 10px 10px rgba(0, 0, 0); 
 }
 
 /* Top 5 recommendations text  end*/
@@ -298,28 +315,33 @@ ul li {
 .slick-arrow {
     padding:5px;
     background-color: var(--bg);
-    border: none;   
+    border: none;  
+    cursor: pointer; 
+}
+
+.slick-next{
+	position: relative;
+	transform: translateX(-15px);
+	background-color:transparent;
 }
 
 .fa-solid {
   color: white;
   font-size: 50px;
 }
+.fa-solid:hover{
+	opacity: 0.5;
+}
 /* 슬라이드 버튼 끝 */
 
-/* 메인텍스트 시작 */
+/* main text */
 .section_main_text{
-    font-size: 28px;
-    color: #ffff;
-    text-align: center;
-    align-items: center;
+    font-size:var(--large-text-size);
+    color:var(--main-text-color);
+    padding:0 0 0 60px; 
 }
 
-h1{
-   color: #ffff;
-   padding:0 0 0 60px; 
-}
-/* 메인텍스트 끝*/
+/* main text end*/
 
 /* section end */
 
@@ -342,4 +364,10 @@ map img{
 
 a{
 	text-decoration : none;
+}
+
+/* 네비바 영역 조정- 02.28 김범수  */
+.drop_menu_ul {
+	margin-left: 1vw;
+	margin-top: -1.9vh;
 }

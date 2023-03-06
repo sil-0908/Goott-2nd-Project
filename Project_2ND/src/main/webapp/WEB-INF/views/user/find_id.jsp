@@ -11,9 +11,7 @@
 <body>
 	<!-- 로고 영역 -->
 	<header>
-		<div class="header_logo">
-			<img src="/resources/img/user/logo.png" alt="">
-		</div>
+		<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
 	</header>
 	
 	<section>
