@@ -8,29 +8,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 <link rel="stylesheet" href="/resources/css/common/start.css">
  <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
-<script src="/resources/js/common/start.js"></script>
 </head>
 <body>
-    <!-- header start -->
-    <nav id="navbar">
-    	<!-- 로고영역 -->
-        <div class="logo">
-            <img src="/resources/img/user/logo.png" alt="">
-        </div>
-        <!-- 다국어 지원 기능 영역 -->
-		  <form action="/" method="get">
-		    <div class="langdropdown">
-		        <select name="language" class="selectbox" onchange="this.form.submit()">
-		            <option value="none" class="select">=== 선택 ===</option>
-		            <option value="korean" class="select" ${language eq 'korean' ? 'selected' : ''}>한국어</option>
-		            <option value="english" class="select" ${language eq 'english' ? 'selected' : ''}>English</option>
-		        </select>
-		    </div>
-		</form>
-    </nav>
-    <!-- header end -->
-
-
+<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
     <!-- sectionA start -->
     <!-- 첫번째_화면 -->
     <div class="sectionA">
@@ -102,10 +82,8 @@
     </div>
 	<!-- sectionC end -->
 
-    <!-- footer start -->
-	<div class="footer">
-	</div>
-	<!-- footer end -->
+
+	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 	<script>
 	$(function(){
 		const url = new URL(window.location.href);
@@ -115,5 +93,6 @@
 		}
 	})
 	</script>
+<script src="/resources/js/common/start.js"></script>	
 </body>
 </html>

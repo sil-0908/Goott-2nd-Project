@@ -56,6 +56,10 @@
             <i class="fas fa-search fa-lg icons" id="search_icon"></i>
         </div>
 <!-- search end -->
+		
+		<div>
+			<%@ include file="/WEB-INF/views/common/alarm.jsp" %>		
+		</div>
 
 <!-- my info start -->
         <div class="info">

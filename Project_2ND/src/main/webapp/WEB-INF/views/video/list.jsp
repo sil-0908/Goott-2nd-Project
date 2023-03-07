@@ -176,11 +176,9 @@
         <p>두둥 광고 </p>
     </div> -->
 <!-- adv area end -->
-
 <!-- footer start  -->
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 <!-- footer end  -->
 <script src="/resources/js/video/list.js"></script>
-
 </body>
 </html>

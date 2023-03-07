@@ -17,12 +17,11 @@
 }
 
 #alarmDiv{
+	margin-right : 20px;
+	margin-top : 20px;
 	text-align : right;
 	min-width : 20rem;
 	max-width : 20rem;
-	position : fixed;
-	left : 82%;
-	top : 10%;
 	visibility : hidden;
 }
 
@@ -35,18 +34,19 @@
 	margin-bottom : 10px;
 }
 	
-#alarmDiv #alarmUL{
+#alarmDiv #alarm_Area{
 	font-size : 14px;
 	background-color : white;
 	visibility : hidden;
 }
 
-#alarmDiv #alarmUL li{
+#alarmDiv #alarm_Area .alarm_Text{
+	padding : 5px;
 	background-color : #25252b;
 	border : 1px solid black;
 	color : white;
 }
 
-#alarmDiv #alarmUL visible{
-	visibility : visible;
+.visible{
+	visibility : visible !important;
 }

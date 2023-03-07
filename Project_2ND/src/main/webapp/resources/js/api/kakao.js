@@ -40,8 +40,8 @@ function kakaoLogin() {
         					  dataType : 'text',
         					  type : 'post',
         					  success : function(data){
-        						  console.log(data);
-                				  alert(data + "님 반갑습니다.")
+        						  console.log(nickname);
+                				  alert(nickname + "님 반갑습니다.");
                 				  location.href = "/video/list";
         					  }
         				  })

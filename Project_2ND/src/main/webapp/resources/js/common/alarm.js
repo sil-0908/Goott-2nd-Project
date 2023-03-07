@@ -24,8 +24,8 @@ function connectWs(){
 		console.log(event.data);
 		if(event.data.length>0){
 			let newAlarm = '';
-			newAlarm += '<li scope="col">' + event.data + "</li>"
-			$('#alarmUL').append(newAlarm);
+			newAlarm += '<div class="alarm_Text">' + event.data + "</div>"
+			$('#alarm_Area').append(newAlarm);
 			alarmDiv.style.visibility = "visible";
 		}
 	};
@@ -39,28 +39,25 @@ function connectWs(){
 /* 알람창 추가 */
 
 alarmI.addEventListener('click', function(){
-	alarmUL.classList.toggle('visible');
+	alarm_Area.classList.toggle('visible');
 	$(this).stop(false, false);
 });
 
-alarmUL.addEventListener('click', function(e){
+alarmDiv.addEventListener('click', function(e){
 	var endIdx = e.target.textContent.indexOf(")");
 	var idx = e.target.textContent.substr(1, endIdx-1);
-
-	$.ajax({
-		url : '/alarmDel',
-		data : {"idx" : idx},
-		type : 'post',
-		success : function(data){
-			console.log(data);
-			alert("성공");
+	if(e.target.id != 'alarmI'){
+		$.ajax({
+			url : '/alarmDel',
+			data : {"idx" : idx},
+			type : 'post'
+		});
+		
+		$(e.target).remove();
+		if(alarm_Area.children.length == 0){
+			alarmDiv.style.visibility = "hidden";
 		}
-	})
-	
-	$(e.target).remove();
-	if(alarmUL.children.length == 0){
-		alarmDiv.style.visibility = "hidden";
-	}
+	}	
 	
 })
 /* *************************** */

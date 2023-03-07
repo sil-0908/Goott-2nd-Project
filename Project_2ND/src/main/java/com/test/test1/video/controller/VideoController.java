@@ -50,11 +50,17 @@ public class VideoController {
 	
 //	영상 전체조회 페이지 - 02.07 배철우
 //	DTO 생성 후 DTO 활용하여 코드재생성 - 02.10 장민실
+	//영문버전 추가 - 03.06 장재호
 	@RequestMapping("list")
-	public ModelAndView list(ModelAndView mv) {
+	public ModelAndView list(ModelAndView mv, HttpSession ss, String language) {
 		List<VideoDto> list = videoService.list();
-		mv.addObject("dto", list);
-		mv.setViewName("video/list");
+		if(ss.getAttribute("language") == "eng" || (language != null && language.contains("eng"))) {
+			mv.setViewName("video/video_eng/list");
+		}
+		else {
+			mv.setViewName("video/list");
+		}
+		mv.addObject("dto", list);		
 		return mv;
 	}
 

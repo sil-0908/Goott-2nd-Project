@@ -20,7 +20,6 @@
 <body>
 <!-- 네비바 추가 0227 김지혜 -->
 <%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
-<%@ include file="/WEB-INF/views/common/alarm.jsp" %>
 <!-- 검색 -->
 <div class="s003">
 	<form name="form1">
@@ -140,6 +139,7 @@
 	<input id="optionH" type="hidden" name="option" value="${pageMaker.cri.option}">
 	</form>		
 </div>
+<%@ include file="/WEB-INF/views/chat/userchat.jsp" %>
 <div>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 </div>
