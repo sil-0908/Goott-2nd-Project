@@ -11,6 +11,9 @@
 <title>video detail</title>
 </head>
 <body>
+<div id="navbar">
+<%@ include file="/WEB-INF/views/common/navbar2.jsp" %>
+</div>
 
 	<div class="video_all">
 	
@@ -27,7 +30,7 @@
             <div class="movie_info">
                 <div class="info_text" id="movie_info_text">
 	                <p>${dto.title}</p> <br><br>
-					<p>줄거리 : ${dto.summary}</p> <br><br>
+					<p class="movie_summary">줄거리 : ${dto.summary}</p> <br><br>
 					<p>${dto.create_year}년 / ${dto.create_country} / 관람등급 : ${dto.grade}</p>
 				</div>
             </div>
@@ -56,13 +59,28 @@
 					<i class="far fa-heart comu_btn" id="subscribe"></i>
 				</c:otherwise>
      		</c:choose>
-            <p>찜하기</p>
-			<i class="far fa-thumbs-up comu_btn" id="video_like"></i>         
-            <p>좋아요</p>
-            <i class="far fa-thumbs-down comu_btn" id="video_bad"></i>
-            <p>싫어요</p>
+            <p class="text">찜하기</p>
+            
+            <c:choose>
+            	<c:when test="${v_inter_info.v_idx ne '0' and v_inter_info.like ne '0'}">
+            		<i class="fas fa-thumbs-up comu_btn" id="video_like"></i>
+            	</c:when>
+            	<c:otherwise>
+            		<i class="far fa-thumbs-up comu_btn" id="video_like"></i>
+            	</c:otherwise>
+            </c:choose>
+            <p class="text">좋아요</p>
+            <c:choose>
+            	<c:when test="${v_inter_info.v_idx ne '0' and v_inter_info.unlike ne '0'}">
+            		<i class="fas fa-thumbs-down comu_btn" id="video_bad"></i>
+            	</c:when>
+            	<c:otherwise>
+            		<i class="far fa-thumbs-down comu_btn" id="video_bad"></i>
+            	</c:otherwise>
+            </c:choose>            
+            <p class="text">싫어요</p>            
             <i class="fa-solid fa-coins comu_btn" id="payment"></i>
-            <p>결제</p>
+            <p class="text">결제</p>
         </div>
         <!-- button area end -->
 
@@ -78,34 +96,55 @@
         </form>
         <!-- comment wirte area end -->
 
-        <hr>
+        <hr class="comt_list_hr">
         
         <!-- comment list area start -->
-        <form name="comt_list" method="post">
+		<form name="comt_list" method="post">
 			<div class="comment_list_area">
 				<table class="comment_list">
 					<c:forEach var="comt" items="${replyList}">
 						<c:if test="${comt.depth=='0'}">
 							<tr class="com_tr">
-								<td class="com_title">
+								<td class="com_title text">
 								<div class="user_img_area"></div>
 								${comt.nickname}&nbsp;&nbsp;<fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
 							</tr>
 							<tr>
-								<td class="com_contents">${comt.commentary}</td>
+								<td class="com_contents text">${comt.commentary}</td>
+									
 							</tr>
-							<td>
-								<div class="comt_like_bad_btn">
-									<i class="far fa-thumbs-up comm_btn" class="comt_like"></i>
-									<p>좋아요</p>
-									<i class="far fa-thumbs-down comm_btn" class="comt_bad"></i>
-									<p>싫어요</p>
-								</div>
+							<td class="comt_btn_td">
+								<c:forEach var="sibal" items="${c_inter_info}">
+									<div class="comt_like_bad_btn">
+										<c:choose>
+			            					<c:when test="${sibal.c_idx ne '0' and sibal.like ne '0' and sibal.comment_id eq comt.comment_id}">
+			            						<i class="fas fa-thumbs-up comm_btn comt_like"></i>
+			            						<p class="text">좋아요</p>
+			            					</c:when>
+			            					<c:when test="${sibal.c_idx eq '0' and sibal.like eq '0' and sibal.comment_id ne comt.comment_id}">
+				            					<i class="far fa-thumbs-up comm_btn comt_like"></i>
+				            					<p class="text">좋아요</p>
+			            					</c:when>
+										</c:choose>
+										</div>
+									<div class="comt_bad_btn">
+										<c:choose>
+											<c:when test="${sibal.c_idx ne '0' and sibal.unlike ne '0' and sibal.comment_id eq comt.comment_id}">
+			            						<i class="fas fa-thumbs-down comm_btn comt_bad"></i>
+			            						<p class="text">싫어요</p>
+			            					</c:when>
+			            					<c:when test="${sibal.c_idx eq '0' and sibal.unlike eq '0' and sibal.comment_id ne comt.comment_id}">
+				            					<i class="far fa-thumbs-down comm_btn comt_bad"></i>
+				            					<p class="text">싫어요</p>
+			            					</c:when>
+										</c:choose>
+									</div>
+								</c:forEach>
 								<div class="comment_btn">
 									<%-- 값을 못받아와서 페이지 내에 hidden으로 값 넣어줌 --%>
-									<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
-									<input type="hidden" class="c_id_input" name="comment_id" value="${comt.comment_id}">
-									<input type="hidden" class="c_pid_input" name="pid" value="${comt.pid}">
+									<input type="text" id="v_input" name="video_id" value="${dto.video_id}">
+									<input type="text" class="c_id_input" name="comment_id" value="${comt.comment_id}">
+									<input type="text" class="c_pid_input" name="pid" value="${comt.pid}">
 									<c:if test="${sessionScope.nickname != null}">
 										<input type="button" class="cocom_write_btn" value="답글작성">
 									</c:if>
@@ -121,9 +160,9 @@
 								<div class="comt_edit"></div>
 								<%-- 대댓글 목록 자리 --%>
 								<div class="co_comment_list"></div>
-								<hr id="com_list_hr">								
-							</td>						
-						</c:if>						
+								<hr id="com_list_hr">
+							</td>
+						</c:if>
 					</c:forEach>
 				</table>
 	        </div>
@@ -131,7 +170,7 @@
         <!-- comment list area end -->
         <hr>
 	</div>
-	
+
 <script src="/resources/js/video/detail.js"></script>
 <script>
 // js에서 sessionScope 값에 대해 불러오질 못하고 c태그 자체를 기능이 아닌 text로 인식하여 기능이 작동하지 않아 jsp 내에 전역으로 변수생성
