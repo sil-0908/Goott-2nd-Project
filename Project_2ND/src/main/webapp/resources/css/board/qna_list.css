@@ -36,10 +36,11 @@
 	color : #ed7009 !important;
 }
 
-li {
+#pageUL li {
 	list-style: none; /*float : left / padding 제외- 메뉴바 설정 02.28김범수*/
 	margin-left : auto;
 	margin-right : auto;
+	margin : 5px;
 	color : var(--bg);	
 }
 

@@ -13,6 +13,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/pay_modal.jsp" %>		
+
 <!-- =========== qna =========== 네비바 -->
 <!-- 세션에 아이디 값을 가지고 있을 경우 (로그인이 되어있을 경우)와 없을 때 넘어가는 경우가 다르게 설정  0227 장재호 -->
 <input id="sessionID" type="hidden" value="${sessionScope.user_id}">
@@ -40,7 +42,7 @@
 					</c:choose>
                     <ul class="drop_menu_ul">
                         <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">내채널</li>
-                        <li class="drop_menu_li" onclick ="location.href=''">미정</li>
+                        <li class="drop_menu_li" onclick ="modal2()">결제</li>
                         <li class="drop_menu_li" onclick ="">Language</li>
                         <li class="drop_menu_li" onclick ="location.href='/qna/list'">고객센터</li>
                         <li class="drop_menu_li" onclick="signout()">로그아웃</li>
@@ -52,5 +54,6 @@
     </nav>   
 <!-- navbar end -->
 <script src="/resources/js/common/nav2.js"></script>
+
 </body>
 </html>

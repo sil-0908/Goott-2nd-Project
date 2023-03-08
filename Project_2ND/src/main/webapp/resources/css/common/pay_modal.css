@@ -11,7 +11,7 @@
     --title-border: 600px;
 }
 /* 팝업창 배경*/
-.popup{
+.popup2{
     position: fixed; 
     top: 0; 
     left: 0; 
@@ -23,9 +23,9 @@
 }
 
 /* 팝업창 메인*/
-.pwrap{
-    width: 450px;
-    height: 370px;
+.pwrap2{
+    width: 400px;
+    height: 350px;
     margin: 0 auto;
     position: absolute; /* 영역안에 기능들이 보일수 있도록 하는 것 */
     left: 0;
@@ -38,7 +38,7 @@
     border-radius: 10px;
 }
 /* 닫기 버튼 */
-.pwrap a{
+.pwrap2 a{
    float: right;
    cursor: pointer;
 }
@@ -46,7 +46,16 @@ table{
 	margin-left : auto;
 	margin-right : auto;
 }
-img{
+.popup2 img{
+	margin : 20px;
 	width : 100px;
 	height : 100px;
+}
+
+.popup2 h1,h2,h3,span,h{
+	margin : 10px !important;
+}
+.popup2 select,option{
+	margin-top : 10px;
+	color : black;
 }

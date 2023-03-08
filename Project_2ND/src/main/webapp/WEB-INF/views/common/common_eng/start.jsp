@@ -83,7 +83,7 @@
 	<!-- sectionC end -->
 
 
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	<%@ include file="/WEB-INF/views/common/common_eng/footer.jsp" %>
 	<script>
 	$(function(){
 		const url = new URL(window.location.href);

@@ -114,7 +114,7 @@
 	</section>
 	<input type="hidden" value="eng" id="sessionL">	
 	<footer>
-<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+<%@ include file="/WEB-INF/views/common/common_eng/footer.jsp" %>
 
 	</footer>
 </body>

@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
+<%@ include file="/WEB-INF/views/common/pay_modal.jsp" %>
     <!-- =========== video list 네비바 =========== / navbar start 네비바 수정 _ 0227 김지혜-->
     <nav id="navbar">
         <div class="logo">
@@ -74,7 +75,7 @@
 					</c:choose>
                     <ul class="drop_menu_ul">
                         <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">내채널</li>
-                        <li class="drop_menu_li" onclick ="location.href=''">미정</li>
+                        <li class="drop_menu_li" onclick ="modal2()">결제</li>
                         <li class="drop_menu_li" onclick ="">Language</li>
                         <li class="drop_menu_li" onclick ="location.href='/qna/list'">고객센터</li>
                         <li class="drop_menu_li" onclick="signout()">로그아웃</li>
