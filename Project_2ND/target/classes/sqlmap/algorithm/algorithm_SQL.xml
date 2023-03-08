@@ -6,7 +6,8 @@
 	<select id="check" resultType="Integer">
 		select VIDEO_ID
 		  from ALGORITHM
-		 where USER_ID=(select U.USER_ID from USER U where ID="${id}") and VIDEO_ID = ${video_id}
+		 where USER_ID=(select U.USER_ID from USER U where ID="${id}")
+		   and VIDEO_ID = ${video_id}
 	</select>
 	
 	<insert id="insert">
@@ -44,15 +45,15 @@
 	<select id="weeklyVisitor" resultType="com.test.test1.algorithm.dto.AlgorithmDto">
 		(select VISIT_DATE, NUMBER
 		   from VISIT
-		  order by VISIT_DATE
-		   desc limit 7) order by VISIT_DATE asc		 
+		  order by VISIT_DATE desc limit 7)
+		  order by VISIT_DATE asc		 
 	</select>
 	
 	<select id="weeklySales" resultType="com.test.test1.algorithm.dto.AlgorithmDto">
 		(select PAID_DATE, AMOUNT
 		   from PAID
-		  order by PAID_DATE
-		   desc limit 7) order by PAID_DATE asc
+		  order by PAID_DATE desc limit 7)
+		  order by PAID_DATE asc
 	</select>
 
 	<!-- 시청기록 - 02.27 김범수 -->
@@ -62,6 +63,6 @@
            join ALGORITHM a
           where v.VIDEO_ID = a.VIDEO_ID
             and a.USER_ID = (select USER_ID from USER where ID=#{user_id})
-		 order by LAST_UPDATE_DATE desc
+		  order by LAST_UPDATE_DATE desc
 	</select>
 </mapper>

@@ -20,7 +20,7 @@
 		       <if test="option == 'SUBJECT'"> Q_SUBJECT like CONCAT('%',#{keyword},'%')</if>
 		       <if test="option == 'CONTENT'"> Q_CONTENT like CONCAT('%',#{keyword},'%')</if>
 		       <if test="option == 'SUBJECT,CONTENT'"> Q_SUBJECT like CONCAT('%',#{keyword},'%')
-		                                             or Q_CONTENT like CONCAT('%',#{keyword},'%')</if>		        
+		                                            or Q_CONTENT like CONCAT('%',#{keyword},'%')</if>		        
 		       <if test="option == null or option == ''">1=1</if>
          order by QUESTION_ID desc
          limit #{pageStart}, #{perPageNum}
@@ -33,7 +33,7 @@
 		       <if test="option == 'SUBJECT'"> Q_SUBJECT like CONCAT('%',#{keyword},'%')</if>
 		       <if test="option == 'CONTENT'"> Q_CONTENT like CONCAT('%',#{keyword},'%')</if>
 		       <if test="option == 'SUBJECT,CONTENT'"> Q_SUBEJECT like CONCAT('%',#{keyword},'%')
-		                                             or Q_CONTENT like CONCAT('%',#{keyword},'%')</if>
+		                                            or Q_CONTENT like CONCAT('%',#{keyword},'%')</if>
 		       <if test="option == null or option == ''">1=1</if>
 	</select>
 
