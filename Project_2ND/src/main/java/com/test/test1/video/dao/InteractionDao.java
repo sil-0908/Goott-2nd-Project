@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.test.test1.video.dto.ComtInteractionDto;
 import com.test.test1.video.dto.VideoInteractionDto;
 
 @Repository
@@ -54,39 +53,7 @@ public class InteractionDao {
 	
 //	=====================================  비디오영역  =====================================
 	
-//	=====================================  댓글영역  =====================================
-	
-//	댓글 좋아요 누른값 없을때
-	public void comt_like(ComtInteractionDto ci_dto) {
-		sqlSession.insert("interaction.comt_like", ci_dto);
-	}
 
-//	댓글 싫어요 누른값 없을때
-	public void comt_unlike(ComtInteractionDto ci_dto) {
-		sqlSession.insert("interaction.comt_unlike", ci_dto);
-	}
-
-//	comment_idx,like,unlike 값 받아오기
-	public List<ComtInteractionDto> get_c_inter_info(ComtInteractionDto ci_dto) {
-		return sqlSession.selectList("interaction.get_c_inter_info", ci_dto);
-	}
-
-//	comt_user_like 테이블의 like값을 참조하여 video_comment 테이블의 like 값 변경하기
-	public void update_comt_like(ComtInteractionDto ci_dto) {
-		sqlSession.update("interaction.update_comt_like", ci_dto);
-	}
-
-//	comt_user_like 테이블의 unlike값을 참조하여 video_comment 테이블의 like 값 변경하기
-	public void update_comt_unlike(ComtInteractionDto ci_dto) {
-		sqlSession.update("interaction.update_comt_unlike", ci_dto);
-	}
-	
-//	댓글 좋아요,싫어요 누른값 있을때
-	public void c_delete(ComtInteractionDto ci_dto) {
-		sqlSession.insert("interaction.c_delete", ci_dto);
-	}
-
-//	=====================================  댓글영역  =====================================
 
 
 

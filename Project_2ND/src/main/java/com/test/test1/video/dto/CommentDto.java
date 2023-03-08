@@ -7,7 +7,7 @@ public class CommentDto {
 	private String commentary, nickname, cocom_date;
 	private int comment_id, pid, video_id, user_id, depth, depth_lev;
 	private Date create_date;
-	
+
 	public String getCommentary() {
 		return commentary;
 	}
@@ -99,7 +99,8 @@ public class CommentDto {
 			+ ", user_id = " + user_id
 			+ ", depth = " + depth
 			+ ", depth_lev = " + depth_lev
-			+ ", create_date = " + create_date + "]";
+			+ ", create_date = " + create_date			
+			+ "]";
 	}
 	
 	

@@ -106,45 +106,18 @@
 						<c:if test="${comt.depth=='0'}">
 							<tr class="com_tr">
 								<td class="com_title text">
-								<div class="user_img_area"></div>
+									<div class="user_img_area"></div>
 								${comt.nickname}&nbsp;&nbsp;<fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
 							</tr>
 							<tr>
 								<td class="com_contents text">${comt.commentary}</td>
-									
 							</tr>
 							<td class="comt_btn_td">
-								<c:forEach var="sibal" items="${c_inter_info}">
-									<div class="comt_like_bad_btn">
-										<c:choose>
-			            					<c:when test="${sibal.c_idx ne '0' and sibal.like ne '0' and sibal.comment_id eq comt.comment_id}">
-			            						<i class="fas fa-thumbs-up comm_btn comt_like"></i>
-			            						<p class="text">좋아요</p>
-			            					</c:when>
-			            					<c:when test="${sibal.c_idx eq '0' and sibal.like eq '0' and sibal.comment_id ne comt.comment_id}">
-				            					<i class="far fa-thumbs-up comm_btn comt_like"></i>
-				            					<p class="text">좋아요</p>
-			            					</c:when>
-										</c:choose>
-										</div>
-									<div class="comt_bad_btn">
-										<c:choose>
-											<c:when test="${sibal.c_idx ne '0' and sibal.unlike ne '0' and sibal.comment_id eq comt.comment_id}">
-			            						<i class="fas fa-thumbs-down comm_btn comt_bad"></i>
-			            						<p class="text">싫어요</p>
-			            					</c:when>
-			            					<c:when test="${sibal.c_idx eq '0' and sibal.unlike eq '0' and sibal.comment_id ne comt.comment_id}">
-				            					<i class="far fa-thumbs-down comm_btn comt_bad"></i>
-				            					<p class="text">싫어요</p>
-			            					</c:when>
-										</c:choose>
-									</div>
-								</c:forEach>
 								<div class="comment_btn">
 									<%-- 값을 못받아와서 페이지 내에 hidden으로 값 넣어줌 --%>
-									<input type="text" id="v_input" name="video_id" value="${dto.video_id}">
-									<input type="text" class="c_id_input" name="comment_id" value="${comt.comment_id}">
-									<input type="text" class="c_pid_input" name="pid" value="${comt.pid}">
+									<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
+									<input type="hidden" class="c_id_input" name="comment_id" value="${comt.comment_id}">
+									<input type="hidden" class="c_pid_input" name="pid" value="${comt.pid}">
 									<c:if test="${sessionScope.nickname != null}">
 										<input type="button" class="cocom_write_btn" value="답글작성">
 									</c:if>

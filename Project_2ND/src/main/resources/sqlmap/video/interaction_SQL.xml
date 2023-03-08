@@ -59,53 +59,7 @@
 
 <!-- ========================= 비디오영역 ========================= -->
 
-<!-- ========================= 댓글영역 ========================= -->
 
-	<!-- 댓글 좋아요 누른값 없을때 -->
-	<insert id="comt_like">
-		insert into COMT_USER_LIKE (USER_ID, COMMENT_ID, `LIKE`)
-		values (#{user_id}, #{comment_id}, #{like})
-	</insert>	
-	
-	<!-- 댓글 싫어요 누른값 없을때 -->
-	<insert id="comt_unlike">
-		insert into COMT_USER_LIKE (USER_ID, COMMENT_ID, UNLIKE)
-		values (#{user_id}, #{comment_id}, #{unlike})
-	</insert>
-
-	<!-- comment 관련 idx, like, unlike 값 받아오기 -->
-	<select id="get_c_inter_info" resultType="com.test.test1.video.dto.ComtInteractionDto">
-		select C_IDX, COMMENT_ID, `LIKE`, UNLIKE
-		  from COMT_USER_LIKE
-	</select>
-	
-	<!-- 댓글 좋아요 누를때 vdeo_comment 테이블의 like 컬럼값도 같이 업데이트하기 -->
-	<update id="update_comt_like">
-		update VIDEO_COMMENT
-  		   set `LIKE` = (select COUNT(`LIKE`)
-				   		   from COMT_USER_LIKE
-				  		  where COMMENT_ID=#{comment_id}
-				  		    and `LIKE` = 1)
- 		 where COMMENT_ID=#{comment_id}
-	</update>
-	
-	<!-- 댓글 좋아요 누를때 vdeo_comment 테이블의 unlike 컬럼값도 같이 업데이트하기 -->
-	<update id="update_comt_unlike">
-		update VIDEO_COMMENT
-  		   set UNLIKE = (select COUNT(UNLIKE)
-				   		   from COMT_USER_LIKE
-				  		  where COMMENT_ID=#{comment_id}
-				  		    and UNLIKE = 1)
- 		 where COMMENT_ID=#{comment_id}
-	</update>
-	
-	<!-- 댓글  좋아요,싫어요 누른값 있을때 -->
-	<delete id="c_delete">
-		delete from COMT_USER_LIKE
-		 where C_IDX=#{c_idx}
-	</delete>	
-	
-<!-- ========================= 댓글영역 ========================= -->
 
 
 </mapper>

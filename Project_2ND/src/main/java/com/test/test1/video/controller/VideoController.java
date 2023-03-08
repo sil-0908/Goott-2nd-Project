@@ -1,6 +1,5 @@
 package com.test.test1.video.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.test1.video.dto.CommentDto;
-import com.test.test1.video.dto.ComtInteractionDto;
 import com.test.test1.video.dto.VideoInteractionDto;
 import com.test.test1.video.dto.RentalDTO;
 import com.test.test1.algorithm.service.AlgorithmService;
@@ -64,7 +62,7 @@ public class VideoController {
 //	DTO 생성 후 DTO 활용하여 코드재생성 + 배우정보 가져오기 - 02.14 장민실
 //	알고리즘 구현을 위해 detail페이지 접근 시 PK값 저장 - 02.15 장재호
 	@RequestMapping("detail")
-	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session, RentalDTO dto, VideoInteractionDto vi_dto, ComtInteractionDto ci_dto, HttpServletRequest request) { //세션추가 - 02.15 장재호
+	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session, RentalDTO dto, VideoInteractionDto vi_dto, HttpServletRequest request) { //세션추가 - 02.15 장재호
 /*--------------------------------------- db에 알고리즘 구현을 위한 값들 저장 - 02.15 장재호 ---------------------------------------*/
 		String id = (String) session.getAttribute("user_id");
 		if(request.getHeader("referer").contains("video/list")) {
@@ -93,6 +91,7 @@ public class VideoController {
 		int inter_user_id = userService.getid(user_id);
 		vi_dto.setUser_id(inter_user_id);
 		vi_dto.setVideo_id(video_id);
+		
 		List<VideoInteractionDto> v_inter_info = interactionService.get_v_inter_info(vi_dto);
 		for(VideoInteractionDto data: v_inter_info) {
 			vi_dto.setV_idx(data.getV_idx());
@@ -101,50 +100,6 @@ public class VideoController {
 		}
 		mv.addObject("v_inter_info", vi_dto);
 //		영상 좋아요,싫어요 기능관련 idx,like,unlike 가져오기 end 03.06 장민실
-		
-//		댓글 좋아요,싫어요 기능관련 idx,like,unlike 가져오기 start 03.07 장민실
-		for(CommentDto c_data: list) {
-			ci_dto.setComment_id(c_data.getComment_id());
-		}
-		
-//		List<ComtInteractionDto> c_inter_info = interactionService.get_c_inter_info(ci_dto);
-//		List<ComtInteractionDto> c_inter_info_list = new ArrayList<ComtInteractionDto>();//		
-//		for(ComtInteractionDto data: c_inter_info) {
-//		    ComtInteractionDto dto_test = new ComtInteractionDto();//		    
-//		    System.out.println("dataaaaaaaaaaaaaaaaaaaaaaaaa : " + data.toString());//		    
-////		    dto_test.setC_idx(data.getC_idx());
-////		    dto_test.setLike(data.getLike());
-////		    dto_test.setUnlike(data.getUnlike());
-////		    dto_test.setComment_id(data.getComment_id());////		    
-////		    System.out.println("data22222222222222222222222222 : " + dto_test.toString());////		    
-////		    c_inter_info_list.add(dto_test); ////		    
-////		    mv.addObject("c_inter_info", c_inter_info_list);//		    
-//		    ci_dto.setC_idx(data.getC_idx());
-//		    ci_dto.setLike(data.getLike());
-//		    ci_dto.setUnlike(data.getUnlike());
-//		    mv.addObject("c_inter_info", ci_dto);
-//		    System.out.println("안임ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ : " + ci_dto.toString());
-//		}
-//		System.out.println("밖임ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ : " + ci_dto.toString());
-		
-		
-		List<ComtInteractionDto> c_inter_info = interactionService.get_c_inter_info(ci_dto);
-		List<ComtInteractionDto> c_inter_info_list = new ArrayList<>();
-		for (ComtInteractionDto data : c_inter_info) {
-		    System.out.println("dataaaaaaaaaaaaaaaaaaaaaaaaa : " + data.toString());
-		    ComtInteractionDto c_inter_info_obj = new ComtInteractionDto();
-		    c_inter_info_obj.setC_idx(data.getC_idx());
-		    c_inter_info_obj.setLike(data.getLike());
-		    c_inter_info_obj.setUnlike(data.getUnlike());
-		    c_inter_info_obj.setComment_id(data.getComment_id());
-		    System.out.println("data22222222222222222222222222 : " + c_inter_info_obj.toString());
-		    c_inter_info_list.add(c_inter_info_obj);
-		    
-		}
-		System.out.println(c_inter_info_list.size());
-		mv.addObject("c_inter_info", c_inter_info_list);
-		
-//		댓글 좋아요,싫어요 기능관련 idx,like,unlike 가져오기 end 03.07 장민실
 		
 		mv.addObject("dto", videoService.detail(video_id));
 		mv.addObject("detail", actor);

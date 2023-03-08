@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.test.test1.video.dao.InteractionDao;
-import com.test.test1.video.dto.ComtInteractionDto;
 import com.test.test1.video.dto.VideoInteractionDto;
 
 @Service
@@ -46,33 +45,7 @@ public class InteractionServiceImpl implements InteractionService {
 		interactionDao.update_video_recommand(vi_dto);
 	}
 	
-//	댓글 좋아요 누른값 없을때
-	@Override
-	public void comt_like(ComtInteractionDto ci_dto) {
-		interactionDao.comt_like(ci_dto);
-		interactionDao.update_comt_like(ci_dto);
-	}
 
-//	댓글 싫어요 누른값 없을때
-	@Override
-	public void comt_unlike(ComtInteractionDto ci_dto) {
-		interactionDao.comt_unlike(ci_dto);
-		interactionDao.update_comt_unlike(ci_dto);
-	}
-
-//	comment_idx,like,unlike 값 받아오기
-	@Override
-	public List<ComtInteractionDto> get_c_inter_info(ComtInteractionDto ci_dto) {
-		return interactionDao.get_c_inter_info(ci_dto);
-	}
-
-//	댓글 좋아요,싫어요 누른값 있을때
-	@Override
-	public void c_delete(ComtInteractionDto ci_dto) {
-		interactionDao.c_delete(ci_dto);
-		interactionDao.update_comt_like(ci_dto);
-		interactionDao.update_comt_unlike(ci_dto);
-	}
 
 
 	

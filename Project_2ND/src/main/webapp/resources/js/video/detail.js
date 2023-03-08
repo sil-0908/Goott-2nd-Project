@@ -278,39 +278,3 @@ comu_btn[0].addEventListener('click', function(){
 
 ///////////////////////////////// 영상 좋아요, 싫어요  ///////////////////////////////////////
 
-///////////////////////////////// 댓글 좋아요, 싫어요  ///////////////////////////////////////
-	
-//	댓글 좋아요
-	$(document).on('click', '.comt_like', function(e){
-		e.preventDefault();
-		let comment_id = findid(e.target, '.comt_btn_td', '.c_id_input');
-		console.log(comment_id);
-		
-		$.ajax({
-			data : { comment_id : comment_id },
-			url : '/inter/comt_like',
-			type : 'POST',
-			success : function(){
-				console.log("완료");
-				window.location.reload();
-			}
-		});		
-	});
-	
-//	댓글 싫어요
-	$(document).on('click', '.comt_bad', function(e){
-		e.preventDefault();
-		let comment_id = this.parentNode.nextElementSibling.children[1].value;
-		
-		$.ajax({
-			data : { comment_id : comment_id },
-			url : '/inter/comt_unlike',
-			type : 'POST',
-			success : function(){
-				console.log("완료");
-				window.location.reload();
-			}
-		});		
-	});
-
-///////////////////////////////// 댓글 좋아요, 싫어요  ///////////////////////////////////////
