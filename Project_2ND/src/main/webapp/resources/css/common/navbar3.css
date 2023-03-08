@@ -141,7 +141,7 @@ ul li {
 
 /* drop down end */
 /* 네비바 이미지 영역 크기 조정 - 02.28 김범수 */
-.img_tag{
+.nav_img_tag{
 	left : 94%;
 	z-index : 1001;
 	top : 10%;
@@ -149,4 +149,8 @@ ul li {
 	height: 4rem;
 	border-radius: 50%;
 	position : absolute;
+}
+
+#alarmSection{
+	margin-left : 50%;
 }

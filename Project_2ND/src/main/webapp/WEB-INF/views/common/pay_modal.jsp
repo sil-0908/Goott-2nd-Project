@@ -12,6 +12,8 @@
 <!-- ********************************모달 시작****************************** -->
 <input class="inputMonthH" type="hidden">
 <input class="sessionuserID" type="hidden" value="${sessionScope.user_id}">
+<input class="amountValue" type="hidden">
+
 <div class="popup2">  <!-- 팝업처럼 하기 위한 배경 -->
 	<div class="pwrap2">  <!-- 실제 팝업창 -->
 		<a class="closebtn2">X</a> <!-- 비밀번호 변경창 닫기 버튼 -->

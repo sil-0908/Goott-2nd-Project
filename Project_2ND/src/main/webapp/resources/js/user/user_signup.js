@@ -201,10 +201,10 @@ $(function(){
             	   }
             	   else{
                        if(result == 'false'){      //false = 사용가능
-                           $('#idcheck').html('available');
+                           $('#idcheck').html('사용 가능한 ID입니다.');
                            i=1;  // 아이디영역은 최종 가입에 조건만족
                         }else{
-                           $('#idcheck').html('duplicate');
+                           $('#idcheck').html('중복된 ID입니다.');
                         }
             	   }
             	   /***********************************************************/
@@ -333,6 +333,7 @@ $(function(){
               else if(inputCode == code){
                  alert("인증번호가 일치합니다.");
                  $('#submit').attr('disabled', false);
+                 $("#email").attr('disabled', true); //중복확인 끝나면 이메일 변경 불가 - 03.09 장재호
                  
               }else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
                  alert("인증번호를 다시 확인 해주세요.");

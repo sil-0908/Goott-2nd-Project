@@ -79,6 +79,7 @@ $(function(){
 			// 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
 			else if(inputCode == code1){
 				inputResult.html("correct");
+				$("#input_email1").attr("disabled", true);
 				
 			}else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
 				inputResult.html("please check numbers");
@@ -86,6 +87,7 @@ $(function(){
 			}
 		}
 		else{
+			console.log($('#input_email1'));
 			// 사용자가 입력하지 않은경우
 			if(inputCode === null || inputCode === ""){
 				inputResult.html("인증번호를 입력해주세요.");
@@ -94,6 +96,7 @@ $(function(){
 			// 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
 			else if(inputCode == code1){
 				inputResult.html("인증번호가 일치합니다.");
+				$("#input_email1").attr("disabled", true);
 				
 			}else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
 				inputResult.html("인증번호를 다시 확인 해주세요.");
@@ -263,6 +266,7 @@ $(function(){
 			// 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
 			else if(inputCode == code2){
 				inputResult.html("correct");
+				$("#input_email2").attr("disabled", true);
 				
 			}else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
 				inputResult.html("please check Authentication numbers");
@@ -278,6 +282,7 @@ $(function(){
 			// 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
 			else if(inputCode == code2){
 				inputResult.html("인증번호가 일치합니다.");
+				$("#input_email2").attr("disabled", true);
 				
 			}else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
 				inputResult.html("인증번호를 다시 확인 해주세요.");

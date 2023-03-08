@@ -34,10 +34,10 @@
                 <li class="info_li">
 					<c:choose>
 						<c:when test="${img != null && img != ''}">
-							<img src="${img}" id="img_onload" class="img_tag"> 
+							<img src="${img}" id="img_onload" class="nav_img_tag"> 
 						</c:when>
 						<c:when test="${img == null}">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="img_tag">
+							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="nav_img_tag">
 						</c:when>
 					</c:choose>
                     <ul class="drop_menu_ul">

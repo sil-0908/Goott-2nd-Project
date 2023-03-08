@@ -11,11 +11,10 @@
 <title>video detail</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/views/common/pay_modal.jsp" %>
 <div id="navbar">
 <%@ include file="/WEB-INF/views/common/navbar2.jsp" %>
 </div>
-
+<input type="hidden" id="paidYN" value="${sessionScope.paid}">
 	<div class="video_all">
 	
         <!-- video area start -->
@@ -155,6 +154,7 @@
         <!-- comment list area end -->
         <hr>
 	</div>
+<%@ include file="/WEB-INF/views/common/ads.jsp" %>
 
 <script src="/resources/js/video/detail.js"></script>
 <script>

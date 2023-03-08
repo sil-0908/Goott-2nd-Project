@@ -120,6 +120,7 @@ function qnaDelete(){
 				alert("삭제 완료");
 			}
 		});
+		location.href="/qna/list";
 	}
 }
 
