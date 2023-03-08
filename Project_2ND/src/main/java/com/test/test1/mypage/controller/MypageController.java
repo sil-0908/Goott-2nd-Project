@@ -150,13 +150,10 @@ public class MypageController {
 		
 		@RequestMapping(value = "display")
 		public ResponseEntity<byte[]> display(String fileName) throws FileNotFoundException {
-		    // db에서 정보를 가져와 출력을 해야됨
-		    System.out.println(fileName);
 		    File file = new File(fileName);
 		    if (!file.exists() || !file.canRead()) {
 		        throw new FileNotFoundException("The file '" + fileName + "' 을 찾을수 없습니다.");
 		    }
-		    System.out.println(fileName);
 		    ResponseEntity<byte[]> result = null;
 
 		    try {
@@ -173,9 +170,8 @@ public class MypageController {
 		
 		// 프로필 로드 - 02.27 김범수
 		@RequestMapping(value="onload", produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<String> onload(String uploadFile) { 
+		public ResponseEntity<String> onload(String uploadFile) {
 			ResponseEntity<String> result = new ResponseEntity<String>(uploadFile, HttpStatus.OK);
-			System.out.println(result);
 			return result;		
 		}
 

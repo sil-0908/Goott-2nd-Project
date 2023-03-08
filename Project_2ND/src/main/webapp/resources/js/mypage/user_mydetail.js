@@ -27,7 +27,6 @@
       modal.style.display = "block";
       modalTf = true; // 모달 창이 보일 경우 true로 설정
    }
-
    
    // 모달창 닫기 버튼 클릭 시 모달창 닫기
    closeBtn.onclick = function() {
@@ -35,10 +34,8 @@
       modalTf = false;// 모달 창이 보이지 않을 경우 false로 설정
    }
 
-/////////////////////////////////////////////////////////////
-// 케러셀 이벤트
+/////////////////////////////////////////////////////////////// 케러셀 이벤트
 new Swiper('.swiper-container', {
-
    slidesPerView : 6, // 동시에 보여줄 슬라이드 갯수
    spaceBetween : 0, // 슬라이드간 간격
 
@@ -47,8 +44,6 @@ new Swiper('.swiper-container', {
       prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
    },
 });
-
-
    
 //이미지 로딩 위한 메서드 - 02.24김범수
 $(function() {
@@ -92,10 +87,8 @@ function fileCheck(fileName, fileSize){
    if(!regex.test(fileName)){
       alert("해당 종류의 파일은 업로드할 수 없습니다.");
       return false;
-   }
-   
-   return true;      
-   
+   }   
+   return true;   
 }
 
 //이미지 출력을 위한 메서드 - 02.24김범수

@@ -1,18 +1,18 @@
+:root{
+   --bg: #24292D;
+   --btn_bg: #e1555a;
+   --btn_hover_bg: #e56b6f;
+   --main-text-color: #CCCCCC;
+   --sub-text-color: #FFCC00;
+   --error-text-color: #F82F62;
+   --large-text-size: 25px;
+   --medium-text-size: 17px;
+   --small-text-size: 13px;
+}
+
 *{
    margin: 0;
    padding: 0;
-}
-
-:root{
-    --bg: #24292D;
-    --btn_bg: #e1555a;
-    --btn_hover_bg: #e56b6f;
-    --main-text-color: #CCCCCC;
-    --sub-text-color: #FFCC00;
-    --error-text-color: #F82F62;
-    --large-text-size: 25px;
-    --medium-text-size: 17px;
-    --small-text-size: 13px;
 }
 
 footer{
@@ -41,7 +41,6 @@ footer{
    line-height:1.0;
 }
 
-
 #f_Con2 a{
 	color: var(--main-text-color);
 }
@@ -49,8 +48,6 @@ footer{
 #f_Con2 a:hover{
   color: var(--btn_hover_bg);
 }
-
-
 
 #f_Con2 p,h3{
 	margin:0;

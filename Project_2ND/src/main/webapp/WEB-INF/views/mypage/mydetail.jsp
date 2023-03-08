@@ -112,16 +112,16 @@
 			<div class="swiper-wrapper">
 				<c:forEach var="movie" items="${dto}">
 					<div class="swiper-slide">
-						<a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}"></a>
+						<div class="test"><a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}"></a></div>
 					</div>
 				</c:forEach>
 		   </div>
-			   <!-- 네비게이션 -->
-		   	<c:if test = "${fn:length(userlist) > 6}">
-				<div class="swiper-button-next" id="next1"></div>
+			<!-- 네비게이션바 -->
+		   	<c:if test = "${fn:length(dto) > 6}">
+				<div id="next1" class="swiper-button-next"><i class='fa-solid fa-angle-right slick-arrow'></i></div>
 			</c:if>
-			<c:if test = "${fn:length(userlist) > 6}">
-				<div class="swiper-button-prev" id="prev1"></div><!-- 이전 버튼 -->
+			<c:if test = "${fn:length(dto) > 6}">
+				<div id="prev1" class="swiper-button-prev"><i class='fa-solid fa-angle-left slick-arrow'></i></div><!-- 이전 버튼 -->
 			</c:if>
 		</div>
 	</div>
@@ -134,16 +134,16 @@
 			<div class="swiper-wrapper">
 				<c:forEach var="userlist" items="${userlist}">
 					<div class="swiper-slide">
-						<a href="/video/detail?video_id=${userlist.video_id}"> <img src="${userlist.image_url}"></a>
+						<div class="test"><a href="/video/detail?video_id=${userlist.video_id}"> <img src="${userlist.image_url}"></a></div>
 					</div>
 				</c:forEach>
-		   </div>
-			   <!-- 네비게이션 -->
-		   	<c:if test = "${fn:length(userlist) > 6}">
-				<div class="swiper-button-next" id="next2"></div>
+			</div>
+			<!-- 네비게이션 -->
+			<c:if test = "${fn:length(userlist) > 6}">
+				<div id="next2" class="swiper-button-next"><i class='fa-solid fa-angle-right slick-arrow'></i></div>
 			</c:if>
 			<c:if test = "${fn:length(userlist) > 6}">
-				<div class="swiper-button-prev" id="prev2"></div><!-- 이전 버튼 -->
+				<div id="prev2" class="swiper-button-prev"><i class='fa-solid fa-angle-left slick-arrow'></i></div><!-- 이전 버튼 -->
 			</c:if>
 		</div>
 	</div>
