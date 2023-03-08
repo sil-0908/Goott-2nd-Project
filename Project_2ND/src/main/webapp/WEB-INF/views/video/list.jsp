@@ -30,7 +30,7 @@
 	<div id="section_all">    
 	  <div id="search-results"></div>  <!-- 검색결과 div -->
 	 
-	    <div class="hide">
+	    <div class="hide hide_1">
 	        <h1 class="section_main_text" id="top5_text">TOP 5</h1>
 	        <div class="section">
 	         <div id="top_5">

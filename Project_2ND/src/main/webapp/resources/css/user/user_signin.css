@@ -179,7 +179,7 @@ section {
 
 /* 회원가입 연결 hover효과   */
 .signup:hover{
-    background-color:var(--btn_bg);
+    background-color:var(--btn_hover_bg);
     border:0.5px solid red;;
 }
 

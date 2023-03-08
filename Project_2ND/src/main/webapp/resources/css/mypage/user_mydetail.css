@@ -317,40 +317,6 @@ hr{
 
 
 /* section start */
-/* 내보관함 전체 영역 */
-.slider {
-	display: flex;
-	justify-content:center;
-	align-items:center;
-	height: 350px;
-	overflow: hidden;
-	position: relative;
-	width: 95%;
-	margin-left: 3vw;
-}
-
-/* 영상 이미지 출력 영역 */
-.video_div{
-	margin: 10px;
-	height: 280px;
-	width: 250px;
-}
-
-/* 영상 이미지 크기 조정 */
-.video_div img{
-   height: 270px;
-   width: 90%;
-}
-
-/* 슬라이드 버튼(화살표) 크기 / 색상 조정*/
-.slick-arrow {
-	padding:5px;
-    background-color: var(--bg);
-    border: none;
-	color: white;
-	font-size: 50px;
-}
-
 /* 내보관함 text */
 .mylocker_text{
    font-size: var(--large-text-size);
@@ -377,6 +343,32 @@ hr{
 	margin-top: -2.2vh;
 	margin-left: -1vw;
 }
+
+.swiper-container {
+	width : 95%;
+	height: 330px;
+}
+
+.swiper-slide {
+   text-align:center;
+   display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
+   align-items:center; /* 위아래 기준 중앙정렬 */
+   justify-content:center; /* 좌우 기준 중앙정렬 */
+}
+
+.swiper-slide img {
+	height: 300px;
+	width: 100%;
+}
+
+
+#next1, #next2, #prev1, #prev2{
+	color: red;
+	margin: 0 -0.5vw;
+}
+
+
+
 
 /* section end */
 

@@ -4,6 +4,7 @@
 (class로 겹치는 부분이 있기때문에 나눠놓으면 보기 더 불편할 것 같아서)
 */
 
+/*  qna 네비바  */
 :root{
 	--logo-color:#FFCC00;
     --logo-size: 60px;
@@ -47,7 +48,8 @@ body {
 	margin-bottom : -6vh;
 	margin-top : 5vh;
     width: 20rem;
-    height: 20rem;
+    height: 8rem;
+    object-fit :cover;
 }
 
 ul li {
@@ -117,6 +119,8 @@ ul li {
     > 위 두개는 transition 효과적용이 원활하지 않아 opacity로 처리 */
     opacity: 0;
     pointer-events: none;
+    transform: translateX(-20px);
+    
 }
 
 .menu_text_li:hover > .drop_menu_ul {

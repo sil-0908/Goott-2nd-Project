@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +9,10 @@
 	<title></title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<%@ include file="/WEB-INF/views/common/navbar3.jsp" %>
-	<link rel="stylesheet" type="text/css" href="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
-	<script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 	<link href="/resources/css/mypage/user_mydetail.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"/>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 	<script src="https://kit.fontawesome.com/885ba80ba8.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -104,43 +106,52 @@
     </div>
 	<hr>
 <!-- 내보관함 리스트 -02.18 김범수 -->
-   <!-- 보관함 리스트 영역-->
-   <div class="section">
-      <!-- 내보관함 text -->
-      <div><h1 class="mylocker_text">내보관함</h1></div>
-      <!-- 내보관함 슬라이드 - 양옆 버튼 추가 + 버튼 누르면 케러셀처럼 넘어감-->
-      <div class="slider">
-         <!-- 내보관함 리스트 출력 영역-->
-         <c:forEach var="movie" items="${dto}">
-            <div class="video_div">
-               <a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}" alt="Image not found"></a>
-            </div> 
-         </c:forEach>
-         
-      </div>
-   </div>    
-   <hr>
-<!-- 내보관함 리스트 -02.18 김범수 -->
-   <!-- 보관함 리스트 영역-->
-   <div class="section">
-      <!-- 내보관함 text -->
-      <h1 class="mylocker_text">시청기록</h1>
-      <!-- 내보관함 슬라이드 - 양옆 버튼 추가 + 버튼 누르면 케러셀처럼 넘어감-->
-      <div class="slider">
-         <!-- 내보관함 리스트 출력 영역-->
-         <c:forEach var="userlist" items="${userlist}">
-            <div class="video_div">
-               <a href="/video/detail?video_id=${userlist.video_id}"> <img src="${userlist.image_url}" alt="Image not found"></a>
-            </div> 
-         </c:forEach>
-         
-      </div>
-   </div>  
+	<div class="section">
+		<h1 class="mylocker_text">내보관함</h1>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<c:forEach var="movie" items="${dto}">
+					<div class="swiper-slide">
+						<a href="/video/detail?video_id=${movie.video_id}"> <img src="${movie.image_url}"></a>
+					</div>
+				</c:forEach>
+		   </div>
+			   <!-- 네비게이션 -->
+		   	<c:if test = "${fn:length(userlist) > 6}">
+				<div class="swiper-button-next" id="next1"></div>
+			</c:if>
+			<c:if test = "${fn:length(userlist) > 6}">
+				<div class="swiper-button-prev" id="prev1"></div><!-- 이전 버튼 -->
+			</c:if>
+		</div>
+	</div>
+	<hr>
+
+<!-- 시청기록 리스트 -02.18 김범수 -->
+	<div class="section">
+		<h1 class="mylocker_text">시청기록</h1>
+		<div class="swiper-container">
+			<div class="swiper-wrapper">
+				<c:forEach var="userlist" items="${userlist}">
+					<div class="swiper-slide">
+						<a href="/video/detail?video_id=${userlist.video_id}"> <img src="${userlist.image_url}"></a>
+					</div>
+				</c:forEach>
+		   </div>
+			   <!-- 네비게이션 -->
+		   	<c:if test = "${fn:length(userlist) > 6}">
+				<div class="swiper-button-next" id="next2"></div>
+			</c:if>
+			<c:if test = "${fn:length(userlist) > 6}">
+				<div class="swiper-button-prev" id="prev2"></div><!-- 이전 버튼 -->
+			</c:if>
+		</div>
+	</div>
+
    
 <!-- footer start  -->
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>
 <!-- footer end  -->
-
 	<script src="/resources/js/mypage/user_mydetail.js"></script>
 	<script src="/resources/js/mypage/user_info_modify.js"></script>	  
 </body>

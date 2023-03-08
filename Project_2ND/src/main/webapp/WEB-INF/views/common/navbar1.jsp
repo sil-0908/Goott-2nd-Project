@@ -12,7 +12,8 @@
 
 </head>
 <body>
-    <!-- header start -->
+                          <!-- 로그인 회원가입 네비바  -->
+   <!-- header start -->
     <nav id="navbar">
     	<!-- 로고영역 -->
         <div class="logo">
