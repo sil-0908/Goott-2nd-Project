@@ -15,7 +15,6 @@ $(function(){
                 $('#id').html("아이디를 입력해주세요");
         	}
             $("input[type=text]").focus();
-            console.log($('#selectboxVal').val());
             return;
         }
         else{

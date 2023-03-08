@@ -15,13 +15,11 @@ function connectWs(){
 	sock = ws;
 
 	ws.onopen = function() {
-		console.log("연결완료");
  		ws.send($('#socketuserID').val());
 	};
 
 	ws.onmessage = function(event) {
 		/* 받을 알람이 있을 때 */
-		console.log(event.data);
 		if(event.data.length>0){
 			let newAlarm = '';
 			newAlarm += '<div class="alarm_Text">' + event.data + "</div>"
@@ -31,7 +29,6 @@ function connectWs(){
 	};
 
 	ws.onclose = function() {
-	    console.log('close');
 	};
 
 };

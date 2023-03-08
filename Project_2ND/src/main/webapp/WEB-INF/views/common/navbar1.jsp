@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
-                          <!-- 로그인 회원가입 네비바  -->
+<!-- =========== 로그인 회원가입 네비바 ===========  -->
    <!-- header start -->
     <nav id="navbar">
     	<!-- 로고영역 -->

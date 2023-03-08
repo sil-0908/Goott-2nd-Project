@@ -60,7 +60,6 @@ public class ChatController {
 	@ResponseBody
 	@RequestMapping(value="/getChatLog", method=RequestMethod.POST)
 	public List<ChatDto> getChatLog(ChatDto chatDto){
-		System.out.println(chatDto.toString());
 		List<ChatDto> list = chatService.getChatLog(chatDto);
 		if(list != null) {
 			return list;

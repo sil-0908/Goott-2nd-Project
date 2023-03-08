@@ -52,13 +52,10 @@ chatIcon.addEventListener('click', function(){
 					alert("에러");
 				}
 			})
-			console.log("접속");
 		};
 		
 		//종료
 		webSocket.onclose = function(message) {
-
-			console.log("종료");
 		};
 
 		//에러 발생

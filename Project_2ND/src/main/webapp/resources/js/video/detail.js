@@ -292,14 +292,8 @@ function imgOnload() {
 		     	        cocomText += "</tr>";
 		     	       if (this.nickname === session) {
 		     	    	   cocomText += "<td class='cocom_td'>";
-		     	    	   cocomText += "	<div class='comt_like_bad_btn'>";
-		     	    	   cocomText += "		<i class='far fa-thumbs-up comm_btn' class='comt_like'></i>";
-		     	    	   cocomText += "		<p class='text'>좋아요</p>";
-		     	    	   cocomText += "		<i class='far fa-thumbs-down comm_btn' class='comt_bad'></i>";
-		     	    	   cocomText += "		<p class='text'>싫어요</p>";
-		     	    	   cocomText += "	</div>";
 		     	    	   cocomText += "   <div class='comment_btn' id='cocom_cd_btn'>";
-		     	    	   cocomText += "		<input type='text' class='c_id_input' name='comment_id' value=" + this.comment_id + ">";
+		     	    	   cocomText += "		<input type='hidden' class='c_id_input' name='comment_id' value=" + this.comment_id + ">";
 		     	    	   cocomText += "		<input type='button' class='cocomt_update' value='수정'>";
 		     	    	   cocomText += "		<input type='button' class='comment_delete' value='삭제'>";
 		     	    	   cocomText += "   </div>";

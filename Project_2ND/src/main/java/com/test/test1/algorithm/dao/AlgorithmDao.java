@@ -18,7 +18,6 @@ public class AlgorithmDao {
 	
 	//DB에 VIDEO_ID가 이미 있는지 - 02.15 장재호
 	public Integer check(Map<String, Object> map) {
-		System.out.println("return : " + session.selectOne("algo.check", map));
 		return session.selectOne("algo.check", map);
 	}
 

@@ -4,7 +4,6 @@ function kakaopay(){
 		return;
 	}
 	
-	console.log($('#userid'));
 	var IMP = window.IMP;
 	IMP.init('imp22771671');
 	IMP.request_pay({		
@@ -40,21 +39,3 @@ function kakaopay(){
 		document.location.href="/video/list";
 	});
 }
-
-
-
-
-
-//결제 검증 -> imp_uid(결제 고유번호)
-//$.ajax({
-//	type : 'post',
-//	url : "/verifyiamport/" + data.imp_uid
-//}),done(function(data2){
-//		console.log("data2 = " + data2);
-//		//서버 검증
-//		if(data.paid_amount == data2.response.amount){
-//			alert("결제 완료");
-//		} else {
-//			alert("결제 실패")
-//		}			
-//});

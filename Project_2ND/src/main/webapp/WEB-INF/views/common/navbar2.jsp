@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
-    <!-- video list 네비바     navbar start 네비바 수정 _ 0227 김지혜-->
+    <!-- =========== video list 네비바 =========== / navbar start 네비바 수정 _ 0227 김지혜-->
     <nav id="navbar">
         <div class="logo">
             <img src="/resources/img/user/logo4.png" id="logo" onclick="back()" alt="">

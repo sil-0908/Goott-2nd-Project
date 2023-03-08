@@ -54,9 +54,6 @@
 				<div onclick="kakaoLogin()">
 					<div class="kakaoIcon"><img src="/resources/img/user/iconKakao.svg" alt=""></div>
 				</div>
-				<div onclick="location.href='https://www.facebook.com/login'">
-					<div class="faceIcon"><img src="/resources/img/user/iconFace.svg" alt=""></div>
-				</div>
 			</div>
                   
 			<div>

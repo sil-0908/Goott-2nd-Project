@@ -1,9 +1,5 @@
 package com.test.test1.mypage.dto;
 
-import java.io.File;
-
-import org.springframework.http.ResponseEntity;
-
 public class ImgDto {
 
 	/* 경로 */

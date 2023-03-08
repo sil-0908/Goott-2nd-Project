@@ -1,7 +1,5 @@
 package com.test.test1.user.controller;
 
-import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -28,7 +26,6 @@ import org.springframework.web.servlet.ModelAndView;
 import com.test.test1.user.dao.UserDao;
 import com.test.test1.user.dto.UserDto;
 import com.test.test1.user.service.UserService;
-
 
 @Controller
 @RequestMapping("/user/**")
@@ -112,7 +109,6 @@ public class UserController {
 		//DB 들어가서 id 중복값이 있나 들고나옴
 		String check = null;
 		check = userService.idCheck(id); //check : id파라미터로 DB조회 결과
-		System.out.println(check);
 		if(check != null) return true;        //중복없음
 		else return false;	
 	}
