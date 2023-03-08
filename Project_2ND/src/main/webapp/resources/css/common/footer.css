@@ -20,22 +20,10 @@ footer{
 	background-size: cover;
 }
 
-.link_box{
-	height: 100px;
-	text-align: center;
-	line-height: 100px;
-}
-.link_box a{
-	color: var(--main-text-color);
-}
-.link_box a:hover{
-	color: var(--btn_hover_bg);
-}
-
 #map{
 	border : solid var(--bg) 2px;
 	width : 500px;
-	height : 300px;
+	height : 250px;
 	margin-left : 15%;
 }
 

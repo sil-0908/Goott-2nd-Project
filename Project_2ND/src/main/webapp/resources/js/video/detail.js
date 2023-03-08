@@ -30,6 +30,58 @@ comu_btn[0].addEventListener('click', function(){
     }
 });
 
+//댓글 이미지 로딩 - 03.06김범수
+$(function() {
+	$('.com_img').ready(function() {
+		let fileInput = document.querySelectorAll('.com_img');
+		
+		for(let i = 0; i < fileInput.length; i++){
+			let formData = new FormData();
+			
+			formData.append("uploadFile", fileInput[i].currentSrc);
+			$.ajax({
+				url: '/mypage/onload',
+		    	processData : false,
+		    	contentType : false,
+				data : formData,
+		    	type : 'POST',
+				dataType : 'text',
+				success : function(result2) {
+					if(result2 == "" || result2 == null){return}
+					let fileCallPath = encodeURI(result2); // 해당 파일의 이름
+					fileInput[i].src = "/mypage/display?fileName=" + fileCallPath;
+				}
+			});
+		}
+	})
+});
+
+//대댓글 이미지 로딩 - 03.06김범수
+function imgOnload() {
+	$('.cocom_img').ready(function() {
+		let fileInput = document.querySelectorAll('.cocom_img');
+		
+		for(let i = 0; i < fileInput.length; i++){
+			let formData = new FormData();
+			
+			formData.append("uploadFile", fileInput[i].currentSrc);
+			$.ajax({
+				url: '/mypage/onload',
+		    	processData : false,
+		    	contentType : false,
+				data : formData,
+		    	type : 'POST',
+				dataType : 'text',
+				success : function(result2) {
+					if(result2 == "" || result2 == null){return}
+					let fileCallPath = encodeURI(result2); // 해당 파일의 이름
+					fileInput[i].src = "/mypage/display?fileName=" + fileCallPath;
+				}
+			});
+		}
+	});
+}
+
 ///////////////////////////////// 영상 좋아요, 싫어요  ///////////////////////////////////////
 
 	// 영상 좋아요
@@ -233,8 +285,23 @@ comu_btn[0].addEventListener('click', function(){
 		         
 				else {
 					$(list).each(function(){
+						// 대댓글 이미지 작업 - 03.06 김범수
 						cocomText += "<tr>";
-		     	        cocomText += "	<td id='com_title'>" + this.nickname + "&nbsp;&nbsp;<fmt:formatDate value='" + this.create_date + "' pattern='yyyy-MM-dd a HH:mm:ss' /></td>";
+						if(this.img != null && this.img != '') {
+							cocomText += "<td class='cocom_title text'>"
+							cocomText += "	<div class='user_img_area'>"
+							cocomText += "		<img src='" + this.img + "' class='cocom_img'>"
+							cocomText += "	</div>"
+
+						}
+						else {
+							cocomText += "<td class='cocom_title text'>"
+							cocomText += "	<div class='user_img_area'>"
+							cocomText += "		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU' class='img_tag2'>"
+							cocomText += "	</div>"
+						}
+						///////////////////////////////
+		     	        cocomText += this.nickname + "&nbsp;&nbsp;<fmt:formatDate value='" + this.create_date + "' pattern='yyyy-MM-dd a HH:mm:ss' /></td>";
 		     	        cocomText += "</tr>";
 		     	        cocomText += "<tr>";
 		     	        cocomText += "	<td id='com_contents'>" + this.commentary + "</td>";
@@ -251,6 +318,7 @@ comu_btn[0].addEventListener('click', function(){
 		     	       }	// 로그인유저와 대댓글 작성자가 같을때 if end
 					});
 					$(cocomListDiv).html(cocomText);
+					imgOnload(); // 대댓글 이미지 작업 - 03.06 김범수
 		         }	// 대댓글 있을때 else end
 		      }
 		   });
@@ -258,3 +326,4 @@ comu_btn[0].addEventListener('click', function(){
 		// DB의 대댓글 불러와서 영역에 넣어주기 end
 		
 ///////////////////////////////// 대댓글  ///////////////////////////////////////
+	

@@ -20,12 +20,10 @@
 			<p>사업자등록번호 111-00-22222</p><br>
 			<p>대표번호 02-333-9999</p><br>
 			<p>FAX: 02-333-9999</p><br>
-			<p>ⓒ GOOTTFLEX Corp.</p>
+			<a href="/qna/list">GOOTTFLEX 고객센터</a>
 		</div>
 	</div>
-	<div class="link_box">
-		<a href="/qna/list">GOOTTFLEX 고객센터&nbsp;|</a><a href="/qna/list">&nbsp;개인정보 처리 방침&nbsp;|</a><a href="/qna/list">&nbsp;청소년 보호정책</a>
-	</div>
+	<br>
 </footer>
 
 <script src="/resources/js/api/map.js"></script>

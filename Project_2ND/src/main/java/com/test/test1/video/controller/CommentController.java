@@ -81,7 +81,6 @@ public class CommentController {
 	@RequestMapping("cocomList/{pid}")
 	@ResponseBody
 	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid, int video_id, CommentDto dto) {
-		System.out.println(dto.toString());
 		List<CommentDto> cocom_list = commentService.cocomList(dto);
 		return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
 	}

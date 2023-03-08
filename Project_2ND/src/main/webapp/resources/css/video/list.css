@@ -364,6 +364,7 @@ map img{
 
 a{
 	text-decoration : none;
+	color: var(--main-text-color); /*03.06 - a태그 색깔 부여 김범수 수정 */
 }
 
 /* 네비바 영역 조정- 02.28 김범수  */

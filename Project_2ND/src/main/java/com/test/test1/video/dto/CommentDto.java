@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class CommentDto {
 	
-	private String commentary, nickname;
+	private String commentary, nickname, img;
 	private int comment_id, pid, video_id, user_id, depth, depth_lev;
 	private Date create_date;
 	
@@ -80,6 +80,14 @@ public class CommentDto {
 		this.create_date = create_date;
 	}
 	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	@Override
 	public String toString() {
 	return "CommentDto [commentary = " + commentary
@@ -90,7 +98,8 @@ public class CommentDto {
 			+ ", user_id = " + user_id
 			+ ", depth = " + depth
 			+ ", depth_lev = " + depth_lev
-			+ ", create_date = " + create_date + "]";
+			+ ", create_date = " + create_date 
+			+ ", img = " + img + "]";
 	}
 	
 	
