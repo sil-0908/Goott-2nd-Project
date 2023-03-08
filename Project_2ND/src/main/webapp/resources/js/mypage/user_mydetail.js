@@ -36,28 +36,30 @@
 	}
 
 /////////////////////////////////////////////////////////////
-//이미지 슬라이드 //
-$(".slider").not('.slick-initialized').slick({
-	slidesToShow:6,
-	slidesToScroll:6,    
-	prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
-	nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
+// 케러셀 이벤트
+new Swiper('.swiper-container', {
+
+	slidesPerView : 6, // 동시에 보여줄 슬라이드 갯수
+	spaceBetween : 0, // 슬라이드간 간격
+
+	navigation : { // 네비게이션
+		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
+		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
+	},
 });
 
+
+	
 //이미지 로딩 위한 메서드 - 02.24김범수
 $(function() {
 	$("input[type='file']").on("change", function(e){
-		
 		let formData = new FormData();
 		let fileInput = $('input[name="uploadFile"]'); 
 		let fileList = fileInput[0].files; //파일 객체
-		
 		let fileObj = fileList[0]; // 처음으로 선택된 파일
-
 		if(!fileCheck(fileObj.name, fileObj.size)){
 			return false;
 		}
-		 
 		formData.append("uploadFile", fileObj); //uploadFile라는 키값형성 - fileObj의 데이터가 여기에 담김
 		
 		$.ajax({
@@ -68,7 +70,6 @@ $(function() {
 	    	type : 'POST',
 	    	dataType : 'json', // 제이슨타입으로 formdata를 전달
 	    	success : function(result) {
-				console.log(result);
 				showUploadImage(result);  //이미지 출력 메서드
 			},
 	    	error : function(result){
@@ -101,23 +102,16 @@ function fileCheck(fileName, fileSize){
 function showUploadImage(result){
 	// 전달받은 데이터가 값이 없는 경우
 	if(result == "" || result == null){return}
-	console.log(result);
 	let fileCallPath = encodeURI("C:\\upload\\"+result.uploadPath + result.uuid + "_" + result.fileName); // 해당 파일의 이름
-	console.log(fileCallPath);
 	$('.img_tag').attr('src', "/mypage/display?fileName=" + fileCallPath);
 }
 
 //이미지 로딩 위한 메서드 - 02.24김범수
 $(function() {
 	$("#img_onload").ready(function(){
-		
 		let formData = new FormData();
 		let fileInput = $('#img_onload').attr('src'); 
-		console.log(fileInput);
-		 
 		formData.append("uploadFile", fileInput); //uploadFile라는 키값형성 - fileObj의 데이터가 여기에 담김
-		console.log(formData);
-		
 		$.ajax({
 			url: '/mypage/onload',
 	    	processData : false,
@@ -139,8 +133,6 @@ $(function() {
 function showOnloadImage(result){
 	// 전달받은 데이터가 값이 없는 경우
 	if(result == "" || result == null){return}
-	console.log(result);
 	let fileCallPath = encodeURI(result); // 해당 파일의 이름
-	console.log(fileCallPath);
 	$('#img_onload').attr('src', "/mypage/display?fileName=" + fileCallPath);
 }
