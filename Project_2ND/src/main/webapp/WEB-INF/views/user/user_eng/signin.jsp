@@ -15,9 +15,7 @@
 </head>
 <body>
 	<header>
-		<div class="header_logo">
-			<img src="/resources/img/user/logo.png" alt="">
-		</div>
+		<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
 	</header>
 	<section>
 		<div class="section_loginform">
@@ -66,8 +64,9 @@
 				</form>
 			</div>
 		</div>
-	</section>		
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	</section>
+	<input type="hidden" value="eng" id="sessionL">
+	<%@ include file="/WEB-INF/views/common/common_eng/footer.jsp" %>
 <script src="/resources/js/api/google.js"></script>
 <script src="/resources/js/api/kakao.js"></script>
 <script src="/resources/js/api/naver.js"></script>

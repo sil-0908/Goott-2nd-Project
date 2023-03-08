@@ -14,8 +14,8 @@
 <!-- 알람 섹션 -->
 <div id="alarmDiv">
 <i id="alarmI" class="fas fa-bell"></i>
-<ul id="alarmUL">
-</ul>
+	<div id="alarm_Area">
+	</div>
 </div>
 </body>
 <script src="/resources/js/common/alarm.js"></script>    

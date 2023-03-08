@@ -18,9 +18,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,10 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.test.test1.user.dao.UserDao;
 import com.test.test1.user.dto.UserDto;
 import com.test.test1.user.service.UserService;
-import com.test.test1.video.dto.RentalDTO;
-import com.test.test1.video.dto.VideoDto;
-import com.test.test1.video.service.RentalService;
-import com.test.test1.video.service.VideoService;
+
 
 @Controller
 @RequestMapping("/user/**")
@@ -49,12 +44,23 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);	
 	// 메일 샌더 객체 생성 - 0209 김범수
 	@Autowired
-	private JavaMailSender mailSender;	
-	
+	private JavaMailSender mailSender;
+
+
 	//로그인 페이지 이동 - 01.31 장재호
+	//영문페이지 - 03.06 장재호
 	@RequestMapping("signin")
-	public String login() {
-	    return "user/signin";
+	public String login(String language, HttpSession ss) throws Exception{
+		if(language != null) {
+			ss.setAttribute("language", language);
+		}
+		if(ss.getAttribute("language").equals("eng")) {
+			return "user/user_eng/signin";
+		}
+		else {
+			return "user/signin";
+		}
+
 	}
 	
 	
@@ -85,9 +91,18 @@ public class UserController {
 	}
 	
 	//회원가입 페이지 이동 - 01.31 장재호
-	@RequestMapping("/signup")
-	public String create() {
-		return "user/signup";
+	//영문페이지 - 03.06 장재호
+	@RequestMapping("/signup")	
+	public String create(String language, HttpSession ss) throws Exception {
+		if(language != null) {
+			ss.setAttribute("language", language);
+		}
+		if(ss.getAttribute("language").equals("eng")) {
+			return "user/user_eng/signup";
+		}
+		else {
+			return "user/signup";
+		}
 	}
 	
 	//아이디 중복 확인 버튼 기능 - 01.31 장재호
@@ -134,9 +149,18 @@ public class UserController {
 	}	
 
 	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
+	// 영문페이지 - 03.06 장재호
 	@RequestMapping("find")
-	public ModelAndView find(ModelAndView mv) {
-		mv.setViewName("user/find_id");
+	public ModelAndView find(ModelAndView mv, String language, HttpSession ss) throws Exception{
+		if(language != null) {
+			ss.setAttribute("language", language);
+		}
+		if(ss.getAttribute("language").equals("eng")) {
+			mv.setViewName("user/user_eng/find_id");
+		}
+		else {
+			mv.setViewName("user/find_id");
+		}
 		return mv;
 	}
 	

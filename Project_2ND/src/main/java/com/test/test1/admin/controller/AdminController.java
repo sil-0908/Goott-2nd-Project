@@ -54,14 +54,8 @@ public class AdminController {
 			mv.addObject("error", "잘못된 접근입니다");
 			mv.setViewName("redirect:/");
 			return mv;
-		}
-		
-		//추가로 확실한 검증 - 02.18 장재호
-		if(session.getAttribute("user_id") != "admin" || session.getAttribute("nickname") != "admin") {
-			mv.addObject("error", "접근 권한이 없습니다");
-			mv.setViewName("redirect:/");
-		}
-		
+		}		
+
 		//1. 카테고리 순위
 		mv.addObject("category", algorithmService.categoryRate());
 		//2. 장르 순위
@@ -116,7 +110,14 @@ public class AdminController {
 	// 추천수 오름차순/내림차순을 위한 수정 - 02.21 김범수
 	@ResponseBody
 	@RequestMapping("/admin/databases/video")
-	public ModelAndView videoList(ModelAndView mv, Criteria cri) throws Exception { // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
+	public ModelAndView videoList(ModelAndView mv, Criteria cri, HttpServletRequest request) throws Exception { // 추천수 오름차순/내림차순을 위한 sort 추가 - 02.21 김범수
+		//최종검수(URL접근차단) - 03.06 장재호
+		if(access(request) == null) {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		
 		PageMaker pageMaker = new PageMaker();
 		pageMaker.setCri(cri); //page, perpagenum 셋팅
 		pageMaker.setTotalCount(videoService.adminListCount(cri)); //총 게시글 수 셋팅

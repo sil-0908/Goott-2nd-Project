@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <title>video detail</title>
+<%@ include file="/WEB-INF/views/common/alarm.jsp" %>
 </head>
 <body>
 <div id="navbar">
