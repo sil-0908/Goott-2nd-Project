@@ -10,20 +10,20 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2510b2e9fc85aeb4625d6a9d9d7b881b"></script>    
 </head>
 <footer>
-	<br>
-	<div id="f_Con1">
-		<div id="map"></div>	
-		<div id="f_Con2">
-			<h3>주식회사 GOOTTFLEX</h3><br>
-			<p>대표 군침이</p><br>
-			<p>서울특별시 구로구 시흥대로163길 33 주호타워 2층</p><br>
-			<p>사업자등록번호 111-00-22222</p><br>
-			<p>대표번호 02-333-9999</p><br>
-			<p>FAX: 02-333-9999</p><br>
-			<a href="/qna/list">GOOTTFLEX 고객센터</a>
-		</div>
-	</div>
-	<br>
+   <br>
+   <div id="f_Con1">
+      <div id="map"></div>   
+      <div id="f_Con2">
+         <h3>주식회사 GOOTTFLEX</h3><br>
+         <p>대표 군침이</p><br>
+         <p>서울특별시 구로구 시흥대로163길 33 주호타워 2층</p><br>
+         <p>사업자등록번호 111-00-22222</p><br>
+         <p>대표번호 02-333-9999</p><br>
+         <p>FAX: 02-333-9999</p><br>
+         <a href="/qna/list">GOOTTFLEX 고객센터</a>
+      </div>
+   </div>
+   <br>
 </footer>
 
 <script src="/resources/js/api/map.js"></script>
