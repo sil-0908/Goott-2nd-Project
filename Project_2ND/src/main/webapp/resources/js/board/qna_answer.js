@@ -59,7 +59,6 @@ function answerCreate(){
         	}
         	window.location.href="/qna/list";
         },error : function(error){
-        	console.log(error);
         }
 	})
 }

@@ -1,8 +1,16 @@
 package com.test.test1.video.dto;
 
-public class InteractionDto {
+public class VideoInteractionDto {
 	
-	int user_id, video_id, comment_id, like, unlike;
+	int v_idx, user_id, video_id, like, unlike;
+	
+	public int getV_idx() {
+		return v_idx;
+	}
+
+	public void setV_idx(int v_idx) {
+		this.v_idx = v_idx;
+	}
 
 	public int getUser_id() {
 		return user_id;
@@ -18,14 +26,6 @@ public class InteractionDto {
 
 	public void setVideo_id(int video_id) {
 		this.video_id = video_id;
-	}
-
-	public int getComment_id() {
-		return comment_id;
-	}
-
-	public void setComment_id(int comment_id) {
-		this.comment_id = comment_id;
 	}
 
 	public int getLike() {
@@ -46,9 +46,9 @@ public class InteractionDto {
 	
 	@Override
 	public String toString() {
-	return "InteractionDto [user_id = " + user_id
+	return "VideoInteractionDto [v_idx = " + v_idx
+			+ ", user_id = " + user_id
 			+ ", video_id = " + video_id
-			+ ", comment_id = " + comment_id
 			+ ", like = " + like
 			+ ", unlike = " + unlike + "]";
 	}

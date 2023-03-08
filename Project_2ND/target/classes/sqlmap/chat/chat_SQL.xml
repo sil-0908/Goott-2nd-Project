@@ -23,14 +23,14 @@
 		  from CHATLOG C, USER U
 		 where C.USER_ID = U.USER_ID	
 		   and C.USER_ID = any(select USER_ID from USER where ID=#{id})
-		  order by CREATE_TIME asc
+		 order by CREATE_TIME asc
 	</select>
 	
 	<select id="getLogAdmin" resultType="com.test.test1.chat.dto.ChatDto">
 		select C.USER_ID, C.SENDER, C.MSG, C.UUID, (select U.ID from USER U where C.SENDER=U.USER_ID) as ID
 		  from CHATLOG C
 		 where USER_ID = any(select USER_ID from CHATLOG where UUID=#{uuid})
-		  order by CREATE_TIME asc
+		 order by CREATE_TIME asc
 	</select>
 	
 

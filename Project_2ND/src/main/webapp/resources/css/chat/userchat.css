@@ -1,6 +1,6 @@
 #userChat{
 	position : fixed;
-	top : 75%;
+	top : 65%;
 	width : 30%;
 }
 
@@ -13,7 +13,7 @@
 	width : 100%;
 }
 
-i {
+#chatIcon {
 	cursor : pointer;
 	font-size : 50px;
 	animation: colorChange 1s infinite;

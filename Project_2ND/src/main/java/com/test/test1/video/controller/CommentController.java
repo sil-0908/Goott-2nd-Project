@@ -1,5 +1,8 @@
 package com.test.test1.video.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.test1.alarm.service.AlarmService;
 import com.test.test1.user.service.UserService;
 import com.test.test1.video.dto.CommentDto;
 import com.test.test1.video.dto.VideoDto;
@@ -30,6 +34,8 @@ public class CommentController {
 	UserService userService;
 	@Autowired
 	VideoService videoService;
+	@Autowired
+	AlarmService alarmService;
 	
 //	원댓글 작성하기 02.20 장민실
 	@RequestMapping(value="write", method=RequestMethod.POST)
@@ -73,6 +79,10 @@ public class CommentController {
 		dto.setNickname(nickname);	
 		
 		commentService.cocomInsert(dto);
+		
+		/************************알람 - 03.06 장재호************************/
+		alarmService.addComment(dto);
+		/*****************************************************************/
 		mv.addObject("cocom_dto", dto);
 		return null;
 	}	
@@ -80,9 +90,18 @@ public class CommentController {
 //	대댓글 목록 불러오기 02.23 장민실
 	@RequestMapping("cocomList/{pid}")
 	@ResponseBody
-	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid, int video_id, CommentDto dto) {
-		System.out.println(dto.toString());
+	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid, int video_id, CommentDto dto) throws ParseException {
 		List<CommentDto> cocom_list = commentService.cocomList(dto);
+		
+//		대댓글 목록 불러올때 js에서 fmt태그 적용불가로 date출력형식 바꿔주기 start 03.06 장민실
+		for(CommentDto data: cocom_list) {
+			Date list_date = data.getCreate_date();
+			SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
+			String date_format = SDF.format(list_date);
+			data.setCocom_date(date_format);
+		}
+//		대댓글 목록 불러올때 js에서 fmt태그 적용불가로 date출력형식 바꿔주기 end 03.06 장민실
+		
 		return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
 	}
 	

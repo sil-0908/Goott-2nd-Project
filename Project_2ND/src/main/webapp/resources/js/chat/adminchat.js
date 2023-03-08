@@ -3,21 +3,17 @@ var webSocket = new WebSocket("ws://localhost:8080/adminchat");
 var userUuid = null;
 //필요하면 가공
 webSocket.onopen = function(message) {
-	console.log("열림")
 };
 
 webSocket.onclose = function(message) {
-	console.log("닫힘");
 };
 
 webSocket.onerror = function(message) {
-	console.log("에러발생");
 };
 
 //adminsocket에서 send 할 때(정제해서 조건 보냄)
 webSocket.onmessage = function(message) {
 	let node = JSON.parse(message.data);
-	console.log(node);
 	// message.status = 접속 형태
 	if(node.status === "visit") { //유저 접속 시
 		//알맞은 자리에 새 채팅영역 추가
@@ -45,8 +41,6 @@ webSocket.onmessage = function(message) {
 				alert("에러");
 			}
 		})
-
-		console.log("접속");		
 	}
 	else if(node.status === "message") { //유저메세지 받을 때
 		//UK를 가지고 해당 div영역에 메세지 뿌림

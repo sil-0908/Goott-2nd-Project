@@ -1,3 +1,4 @@
+// 영상 리스트 네이비바 js
 // nav바 작업으로 nav1 이름으로 변경 - 02.28 김범수
 const search_input = document.querySelector('#search'),
 search_i = document.querySelector('#search_icon');
@@ -35,7 +36,7 @@ const searchBox = document.getElementById('search');
 	  });
 
 	  if (!foundResults) {
-	    searchResults.innerHTML = '<h1 style="text-align: right; margin-right: 40px; color: #cccccc;"> 검색 결과가 없습니다. 새로운 검색어를 찾아보세요.</h1>';
+	    searchResults.innerHTML = '<h1 style="text-align: right; margin-right: 40px; padding-top:6.5rem; color: #cccccc;"> 검색 결과가 없습니다. 새로운 검색어를 찾아보세요.</h1>';
 	  }
 
 	  const hideElements = document.querySelectorAll('.hide');

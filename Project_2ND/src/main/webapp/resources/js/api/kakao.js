@@ -8,7 +8,6 @@ function kakaoLogin() {
         Kakao.API.request({
           url: '/v2/user/me',
           success: function (response) {
-        	  console.log(response);
         	  const id = response.id;
         	  const nickname = response.properties.nickname;
         	  const email = response.kakao_account.email;
@@ -40,8 +39,7 @@ function kakaoLogin() {
         					  dataType : 'text',
         					  type : 'post',
         					  success : function(data){
-        						  console.log(data);
-                				  alert(data + "님 반갑습니다.")
+                				  alert(nickname + "님 반갑습니다.");
                 				  location.href = "/video/list";
         					  }
         				  })
@@ -52,12 +50,10 @@ function kakaoLogin() {
         	  })
           },
           fail: function (error) {
-            console.log(error)
           },
         })
       },
       fail: function (error) {
-        console.log(error)
       },
     })
   }

@@ -31,8 +31,6 @@ function qCreate(){
 	if(idInput.readOnly == false){
 		const newV = idInput.value;
 		idInput.value = "guest_" + newV;
-		console.log(newV);
-		console.log(idInput.value);
 	}
 	
 	document.form1.action="create"

@@ -22,7 +22,7 @@ chatIcon.addEventListener('click', function(){
 
 			//기존 데이터 찾기
 			$.ajax({
-				url : 'getChatLog',
+				url : '/getChatLog',
 				type : 'post',
 				data : {"id" : sessionUserId},
 				dataType : 'json',
@@ -52,13 +52,10 @@ chatIcon.addEventListener('click', function(){
 					alert("에러");
 				}
 			})
-			console.log("접속");
 		};
 		
 		//종료
 		webSocket.onclose = function(message) {
-
-			console.log("종료");
 		};
 
 		//에러 발생
@@ -71,7 +68,7 @@ chatIcon.addEventListener('click', function(){
 			if(message.data.includes("uuid:")){
 				uuid = message.data.split(':')[1];
 				$.ajax({
-					url : 'chatCreate',
+					url : '/chatCreate',
 					data : {"uuid" : uuid, "id" : sessionUserId, "msg" : "입장"},
 					type : 'post'
 				});
@@ -89,7 +86,7 @@ function sendMessage() {
 	let message = document.getElementById("textMessage");
 	messageTextArea.value += "(나) : " + message.value + "\n";
 	$.ajax({
-		url : 'chatCreate',
+		url : '/chatCreate',
 		data : {"uuid" : uuid, "id" : sessionUserId, "msg" : message.value},
 		type : 'post'
 	});
@@ -103,12 +100,14 @@ function closeChat(){
 	if(confirm("종료 시 채팅 로그는 삭제됩니다.")){
 		messageTextArea.value += "이용해 주셔서 감사합니다.";
 		$.ajax({
-			url : 'chatDelete',
+			url : '/chatDelete',
 			data : {"id" : sessionUserId},
 			type : 'post'
 		});
 		chatArea.classList.add("hidden");
 		webSocket.close();
+		var chatD = document.querySelector('#userChat');
+		chatD.style.display = "none";
 	}
 	else return;
 }

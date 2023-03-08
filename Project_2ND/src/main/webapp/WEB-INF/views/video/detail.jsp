@@ -9,8 +9,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <title>video detail</title>
+<%@ include file="/WEB-INF/views/common/alarm.jsp" %>
 </head>
 <body>
+<div id="navbar">
+<%@ include file="/WEB-INF/views/common/navbar2.jsp" %>
+</div>
 
 	<div class="video_all">
 	
@@ -27,7 +31,7 @@
             <div class="movie_info">
                 <div class="info_text" id="movie_info_text">
 	                <p>${dto.title}</p> <br><br>
-					<p>줄거리 : ${dto.summary}</p> <br><br>
+					<p class="movie_summary">줄거리 : ${dto.summary}</p> <br><br>
 					<p>${dto.create_year}년 / ${dto.create_country} / 관람등급 : ${dto.grade}</p>
 				</div>
             </div>
@@ -56,13 +60,28 @@
 					<i class="far fa-heart comu_btn" id="subscribe"></i>
 				</c:otherwise>
      		</c:choose>
-            <p>찜하기</p>
-			<i class="far fa-thumbs-up comu_btn" id="video_like"></i>         
-            <p>좋아요</p>
-            <i class="far fa-thumbs-down comu_btn" id="video_bad"></i>
-            <p>싫어요</p>
+            <p class="text">찜하기</p>
+            
+            <c:choose>
+            	<c:when test="${v_inter_info.v_idx ne '0' and v_inter_info.like ne '0'}">
+            		<i class="fas fa-thumbs-up comu_btn" id="video_like"></i>
+            	</c:when>
+            	<c:otherwise>
+            		<i class="far fa-thumbs-up comu_btn" id="video_like"></i>
+            	</c:otherwise>
+            </c:choose>
+            <p class="text">좋아요</p>
+            <c:choose>
+            	<c:when test="${v_inter_info.v_idx ne '0' and v_inter_info.unlike ne '0'}">
+            		<i class="fas fa-thumbs-down comu_btn" id="video_bad"></i>
+            	</c:when>
+            	<c:otherwise>
+            		<i class="far fa-thumbs-down comu_btn" id="video_bad"></i>
+            	</c:otherwise>
+            </c:choose>            
+            <p class="text">싫어요</p>            
             <i class="fa-solid fa-coins comu_btn" id="payment"></i>
-            <p>결제</p>
+            <p class="text">결제</p>
         </div>
         <!-- button area end -->
 
@@ -78,29 +97,34 @@
         </form>
         <!-- comment wirte area end -->
 
-        <hr>
+        <hr class="comt_list_hr">
         
         <!-- comment list area start -->
-        <form name="comt_list" method="post">
+		<form name="comt_list" method="post">
 			<div class="comment_list_area">
 				<table class="comment_list">
 					<c:forEach var="comt" items="${replyList}">
 						<c:if test="${comt.depth=='0'}">
 							<tr class="com_tr">
-								<td class="com_title">
-								<div class="user_img_area"></div>
+								<td class="com_title text">
+								<!-- 댓글 이미지 작업 - 03.06 김범수 -->
+								<div class="user_img_area">
+									<c:choose>
+										<c:when test="${comt.img != null && comt.img != ''}">
+											<img src="${comt.img}" class="com_img">
+										</c:when>
+										<c:when test="${comt.img == null}">
+											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="default_img">
+										</c:when>
+									</c:choose>
+								</div>
+								<!-- com_name 클래스 부여 - 03.07 김범수 -->
 								${comt.nickname}&nbsp;&nbsp;<fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
 							</tr>
 							<tr>
-								<td class="com_contents">${comt.commentary}</td>
+								<td class="com_contents text">${comt.commentary}</td>
 							</tr>
-							<td>
-								<div class="comt_like_bad_btn">
-									<i class="far fa-thumbs-up comm_btn" class="comt_like"></i>
-									<p>좋아요</p>
-									<i class="far fa-thumbs-down comm_btn" class="comt_bad"></i>
-									<p>싫어요</p>
-								</div>
+							<td class="comt_btn_td">
 								<div class="comment_btn">
 									<%-- 값을 못받아와서 페이지 내에 hidden으로 값 넣어줌 --%>
 									<input type="hidden" id="v_input" name="video_id" value="${dto.video_id}">
@@ -121,9 +145,9 @@
 								<div class="comt_edit"></div>
 								<%-- 대댓글 목록 자리 --%>
 								<div class="co_comment_list"></div>
-								<hr id="com_list_hr">								
-							</td>						
-						</c:if>						
+								<hr id="com_list_hr">
+							</td>
+						</c:if>
 					</c:forEach>
 				</table>
 	        </div>
@@ -131,7 +155,7 @@
         <!-- comment list area end -->
         <hr>
 	</div>
-	
+
 <script src="/resources/js/video/detail.js"></script>
 <script>
 // js에서 sessionScope 값에 대해 불러오질 못하고 c태그 자체를 기능이 아닌 text로 인식하여 기능이 작동하지 않아 jsp 내에 전역으로 변수생성

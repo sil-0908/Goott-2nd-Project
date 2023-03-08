@@ -2,6 +2,8 @@ package com.test.test1.chat.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,34 +29,37 @@ public class ChatController {
 	}
 	
 	@RequestMapping("/admin/adminchat")
-	public ModelAndView adminChat() {
-		ModelAndView mv = new ModelAndView();
+	public ModelAndView adminChat(ModelAndView mv, HttpServletRequest request) {
+		if(request.getHeader("REFERER") == null) {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
 		mv.setViewName("chat/adminchat");
 		return mv;
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="adminChatCreate", method=RequestMethod.POST)
+	@RequestMapping(value="/adminChatCreate", method=RequestMethod.POST)
 	public void adminChatCreate(ChatDto chatDto) {
 		chatService.adminChatCreate(chatDto);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="chatCreate", method=RequestMethod.POST)
+	@RequestMapping(value="/chatCreate", method=RequestMethod.POST)
 	public void chatCreate(ChatDto chatDto) {
 		chatService.userChatCreate(chatDto);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="chatDelete", method=RequestMethod.POST)
+	@RequestMapping(value="/chatDelete", method=RequestMethod.POST)
 	public void chatDelete(String id) {
 		chatService.chatDelete(id);
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="getChatLog", method=RequestMethod.POST)
+	@RequestMapping(value="/getChatLog", method=RequestMethod.POST)
 	public List<ChatDto> getChatLog(ChatDto chatDto){
-		System.out.println(chatDto.toString());
 		List<ChatDto> list = chatService.getChatLog(chatDto);
 		if(list != null) {
 			return list;

@@ -3,6 +3,9 @@
 2. 메뉴의 drop down과 info의 drop down은 최하단 drop down 나눠놓은 영역에서 일괄처리
 (class로 겹치는 부분이 있기때문에 나눠놓으면 보기 더 불편할 것 같아서)
 */
+
+/* 로그인 회원가입 네비바 */
+
 :root {
     --bg: #24292D;
     --btn_bg: #e1555a;
@@ -57,7 +60,8 @@ nav {
 .logo img{
 	margin-top : 5vh;
     width: 20rem;
-    height: 20rem;
+    height: 8rem;
+    object-fit :cover;
 }
 
 /* 다국어지원기능 영역 */

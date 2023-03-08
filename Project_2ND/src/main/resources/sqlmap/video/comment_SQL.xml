@@ -27,9 +27,10 @@
 	</insert>
 	
 	<!-- 원댓글목록 불러오기 02.21 장민실 -->
+	<!-- img 추가 - 03.06 김범수 -->
 	<select id="replyList" resultType="com.test.test1.video.dto.CommentDto">
 		<![CDATA[
-		select vc.COMMENT_ID, vc.PID, vc.COMMENTARY, vc.VIDEO_ID, vc.DEPTH, vc.DEPTH_LEV, vc.CREATE_DATE, u.NICKNAME
+		select vc.COMMENT_ID, vc.PID, vc.COMMENTARY, vc.VIDEO_ID, vc.DEPTH, vc.DEPTH_LEV, vc.CREATE_DATE, u.NICKNAME, u.IMG
   		  from VIDEO_COMMENT vc
           join USER u
             on vc.USER_ID = u.USER_ID
@@ -39,9 +40,10 @@
 	</select>
 	
 	<!-- 대댓글 목록 불러오기 02.23 장민실 -->
+	<!-- img 추가 - 03.06 김범수 -->
 	<select id="cocomList" resultType="com.test.test1.video.dto.CommentDto">
 		<![CDATA[
-		select vc.COMMENT_ID, vc.PID,  vc.COMMENTARY, vc.VIDEO_ID, vc.DEPTH, vc.DEPTH_LEV, vc.CREATE_DATE, u.NICKNAME
+		select vc.COMMENT_ID, vc.PID,  vc.COMMENTARY, vc.VIDEO_ID, vc.DEPTH, vc.DEPTH_LEV, vc.CREATE_DATE, u.NICKNAME, u.IMG
   		  from VIDEO_COMMENT vc
           join USER u
             on vc.USER_ID = u.USER_ID

@@ -20,12 +20,10 @@
 			<p>Business registration number 111-00-22222</p><br>
 			<p>Representative number 02-333-9999</p><br>
 			<p>FAX: 02-333-9999</p><br>
-			<p>ⓒ GOOTTFLEX Corp.</p>
+			<a href="/qna/list">GOOTTFLEX Customer Service</a>
 		</div>
 	</div>
-	<div class="link_box">
-		<a href="/qna/list">GOOTTFLEX Customer Service&nbsp;|</a><a href="/qna/list">&nbsp;a personal information processing policy&nbsp;|</a><a href="/qna/list">&nbsp;a youth protection policy</a>
-	</div>
+	<br>
 </footer>
 
 <script src="/resources/js/api/map.js"></script>

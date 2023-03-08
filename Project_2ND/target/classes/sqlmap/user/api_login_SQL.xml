@@ -10,7 +10,7 @@
 	
 	<insert id="apiSignUp">
 		insert into USER (ID, EMAIL, PASSWORD, NICKNAME, CREATE_TYPE)
-		values (#{id}, #{email}, #{id}, #{nickname}, #{create_type})
+		values (#{email}, #{email}, #{id}, #{nickname}, #{create_type})
 	</insert>
 	
 	<select id="apiSignIn" resultType="String">
