@@ -4,10 +4,10 @@ import java.util.Date;
 
 public class CommentDto {
 	
-	private String commentary, nickname;
+	private String commentary, nickname, cocom_date, img;
 	private int comment_id, pid, video_id, user_id, depth, depth_lev;
 	private Date create_date;
-	
+
 	public String getCommentary() {
 		return commentary;
 	}
@@ -24,6 +24,21 @@ public class CommentDto {
 		this.nickname = nickname;
 	}
 	
+	public String getCocom_date() {
+		return cocom_date;
+	}
+
+	public void setCocom_date(String cocom_date) {
+		this.cocom_date = cocom_date;
+	}
+		public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public int getComment_id() {
 		return comment_id;
 	}
@@ -79,18 +94,20 @@ public class CommentDto {
 	public void setCreate_date(Date create_date) {
 		this.create_date = create_date;
 	}
-	
+
 	@Override
 	public String toString() {
 	return "CommentDto [commentary = " + commentary
 			+ ", nickname = " + nickname
+			+ ", cocom_date = " + cocom_date
+			+ ", img = " + img
 			+ ", comment_id = " + comment_id
 			+ ", pid = " + pid
 			+ ", video_id = " + video_id
 			+ ", user_id = " + user_id
 			+ ", depth = " + depth
 			+ ", depth_lev = " + depth_lev
-			+ ", create_date = " + create_date + "]";
+			+ ", create_date = " + create_date + "]";		
 	}
 	
 	

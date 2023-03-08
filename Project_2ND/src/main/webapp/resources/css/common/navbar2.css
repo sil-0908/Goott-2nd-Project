@@ -3,6 +3,8 @@
 2. 메뉴의 drop down과 info의 drop down은 최하단 drop down 나눠놓은 영역에서 일괄처리
 (class로 겹치는 부분이 있기때문에 나눠놓으면 보기 더 불편할 것 같아서)
 */
+
+/* video list 네비바  */
 :root {
     --bg: #24292D;
     --btn_bg: #e1555a;
@@ -31,19 +33,31 @@ body {
 /* 네비바 - 로고/다국어지원기능 들어감 */
 #navbar {
     display: flex;
+    position: fixed;
     height: 6rem;
     width: 100%;
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
+    background-color:var(--bg);
 }
+
+  
+/* 스크롤 밑으로 내릴 때 적용할 배경색 */
+nav#navbar.scrolled {
+	 transition: all 2s; 
+     background-color: transparent;  
+	
+}
+
 
 /* 네비바 - 로고/다국어지원기능 들어감 */
 .logo img{
 	margin-bottom : -6vh;
 	margin-top : 5vh;
     width: 20rem;
-    height: 20rem;
+    height: 8rem;
+    object-fit :cover;
 }
 
 ul li {
@@ -100,7 +114,7 @@ ul li {
 }
 
 .drop_menu_ul {
-    font-size: var(--text-size);
+    font-size: var(--medium-text-size);
     position: absolute;
     z-index: 1;   
 }
@@ -109,9 +123,15 @@ ul li {
     background-color: var(--bg);
     width: 100px;     
 }
+
+/*   드롭다운 영역조정 */
 .drop_menu_ul_1>li{
-  transform: translateX(-12px);
+  position:relative;
+  transform: translateX(-30px);
+  top:0.7vh;    
 }
+
+
 
 #menu1 > ul > li {
     margin-left: -1.2rem;
@@ -203,3 +223,5 @@ ul li {
 	height: 4rem;
 	border-radius: 50%;
 }
+
+
