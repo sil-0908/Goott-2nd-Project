@@ -35,10 +35,34 @@
 		]]>
 	</select>
 	
+	<!--  비디오 상세 영어버전 조희 쿼리문 -->
+	<select id="detail_eng" resultType="com.test.test1.video.dto.VideoEngDto">
+		<![CDATA[
+		select vd.`V_TITLE(ENG)` as title, v.VIDEO_ID, v.VIDEO_URL, v.IMAGE_URL, vd.`V_SUMMARY(ENG)` as summary, v.CREATE_COUNTRY, v.CREATE_YEAR, v.GRADE, v.UPLOAD_DATE
+		  from VIDEO v
+          join VIDEO_DETAIL vd
+            on v.VIDEO_ID=vd.VIDEO_ID
+		 where v.VIDEO_ID=#{video_id}
+		]]>
+	</select>
+	
 	<!-- 비디오 상세조회 내 배우정보 받아오기  -->
 	<select id="actor" resultType="com.test.test1.video.dto.VideoDto">
 		<![CDATA[
 		select a.`ACTOR_NAME(KOR)` as actor
+  		  from VIDEO v
+  		  join VIDEO_ACTOR va
+  			on v.VIDEO_ID = va.VIDEO_ID
+  		  join ACTOR a
+  			on va.ACTOR_ID = a.ACTOR_ID
+    	 where v.VIDEO_ID=#{video_id}
+ 		]]>
+	</select>
+	
+	<!-- 비디오 상세조회 내 배우정보 영어버전 받아오기  -->
+	<select id="actor_eng" resultType="com.test.test1.video.dto.VideoEngDto">
+		<![CDATA[
+		select a.`ACTOR_NAME(ENG)` as actor
   		  from VIDEO v
   		  join VIDEO_ACTOR va
   			on v.VIDEO_ID = va.VIDEO_ID

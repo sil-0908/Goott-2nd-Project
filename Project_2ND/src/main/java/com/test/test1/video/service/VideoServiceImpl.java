@@ -10,6 +10,7 @@ import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.user.dto.UserDto;
 import com.test.test1.video.dao.VideoDao;
 import com.test.test1.video.dto.VideoDto;
+import com.test.test1.video.dto.VideoEngDto;
 
 @Service
 public class VideoServiceImpl implements VideoService {
@@ -37,11 +38,19 @@ public class VideoServiceImpl implements VideoService {
 	public VideoDto detail(int video_id) {
 		return videoDao.detail(video_id);
 	}
+	@Override
+	public VideoEngDto detail_eng(int video_id) {
+		return videoDao.detail_eng(video_id);
+	}
 
 //	video_detail_actorName 02.10 장민실 
 	@Override
 	public List<VideoDto> actor(int video_id) {
 		return videoDao.actor(video_id);
+	}
+	@Override
+	public List<VideoEngDto> actor_eng(int video_id) {
+		return videoDao.actor_eng(video_id);
 	}
 
 // 내보관함 구현 02.16 김범수
