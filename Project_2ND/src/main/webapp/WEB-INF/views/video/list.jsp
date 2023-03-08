@@ -30,7 +30,7 @@
 	<div id="section_all">    
 	  <div id="search-results"></div>  <!-- 검색결과 div -->
 	 
-	    <div class="hide">
+	    <div class="hide hide_1">
 	        <h1 class="section_main_text" id="top5_text">TOP 5</h1>
 	        <div class="section">
 	         <div id="top_5">
@@ -176,11 +176,9 @@
         <p>두둥 광고 </p>
     </div> -->
 <!-- adv area end -->
-
 <!-- footer start  -->
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 <!-- footer end  -->
 <script src="/resources/js/video/list.js"></script>
-
 </body>
 </html>

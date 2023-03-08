@@ -33,7 +33,12 @@ $(function(){
    $("#email_btn").click(function() {
       var email = $('#email').val();
       if(!email.includes('@')){
-         $('#emailcheck').html('올바른 이메일을 입력해 주세요');
+    	  if($('#sessionL').val() == 'eng'){ //영문ver - 03.06 장재호
+    		  $('#emailcheck').html('please check your E-MAIL format');
+    	  }
+    	  else{
+    	      $('#emailcheck').html('올바른 이메일을 입력해 주세요');    		  
+    	  }
       }
       else{
          $.ajax({
@@ -41,12 +46,23 @@ $(function(){
             url : 'emailCheck',
             data : {'email':email},
             success:function(tf){
-            	if(tf){
-                    $('#emailcheck').html("중복된 이메일입니다.");
-                }
-            	else{
-                    $('#emailcheck').html("이메일 사용 가능합니다");
+            	if($('#sessionL').val() == 'eng'){ //영문ver - 03.06 장재호
+            		if(tf){
+                        $('#emailcheck').html("duplicate");
+                    }
+                	else{
+                        $('#emailcheck').html("available");
+                	}
             	}
+            	else{
+            		if(tf){
+	                    $('#emailcheck').html("중복된 이메일입니다.");
+	                }
+	            	else{
+	                    $('#emailcheck').html("이메일 사용 가능합니다");
+	            	}
+            	}
+	            	
             },
          })         
       }
@@ -88,20 +104,40 @@ $(function(){
    var specialCheck = /[`~!@#$%^&*|\\\'\";:\/?]/gi;
    nick.addEventListener('keyup', function(){
        n=0; // 초기기본값에 최종가입되지 않도록 막음.
-       if (nick.value == null || nick.value == "") {
-          $('#nncheck').html("닉네임 입력은 필수입니다.");
-          nick.focus(); // 닉네임입력란에 focus될 수 있도록 지정. 
-         //닉네임 빈칸 포함 안됨
-         } else if (nick.value.search(/\s/) != -1) {
-            $('#nncheck').html("닉네임은 공백을 포함 할 수 없습니다.");
-            nick.focus();
-         }else if (specialCheck.test(nick.value)) {
-            $('#nncheck').html("닉네임은 특수문자를 포함 할 수 없습니다.");
-            nick.focus(); // 올바르게 닉네임이 입력안될 시 다른 항목으로 넘어갈 수 없도록 차단.
-         }else{
-            n=1; // 최종 닉네임 항목 통과
-            $('#nncheck').html("");
-         }
+       /********************* 영문ver 추가 - 03.06 장재호 ********************/
+       if($('#sessionL').val() == 'eng'){
+           if (nick.value == null || nick.value == "") {
+               $('#nncheck').html("please enter your nickname");
+               nick.focus(); // 닉네임입력란에 focus될 수 있도록 지정. 
+              //닉네임 빈칸 포함 안됨
+              } else if (nick.value.search(/\s/) != -1) {
+                 $('#nncheck').html("can't contain spaces");
+                 nick.focus();
+              }else if (specialCheck.test(nick.value)) {
+                 $('#nncheck').html("can't contain characters(!@#$%^...)");
+                 nick.focus(); // 올바르게 닉네임이 입력안될 시 다른 항목으로 넘어갈 수 없도록 차단.
+              }else{
+                 n=1; // 최종 닉네임 항목 통과
+                 $('#nncheck').html("");
+              }
+       }
+       else{
+           if (nick.value == null || nick.value == "") {
+               $('#nncheck').html("닉네임 입력은 필수입니다.");
+               nick.focus(); // 닉네임입력란에 focus될 수 있도록 지정. 
+              //닉네임 빈칸 포함 안됨
+              } else if (nick.value.search(/\s/) != -1) {
+                 $('#nncheck').html("닉네임은 공백을 포함 할 수 없습니다.");
+                 nick.focus();
+              }else if (specialCheck.test(nick.value)) {
+                 $('#nncheck').html("닉네임은 특수문자를 포함 할 수 없습니다.");
+                 nick.focus(); // 올바르게 닉네임이 입력안될 시 다른 항목으로 넘어갈 수 없도록 차단.
+              }else{
+                 n=1; // 최종 닉네임 항목 통과
+                 $('#nncheck').html("");
+             }
+       }
+       /**********************************************************/
    });
 
    
@@ -137,7 +173,13 @@ $(function(){
       $('#btn').click(function(){
          let id = $('#id').val();
          if(id == null || id == ""){ // 아이디입력값이 null이거나 빈칸일 경우 제어.
-            $('#idcheck').html('아이디를 입력해주세요');
+        	 //영문ver 추가 - 03.06 장재호
+        	 if($('#sessionL').val() == 'eng'){
+                 $('#idcheck').html('enter your ID');
+        	 }
+        	 else{
+                 $('#idcheck').html('아이디를 입력해주세요'); 
+        	 }
             return;
          }else{
             //ajax로 id 보내기 -> idCheck 매핑된 곳으로 보내서 중복 확인
@@ -146,18 +188,36 @@ $(function(){
                type : 'post',
                data : {'id' : id}, // 입력한 id data
                dataType : 'text', 
-               success : function(result){
-            	   console.log(result);
+               success : function(result){            	   
                   //result가 text 형태로 와서 false가 text 형태로 비교
-                  if(result == 'false'){      //false = 사용가능
-                     $('#idcheck').html('사용 가능한 아이디입니다');
-                     i=1;  // 아이디영역은 최종 가입에 조건만족
-                  }else{
-                     $('#idcheck').html('이미 사용중인 아이디입니다');
-                  }
+            	   /********************영문ver 추가 - 03.06 장재호*******************/
+            	   if($('#sessionL').val() == 'eng'){
+                       if(result == 'false'){      //false = 사용가능
+                           $('#idcheck').html('available');
+                           i=1;  // 아이디영역은 최종 가입에 조건만족
+                        }else{
+                           $('#idcheck').html('duplicate');
+                        }
+            	   }
+            	   else{
+                       if(result == 'false'){      //false = 사용가능
+                           $('#idcheck').html('available');
+                           i=1;  // 아이디영역은 최종 가입에 조건만족
+                        }else{
+                           $('#idcheck').html('duplicate');
+                        }
+            	   }
+            	   /***********************************************************/
+
                }, // 
                error : function(){
-                  alert('다시 실행해주세요.');
+            	   //영문 ver 추가 - 03.06 장재호
+            	   if($('#sessionL').val() == 'eng'){
+            		   alert('please restart');
+            	   }
+            	   else{
+                       alert('다시 실행해주세요.');   
+            	   }            	   
                }
             });
          }
@@ -170,31 +230,61 @@ $(function(){
          // 일단, 시스템 자체의 submit을 막음
          e.preventDefault();
          const spanText = document.querySelector('#emailcheck'); // 이메일 중복체크관련 메시지
-         if(spanText.textContent.length == 0){
-        	 alert("이메일 중복체크를 해주세요");
-        	 return;
+         /******************************영문ver추가 - 03.06 장재호************************************/
+         if($('#sessionL').val() == 'eng'){
+             if(spanText.textContent.length == 0){
+            	 alert("please click check btn");
+            	 return;
+             }
+             if(spanText.textContent.indexOf("중복") != -1){
+            	 alert("duplicate");
+            	 return;
+             }
+             // 사용자가 입력한 이메일
+             email = $("#email").val();
+             
+             if(email == null || email == ""){ // 이메일 값이 없는 것을 방지
+                alert("enter your email");
+               $("#email").focus(); 
+                return;
+             }
+             else if(!email.match('@')){ // 입력받은 이메일에 @없는 걸 방지
+                alert("please check your email");
+                $("#email").focus();
+                return;
+             }
+             else{ // 위 조건에 걸리지 않으면 상태메세지 뜨지 않음.
+                 alert("Authentication number transfer completed");
+             }
          }
-         if(spanText.textContent.indexOf("중복") != -1){
-        	 alert("이미 사용중인 이메일입니다.");
-        	 return;
+         else{
+             if(spanText.textContent.length == 0){
+            	 alert("이메일 중복체크를 해주세요");
+            	 return;
+             }
+             if(spanText.textContent.indexOf("중복") != -1){
+            	 alert("이미 사용중인 이메일입니다.");
+            	 return;
+             }
+             // 사용자가 입력한 이메일
+             email = $("#email").val();
+             
+             if(email == null || email == ""){ // 이메일 값이 없는 것을 방지
+                alert("이메일을 입력해주세요");
+               $("#email").focus(); 
+                return;
+             }
+             else if(!email.match('@')){ // 입력받은 이메일에 @없는 걸 방지
+                alert("올바른 이메일 형태를 입력해주세요");
+                $("#email").focus();
+                return;
+             }
+             else{ // 위 조건에 걸리지 않으면 상태메세지 뜨지 않음.
+                 alert("인증번호 전송이 완료되었습니다");
+             }
          }
-         // 사용자가 입력한 이메일
-         email = $("#email").val();
-         
-         if(email == null || email == ""){ // 이메일 값이 없는 것을 방지
-            alert("이메일을 입력해주세요");
-           $("#email").focus(); 
-            return;
-         }
-         else if(!email.match('@')){ // 입력받은 이메일에 @없는 걸 방지
-            alert("올바른 이메일 형태를 입력해주세요");
-            $("#email").focus();
-            return;
-         }
-         else{ // 위 조건에 걸리지 않으면 상태메세지 뜨지 않음.
-            
-         }
-         alert("인증번호 전송이 완료되었습니다");
+         /************************************************************************************/
+
          // ajax로 통해 컨트롤러(mailCheck메소드)로 email의 정보를 넘김 / 넘기는 것이 성공될 시, 인증번호 데이터를 code에 담음
          $.ajax({
             type : "GET",
@@ -215,21 +305,43 @@ $(function(){
          var inputCode = $('#author').val(); //사용자가 인증번호를 입력하는 input의 value
          
          // 사용자가 입력하지 않은경우
-         if(inputCode === null || inputCode === ""){
-            alert("인증번호를 입력해주세요.");
-            $('#submit').attr('disabled', true);
-            return;
+         /************영문ver 추가 - 03.06 장재호************/
+         if($('#sessionL').val() == 'eng'){
+             if(inputCode === null || inputCode === ""){
+                 alert("enter Authentication number");
+                 $('#submit').attr('disabled', true);
+                 return;
+              }
+              // 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
+              else if(inputCode == code){
+                 alert("correct");
+                 $('#submit').attr('disabled', false);
+                 
+              }else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
+                 alert("please check Authentication number");
+                 $('#submit').attr('disabled', true);
+                 return;
+              }
          }
-         // 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
-         else if(inputCode == code){
-            alert("인증번호가 일치합니다.");
-            $('#submit').attr('disabled', false);
-            
-         }else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
-            alert("인증번호를 다시 확인 해주세요.");
-            $('#submit').attr('disabled', true);
-            return;
+         else{
+             if(inputCode === null || inputCode === ""){
+                 alert("인증번호를 입력해주세요.");
+                 $('#submit').attr('disabled', true);
+                 return;
+              }
+              // 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
+              else if(inputCode == code){
+                 alert("인증번호가 일치합니다.");
+                 $('#submit').attr('disabled', false);
+                 
+              }else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
+                 alert("인증번호를 다시 확인 해주세요.");
+                 $('#submit').attr('disabled', true);
+                 return;
+              }
          }
+         /***********************************************/
+
       }); // event end
       
 }); // function end   
@@ -244,18 +356,35 @@ $(function(){
          if(($("#password").val()) == ($("#password1").val())){
             PWtest();    
          }else {
-            $("#pwMsg").html("비밀번호가 일치하지 않습니다.");
-            $("#password").focus();
-            alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요.");  
+        	 if($('#sessionL').val() == 'eng'){ //영문ver 추가 - 03.06 장재호
+                 $("#pwMsg").html("uncorrect PW");
+                 $("#password").focus();
+                 alert("uncorrect PW"); 
+        	 }
+        	 else{
+                 $("#pwMsg").html("비밀번호가 일치하지 않습니다.");
+                 $("#password").focus();
+                 alert("비밀번호가 일치하지 않습니다. 다시 입력해주세요."); 
+        	 } 
             return;
          };
          // 아이디  (i) 비밀번호 (p) 닉네임 (n) 전화번호 (c) 동의 (d) 모두 조건을 만족할 경우(값이 1이 됨), 최종회원가입 성공. 
          if(i==1 && p==1 && n==1 && c==1 && d==1){
-            alert("회원가입 최종 성공!");
+        	 if($('#sessionL').val() == 'eng'){ //영문ver 추가 - 03.06 장재호
+        		 alert("done");
+        	 }
+        	 else{
+        		 alert("회원가입 최종 성공!");
+        	 }
             $('#submit').attr('type', 'submit'); // type속성 submit로 변환하여 넘어갈 수 있도록 함. 
             document.form1.action="/user/signup"; // 페이지 이동  - 02.23 김범수 회원가입 안되서 수정 _ 02/27김지혜 로그인창으로 넘어가도록 주소 재수정 > 건들지마
          }else{
-            alert("회원가입 실패. 다시 입력확인해주세요. ");
+        	 if($('#sessionL').val() == 'eng'){ //영문ver 추가 - 03.06 장재호
+        		 alert("fail. please check");
+        	 }
+        	 else{
+        		 alert("회원가입 실패. 다시 입력확인해주세요. ");	 
+        	 }            
          }
       });
    });
@@ -275,24 +404,50 @@ $(function(){
        var eng = pw.search(/[a-z]/ig);
        var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
          
-          // 비밀번호 입력값이 8자리~20자리 이내일 때, view단에 띄우기.
-          if(pw.length < 8 || pw.length > 20){
-             pwMsg.innerText = "8자리 ~ 20자리 이내로 입력해주세요.";
-              p=0; // 최종 가입되지 않도록 막음. 
-             return ;
-          }// 비밀번호 입력값에 공백이 있을 때, view단에 띄우기.
-          else if(pw.search(/\s/) != -1){ 
-             pwMsg.innerText = "비밀번호는 공백 없이 입력해주세요.";
-             p=0;  // 최종 가입되지 않도록 막음. 
-             return ;
-          }// 비밀번호 입력값에 영문,숫자,특수문자를 혼합이 되지 않아있을 때, view단에 띄우기.
-          else if(num < 0 || eng < 0 || spe < 0){
-             pwMsg.innerText ="영문,숫자,특수문자를 혼합하여 입력해주세요.";
-             p=0;  // 최종 가입되지 않도록 막음. 
-             return ;
-          }else{
-             pwMsg.innerText ="";
-             p=1; // 모든 비밀번호 조건은 만족하여 최종 가입가능하도록 지정.
-             return ;
-          }
+       /**************************영문ver 추가 - 03.06 장재호*******************/
+       if($('#sessionL').val() == 'eng'){
+           // 비밀번호 입력값이 8자리~20자리 이내일 때, view단에 띄우기.
+           if(pw.length < 8 || pw.length > 20){
+              pwMsg.innerText = "please enter between 8~20";
+               p=0; // 최종 가입되지 않도록 막음. 
+              return ;
+           }// 비밀번호 입력값에 공백이 있을 때, view단에 띄우기.
+           else if(pw.search(/\s/) != -1){ 
+              pwMsg.innerText = "can't include spaces";
+              p=0;  // 최종 가입되지 않도록 막음. 
+              return ;
+           }// 비밀번호 입력값에 영문,숫자,특수문자를 혼합이 되지 않아있을 때, view단에 띄우기.
+           else if(num < 0 || eng < 0 || spe < 0){
+              pwMsg.innerText ="mixture of eng, numbers, characters(!@#$....)";
+              p=0;  // 최종 가입되지 않도록 막음. 
+              return ;
+           }else{
+              pwMsg.innerText ="";
+              p=1; // 모든 비밀번호 조건은 만족하여 최종 가입가능하도록 지정.
+              return ;
+           }
+       }
+       else{
+           // 비밀번호 입력값이 8자리~20자리 이내일 때, view단에 띄우기.
+           if(pw.length < 8 || pw.length > 20){
+              pwMsg.innerText = "8자리 ~ 20자리 이내로 입력해주세요.";
+               p=0; // 최종 가입되지 않도록 막음. 
+              return ;
+           }// 비밀번호 입력값에 공백이 있을 때, view단에 띄우기.
+           else if(pw.search(/\s/) != -1){ 
+              pwMsg.innerText = "비밀번호는 공백 없이 입력해주세요.";
+              p=0;  // 최종 가입되지 않도록 막음. 
+              return ;
+           }// 비밀번호 입력값에 영문,숫자,특수문자를 혼합이 되지 않아있을 때, view단에 띄우기.
+           else if(num < 0 || eng < 0 || spe < 0){
+              pwMsg.innerText ="영문,숫자,특수문자를 혼합하여 입력해주세요.";
+              p=0;  // 최종 가입되지 않도록 막음. 
+              return ;
+           }else{
+              pwMsg.innerText ="";
+              p=1; // 모든 비밀번호 조건은 만족하여 최종 가입가능하도록 지정.
+              return ;
+           }
+       }
+       /****************************************************************/
    };

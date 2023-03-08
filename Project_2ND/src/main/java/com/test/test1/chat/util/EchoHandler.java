@@ -75,6 +75,11 @@ public class EchoHandler extends TextWebSocketHandler{
 					if(code.equals("NewPost")) {
 						code = "답변이 등록되었습니다.";
 					}
+					else if(code.equals("NewComment")) { //03.06 장재호 댓글추가
+						code = "답글이 등록되었습니다.";
+						prefix += " 영상";
+						
+					}
 					TextMessage sendMsg = new TextMessage("("+idx+")" + prefix + "에 " + code);
 					single.sendMessage(sendMsg);
 				}

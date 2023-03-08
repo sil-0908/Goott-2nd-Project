@@ -16,7 +16,7 @@
 		<form id="buttonForm">
 			<input id="textMessage" type="text" onkeydown="return enter()">
 			<input onclick="sendMessage()" value="보내기" type="button">
-			<input onclick="closeChat()" value="종료" type="button">			
+			<input onclick="closeChat()" value="채팅종료" type="button">		
 		</form>
 	</div>
 	<i id="chatIcon" class="fa-solid fa-comment-dots"></i>	

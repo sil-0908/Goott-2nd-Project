@@ -30,7 +30,6 @@ public class ChatDao {
 	public List<ChatDto> getChatLog(ChatDto chatDto) {
 		String uuid = chatDto.getUuid();
 		if(uuid != null) {
-			System.out.println(ss.selectList("chat.getLogAdmin", chatDto.getUuid()));
 			return ss.selectList("chat.getLogAdmin", chatDto.getUuid());
 		}
 		else {

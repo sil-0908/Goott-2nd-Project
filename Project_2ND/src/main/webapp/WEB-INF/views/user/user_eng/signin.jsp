@@ -15,9 +15,7 @@
 </head>
 <body>
 	<header>
-		<div class="header_logo">
-			<img src="/resources/img/user/logo.png" alt="">
-		</div>
+		<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
 	</header>
 	<section>
 		<div class="section_loginform">
@@ -53,9 +51,6 @@
 				<div onclick="kakaoLogin()">
 					<div class="kakaoIcon"><img src="/resources/img/user/iconKakao.svg" alt=""></div>
 				</div>
-				<div onclick="location.href='https://www.facebook.com/login'">
-					<div class="faceIcon"><img src="/resources/img/user/iconFace.svg" alt=""></div>
-				</div>
 			</div>
                   
 			<div>
@@ -66,8 +61,9 @@
 				</form>
 			</div>
 		</div>
-	</section>		
-	<%@ include file="/WEB-INF/views/common/footer.jsp" %>
+	</section>
+	<input type="hidden" value="eng" id="sessionL">
+	<%@ include file="/WEB-INF/views/common/common_eng/footer.jsp" %>
 <script src="/resources/js/api/google.js"></script>
 <script src="/resources/js/api/kakao.js"></script>
 <script src="/resources/js/api/naver.js"></script>

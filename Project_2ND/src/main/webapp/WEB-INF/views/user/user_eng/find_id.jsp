@@ -11,9 +11,7 @@
 <body>
 	<!-- 로고 영역 -->
 	<header>
-		<div class="header_logo">
-			<img src="/resources/img/user/logo.png" alt="">
-		</div>
+		<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
 	</header>
 	
 	<section>
@@ -29,7 +27,7 @@
 					</div>
 					<div>
 						<!-- 이메일 인증 버튼 -->
-						<button class="email_checkbtn" id="emailchk1">Email Authentication</button>
+						<button class="email_checkbtn" id="emailchk1">EA</button>
 	
 						<!-- 이메일 인증 상태 메세지 -->
 						<span id="email_text1" class="formSpans"></span> 
@@ -68,7 +66,7 @@
 					</div>
 					<div>
 						<!-- 이메일 인증 -->
-						<button class="email_checkbtn" id="emailchk2">Email Authentication</button>
+						<button class="email_checkbtn" id="emailchk2">EA</button>
 						<!-- 이메일 인증 상태 확인 메세지 -->
 						<span id="email_text2" class="formSpans"></span> 
 						<br>
@@ -114,7 +112,9 @@
 			</div>
 		</div>
 	</section>
+	<input type="hidden" value="eng" id="sessionL">	
 	<footer>
+<%@ include file="/WEB-INF/views/common/footer.jsp" %>
 
 	</footer>
 </body>

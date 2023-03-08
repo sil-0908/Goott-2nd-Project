@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <title>video detail</title>
+<%@ include file="/WEB-INF/views/common/alarm.jsp" %>
 </head>
 <body>
 <div id="navbar">
@@ -106,7 +107,18 @@
 						<c:if test="${comt.depth=='0'}">
 							<tr class="com_tr">
 								<td class="com_title text">
-									<div class="user_img_area"></div>
+								<!-- 댓글 이미지 작업 - 03.06 김범수 -->
+								<div class="user_img_area">
+									<c:choose>
+										<c:when test="${comt.img != null && comt.img != ''}">
+											<img src="${comt.img}" class="com_img">
+										</c:when>
+										<c:when test="${comt.img == null}">
+											<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="default_img">
+										</c:when>
+									</c:choose>
+								</div>
+								<!-- com_name 클래스 부여 - 03.07 김범수 -->
 								${comt.nickname}&nbsp;&nbsp;<fmt:formatDate value="${comt.create_date}" pattern="yyyy-MM-dd a HH:mm:ss" /></td>
 							</tr>
 							<tr>

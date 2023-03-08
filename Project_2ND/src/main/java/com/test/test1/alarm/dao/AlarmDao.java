@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.test.test1.alarm.dto.AlarmDto;
 import com.test.test1.board.qna.dto.QnaDto;
+import com.test.test1.video.dto.CommentDto;
 
 /* 02.23 장재호 */
 @Repository
@@ -32,6 +33,10 @@ public class AlarmDao {
 
 	public void alarmDel(int idx) {
 		ss.delete("alarm.delete", idx);
+	}
+
+	public void addComment(CommentDto dto) {
+		ss.insert("alarm.addComment", dto);		
 	}
 
 }

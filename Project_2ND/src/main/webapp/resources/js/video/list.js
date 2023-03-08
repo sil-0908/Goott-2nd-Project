@@ -2,7 +2,7 @@
 
 	$(".slider").not('.slick-initialized').slick({
 	     slidesToShow:6,
-	     slidesToScroll:6,    
+	     slidesToScroll:6,
 	     prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
 	     nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
 	});
@@ -13,11 +13,11 @@ function resetSlider() {
 	  $('.slider').slick('unslick');
 	  $(".slider").not('.slick-initialized').slick({
 	    slidesToShow:6,
-	    slidesToScroll:6,    
+	    slidesToScroll:6,
 	    prevArrow: "<button type='button' class='slick-arrow'><i class='fa-solid fa-angle-left'></i></button>",
 	    nextArrow: "<button type='button' class='slick-next'><i class='fa-solid fa-angle-right'></i></button>",
 	  });
-	}  
+	}
   
   //애니메이션 토글 기능 //
 function ani_q() {

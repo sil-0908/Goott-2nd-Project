@@ -13,14 +13,18 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
-
+<!-- =========== qna =========== 네비바 -->
 <!-- 세션에 아이디 값을 가지고 있을 경우 (로그인이 되어있을 경우)와 없을 때 넘어가는 경우가 다르게 설정  0227 장재호 -->
 <input id="sessionID" type="hidden" value="${sessionScope.user_id}">
 <!-- navbar start -->
     <nav id="navbar">
         <div class="logo">
             <img src="/resources/img/user/logo4.png" id="logo" onclick="back()" alt="">
-        </div>
+        </div>  
+           
+   		<div id="alarmSection">
+			<%@ include file="/WEB-INF/views/common/alarm.jsp" %>		
+		</div>
 
 <!-- my info start -->
         <div class="info">

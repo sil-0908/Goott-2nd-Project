@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.test.test1.alarm.service.AlarmService;
 import com.test.test1.user.service.UserService;
 import com.test.test1.video.dto.CommentDto;
 import com.test.test1.video.dto.VideoDto;
@@ -33,6 +34,8 @@ public class CommentController {
 	UserService userService;
 	@Autowired
 	VideoService videoService;
+	@Autowired
+	AlarmService alarmService;
 	
 //	원댓글 작성하기 02.20 장민실
 	@RequestMapping(value="write", method=RequestMethod.POST)
@@ -76,6 +79,10 @@ public class CommentController {
 		dto.setNickname(nickname);	
 		
 		commentService.cocomInsert(dto);
+		
+		/************************알람 - 03.06 장재호************************/
+		alarmService.addComment(dto);
+		/*****************************************************************/
 		mv.addObject("cocom_dto", dto);
 		return null;
 	}	

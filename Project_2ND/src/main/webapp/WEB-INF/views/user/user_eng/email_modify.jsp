@@ -9,12 +9,9 @@
 <script src="/resources/js/user/user_find_id.js"></script>
 </head>
 <body>
-	<!-- 로고 영역 -->
-	<header>
-		<div class="header_logo">
-			<img src="/resources/img/user/logo.png" alt="">
-		</div>
-	</header>
+<div id="navSection">
+<%@ include file="/WEB-INF/views/common/navbar1.jsp" %>
+</div>
 	
 	<section>
 	<!-- 로그인 창 영역 -->

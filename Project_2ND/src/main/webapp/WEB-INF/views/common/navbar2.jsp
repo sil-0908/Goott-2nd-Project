@@ -16,8 +16,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
-
-<!-- navbar start 네비바 수정 _ 0227 김지혜-->
+    <!-- =========== video list 네비바 =========== / navbar start 네비바 수정 _ 0227 김지혜-->
     <nav id="navbar">
         <div class="logo">
             <img src="/resources/img/user/logo4.png" id="logo" onclick="back()" alt="">
@@ -56,6 +55,10 @@
             <i class="fas fa-search fa-lg icons" id="search_icon"></i>
         </div>
 <!-- search end -->
+		
+		<div>
+			<%@ include file="/WEB-INF/views/common/alarm.jsp" %>		
+		</div>
 
 <!-- my info start -->
         <div class="info">

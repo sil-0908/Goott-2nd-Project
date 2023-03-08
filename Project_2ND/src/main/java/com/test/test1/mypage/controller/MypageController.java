@@ -7,34 +7,25 @@ import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.test.test1.algorithm.service.AlgorithmService;
 import com.test.test1.mypage.dto.ImgDto;
-import com.test.test1.user.controller.UserController;
 import com.test.test1.user.dao.UserDao;
 import com.test.test1.user.dto.UserDto;
 import com.test.test1.user.service.UserService;
@@ -150,13 +141,10 @@ public class MypageController {
 		
 		@RequestMapping(value = "display")
 		public ResponseEntity<byte[]> display(String fileName) throws FileNotFoundException {
-		    // db에서 정보를 가져와 출력을 해야됨
-		    System.out.println(fileName);
 		    File file = new File(fileName);
 		    if (!file.exists() || !file.canRead()) {
 		        throw new FileNotFoundException("The file '" + fileName + "' 을 찾을수 없습니다.");
 		    }
-		    System.out.println(fileName);
 		    ResponseEntity<byte[]> result = null;
 
 		    try {
@@ -173,9 +161,8 @@ public class MypageController {
 		
 		// 프로필 로드 - 02.27 김범수
 		@RequestMapping(value="onload", produces = MediaType.APPLICATION_JSON_VALUE)
-		public ResponseEntity<String> onload(String uploadFile) { 
+		public ResponseEntity<String> onload(String uploadFile) {
 			ResponseEntity<String> result = new ResponseEntity<String>(uploadFile, HttpStatus.OK);
-			System.out.println(result);
 			return result;		
 		}
 

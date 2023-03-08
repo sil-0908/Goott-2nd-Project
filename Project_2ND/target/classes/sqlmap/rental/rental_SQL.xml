@@ -3,7 +3,7 @@
 <mapper namespace="rental">
 	<insert id="insert">
 		insert into RENTAL(USER_ID, VIDEO_ID)
-		values((select USER_ID from USER where ID = "${id}"), #{video_id})
+		values ((select USER_ID from USER where ID = "${id}"), #{video_id})
 	</insert>
 	
 	<delete id="delete">
