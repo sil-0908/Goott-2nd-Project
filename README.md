@@ -68,3 +68,10 @@
 > navbar분할작업 / 회원가입성공 alert출력후 common/start 페이지로 이동하도록 수정 / 네비바 & 푸터 각 페이지마다 필요한 링크 삽입
 
 > video list : 영문페이지 작업진행, view단에서는 작업 이전, list내에 top5 영상작업 진행 완료
+
+230306 8차 전체병합 진행 > 완료
+> video list로 main페이지 설정하여 로그인 후 video list로 이동완료
+
+> 사용자 이미지 설정 및 view 기능 완료
+
+> video detail 댓글, 대댓글 CRUD 
