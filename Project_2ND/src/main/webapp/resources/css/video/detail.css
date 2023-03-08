@@ -1,14 +1,63 @@
-:root{
-       --main-color:##24292D;
-       --black:#13131a;
-       --bg: #010103;
-       --border: .1rem solid rgba(255,255,255,.3);
+/* 공통 css 적용 start */
+
+:root {
+    --bg: #24292D;
+    --btn_bg: #e1555a;
+    --btn_hover_bg: #e56b6f;
+    --main-text-color: #CCCCCC;
+    --sub-text-color: #FFCC00;
+    --error-text-color: #F82F62;
+    --large-text-size: 25px;
+    --medium-text-size: 17px;
+    --small-text-size: 13px;
 }
    
-   *{
-       margin: 0;
-       padding : 0;
-   }
+*{
+	margin: 0;
+	padding : 0;
+}
+
+.text {
+	color: var(--main-text-color);
+}
+
+button {
+	border: none;
+	border-radius: 10px;
+	width: 3.8rem;
+    height: 1.5rem;
+    background-color: #393e42;
+    color: var(--main-text-color);
+    cursor: pointer;
+}
+
+input {
+	border: none;
+	border-radius: 10px;
+	width: 3.8rem;
+    height: 1.5rem;
+    background-color: #393e42;
+    color: var(--main-text-color);
+}
+
+input[type=button] {
+	cursor: pointer;
+}
+
+textarea {
+	border: none;
+	resize: none;
+	border-radius: 10px;
+	background-color: #393e42;
+    color: var(--main-text-color);
+    width: 50rem;
+    height: 5rem;
+}
+
+form {
+	border: none;
+}
+/* 공통 css 적용 end */
    
 /* video area start */
 
@@ -17,7 +66,6 @@
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	margin-top: 5rem;
 	margin-bottom: 5rem;
 }
 
@@ -29,33 +77,63 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #010103;
-    color: white;
-    width: 100%;
-    height: 20rem;
+    background-color: #393e42;
+    width: 80%;
+    margin-left: 11.5rem;
+    height: 23rem;
+    border-radius: 100px;
 }
 
 .movie_info {
-    background-color: antiquewhite;
-    color: black;
+    color: var(--main-text-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100%; 
+    height: 20rem; 
     width: 40%;  
     overflow: scroll;
     overflow: auto;
 }
 
+.movie_summary {
+	line-height: 1.5rem;
+	word-break: keep-all;
+}
+
+.movie_info::-webkit-scrollbar {
+	width: 0.7rem;
+}
+
+.movie_info::-webkit-scrollbar-track {
+	background-color: #393e42;
+}
+
+.movie_info::-webkit-scrollbar-thumb {
+	background-color: var(--main-text-color);
+	border-radius: 10px;
+}
+
 .actor_info {
-    background-color: burlywood;
-    color: black;
+    color: var(--main-text-color);
     display: flex;
     justify-content: center;
-    height: 100%;
-    width: 40%;
+    height: 20rem;
+    width: 25%;
     overflow: scroll;
     overflow: auto;
+}
+
+.actor_info::-webkit-scrollbar {
+	width: 0.7rem;
+}
+
+.actor_info::-webkit-scrollbar-track {
+	background-color: #393e42;
+}
+
+.actor_info::-webkit-scrollbar-thumb {
+	background-color: var(--main-text-color);
+	border-radius: 10px;
 }
 
 /* movie info end */
@@ -68,14 +146,14 @@
     justify-content: space-between;
     width: 20rem;
     height: 3rem;
-    margin-left: 97rem;
+    margin-left: 86rem;
     margin-top: 0.5rem;    
 }
 
 .comunication_btn > i {
     font-size: 25px;
     cursor: pointer;
-    color: darkorange;
+    color: var(--btn_bg);
 }
 
 .comunication_btn > i > p {
@@ -108,16 +186,34 @@
     height: 1.5rem;
     margin-top: 0.5rem;
     margin-left: 102.7rem;
+    
 }
 
 /* comment wirte area end */
 
 /* comment list area start */
 
+.comt_list_hr {
+	margin-bottom: 1rem;
+}
+
 .comment_list_area {
     height: 50rem;
     width: 110rem;
     overflow: auto;
+}
+
+.comment_list_area::-webkit-scrollbar {
+	width: 0.7rem;
+}
+
+.comment_list_area::-webkit-scrollbar-track {
+	background-color: var(--bg);
+}
+
+.comment_list_area::-webkit-scrollbar-thumb {
+	background-color: var(--main-text-color);
+	border-radius: 10px;
 }
 
 .comment_list {
@@ -131,8 +227,25 @@
     word-break: break-all;
 }
 
+.comt_like_bad_btn {
+	display: flex;
+	margin-bottom: 0.5rem;
+}
+
+.comm_btn {
+	color: var(--btn_bg);
+	font-size: 20px;
+    margin-right: 0.3rem;
+}
+
+.comt_like_bad_btn > p {
+	font-size: var(--medium-text-size);
+	margin-right: 0.3rem;
+}
+
 .comment_btn {
     display: flex;
+    margin-bottom: 0.5rem;
 }
 
 #bad {
@@ -171,3 +284,27 @@
 }
 
 /* comment list area end */
+
+/* co-comment list area start */
+
+.co_comment_list {
+	margin-top: 0.5rem;
+	margin-left: 1rem;
+}
+
+.cocom_contents {
+    line-height: 2rem;
+    width: 85rem;
+    word-break: break-all;
+}
+
+#cocom_cd_btn {
+	margin-left: -0.5rem;
+}
+
+.cocom_hr {
+    margin: 0.5rem 0 0.5rem 0;
+    width: 85rem;
+}
+
+/* co-comment list area end */
