@@ -97,6 +97,7 @@ function showUploadImage(result){
    if(result == "" || result == null){return}
    let fileCallPath = encodeURI("C:\\upload\\"+result.uploadPath + result.uuid + "_" + result.fileName); // 해당 파일의 이름
    $('.img_tag').attr('src', "/mypage/display?fileName=" + fileCallPath);
+   window.location.reload();
 }
 
 //이미지 로딩 위한 메서드 - 02.24김범수
