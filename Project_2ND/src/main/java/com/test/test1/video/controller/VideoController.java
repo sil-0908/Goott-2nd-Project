@@ -51,9 +51,29 @@ public class VideoController {
 	
 //	영상 전체조회 페이지 - 02.07 배철우
 //	DTO 생성 후 DTO 활용하여 코드재생성 - 02.10 장민실
+	public String access(HttpServletRequest request) {
+		//URL접근 차단 - 02.18 장재호
+		return request.getHeader("REFERER");
+	}
+	
 	//영문버전 추가 - 03.06 장재호
 	@RequestMapping("list")
-	public ModelAndView list(ModelAndView mv, HttpSession ss, String language) {
+	public ModelAndView list(ModelAndView mv, HttpSession ss, String language, HttpServletRequest request) {
+		if(ss.getAttribute("user_id") == null) {
+			if(access(request) == null) {
+				mv.addObject("error", "잘못된 접근입니다");
+				mv.setViewName("redirect:/");
+				return mv;
+			}
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
+		
+		
+		if(ss.getAttribute("user_id") != null) {
+			ss.setAttribute("paid", userService.paidCheck((String)ss.getAttribute("user_id")));
+		}
 		List<VideoDto> list = videoService.list();
 		if(ss.getAttribute("language") == "eng" || (language != null && language.contains("eng"))) {
 			mv.setViewName("video/video_eng/list");
@@ -71,8 +91,18 @@ public class VideoController {
 	@RequestMapping("detail")
 	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session, RentalDTO dto, VideoInteractionDto vi_dto, HttpServletRequest request) { //세션추가 - 02.15 장재호
 /*--------------------------------------- db에 알고리즘 구현을 위한 값들 저장 - 02.15 장재호 ---------------------------------------*/
+		if(session.getAttribute("user_id") == null) {
+			if(access(request) == null) {
+				mv.addObject("error", "잘못된 접근입니다");
+				mv.setViewName("redirect:/");
+				return mv;
+			}
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
 		String id = (String) session.getAttribute("user_id");
-		if(request.getHeader("referer").contains("video/list")) {
+		if(access(request) != null && access(request).contains("video/list")) {
 			Map<String, Object> map = new HashMap<>();
 			map.put("id", id);
 			map.put("video_id", video_id);

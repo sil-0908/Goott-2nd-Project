@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/resources/css/user/user_find_id.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"/>
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <script src="/resources/js/user/user_find_id.js"></script>
 </head>
@@ -89,16 +90,19 @@
 				<a class="closebtn">X</a> <!-- 비밀번호 변경창 닫기 버튼 -->
 				<h2>비밀번호 변경</h2>
 				<!-- 비밀번호 입력 -->
-				<div class="pw_input_text">
+				<div class="pw_input_text" id="password_input">
                     <input type="password" name="password" placeholder="비밀번호" autocomplete="off" 
                         class="input_size" id="pw">
 				<!-- 비밀번호 입력 상태 확인 메세지 - 정규표현식에 위배되면 출력됨 -->
+					<i class="fa-solid fa-eye-slash fa-lg" id="eye1"></i>
                     <span id="input_regex" class="formSpans"></span>
                 </div>
                 <!-- 비밀번호 확인 입력 -->
-                <div class="pw_input_text">
+                <div class="pw_input_text" id="password_confirm">
                     <input type="password" name="password_confirm" placeholder="비밀번호 확인" autocomplete="off" 
                         class="input_size" id="pw_confirm" disabled="disabled"><!-- 비밀번호 입력에서 정규표현식에 맞게 입력되면 입력가능 -->
+                    <i class="fa-solid fa-eye-slash fa-lg" id="eye2"></i>
+                    <span id="input_confirm_regex" class="formSpans"></span>
                 </div>
                 <!-- 비밀번호와 비밀번호 확인란의 입력값이 같은지 확인 -->
                 <button id="pw_checkbtn">확인</button>

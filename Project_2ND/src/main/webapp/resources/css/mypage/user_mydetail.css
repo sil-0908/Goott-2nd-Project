@@ -356,6 +356,8 @@ hr{
 #next1, #next2, #prev1, #prev2{
 	margin: 0 -0.5vw;
 	background-image: none;
+	top: 10px;
+	margin-top: 140px;
 }
 
 .slick-arrow{

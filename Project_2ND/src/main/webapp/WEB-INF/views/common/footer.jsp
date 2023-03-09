@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +21,10 @@
          <p>사업자등록번호 111-00-22222</p><br>
          <p>대표번호 02-333-9999</p><br>
          <p>FAX: 02-333-9999</p><br>
-         <a href="/qna/list">GOOTTFLEX 고객센터</a>
+         <p><a href="/qna/list">GOOTTFLEX 고객센터</a></p>
+         <c:if test="${sessionScope.user_id == 'admin'}">
+         <p><a href="/admin">관리자 페이지</a></p>
+         </c:if>         
       </div>
    </div>
    <br>

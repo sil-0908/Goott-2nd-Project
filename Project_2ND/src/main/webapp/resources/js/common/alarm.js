@@ -43,7 +43,8 @@ alarmI.addEventListener('click', function(){
 alarmDiv.addEventListener('click', function(e){
 	var endIdx = e.target.textContent.indexOf(")");
 	var idx = e.target.textContent.substr(1, endIdx-1);
-	if(e.target.id != 'alarmI'){
+	console.log(e.target.className);
+	if(e.target.className == 'alarm_Text'){
 		$.ajax({
 			url : '/alarmDel',
 			data : {"idx" : idx},
