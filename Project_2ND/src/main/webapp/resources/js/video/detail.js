@@ -1,6 +1,26 @@
 // detail 페이지 내 영상부분 찜하기, 좋아요, 싫어요 버튼 누를시 칠해져있는 아이콘으로 변경하기
 // 내보관함 페이지 이동 - 02.16 김범수 수정
 const comu_btn = document.querySelectorAll('.comu_btn');
+const videoBox = document.querySelector('video');
+const paidYN = document.querySelector('#paidYN').value;
+videoBox.addEventListener("timeupdate", function(){
+	console.log(videoBox.currentTime)
+	if(paidYN == 'N'){
+		if(videoBox.currentTime > "10"){
+			videoBox.pause();
+			if(confirm("결제 후 풀영상 시청이 가능합니다. 결제하시겠습니까?")){
+				modal2();
+				return;
+			}
+			else{
+				videoBox.children[0].src = "";
+				return;
+			}
+		}
+	}
+	
+});
+
 
 for(var i = 1; i<comu_btn.length; i++) {
     comu_btn[i].addEventListener('click', function(){
@@ -281,7 +301,7 @@ function imgOnload() {
 						else {
 							cocomText += "<td class='cocom_title text'>"
 							cocomText += "	<div class='user_img_area'>"
-							cocomText += "		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU' class='img_tag2'>"
+							cocomText += "		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU' class='default_img'>"
 							cocomText += "	</div>"
 						}
 						///////////////////////////////

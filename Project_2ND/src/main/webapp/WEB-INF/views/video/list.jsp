@@ -177,6 +177,7 @@
     </div> -->
 <!-- adv area end -->
 <!-- footer start  -->
+<%@ include file="/WEB-INF/views/common/ads.jsp" %>
 <%@ include file="/WEB-INF/views/common/footer.jsp" %>	
 <!-- footer end  -->
 <script src="/resources/js/video/list.js"></script>

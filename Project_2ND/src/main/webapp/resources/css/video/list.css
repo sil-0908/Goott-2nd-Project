@@ -64,6 +64,11 @@ body {
         position: relative;
 }
 
+#section_all{
+    margin-top : 100px;
+    margin-left : 30px;
+}
+
 .section{
     height: 350px;
     display: flex;

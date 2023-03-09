@@ -9,13 +9,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
 <title>video detail</title>
-<%@ include file="/WEB-INF/views/common/alarm.jsp" %>
 </head>
 <body>
 <div id="navbar">
 <%@ include file="/WEB-INF/views/common/navbar2.jsp" %>
 </div>
-
+<input type="hidden" id="paidYN" value="${sessionScope.paid}">
 	<div class="video_all">
 	
         <!-- video area start -->
@@ -80,8 +79,8 @@
             	</c:otherwise>
             </c:choose>            
             <p class="text">싫어요</p>            
-            <i class="fa-solid fa-coins comu_btn" id="payment"></i>
-            <p class="text">결제</p>
+            <i onclick="modal2()" class="fa-solid fa-coins comu_btn" id="payment"></i>
+            <p onclick="modal2()" class="text">결제</p>
         </div>
         <!-- button area end -->
 
@@ -155,6 +154,7 @@
         <!-- comment list area end -->
         <hr>
 	</div>
+<%@ include file="/WEB-INF/views/common/ads.jsp" %>
 
 <script src="/resources/js/video/detail.js"></script>
 <script>
