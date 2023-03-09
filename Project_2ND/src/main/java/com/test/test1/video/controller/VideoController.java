@@ -21,6 +21,7 @@ import com.test.test1.video.dto.RentalDTO;
 import com.test.test1.algorithm.service.AlgorithmService;
 import com.test.test1.user.service.UserService;
 import com.test.test1.video.dto.VideoDto;
+import com.test.test1.video.dto.VideoEngDto;
 import com.test.test1.video.service.CommentService;
 import com.test.test1.video.service.InteractionService;
 import com.test.test1.video.service.RentalService;
@@ -116,6 +117,7 @@ public class VideoController {
 /*--------------------------------------------------------------------------------------------------------------------*/
 		
 		List<VideoDto> actor = videoService.actor(video_id);
+		List<VideoEngDto> actor_eng = videoService.actor_eng(video_id);
 		
 //		원댓글목록 가져오기 start - 02.21 장민실
 		List<CommentDto> list = commentService.replyList(video_id);
@@ -138,8 +140,16 @@ public class VideoController {
 //		영상 좋아요,싫어요 기능관련 idx,like,unlike 가져오기 end 03.06 장민실
 		
 		mv.addObject("dto", videoService.detail(video_id));
+		mv.addObject("dto_eng", videoService.detail_eng(video_id));
 		mv.addObject("detail", actor);
-		mv.setViewName("video/detail");
+		mv.addObject("detail_eng", actor_eng);
+		if(session.getAttribute("language").equals("eng")) {
+			mv.setViewName("video/video_eng/detail_eng");
+		}
+		else {
+			mv.setViewName("video/detail");
+		}
+			
 		return mv;
 	}	
 	

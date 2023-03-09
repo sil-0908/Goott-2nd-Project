@@ -1,26 +1,6 @@
 // detail 페이지 내 영상부분 찜하기, 좋아요, 싫어요 버튼 누를시 칠해져있는 아이콘으로 변경하기
 // 내보관함 페이지 이동 - 02.16 김범수 수정
 const comu_btn = document.querySelectorAll('.comu_btn');
-const videoBox = document.querySelector('video');
-const paidYN = document.querySelector('#paidYN').value;
-videoBox.addEventListener("timeupdate", function(){
-	console.log(videoBox.currentTime)
-	if(paidYN == 'N'){
-		if(videoBox.currentTime > "10"){
-			videoBox.pause();
-			if(confirm("결제 후 풀영상 시청이 가능합니다. 결제하시겠습니까?")){
-				modal2();
-				return;
-			}
-			else{
-				videoBox.children[0].src = "";
-				return;
-			}
-		}
-	}
-	
-});
-
 
 for(var i = 1; i<comu_btn.length; i++) {
     comu_btn[i].addEventListener('click', function(){
@@ -37,7 +17,7 @@ comu_btn[0].addEventListener('click', function(){
     		data : {'title' : title},		
     	})
     	this.className = 'far fa-heart comu_btn';
-    	alert('내보관함에서 삭제되었습니다');
+    	alert('Wishlist has been removed');
     
     }else { // 내보관함에 담기
     	$.ajax({
@@ -46,7 +26,7 @@ comu_btn[0].addEventListener('click', function(){
     		data : {'title' : title},
     	})
     	this.className = 'fas fa-heart comu_btn';
-    	alert('내보관함에 담겼습니다');
+    	alert('Wishlist is complete');
     }
 });
 
@@ -136,7 +116,7 @@ function imgOnload() {
 			type : 'POST',
 			success : function(){
 				window.location.reload();
-				alert("삭제가 완료되었습니다.");
+				alert("Deletion complete.");
 			}
 		});		
 	});
@@ -168,11 +148,11 @@ function imgOnload() {
 		let comt_edit_div = this.parentNode.nextElementSibling.nextElementSibling;
 		let comt_text = this.parentNode.parentNode.parentNode.previousElementSibling.innerText;
 		let comtEditText = "";
-		comtEditText += "<p class='comt_edit_title text'>댓글 수정하기</p>";
+		comtEditText += "<p class='comt_edit_title text'>Edit comment</p>";
 		comtEditText += "<form name='comt_edit' method='post'>";
 		comtEditText += "      <textarea rows='3' cols='60' onclick='text_clear(this)' class='com_edit_text'>" + comt_text + "</textarea>";
-		comtEditText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete(this)'>수정완료</button>";
-		comtEditText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle(this)'>수정취소</button>";
+		comtEditText += "      <button type='button' class='edit_complete' onclick='comt_edit_complete(this)'>edit complete</button>";
+		comtEditText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle(this)'>edit cancle</button>";
 		comtEditText += "</form>";
 		$(comt_edit_div).html(comtEditText);
 	});
@@ -189,7 +169,7 @@ function imgOnload() {
 			type : 'POST',
 			success : function(){
 				window.location.reload();
-				alert("댓글 수정이 완료되었습니다.");
+				alert("Comments have been edited.");
 			}
 		});		
 	};
@@ -203,11 +183,11 @@ function imgOnload() {
 	$(".cocom_write_btn").on('click', function(e){
 		let cocom_insert_div = this.parentNode.nextElementSibling;
 		let cocomForm = "";
-		cocomForm += "<p class='cocom_write_title text'>답글 작성하기</p>"
+		cocomForm += "<p class='cocom_write_title text'>Write a reply</p>"
 		cocomForm += "<form name='cocom_write' method='post'>";
 		cocomForm += "      <textarea rows='3' cols='60' class='cocom_text'></textarea>";
-		cocomForm += "      <button type='button' class='cocom_complete' onclick='cocom_complete(this)'>답글등록</button>";
-		cocomForm += "      <button type='button' class='cocom_cancle' onclick='comt_edit_cancle(this)'>등록취소</button>";
+		cocomForm += "      <button type='button' class='cocom_complete' onclick='cocom_complete(this)'>Register reply</button>";
+		cocomForm += "      <button type='button' class='cocom_cancle' onclick='comt_edit_cancle(this)'>deregistration</button>";
 		cocomForm += "</form>";
 		$(cocom_insert_div).html(cocomForm);
 	});   	
@@ -224,7 +204,7 @@ function imgOnload() {
 			type : 'POST',
 			success : function(){
 				window.location.reload();
-				alert("답글 작성이 완료되었습니다.");
+				alert("Your reply is complete.");
 			}
 		});			   
 		   
@@ -238,11 +218,11 @@ function imgOnload() {
 		let cocom_edit_div = this.parentNode.nextElementSibling;
 		let comt_text = this.parentNode.parentNode.parentNode.previousElementSibling.innerText;
 		let comtEditText = "";
-		comtEditText += "<p class='comt_edit_title text'>댓글 수정하기</p>";
+		comtEditText += "<p class='comt_edit_title text'>Edit comment</p>";
 		comtEditText += "<form name='comt_edit' method='post'>";
 		comtEditText += "      <textarea rows='3' cols='60' onclick='text_clear(this)' class='com_edit_text'>" + comt_text + "</textarea>";
-		comtEditText += "      <button type='button' class='edit_complete' onclick='cocom_edit_complete(this)'>수정완료</button>";
-		comtEditText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle(this)'>수정취소</button>";
+		comtEditText += "      <button type='button' class='edit_complete' onclick='cocom_edit_complete(this)'>edit complete</button>";
+		comtEditText += "      <button type='button' class='edit_cancle' onclick='comt_edit_cancle(this)'>edit cancle</button>";
 		comtEditText += "</form>";
 		$(cocom_edit_div).html(comtEditText);
 	});
@@ -259,7 +239,7 @@ function imgOnload() {
 			type : 'POST',
 			success : function(){
 				window.location.reload();
-				alert("댓글 수정이 완료되었습니다.");
+				alert("Comments have been edited.");
 			}
 		});		
 	};
@@ -293,7 +273,7 @@ function imgOnload() {
 				let cocomText = "";
 				
 				if(list.length===0) {
-					alert("등록된 답글이 없습니다.");
+					alert("There are no registered replies.");
 				}	// 대댓글 없을때 if end
 		         
 				else {
@@ -309,7 +289,7 @@ function imgOnload() {
 						else {
 							cocomText += "<td class='cocom_title text'>"
 							cocomText += "	<div class='user_img_area'>"
-							cocomText += "		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU' class='default_img'>"
+							cocomText += "		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU' class='img_tag2'>"
 							cocomText += "	</div>"
 						}
 						///////////////////////////////
@@ -322,10 +302,11 @@ function imgOnload() {
 		     	    	   cocomText += "<td class='cocom_td'>";
 		     	    	   cocomText += "   <div class='comment_btn' id='cocom_cd_btn'>";
 		     	    	   cocomText += "		<input type='hidden' class='c_id_input' name='comment_id' value=" + this.comment_id + ">";
-		     	    	   cocomText += "		<input type='button' class='cocomt_update' value='수정'>";
-		     	    	   cocomText += "		<input type='button' class='comment_delete' value='삭제'>";
+		     	    	   cocomText += "		<input type='button' class='cocomt_update' value='edit'>";
+		     	    	   cocomText += "		<input type='button' class='comment_delete' value='delete'>";
 		     	    	   cocomText += "   </div>";
 		     	    	   cocomText += "<div class='cocom_edit'></div>";
+		     	    	  cocomText += "<hr class='cocom_hr'>";
 		     	    	   cocomText += "</td>";
 		     	       }	// 로그인유저와 대댓글 작성자가 같을때 if end
 					});
