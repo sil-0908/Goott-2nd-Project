@@ -249,6 +249,7 @@ section {
 .pw_input_text {
     height: 80px;
     font-size: var(--medium-text-size);
+    position : relative;
 }
 
 /* 비밀번호 변경 버튼 */
@@ -259,6 +260,17 @@ section {
     border-radius: 10px;
     cursor: pointer;
     border: none;
+}
+
+#input_regex{
+	margin-top : 5px;
+	margin-left: 5px;
+}
+
+.fa-solid{
+	position : absolute;
+	left : 340px;
+	top: 17px;
 }
 
 /*section area end*/

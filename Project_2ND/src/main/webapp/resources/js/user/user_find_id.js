@@ -467,6 +467,46 @@ $(function() {
 		 }
 	}); //event function end
 
+	///// 비밀번호 확인 창에서의 정규 표현식 - 02.12 김범수 ///////
+	$('#pw_confirm').blur(function() {
+		var pw_c = $('#pw_confirm').val();
+		var num = pw_c.search(/[0-9]/g); // 숫자 정규식
+		var eng = pw_c.search(/[a-z]/ig); // 문자 정규식
+		var spe = pw_c.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi); // 특수문자 정규식
+		
+		if(pw_c.length < 8 || pw_c.length > 20){
+    		if($('#sessionL').val() == 'eng'){ //영문 ver 추가 - 03.06 장재호
+    			$('#input_confirm_regex').html("enter between 8~20");
+    		}
+    		else{
+    			$('#input_confirm_regex').html("8자리 ~ 20자리 이내로 입력해주세요.");
+    		}
+		 	$('#pw_confirm').focus();
+		 	return ;
+		 }else if(pw_c.search(/\s/) != -1){
+    		if($('#sessionL').val() == 'eng'){ //영문 ver 추가 - 03.06 장재호
+    			$('#input_confirm_regex').html("enter without spaces");
+    		}
+    		else{
+    			$('#input_confirm_regex').html("비밀번호는 공백 없이 입력해주세요.");
+    		}
+		 	$('#pw_confirm').focus();
+			return ;
+		 }else if(num < 0 || eng < 0 || spe < 0 ){
+    		if($('#sessionL').val() == 'eng'){ //영문 ver 추가 - 03.06 장재호
+    			$('#input_confirm_regex').html("mixture of eng, numbers, characters(!@#$...)");
+    		}
+    		else{
+    			$('#input_confirm_regex').html("영문,숫자, 특수문자를 혼합하여 입력해주세요.");
+    		}
+		 	$('#pw_confirm').focus();
+		 	return;
+		 }else{
+			 $('#input_confirm_regex').html("");
+
+		 }
+	}); //event function end
+	
 	/////// 닫기 버튼 클릭 이벤트
 	$('.closebtn').click(function() { 
 		$('.popup').css('display', 'none');
@@ -506,5 +546,24 @@ $(function() {
 		}
 
 	}); // event function end
+	
+	$('#eye1').on('click',function(){
+		$('#password_input').toggleClass('active'); // 부모 태그 .input.password가 active 토글활성화
+		if($('#password_input').hasClass('active') == true){  // active가 활성화가 될 때 자식 input의 타입을 text로 바꿔서 비밀번호 텍스트를 보이게 함 
+			$(this).attr('class',"fa-solid fa-eye fa-lg").prev('input').attr('type',"text");
+		}else{ // Class값이 'active'가 아닐 경우 
+			$(this).attr('class',"fa-solid fa-eye-slash fa-lg").prev('input').attr('type','password');
+		}
+	});
+	// 비밀번호확인란 눈모양 이벤트리스너 
+	$('#eye2').on('click',function(){
+		$('#password_confirm').toggleClass('active'); // 부모 태그 .input.password가 active 토글활성화
+		if($('#password_confirm').hasClass('active') == true){  // active가 활성화가 될 때 자식 input의 타입을 text로 바꿔서 비밀번호 텍스트를 보이게 함 
+			$(this).attr('class',"fa-solid fa-eye fa-lg").prev('input').attr('type',"text");
+		}else{ // Class값이 'active'가 아닐 경우 
+			$(this).attr('class',"fa-solid fa-eye-slash fa-lg").prev('input').attr('type','password');
+		}
+	});
 }); // function end
+
 
