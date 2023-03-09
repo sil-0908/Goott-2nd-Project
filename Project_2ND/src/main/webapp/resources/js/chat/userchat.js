@@ -105,7 +105,9 @@ function closeChat(){
 			type : 'post'
 		});
 		chatArea.classList.add("hidden");
+		
 		webSocket.close();
+		
 		var chatD = document.querySelector('#userChat');
 		chatD.style.display = "none";
 	}

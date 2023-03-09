@@ -68,8 +68,18 @@
                     <ul class="drop_menu_ul">
                         <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">Mychannel</li>
                         <li class="drop_menu_li" onclick ="modal2()">Pay</li>
-                        <li class="drop_menu_li" onclick ="">Language</li>
-                        <li class="drop_menu_li" onclick ="location.href='/qna/list'">QNA</li>
+	                     <li class="drop_menu_li">
+	                            <div class="langdropdown">
+	                            <form name="lanForm">                            
+	                                <select name="language" class="selectbox" onchange="lanChange()">
+	                                    <option value="none" class="select" id="none_text">Language</option>
+	                                    <option value="kor" class="select">한국어</option>
+	                                    <option value="eng" class="select">English</option>
+	                                </select>
+	                           </form>
+	                            </div>
+	                     </li>
+	                     <li class="drop_menu_li" onclick ="location.href='/qna/list'">QNA</li>
                         <li class="drop_menu_li" onclick="signout()">Logout</li>
                     </ul>
                 </li>
@@ -79,5 +89,6 @@
     </nav>   
 <!-- navbar end -->
 <script src="/resources/js/common/nav1.js"></script>
+<script src="/resources/js/common/language.js"></script>
 </body>
 </html>

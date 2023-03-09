@@ -7,6 +7,7 @@ public class UserDto {
 	private String id, email, password, nickname, phone_num, subscribe_yn, delete_yn, img; // 유저 프로필 가져오기 위해 img 추가 - 02.24 김범수
 	private String create_type; //apiLogin때문에 추가 - 02.10 장재호
 	private String chatId; // chat기능 - 02.11 장재호
+	private String paid;
 	private Date create_date, expiration_date, delete_date; //관리자 페이지 추가 - 02.18 장재호
 	
 			
@@ -131,7 +132,15 @@ public class UserDto {
 	@Override
 	public String toString() {
 		return "UserDto : [id=" + id + ", email=" + email + ", passwd="+ password+ ", nickname=" + nickname + ", phone_num=" + phone_num +
-				", create_type=" + create_type + ", paid_m=" + paid_m + ", img=" + img + "]";
+				", create_type=" + create_type + ", paid_m=" + paid_m + ", img=" + img + ", paid=" + paid + "]";
+	}
+
+	public String getPaid() {
+		return paid;
+	}
+
+	public void setPaid(String paid) {
+		this.paid = paid;
 	}
 
 	

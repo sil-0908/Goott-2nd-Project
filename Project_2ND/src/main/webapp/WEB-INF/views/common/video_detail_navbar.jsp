@@ -24,17 +24,17 @@
         <div class="menu">
             <ul class="menu_ul">
                 <li class="menu_text_li" id="menu1">
-                   <p>영화</p>
+                   <p>Movie</p>
                <ul class="drop_menu_ul drop_menu_ul_1">
-                 <li class="drop_menu_li" onclick="toggleSubMenu('actionSubMenu')">액션</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('dramaSubMenu')">드라마</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('fantasySubMenu')">판타지</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('actionSubMenu')">Action</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('dramaSubMenu')">Drama</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('fantasySubMenu')">Fantasy</li>
                  <li class="drop_menu_li" onclick="toggleSubMenu('sfSubMenu')">SF</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('crimeSubMenu')">범죄물</li>
+                 <li class="drop_menu_li" onclick="toggleSubMenu('crimeSubMenu')">Crime</li>
                </ul>
                 </li>
                 <li class="menu_text_li" id="menu2" onclick="ani_q()">
-                    <p>애니메이션</p>
+                    <p>Animation</p>
                 </li>
             </ul>
         </div>
@@ -64,11 +64,21 @@
 						</c:when>
 					</c:choose>
                     <ul class="drop_menu_ul">
-                        <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">내채널</li>
-                        <li class="drop_menu_li" onclick ="location.href=''">미정</li>
-                        <li class="drop_menu_li" onclick ="">Language</li>
-                        <li class="drop_menu_li" onclick ="location.href='/qna/list'">고객센터</li>
-                        <li class="drop_menu_li" onclick="signout()">로그아웃</li>
+                        <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">Mychannel</li>
+                        <li class="drop_menu_li" onclick ="modal2()">Pay</li>
+	                     <li class="drop_menu_li">
+	                            <div class="langdropdown">
+	                            <form name="lanForm">                            
+	                                <select name="language" class="selectbox" onchange="lanChange()">
+	                                    <option value="none" class="select" id="none_text">Language</option>
+	                                    <option value="kor" class="select">한국어</option>
+	                                    <option value="eng" class="select">English</option>
+	                                </select>
+	                           </form>
+	                            </div>
+	                     </li>
+	                     <li class="drop_menu_li" onclick ="location.href='/qna/list'">QNA</li>
+                        <li class="drop_menu_li" onclick="signout()">Logout</li>
                     </ul>
                 </li>
             </ul>
@@ -77,5 +87,6 @@
     </nav>
 <!-- navbar end -->
 <script src="/resources/js/common/nav1.js"></script>
+<script src="/resources/js/common/language.js"></script>
 </body>
 </html>

@@ -36,7 +36,7 @@ const searchBox = document.getElementById('search');
 	  });
 
 	  if (!foundResults) {
-	    searchResults.innerHTML = '<h1 style="text-align: right; margin-right: 40px; padding-top:6.5rem; color: #cccccc;"> 검색 결과가 없습니다. 새로운 검색어를 찾아보세요.</h1>';
+	    searchResults.innerHTML = '<h1 style="text-align: right; margin-right: 40px; color: #cccccc;"> 검색 결과가 없습니다. 새로운 검색어를 찾아보세요.</h1>';
 	  }
 
 	  const hideElements = document.querySelectorAll('.hide');

@@ -57,8 +57,9 @@ public class EchoHandler extends TextWebSocketHandler{
 //				String id = str[0];
 //				String q_subject = str[1];
 //				int count = alarmDao.selectAlarmCount(id); //알람이 존재할 때
-//			}		
+//			}	
 			
+		
 			//세션아이디
 			String hsid = (String) single.getAttributes().get("user_id");
 			

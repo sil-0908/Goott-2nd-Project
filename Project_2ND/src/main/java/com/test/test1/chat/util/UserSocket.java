@@ -14,9 +14,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import org.springframework.stereotype.Controller;
-
-@Controller
 @ServerEndpoint("/userchat")
 public class UserSocket {
 
@@ -98,7 +95,7 @@ public class UserSocket {
 			sessionUsers.remove(user);
 		}
 	}
-	
+
 	//유저 UK get -> admin에 보낼용도
 	public static String[] getUserKeys() {
 		String[] ret = new String[sessionUsers.size()];

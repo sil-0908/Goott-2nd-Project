@@ -125,6 +125,8 @@ $(function() {
 
 //이미지 로딩 위한 메서드 - 02.24김범수
 function showOnloadImage(result){
+	alert("Dsad");
+	console.log("result", result);
    // 전달받은 데이터가 값이 없는 경우
    if(result == "" || result == null){return}
    let fileCallPath = encodeURI(result); // 해당 파일의 이름
