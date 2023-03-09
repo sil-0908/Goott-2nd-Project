@@ -40,13 +40,15 @@
                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="nav_img_tag">
                   </c:when>
                </c:choose>
+               <form name="lanForm">               
                     <ul class="drop_menu_ul">
                         <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">내채널</li>
                         <li class="drop_menu_li" onclick ="modal2()">결제</li>
-                        <li class="drop_menu_li" onclick ="">Language</li>
+                        <li class="drop_menu_li" onclick ="lanChange()">Language</li>
                         <li class="drop_menu_li" onclick ="location.href='/qna/list'">고객센터</li>
                         <li class="drop_menu_li" onclick="signout()">로그아웃</li>
                     </ul>
+              </form>
                 </li>
             </ul>
         </div>
@@ -54,6 +56,7 @@
     </nav>   
 <!-- navbar end -->
 <script src="/resources/js/common/nav2.js"></script>
+<script src="/resources/js/common/language.js"></script>
 
 </body>
 </html>

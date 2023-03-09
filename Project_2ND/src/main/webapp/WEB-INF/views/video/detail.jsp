@@ -26,6 +26,7 @@
         <!-- video area end -->
 
         <!-- movie info start -->
+        <input type="text" id="videoidH" value="${dto.video_id}">        
         <div class="info_area">
             <div class="movie_info">
                 <div class="info_text" id="movie_info_text">

@@ -210,4 +210,17 @@ ul li {
 	border-radius: 50%;
 }
 
+.selectbox{
+	-webkit-appearance:none;
+	text-align: center;
+	background-color: var(--bg);
+	color : var(--main-text-color);
+	font-size : var(--medium-text-size);
+	border: none;
+	outline: none;
+}
 
+.selectbox:hover{
+	border: none;
+	outline: none;
+}

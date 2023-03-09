@@ -59,6 +59,9 @@ public class VideoController {
 	//영문버전 추가 - 03.06 장재호
 	@RequestMapping("list")
 	public ModelAndView list(ModelAndView mv, HttpSession ss, String language, HttpServletRequest request) {
+		if(language != null) {
+			ss.setAttribute("language", language);
+		}
 		if(ss.getAttribute("user_id") == null) {
 			if(access(request) == null) {
 				mv.addObject("error", "잘못된 접근입니다");
@@ -77,8 +80,10 @@ public class VideoController {
 		List<VideoDto> list = videoService.list();
 		if(ss.getAttribute("language") == "eng" || (language != null && language.contains("eng"))) {
 			mv.setViewName("video/video_eng/list");
+			ss.setAttribute("language", "eng");
 		}
 		else {
+			ss.setAttribute("language", "kor");
 			mv.setViewName("video/list");
 		}
 		mv.addObject("dto", list);		
@@ -89,8 +94,12 @@ public class VideoController {
 //	DTO 생성 후 DTO 활용하여 코드재생성 + 배우정보 가져오기 - 02.14 장민실
 //	알고리즘 구현을 위해 detail페이지 접근 시 PK값 저장 - 02.15 장재호
 	@RequestMapping("detail")
-	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session, RentalDTO dto, VideoInteractionDto vi_dto, HttpServletRequest request) { //세션추가 - 02.15 장재호
+	public ModelAndView detail(@RequestParam int video_id, ModelAndView mv, HttpSession session, RentalDTO dto, VideoInteractionDto vi_dto, HttpServletRequest request, String language) { //세션추가 - 02.15 장재호
 /*--------------------------------------- db에 알고리즘 구현을 위한 값들 저장 - 02.15 장재호 ---------------------------------------*/
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡ");
+		System.out.println(video_id);
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡ");
+		
 		if(session.getAttribute("user_id") == null) {
 			if(access(request) == null) {
 				mv.addObject("error", "잘못된 접근입니다");
@@ -143,13 +152,16 @@ public class VideoController {
 		mv.addObject("dto_eng", videoService.detail_eng(video_id));
 		mv.addObject("detail", actor);
 		mv.addObject("detail_eng", actor_eng);
-		if(session.getAttribute("language").equals("eng")) {
+		
+		if(session.getAttribute("language") == "eng" || (language != null && language == "eng")) {
+			session.setAttribute("language", "eng");
 			mv.setViewName("video/video_eng/detail_eng");
 		}
 		else {
+			session.setAttribute("language", "kor");
 			mv.setViewName("video/detail");
 		}
-			
+
 		return mv;
 	}	
 	

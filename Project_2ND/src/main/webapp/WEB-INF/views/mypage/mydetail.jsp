@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +45,7 @@
                     <div class="input_text2"><span>EMAIL</span><input type="text" name="Info_Email" value="${data.email}" disabled></div>
                     <div class="input_text2"><span>NICKNAME</span><input type="text" name="Info_Nickname" value="${data.nickname}" disabled></div>
                     <div class="input_text2"><span>PHONE_NUM</span><input type="text" name="Info_Phone_num" value="${data.phone_num}" disabled></div>
+                    <div class="input_text2"><span>결제 기간</span><input type="text" name="paid" value="<fmt:formatDate value='${data.expiration_date}' pattern='yyyy-MM-dd HH:mm:ss' />" disabled></div>
 
                     <button type="button" id="btnWrite" >수정하기</button>
                 </div>

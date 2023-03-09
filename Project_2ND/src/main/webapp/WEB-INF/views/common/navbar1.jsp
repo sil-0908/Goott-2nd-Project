@@ -23,8 +23,8 @@
         <div class="langdropdown">
             <select name="language" class="selectbox" onchange="lanChange()">
                 <option value="none" class="select">=== 선택 ===</option>
-                <option value="kor" class="select"> 한국어 </option>
-                <option value="eng" class="select"> 영어 </option>
+                <option value="kor" class="select">한국어</option>
+                <option value="eng" class="select">영어</option>
             </select>
         </div>
         </form>

@@ -45,9 +45,13 @@ public class CommentController {
 		int id = userService.getid(user_id);
 		
 //		원댓글 등록할때 pid값 자동증가를 위해 DB의 마지막 pid값 가져오기 start 02.23 장민실
-		int pid = commentService.get_pid(c_dto);
-		pid+=1;
-		c_dto.setPid(pid);
+		try {
+			int pid = commentService.get_pid(c_dto);
+			pid+=1;
+			c_dto.setPid(pid);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 //		원댓글 등록할때 pid값 자동증가를 위해 DB의 마지막 pid값 가져오기 end
 		
 		c_dto.setUser_id(id);

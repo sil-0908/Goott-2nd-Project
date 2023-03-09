@@ -106,10 +106,6 @@ body {
     transform: translateY(-30px);
 }
 
-.hide_1{
-	padding-top: 6rem;
-}
-
  
 .number {
   position: absolute;
@@ -154,10 +150,6 @@ body {
 	transform: translateX(50px);
 	padding-top:50px;
 }
-#search-results .conta{
-   	padding-top:6.5rem;
-}
-
 
 /* 슬라이드 버튼 시작 */
 .slick-arrow {

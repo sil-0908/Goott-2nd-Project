@@ -1,8 +1,9 @@
 /* 02.23 장재호 */
 const alarmUL = document.querySelector("#alarmUL");
 const alarmI = document.querySelector("#alarmI");
-const alarmDiv = document.querySelector("#alarmDiv");
+const alarmDiv = document.querySelector("#alarmDiv"); 
 var sock = null;
+const alarm_Area = document.querySelector("#alarm_Area");
 
 $(document).ready(function(){
 	connectWs();
@@ -35,12 +36,12 @@ function connectWs(){
 
 /* 알람창 추가 */
 
-alarmI.addEventListener('click', function(){
+alarmDiv.addEventListener('click', function(){
 	alarm_Area.classList.toggle('visible');
 	$(this).stop(false, false);
 });
 
-alarmDiv.addEventListener('click', function(e){
+alarm_Area.addEventListener('click', function(e){
 	var endIdx = e.target.textContent.indexOf(")");
 	var idx = e.target.textContent.substr(1, endIdx-1);
 	console.log(e.target.className);

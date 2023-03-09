@@ -49,10 +49,6 @@ public class AdminController {
    @ResponseBody
    public ModelAndView adminMain(ModelAndView mv, HttpServletRequest request, HttpSession session) {
       //URL접근 차단 - 02.18 장재호
-      System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
-      System.out.println(session.getAttribute("user_id"));
-      System.out.println(access(request));
-      System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
       if(session.getAttribute("user_id") == null || !session.getAttribute("user_id").equals("admin")) {
          mv.addObject("error", "잘못된 접근입니다");
          mv.setViewName("redirect:/");
