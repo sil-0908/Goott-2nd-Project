@@ -48,6 +48,9 @@ public class UserController {
 	//영문페이지 - 03.06 장재호
 	@RequestMapping("signin")
 	public String login(String language, HttpSession ss) throws Exception{
+		if(ss.getAttribute("user_id")!= null) {
+			return "redirect:/video/list";
+		}
 		if(language != null) {
 			ss.setAttribute("language", language);
 		}
@@ -66,7 +69,14 @@ public class UserController {
 	//PW -> DB 전송 시 암호화 추가 - 02.06 장재호
 	// 시작페이지 연결을 위한 setviewname / addObject수정 - 02.19김범수 
 	@RequestMapping("signin_check")
-	public ModelAndView signin_check(UserDto userDto, HttpSession session, ModelAndView mv) {
+	public ModelAndView signin_check(String language, UserDto userDto, HttpSession session, ModelAndView mv, HttpServletRequest request) {
+		if(language == null) {
+			language = (String) session.getAttribute("language");
+		}
+		if(request.getHeader("referer").contains("check")) {
+			mv.setViewName("redirect:/user/signin?language=" + language);
+			return mv;
+		}
 		String str = userService.login(userDto);   //str : 유저닉네임(email, pw 일치 시 존재)
 		if(str != null) {                          //로그인 성공(세션에 로그인 정보 추가)
 			session.setAttribute("user_id", userDto.getId());
@@ -74,7 +84,12 @@ public class UserController {
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
 			mv.setViewName("redirect:/video/list"); // 리다이렉트에서 main으로 주소 변경 - 02.19 김범수
 		}else {                                    //로그인 실패
-			mv.setViewName("redirect:/user/signin");
+			if(language == "eng" || session.getAttribute("language").equals("eng")) {
+				mv.setViewName("user/user_eng/signin");
+			}
+			else {
+				mv.setViewName("user/signin");
+			}			
 			mv.addObject("message", "error");
 		}
 		return mv;

@@ -14,64 +14,7 @@
 <script src="https://kit.fontawesome.com/885ba80ba8.js" crossorigin="anonymous"></script>
 </head>
 <body> 
-    
-<!-- navbar start -->
-    <nav id="navbar">
-        <h1 id="logo" onclick="back()">LOGO</h1>
-          <!-- menu start -->
-        <div class="menu">
-            <ul class="menu_ul">
-                <li class="menu_text_li" id="menu1">
-                   <p>MOVIE</p>
-               <ul class="drop_menu_ul">
-                 <li class="drop_menu_li" onclick="toggleSubMenu('actionSubMenu')">ACTION</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('dramaSubMenu')">DRAMA</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('fantasySubMenu')">FANTASY</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('sfSubMenu')">SF</li>
-                 <li class="drop_menu_li" onclick="toggleSubMenu('crimeSubMenu')">CRIME</li>
-               </ul>
-                </li>
-                <li class="menu_text_li" id="menu2" onclick="ani_q()"> 
-                    <p>ANIMATION</p>    
-                    <!-- <ul class="drop_menu_ul">
-                        <li class="drop_menu_li">ROMANCE</li>
-                        <li class="drop_menu_li">SF/FANTASY</li>
-                        <li class="drop_menu_li">ACTION</li>
-                        <li class="drop_menu_li">COMEDY</li>
-                        <li class="drop_menu_li">HORROR</li>
-                        <li class="drop_menu_li">CRIME</li>
-                    </ul> -->
-                </li>
-            </ul>
-        </div>
-<!-- menu end -->
-
-<!-- search start -->
-        <div class="search_area">
-            <input type="search" id="search">
-            <i class="fas fa-search fa-lg icons" id="search_icon"></i>
-        </div>
-<!-- search end -->
-
-<!-- my info start -->
-        <div class="info">
-            <ul class="info_ul">
-                <li class="info_li">
-                    <i class="fas fa-user fa-2x icons" id="info_icon"></i>
-                    <ul class="drop_menu_ul">
-                        <li class="drop_menu_li">My channel</li>
-                        <li class="drop_menu_li">Modifying member information</li>
-                        <li class="drop_menu_li">Language</li>
-                        <li class="drop_menu_li">Customer Service</li>
-                        <li class="drop_menu_li">Sign out</li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-<!-- my info end -->
-    </nav>   
-<!-- navbar end -->
-
+<%@ include file="/WEB-INF/views/common/common_eng/navbar2.jsp" %> 
   
 <!-- main video start -->    
   
@@ -201,28 +144,10 @@
 	
 	
 	</div>
-	<!-- animation category end -->
-          
-     
-
-<!-- adv area start -->
-   <!--  <div id="adv_area">
-        <p>두둥 광고 </p>
-    </div> -->
-<!-- adv area end -->
-
-<footer>
-
-<!-- footer start -->
-   <!--  <div id="f_Con1">
-   <div id="f_Con2">   
-      <h1>김범수</h1><span>보고싶다</span>
-   </div>
-   <div id="map"></div>
-</div> -->
-<!-- footer end -->
-    
-</footer>
+<%@ include file="/WEB-INF/views/common/ads.jsp" %>
+<%@ include file="/WEB-INF/views/common/common_eng/footer.jsp" %>	
+<!-- footer end  -->
+<script src="/resources/js/video/list.js"></script>
 <script src="/resources/js/video/list.js"></script>
 
 </body>

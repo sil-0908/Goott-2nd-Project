@@ -53,7 +53,12 @@ public class AdminController {
 			mv.addObject("error", "잘못된 접근입니다");
 			mv.setViewName("redirect:/");
 			return mv;
-		}		
+		}
+		if(session.getAttribute("user_id") == null || session.getAttribute("user_id") != "admin") {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
 
 		//1. 카테고리 순위
 		mv.addObject("category", algorithmService.categoryRate());

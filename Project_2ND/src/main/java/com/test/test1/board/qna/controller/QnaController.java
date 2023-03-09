@@ -100,7 +100,7 @@ public class QnaController {
 	@RequestMapping(value="qnaDeletes", method=RequestMethod.POST)
 	public String qnaDeletes(@RequestBody List<Integer> delArr) {
 		qnaService.deletes(delArr);
-		return "/qna/qna_list";
+		return "redirect:/qna/list";
 	}	
 	
 	//답변 생성 - 02.18 장재호
