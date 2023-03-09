@@ -74,7 +74,7 @@ public class UserController {
 			session.setMaxInactiveInterval(60*30); //세션 유지기간 : 30분
 			mv.setViewName("redirect:/video/list"); // 리다이렉트에서 main으로 주소 변경 - 02.19 김범수
 		}else {                                    //로그인 실패
-			mv.setViewName("user/signin");
+			mv.setViewName("redirect:/user/signin");
 			mv.addObject("message", "error");
 		}
 		return mv;

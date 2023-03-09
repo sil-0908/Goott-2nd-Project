@@ -16,7 +16,7 @@
     <nav id="navbar">
     	<!-- 로고영역 -->
         <div class="logo">
-            <img src="/resources/img/user/logo4.png" alt="">
+            <img src="/resources/img/user/logo4.png" onclick="location.href='/'" alt="">
         </div>
         <!-- 다국어 지원 기능 영역 -->
         <form name="lanForm">

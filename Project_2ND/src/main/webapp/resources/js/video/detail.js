@@ -281,7 +281,7 @@ function imgOnload() {
 						else {
 							cocomText += "<td class='cocom_title text'>"
 							cocomText += "	<div class='user_img_area'>"
-							cocomText += "		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU' class='img_tag2'>"
+							cocomText += "		<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU' class='default_img'>"
 							cocomText += "	</div>"
 						}
 						///////////////////////////////
