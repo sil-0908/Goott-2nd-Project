@@ -14,7 +14,7 @@
 <!-- =========== 로그인 회원가입 네비바 ===========  -->
    <!-- header start -->
     <nav id="navbar">
-    	<!-- 로고영역 -->
+       <!-- 로고영역 -->
         <div class="logo">
             <img src="/resources/img/user/logo4.png" onclick="location.href='/'" alt="">
         </div>

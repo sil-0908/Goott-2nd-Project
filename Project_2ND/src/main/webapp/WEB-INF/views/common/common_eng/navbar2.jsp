@@ -37,14 +37,6 @@
                 </li>
                 <li class="menu_text_li" id="menu2" onclick="ani_q()"> 
                     <p>Animation</p>    
-                    <!-- <ul class="drop_menu_ul">
-                        <li class="drop_menu_li">ROMANCE</li>
-                        <li class="drop_menu_li">SF/FANTASY</li>
-                        <li class="drop_menu_li">ACTION</li>
-                        <li class="drop_menu_li">COMEDY</li>
-                        <li class="drop_menu_li">HORROR</li>
-                        <li class="drop_menu_li">CRIME</li>
-                    </ul> -->
                 </li>
             </ul>
         </div>
@@ -56,23 +48,23 @@
             <i class="fas fa-search fa-lg icons" id="search_icon"></i>
         </div>
 <!-- search end -->
-		
-		<div>
-			<%@ include file="/WEB-INF/views/common/alarm.jsp" %>		
-		</div>
+      
+      <div>
+         <%@ include file="/WEB-INF/views/common/alarm.jsp" %>      
+      </div>
 
 <!-- my info start -->
         <div class="info">
             <ul class="info_ul">
                 <li class="info_li">
-					<c:choose>
-						<c:when test="${img != null && img != ''}">
-							<img src="${img}" id="img_onload" class="img_tag"> 
-						</c:when>
-						<c:when test="${img == null}">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="img_tag">
-						</c:when>
-					</c:choose>
+               <c:choose>
+                  <c:when test="${img != null && img != ''}">
+                     <img src="${img}" id="img_onload" class="img_tag"> 
+                  </c:when>
+                  <c:when test="${img == null}">
+                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="img_tag">
+                  </c:when>
+               </c:choose>
                     <ul class="drop_menu_ul">
                         <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">Mychannel</li>
                         <li class="drop_menu_li" onclick ="modal2()">Pay</li>

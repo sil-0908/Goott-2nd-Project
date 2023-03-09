@@ -2,11 +2,11 @@
 // nav바 작업으로 nav2 추가 - 02.28 김범수
 // 로고 클릭시 페이지 새로고침  추가 0227 장재호
   function back(){
-	  if($('#sessionID').val() != null){
-		  window.location.href="/video/list";
-	  }
-	  else window.location.reload();
-  }	
+     if($('#sessionID').val() != null){
+        window.location.href="/video/list";
+     }
+     else window.location.reload();
+  }   
     
 
 
@@ -28,25 +28,25 @@
 ////////////////////////02.28 김범수 네비바 작업 //////////////////// 
 // 02.28 네비바 작업
 function signout() {
-	$.ajax({
-		url : "/user/sign_out",
-		success : function() {
-			location.href = "/"
-		}
-	})
+   $.ajax({
+      url : "/user/sign_out",
+      success : function() {
+         location.href = "/"
+      }
+   })
 };
 
 //이미지 로딩 위한 메서드 - 02.24김범수
 $(function() {
-	$('.img_tag').ready(function() {
-		$.ajax({
-			url : '/user/navbarImg2',
-			dataType : 'text',
-			success : function(result2) {
-				if(result2 == "" || result2 == null){return}
-				let fileCallPath = encodeURI(result2); // 해당 파일의 이름
-				$('.img_tag').attr('src', "/mypage/display?fileName=" + fileCallPath);
-			}
-		});
-	})
+   $('.nav_img_tag').ready(function() {
+      $.ajax({
+         url : '/user/navbarImg2',
+         dataType : 'text',
+         success : function(result2) {
+            if(result2 == "" || result2 == null){return}
+            let fileCallPath = encodeURI(result2); // 해당 파일의 이름
+            $('.nav_img_tag').attr('src', "/mypage/display?fileName=" + fileCallPath);
+         }
+      });
+   })
 });

@@ -1,5 +1,3 @@
-/* 공통 css 적용 start */
-
 :root {
     --bg: #24292D;
     --btn_bg: #e1555a;
@@ -13,18 +11,18 @@
 }
    
 *{
-	margin: 0;
-	padding : 0;
+   margin: 0;
+   padding : 0;
 }
 
 .text {
-	color: var(--main-text-color);
+   color: var(--main-text-color);
 }
 
 button {
-	border: none;
-	border-radius: 10px;
-	width: 3.8rem;
+   border: none;
+   border-radius: 10px;
+   width: 3.8rem;
     height: 1.5rem;
     background-color: #393e42;
     color: var(--main-text-color);
@@ -32,43 +30,47 @@ button {
 }
 
 input {
-	border: none;
-	border-radius: 10px;
-	width: 3.8rem;
+   border: none;
+   border-radius: 10px;
+   width: 3.8rem;
     height: 1.5rem;
     background-color: #393e42;
     color: var(--main-text-color);
 }
 
 input[type=button] {
-	cursor: pointer;
+   cursor: pointer;
 }
 
 textarea {
-	border: none;
-	resize: none;
-	border-radius: 10px;
-	background-color: #393e42;
+   border: none;
+   resize: none;
+   border-radius: 10px;
+   background-color: #393e42;
     color: var(--main-text-color);
     width: 50rem;
     height: 5rem;
 }
 
 form {
-	border: none;
+   border: none;
 }
 /* 공통 css 적용 end */
    
 /* video area start */
 
 .video_area {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	margin-top: 2rem;
-	margin-bottom: 5rem;	
-	margin-left: -1rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   margin-bottom: 5rem;
+}
+
+.video_area .videoD{
+   width : 1600px;
+   height : 800px;
+   background-color : var(--bg);
 }
 
 /* video area start */
@@ -81,13 +83,14 @@ form {
     align-items: center;
     background-color: #393e42;
     width: 80%;
-    margin-left: 10.7rem;
+    margin-left: 11.5rem;
     height: 23rem;
     border-radius: 100px;
 }
 
 .movie_info {
     color: var(--main-text-color);
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 20rem; 
@@ -97,21 +100,21 @@ form {
 }
 
 .movie_summary {
-	line-height: 1.5rem;
-	word-break: keep-all;
+   line-height: 1.5rem;
+   word-break: keep-all;
 }
 
 .movie_info::-webkit-scrollbar {
-	width: 0.7rem;
+   width: 0.7rem;
 }
 
 .movie_info::-webkit-scrollbar-track {
-	background-color: #393e42;
+   background-color: #393e42;
 }
 
 .movie_info::-webkit-scrollbar-thumb {
-	background-color: var(--main-text-color);
-	border-radius: 10px;
+   background-color: var(--main-text-color);
+   border-radius: 10px;
 }
 
 .actor_info {
@@ -125,16 +128,16 @@ form {
 }
 
 .actor_info::-webkit-scrollbar {
-	width: 0.7rem;
+   width: 0.7rem;
 }
 
 .actor_info::-webkit-scrollbar-track {
-	background-color: #393e42;
+   background-color: #393e42;
 }
 
 .actor_info::-webkit-scrollbar-thumb {
-	background-color: var(--main-text-color);
-	border-radius: 10px;
+   background-color: var(--main-text-color);
+   border-radius: 10px;
 }
 
 /* movie info end */
@@ -194,7 +197,7 @@ form {
 /* comment list area start */
 
 .comt_list_hr {
-	margin-bottom: 1rem;
+   margin-bottom: 1rem;
 }
 
 .comment_list_area {
@@ -204,16 +207,16 @@ form {
 }
 
 .comment_list_area::-webkit-scrollbar {
-	width: 0.7rem;
+   width: 0.7rem;
 }
 
 .comment_list_area::-webkit-scrollbar-track {
-	background-color: var(--bg);
+   background-color: var(--bg);
 }
 
 .comment_list_area::-webkit-scrollbar-thumb {
-	background-color: var(--main-text-color);
-	border-radius: 10px;
+   background-color: var(--main-text-color);
+   border-radius: 10px;
 }
 
 .comment_list {
@@ -233,25 +236,25 @@ form {
 }
 
 #bad {
-	margin-left: 0.5rem;
+   margin-left: 0.5rem;
 }
 
 #co_comment_list {
-	margin-left: 0.5rem;
+   margin-left: 0.5rem;
 }
 
 .cocom_list_btn {
-	margin-left: 0.5rem;
+   margin-left: 0.5rem;
 }
 
 .comment_update {
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
+   margin-left: 0.5rem;
+   margin-right: 0.5rem;
 }
 
 .cocomt_update {
-	margin-left: 0.5rem;
-	margin-right: 0.5rem;
+   margin-left: 0.5rem;
+   margin-right: 0.5rem;
 }
 
 .comment_btn > i {
@@ -263,49 +266,47 @@ form {
 }
 
 #com_list_hr {
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+   margin-top: 1rem;
+   margin-bottom: 1rem;
 }
 
 /* 댓글 이미지 작업 - 0306 김범수*/
 /*댓글 위치 조정*/
 .com_title{
-	display: flex;
-	align-items: center;
+   display: flex;
 }
 
 /*대댓글 위치 조정*/
 .cocom_title{
-	display: flex;
-	align-items: center;
+   display: flex;
 }
 
 /*원댓글 아이콘*/
 .com_img{
-	width: 3rem;
-	height: 3rem;
-	margin-right : 10px;
-	border-radius: 100%;
+   width: 3rem;
+   height: 3rem;
+   margin-right : 10px;
+   border-radius: 100%;
 }
 
 /*프로필 없을 경우 아이콘*/
 .default_img{
-	width: 3rem;
-	height: 3rem;
-	margin-right : 10px;
-	border-radius: 100%;
+   width: 3rem;
+   height: 3rem;
+   margin-right : 10px;
+   border-radius: 100%;
 }
 
 /*대댓글 아이콘*/
 .cocom_img{
-	width: 3rem;
-	height: 3rem;
-	margin-right : 10px;
-	border-radius: 100%;
+   width: 3rem;
+   height: 3rem;
+   margin-right : 10px;
+   border-radius: 100%;
 }
 
 .com_name{
-	margin-top: 10px;
+   margin-top: 10px;
 }
 
 /* comment list area end */
@@ -313,8 +314,8 @@ form {
 /* co-comment list area start */
 
 .co_comment_list {
-	margin-top: 0.5rem;
-	margin-left: 1rem;
+   margin-top: 0.5rem;
+   margin-left: 1rem;
 }
 
 .cocom_contents {
@@ -324,7 +325,7 @@ form {
 }
 
 #cocom_cd_btn {
-	margin-left: -0.5rem;
+   margin-left: -0.5rem;
 }
 
 .cocom_hr {
@@ -333,27 +334,3 @@ form {
 }
 
 /* co-comment list area end */
-
-/* etc textarea css area start */
-
-.comt_edit_title {
-	font-size: var(--small-text-size);
-}
-
-.cocom_write_title {
-	font-size: var(--small-text-size);
-}
-
-.com_edit_text {
-	font-size: 15px;
-	padding-left: 0.5rem;
-    padding-top: 0.5rem;
-}
-
-.cocom_text {
-	font-size: 15px;
-	padding-left: 0.5rem;
-    padding-top: 0.5rem;
-}
-
-/* etc textarea css area end */

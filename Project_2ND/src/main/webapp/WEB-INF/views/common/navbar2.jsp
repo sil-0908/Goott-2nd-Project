@@ -57,23 +57,23 @@
             <i class="fas fa-search fa-lg icons" id="search_icon"></i>
         </div>
 <!-- search end -->
-		
-		<div>
-			<%@ include file="/WEB-INF/views/common/alarm.jsp" %>		
-		</div>
+      
+      <div>
+         <%@ include file="/WEB-INF/views/common/alarm.jsp" %>      
+      </div>
 
 <!-- my info start -->
         <div class="info">
             <ul class="info_ul">
                 <li class="info_li">
-					<c:choose>
-						<c:when test="${img != null && img != ''}">
-							<img src="${img}" id="img_onload" class="img_tag"> 
-						</c:when>
-						<c:when test="${img == null}">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="img_tag">
-						</c:when>
-					</c:choose>
+               <c:choose>
+                  <c:when test="${img != null && img != ''}">
+                     <img src="${img}" id="img_onload" class="img_tag"> 
+                  </c:when>
+                  <c:when test="${img == null}">
+                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="img_tag">
+                  </c:when>
+               </c:choose>
                     <ul class="drop_menu_ul">
                         <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">내채널</li>
                         <li class="drop_menu_li" onclick ="modal2()">결제</li>

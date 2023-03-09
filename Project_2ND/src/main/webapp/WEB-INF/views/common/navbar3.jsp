@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 <body>
-<%@ include file="/WEB-INF/views/common/pay_modal.jsp" %>		
+<%@ include file="/WEB-INF/views/common/pay_modal.jsp" %>      
 
 <!-- =========== qna =========== 네비바 -->
 <!-- 세션에 아이디 값을 가지고 있을 경우 (로그인이 되어있을 경우)와 없을 때 넘어가는 경우가 다르게 설정  0227 장재호 -->
@@ -24,22 +24,22 @@
             <img src="/resources/img/user/logo4.png" id="logo" onclick="back()" alt="">
         </div>  
            
-   		<div id="alarmSection">
-			<%@ include file="/WEB-INF/views/common/alarm.jsp" %>		
-		</div>
+         <div id="alarmSection">
+         <%@ include file="/WEB-INF/views/common/alarm.jsp" %>      
+      </div>
 
 <!-- my info start -->
         <div class="info">
             <ul class="info_ul">
                 <li class="info_li">
-					<c:choose>
-						<c:when test="${img != null && img != ''}">
-							<img src="${img}" id="img_onload" class="nav_img_tag"> 
-						</c:when>
-						<c:when test="${img == null}">
-							<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="nav_img_tag">
-						</c:when>
-					</c:choose>
+               <c:choose>
+                  <c:when test="${img != null && img != ''}">
+                     <img src="${img}" id="img_onload" class="nav_img_tag"> 
+                  </c:when>
+                  <c:when test="${img == null}">
+                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxmp7sE1ggI4_L7NGZWcQT9EyKaqKLeQ5RBg&usqp=CAU" class="nav_img_tag">
+                  </c:when>
+               </c:choose>
                     <ul class="drop_menu_ul">
                         <li class="drop_menu_li" onclick ="location.href='/mypage/info_mydetail'">내채널</li>
                         <li class="drop_menu_li" onclick ="modal2()">결제</li>
