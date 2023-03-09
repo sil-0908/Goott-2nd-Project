@@ -38,14 +38,14 @@ function signout() {
 
 //이미지 로딩 위한 메서드 - 02.24김범수
 $(function() {
-	$('.img_tag').ready(function() {
+	$('.nav_img_tag').ready(function() {
 		$.ajax({
 			url : '/user/navbarImg2',
 			dataType : 'text',
 			success : function(result2) {
 				if(result2 == "" || result2 == null){return}
 				let fileCallPath = encodeURI(result2); // 해당 파일의 이름
-				$('.img_tag').attr('src', "/mypage/display?fileName=" + fileCallPath);
+				$('.nav_img_tag').attr('src', "/mypage/display?fileName=" + fileCallPath);
 			}
 		});
 	})

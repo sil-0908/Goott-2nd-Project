@@ -69,6 +69,12 @@ form {
 	margin-bottom: 5rem;
 }
 
+.video_area .videoD{
+	width : 1600px;
+	height : 800px;
+	background-color : var(--bg);
+}
+
 /* video area start */
 
 /* movie info start */

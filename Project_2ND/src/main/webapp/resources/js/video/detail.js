@@ -3,23 +3,24 @@
 const comu_btn = document.querySelectorAll('.comu_btn');
 const videoBox = document.querySelector('video');
 const paidYN = document.querySelector('#paidYN').value;
-videoBox.addEventListener("timeupdate", function(){
-	console.log(videoBox.currentTime)
+window.onload = function(){
+	setTimeout(() => pause(), 10000);
+}
+function pause(){
 	if(paidYN == 'N'){
-		if(videoBox.currentTime > "10"){
-			videoBox.pause();
-			if(confirm("결제 후 풀영상 시청이 가능합니다. 결제하시겠습니까?")){
-				modal2();
-				return;
-			}
-			else{
-				videoBox.children[0].src = "";
-				return;
-			}
+		videoBox.pause();
+		videoBox.style.display="none";		
+		let newDiv = "<div class='videoD'></div>";
+		$('.video_area').append(newDiv);
+		if(confirm("결제 후 풀영상 시청이 가능합니다. 결제하시겠습니까?")){
+			modal2();
+			return;
+		}
+		else{
+			return;
 		}
 	}
-	
-});
+}
 
 
 for(var i = 1; i<comu_btn.length; i++) {

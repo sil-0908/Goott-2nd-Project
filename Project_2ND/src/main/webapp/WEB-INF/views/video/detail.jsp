@@ -19,7 +19,7 @@
 	
         <!-- video area start -->
 		<div class="video_area">
-			<video controls autoplay loop class="video">
+			<video controls autoplay loop class="video" height="800" width="1600">
 				<source src="${dto.video_url}" type="video/mp4">
 			</video>
 		</div>

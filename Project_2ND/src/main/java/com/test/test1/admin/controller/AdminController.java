@@ -48,17 +48,21 @@ public class AdminController {
 	@RequestMapping("/admin")
 	@ResponseBody
 	public ModelAndView adminMain(ModelAndView mv, HttpServletRequest request, HttpSession session) {
-		//URL접근 차단 - 02.18 장재호		
+		//URL접근 차단 - 02.18 장재호
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+		System.out.println(session.getAttribute("user_id"));
+		System.out.println(access(request));
+		System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+		if(session.getAttribute("user_id") == null || !session.getAttribute("user_id").equals("admin")) {
+			mv.addObject("error", "잘못된 접근입니다");
+			mv.setViewName("redirect:/");
+			return mv;
+		}
 		if(access(request) == null) {
 			mv.addObject("error", "잘못된 접근입니다");
 			mv.setViewName("redirect:/");
 			return mv;
-		}
-		if(session.getAttribute("user_id") == null || session.getAttribute("user_id") != "admin") {
-			mv.addObject("error", "잘못된 접근입니다");
-			mv.setViewName("redirect:/");
-			return mv;
-		}
+		}		
 
 		//1. 카테고리 순위
 		mv.addObject("category", algorithmService.categoryRate());
