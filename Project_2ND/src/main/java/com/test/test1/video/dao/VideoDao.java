@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.test.test1.board.qna.dto.Criteria;
 import com.test.test1.user.dto.UserDto;
 import com.test.test1.video.dto.VideoDto;
+import com.test.test1.video.dto.VideoEngDto;
 
 @Repository
 public class VideoDao {
@@ -30,11 +31,17 @@ public class VideoDao {
 	public VideoDto detail(int video_id) {
 		return sqlSessionTemplate.selectOne("video.detail", video_id);
 	}
+	public VideoEngDto detail_eng(int video_id) {
+		return sqlSessionTemplate.selectOne("video.detail_eng", video_id);
+	}
 
 //	video_detail_actorName 02.10 장민실 
 	public List<VideoDto> actor(int video_id) {
 		return sqlSessionTemplate.selectList("video.actor", video_id);
 	}
+	public List<VideoEngDto> actor_eng(int video_id) {
+		return sqlSessionTemplate.selectList("video.actor_eng", video_id);
+	}	
 
 	// 내보관함 구현 02.16 김범수
 	public int getid(String title) {
@@ -48,7 +55,7 @@ public class VideoDao {
 
 	public List<UserDto> adminList(Criteria cri) {
 		return sqlSessionTemplate.selectList("video.adminList", cri);
-	}		
+	}
 	
 	/*************************************************************************************/
 	
