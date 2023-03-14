@@ -284,7 +284,7 @@ form {
 	align-items: center;
 }
 
-/*대댓글 위치 조정*/
+/*답글 위치 조정*/
 .cocom_title{
 	display: flex;
 	align-items: center;
@@ -306,7 +306,7 @@ form {
 	border-radius: 100%;
 }
 
-/*대댓글 아이콘*/
+/*답글 아이콘*/
 .cocom_img{
 	width: 3rem;
 	height: 3rem;

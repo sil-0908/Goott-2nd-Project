@@ -23,19 +23,19 @@ button {
    border: none;
    border-radius: 10px;
    width: 3.8rem;
-    height: 1.5rem;
-    background-color: #393e42;
-    color: var(--main-text-color);
-    cursor: pointer;
+   height: 1.5rem;
+   background-color: #393e42;
+   color: var(--main-text-color);
+   cursor: pointer;
 }
 
 input {
    border: none;
    border-radius: 10px;
    width: 3.8rem;
-    height: 1.5rem;
-    background-color: #393e42;
-    color: var(--main-text-color);
+   height: 1.5rem;
+   background-color: #393e42;
+   color: var(--main-text-color);
 }
 
 input[type=button] {
@@ -47,9 +47,9 @@ textarea {
    resize: none;
    border-radius: 10px;
    background-color: #393e42;
-    color: var(--main-text-color);
-    width: 50rem;
-    height: 5rem;
+   color: var(--main-text-color);
+   width: 50rem;
+   height: 5rem;
 }
 
 form {
@@ -276,7 +276,7 @@ form {
    display: flex;
 }
 
-/*대댓글 위치 조정*/
+/*답글 위치 조정*/
 .cocom_title{
    display: flex;
 }
@@ -297,7 +297,7 @@ form {
    border-radius: 100%;
 }
 
-/*대댓글 아이콘*/
+/*답글 아이콘*/
 .cocom_img{
    width: 3rem;
    height: 3rem;

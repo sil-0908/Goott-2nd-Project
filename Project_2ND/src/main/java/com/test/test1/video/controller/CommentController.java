@@ -68,14 +68,14 @@ public class CommentController {
 		return mv;
 	}
 	
-//	대댓글 작성하기 - 02.28 장민실
+//	답글 작성하기 - 02.28 장민실
 	@RequestMapping(value="cocomwrite", method=RequestMethod.POST)
 	public ModelAndView cocomInsert(int pid, CommentDto dto, HttpSession session, ModelAndView mv) {
 		String user_id = session.getAttribute("user_id").toString();
 		String nickname = session.getAttribute("nickname").toString();
 		int id = userService.getid(user_id);
 
-		int depth = 1;          // depth=0 원댓글, depth=1 대댓글
+		int depth = 1;          // depth=0 원댓글, depth=1 답글
 		dto.setDepth(depth);
 		dto.setPid(pid);
 		
@@ -91,25 +91,25 @@ public class CommentController {
 		return null;
 	}	
 	
-//	대댓글 목록 불러오기 02.23 장민실
+//	답글 목록 불러오기 02.23 장민실
 	@RequestMapping("cocomList/{pid}")
 	@ResponseBody
 	public ResponseEntity<List<CommentDto>> cocomList(@PathVariable("pid") int pid, int video_id, CommentDto dto) throws ParseException {
 		List<CommentDto> cocom_list = commentService.cocomList(dto);
 		
-//		대댓글 목록 불러올때 js에서 fmt태그 적용불가로 date출력형식 바꿔주기 start 03.06 장민실
+//		답글 목록 불러올때 js에서 fmt태그 적용불가로 date출력형식 바꿔주기 start 03.06 장민실
 		for(CommentDto data: cocom_list) {
 			Date list_date = data.getCreate_date();
 			SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd a HH:mm:ss");
 			String date_format = SDF.format(list_date);
 			data.setCocom_date(date_format);
 		}
-//		대댓글 목록 불러올때 js에서 fmt태그 적용불가로 date출력형식 바꿔주기 end 03.06 장민실
+//		답글 목록 불러올때 js에서 fmt태그 적용불가로 date출력형식 바꿔주기 end 03.06 장민실
 		
 		return new ResponseEntity<List<CommentDto>>(cocom_list, HttpStatus.OK);
 	}
 	
-//	댓글 수정 02.27 장민실
+//	댓글,답글 수정 02.27 장민실
 	@RequestMapping("edit/{comment_id}")
 	@ResponseBody
 	public String edit(int comment_id, String commentary, CommentDto dto) {
@@ -120,7 +120,7 @@ public class CommentController {
 		return null;
 	}
 	
-//	댓글,대댓글 삭제 02.23 장민실
+//	댓글,답글 삭제 02.23 장민실
 	@RequestMapping("delete")
 	@ResponseBody
 	public String delete(int comment_id) {

@@ -24,7 +24,7 @@ public class CommentDao {
 		return sqlSession.selectOne("comment.get_pid", c_dto);
 	}
 	
-//	대댓글 작성 02.28 장민실
+//	답글 작성 02.28 장민실
 	public void cocomInsert(CommentDto dto) {
 		sqlSession.insert("comment.cocomInsert", dto);
 	}
@@ -34,17 +34,17 @@ public class CommentDao {
 		return sqlSession.selectList("comment.replyList", video_id);
 	}
 	
-//	대댓글 목록 불러오기 02.23 장민실
+//	답글 목록 불러오기 02.23 장민실
 	public List<CommentDto> cocomList(CommentDto dto) {
 		return sqlSession.selectList("comment.cocomList", dto);
 	}
 	
-//	댓글 수정 02.27 장민실
+//	댓글,답글 수정 02.27 장민실
 	public void edit(CommentDto dto) {
 		sqlSession.update("comment.edit", dto);
 	}
 
-//	댓글,대댓글 삭제 02.23 장민실
+//	댓글,답글 삭제 02.23 장민실
 	public void delete(int comment_id) {
 		sqlSession.delete("comment.delete", comment_id);
 	}

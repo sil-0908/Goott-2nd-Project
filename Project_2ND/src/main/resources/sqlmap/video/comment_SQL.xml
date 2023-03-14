@@ -18,7 +18,7 @@
 		 order by PID desc limit 1
 	</select>
 	
-	<!-- 대댓글 작성 02.28 장민실 -->
+	<!-- 답글 작성 02.28 장민실 -->
 	<insert id="cocomInsert">
 		<![CDATA[
 		insert into VIDEO_COMMENT (VIDEO_ID, USER_ID, PID, COMMENTARY, DEPTH) 
@@ -39,7 +39,7 @@
 		]]>  	
 	</select>
 	
-	<!-- 대댓글 목록 불러오기 02.23 장민실 -->
+	<!-- 답글 목록 불러오기 02.23 장민실 -->
 	<!-- img 추가 - 03.06 김범수 -->
 	<select id="cocomList" resultType="com.test.test1.video.dto.CommentDto">
 		<![CDATA[
@@ -52,14 +52,14 @@
 		]]>  
 	</select>
 	
-	<!-- 댓글수정 02.27 장민실 -->
+	<!-- 댓글,답글 수정 02.27 장민실 -->
 	<update id="edit">
 		update VIDEO_COMMENT
 		   set COMMENTARY=#{commentary}
 		 where COMMENT_ID=#{comment_id}
 	</update>
 	
-	<!-- 댓글,대댓글 삭제 02.23 장민실 -->
+	<!-- 댓글,답글 삭제 02.23 장민실 -->
 	<delete id="delete">
 		delete from VIDEO_COMMENT
 		 where COMMENT_ID=#{comment_id}

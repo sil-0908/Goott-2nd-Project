@@ -139,11 +139,11 @@
                               <input type="button" class="comment_delete" value="삭제">
                            </c:if>
                         </div>
-                        <%-- 대댓글 작성 자리 --%>
+                        <%-- 답글 작성 자리 --%>
                         <div class="cocomt_insert"></div>
                         <%-- 댓글 수정 자리 --%>
                         <div class="comt_edit"></div>
-                        <%-- 대댓글 목록 자리 --%>
+                        <%-- 답글 목록 자리 --%>
                         <div class="co_comment_list"></div>
                         <hr id="com_list_hr">
                      </td>

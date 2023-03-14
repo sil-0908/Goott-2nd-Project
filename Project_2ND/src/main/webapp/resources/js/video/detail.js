@@ -77,7 +77,7 @@ $(function() {
    })
 });
 
-//대댓글 이미지 로딩 - 03.06김범수
+//답글 이미지 로딩 - 03.06김범수
 function imgOnload() {
    $('.cocom_img').ready(function() {
       let fileInput = document.querySelectorAll('.cocom_img');
@@ -103,7 +103,7 @@ function imgOnload() {
    });
 }
 
-///////////////////////////////// 댓글, 대댓글 공통  ///////////////////////////////////////
+///////////////////////////////// 댓글, 답글 공통  ///////////////////////////////////////
 
    // 부모요소와 자식요소 찾아가기 start
    function findid(element, parentSelector, childSelector) {
@@ -118,15 +118,15 @@ function imgOnload() {
    }
    // 부모요소와 자식요소 찾아가기 end
 
-   // 댓글, 대댓글 수정 중 수정취소 버튼클릭시 영역 없애기 start
+   // 댓글, 답글 수정 중 수정취소 버튼클릭시 영역 없애기 start
    function comt_edit_cancle(e) {
       e.setAttribute('class', 'on');
       let text_div = e.parentNode;
       $(text_div).empty();
    }
-   // 댓글, 대댓글 수정 중 수정취소 버튼클릭시 영역 없애기 end
+   // 댓글, 답글 수정 중 수정취소 버튼클릭시 영역 없애기 end
    
-   // 댓글, 대댓글 삭제 start
+   // 댓글, 답글 삭제 start
    $(document).on('click', '.comment_delete', function(e){
       e.preventDefault();
       let comment_id = findid(e.target, '.comment_btn', '.c_id_input');
@@ -141,9 +141,9 @@ function imgOnload() {
          }
       });      
    });
-   // 댓글, 대댓글 삭제 end   
+   // 댓글, 답글 삭제 end   
    
-///////////////////////////////// 댓글, 대댓글 공통  ///////////////////////////////////////
+///////////////////////////////// 댓글, 답글 공통  ///////////////////////////////////////
    
 ///////////////////////////////// 원댓글  ///////////////////////////////////////
    
@@ -190,9 +190,9 @@ function imgOnload() {
    
 ///////////////////////////////// 원댓글  ///////////////////////////////////////
       
-///////////////////////////////// 대댓글  ///////////////////////////////////////
+///////////////////////////////// 답글  ///////////////////////////////////////
       
-   // 대댓글 작성하기 start
+   // 답글 작성하기 start
    $(".cocom_write_btn").on('click', function(e){
       let cocom_insert_div = this.parentNode.nextElementSibling;
       let cocomForm = "";
@@ -222,10 +222,10 @@ function imgOnload() {
       });            
          
    }      
-   // 대댓글 작성하기 end
+   // 답글 작성하기 end
    
-//  대댓글 수정 영역 start
-   // 대댓글 수정버튼 눌렀을때 수정 폼 가져오기
+//  답글 수정 영역 start
+   // 답글 수정버튼 눌렀을때 수정 폼 가져오기
    $(document).on('click', '.cocomt_update', function(e){
       e.preventDefault();
       let cocom_edit_div = this.parentNode.nextElementSibling;
@@ -240,7 +240,7 @@ function imgOnload() {
       $(cocom_edit_div).html(comtEditText);
    });
    
-   // 대댓글 수정완료 버튼클릭
+   // 답글 수정완료 버튼클릭
    function cocom_edit_complete(e) {
       e.setAttribute('class', 'on');
       let comment_id = findid(e, '.cocom_td', '.c_id_input');
@@ -256,9 +256,9 @@ function imgOnload() {
          }
       });      
    };
-//  대댓글 수정 영역 end
+//  답글 수정 영역 end
       
-   // DB의 대댓글 불러와서 영역에 넣어주기 start
+   // DB의 답글 불러와서 영역에 넣어주기 start
    let cocom_list_tf = false;
       
    $(".cocom_list_btn").on('click', function(e){
@@ -287,11 +287,11 @@ function imgOnload() {
             
             if(list.length===0) {
                alert("등록된 답글이 없습니다.");
-            }   // 대댓글 없을때 if end
+            }   // 답글 없을때 if end
                
             else {
                $(list).each(function(){
-                  // 대댓글 이미지 작업 - 03.06 김범수
+                  // 답글 이미지 작업 - 03.06 김범수
                   cocomText += "<tr>";
                   if(this.img != null && this.img != '') {
                      cocomText += "<td class='cocom_title text'>"
@@ -321,17 +321,17 @@ function imgOnload() {
                         cocomText += "<div class='cocom_edit'></div>";
                        cocomText += "<hr class='cocom_hr'>";
                         cocomText += "</td>";
-                     }   // 로그인유저와 대댓글 작성자가 같을때 if end
+                     }   // 로그인유저와 답글 작성자가 같을때 if end
                });
                $(cocomListDiv).html(cocomText);
-               imgOnload(); // 대댓글 이미지 작업 - 03.06 김범수
-               }   // 대댓글 있을때 else end
+               imgOnload(); // 답글 이미지 작업 - 03.06 김범수
+               }   // 답글 있을때 else end
             }
          });
       }
-      // DB의 대댓글 불러와서 영역에 넣어주기 end
+      // DB의 답글 불러와서 영역에 넣어주기 end
       
-///////////////////////////////// 대댓글  ///////////////////////////////////////
+///////////////////////////////// 답글  ///////////////////////////////////////
    
 ///////////////////////////////// 영상 좋아요, 싫어요  ///////////////////////////////////////
 
