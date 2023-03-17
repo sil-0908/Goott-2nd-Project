@@ -21,12 +21,6 @@
 		 where EMAIL=#{email}
 	</select>
 	
-	<select id="signUpCheck" resultType="String">
-		select NICKNAME
-		  from USER
-		 where NICKNAME=#{nickname}
-	</select>
-	
 	<select id="login" resultType="String">
 		select NICKNAME
 		  from USER

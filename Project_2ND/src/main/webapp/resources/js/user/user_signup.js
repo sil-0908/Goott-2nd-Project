@@ -1,8 +1,6 @@
 // code : 인증번호를 담을 변수  / email : 이메일을 담을 변수
    var code = "";
    var email = "";
-   
-
 
    //혹시 모를 청개구리의 enter키 입력 방지      _ 장재호
    document.addEventListener('keydown', function(e){
@@ -15,6 +13,15 @@
    // 아이디  i, 비밀번호 p, 닉네임 n, 휴대폰  c, 동의  d
    var i=0, p=0, n=0, c=0, d=0;
 
+   
+   window.onload = function(){
+	   if($('#nicknamecheck').val() != null){
+		   n=1
+	   }
+	   if($('#phone_numcheck').val() != null){
+		   c=1
+	   }
+   }
 
 
    // 전화번호 표현식 맞지 않을 경우 제어_ 정규표현식   23/02/01 김지혜 
@@ -309,35 +316,35 @@ $(function(){
          if($('#sessionL').val() == 'eng'){
              if(inputCode === null || inputCode === ""){
                  alert("enter Authentication number");
-                 $('#submit').attr('disabled', true);
+                 $('#submit').attr('readonly', true);
                  return;
               }
               // 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
               else if(inputCode == code){
                  alert("correct");
-                 $('#submit').attr('disabled', false);
+                 $('#submit').attr('readonly', false);
                  
               }else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
                  alert("please check Authentication number");
-                 $('#submit').attr('disabled', true);
+                 $('#submit').attr('readonly', true);
                  return;
               }
          }
          else{
              if(inputCode === null || inputCode === ""){
                  alert("인증번호를 입력해주세요.");
-                 $('#submit').attr('disabled', true);
+                 $('#submit').attr('readonly', true);
                  return;
               }
               // 사용자가 입력한 인증번호와 발급한 인증번호가 맞을 경우
               else if(inputCode == code){
                  alert("인증번호가 일치합니다.");
-                 $('#submit').attr('disabled', false);
-                 $("#email").attr('disabled', true); //중복확인 끝나면 이메일 변경 불가 - 03.09 장재호
+                 $('#submit').attr('readonly', false);
+                 $("#email").attr('readonly', true); //중복확인 끝나면 이메일 변경 불가 - 03.09 장재호
                  
               }else{// 사용자가 입력한 인증번호와 발급한 인증번호가 일치하지 않을 경우
                  alert("인증번호를 다시 확인 해주세요.");
-                 $('#submit').attr('disabled', true);
+                 $('#submit').attr('readonly', true);
                  return;
               }
          }
@@ -352,11 +359,12 @@ $(function(){
 
    // 최종 가입하기 버튼시 실행.  최종 수정 23/02/14 김지혜 
    $(function signup(){
-      $('#submit').click(function(){
+      $('#submit').click(function(e){    	  
              // 비밀번호확인 과 비밀번호 일치시   비밀번호유효성검사하는 PWtest()함수 호출. (23/02/09 김지혜)
          if(($("#password").val()) == ($("#password1").val())){
-            PWtest();    
+            PWtest();
          }else {
+        	 e.preventDefault();
         	 if($('#sessionL').val() == 'eng'){ //영문ver 추가 - 03.06 장재호
                  $("#pwMsg").html("uncorrect PW");
                  $("#password").focus();
@@ -370,16 +378,15 @@ $(function(){
             return;
          };
          // 아이디  (i) 비밀번호 (p) 닉네임 (n) 전화번호 (c) 동의 (d) 모두 조건을 만족할 경우(값이 1이 됨), 최종회원가입 성공. 
-         if(i==1 && p==1 && n==1 && c==1 && d==1){
+         if(i==1 && p==1 && n==1 && c==1 && d==1 && ($('#email').attr('readonly'))){
         	 if($('#sessionL').val() == 'eng'){ //영문ver 추가 - 03.06 장재호
         		 alert("done");
         	 }
         	 else{
         		 alert("가입이 완료되었습니다.");
         	 }
-            $('#submit').attr('type', 'submit'); // type속성 submit로 변환하여 넘어갈 수 있도록 함. 
-            document.form1.action="/user/signup"; // 페이지 이동  - 02.23 김범수 회원가입 안되서 수정 _ 02/27김지혜 로그인창으로 넘어가도록 주소 재수정 > 건들지마
          }else{
+        	 e.preventDefault();
         	 if($('#sessionL').val() == 'eng'){ //영문ver 추가 - 03.06 장재호
         		 alert("fail. please check");
         	 }

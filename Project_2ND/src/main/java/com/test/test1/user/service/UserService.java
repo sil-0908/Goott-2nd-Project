@@ -15,7 +15,7 @@ public interface UserService {
 	// 개인정보수정 23/02/20 김지혜 
 	void infoModify(UserDto dto);
 	
-	boolean create(UserDto userDto);
+	void create(UserDto userDto);
 	
 	List<UserDto> list(Criteria cri) throws Exception;
 

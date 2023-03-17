@@ -31,8 +31,8 @@ public class UserServiceImpl implements UserService{
 	}
 	
 	@Override
-	public boolean create(UserDto userDto) {
-		return userDao.create(userDto);
+	public void create(UserDto userDto) {
+		userDao.create(userDto);
 	}
 	
 	@Override
@@ -117,6 +117,7 @@ public class UserServiceImpl implements UserService{
 	public String navbarImg(String id) {
 		return userDao.navbarImg(id);
 	}
+
 
 
 }

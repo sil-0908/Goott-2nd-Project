@@ -21,13 +21,11 @@
 	        <div id="viewDiv_j">
 				<span id="signUpText_j">LOGO 회원가입</span>
 		            <!-- form start  -->
-					<form name="form1" action="signup" method="post">
+					<form name="form1" id="form1" method="post" action="/user/signup">
 		                <div id="viewInput_j">
-		                
-		                
 							<div class="wrapInput">
 				            	<div>   
-				                	<input type="text" name="id" id="id" placeholder="ID" autocomplete="on">
+				                	<input value="<c:if test="${userDto.id != null}">${userDto.id}</c:if>" type="text" name="id" id="id" placeholder="ID" autocomplete="on">
 				                </div>
 								<div>
 					            	<button type="button" id="btn"> 아이디 중복체크</button>
@@ -36,7 +34,7 @@
 							</div>      
 		                
 		                	<div class="wrapInput">	
-	                    		<input type="email" name="email" id="email" placeholder="이메일" autocomplete="on">
+	                    		<input value="<c:if test="${userDto.email != null}">${userDto.email}</c:if>" type="email" name="email" id="email" placeholder="이메일" autocomplete="on">
 								<button type="button" id="email_btn">이메일 중복체크</button>						
 								<span id="emailcheck"></span>
 							</div>	
@@ -65,16 +63,13 @@
 		                    </div>  
 		                    
 		                    <div class="wrapInput">
-								<input type="text" name="nickname" id="nicknamecheck" class="formInputs" placeholder= "닉네임(빈칸,특수문자 제외)">
+								<input value="<c:if test="${userDto.nickname != null}">${userDto.nickname}</c:if>" type="text" name="nickname" id="nicknamecheck" class="formInputs" placeholder= "닉네임(빈칸,특수문자 제외)">
 							
 									<span id="nncheck"></span>
-									<c:if test="${message=='fault'}">
-										<span id="nncheck2">중복된 닉네임입니다.</span>
-									</c:if>
 
 		                    </div>
 		                    <div class="wrapInput">
-		                        <input type="text" name="phone_num" id="phone_numcheck" class="formInputs" placeholder="휴대폰번호"  oninput="autoHyphen(this)" maxlength="13" autocomplete="no">
+		                        <input value="<c:if test="${userDto.phone_num != null}">${userDto.phone_num}</c:if>" type="text" name="phone_num" id="phone_numcheck" class="formInputs" placeholder="휴대폰번호"  oninput="autoHyphen(this)" maxlength="13" autocomplete="no">
 		                    </div>
 		             </div>
 					
@@ -89,10 +84,8 @@
 										<input type='checkbox'class="checkB" id="check3"  name="check" value=""> [필수] 개인정보 수집 및 서비스 활용 동의
 		            </div> 
 					<!--  id="checkbox" end  -->
-	            <input id="submit" type="button" value="가입하기" >
-	            <c:if test="${message=='fault'}">
-				</c:if>
-				</form> <!-- form end  -->	
+	            <input id="submit" type="submit" value="가입하기" >
+				</form> <!-- form end  -->
 		</div>  
 	</div> <!--<div id="mainDiv_j"> end --> 
 </div> <!-- <div id="container_j"> end -->
