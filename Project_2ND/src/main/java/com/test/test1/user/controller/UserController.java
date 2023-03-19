@@ -54,7 +54,7 @@ public class UserController {
 		if(language != null) {
 			ss.setAttribute("language", language);
 		}
-		if(ss.getAttribute("language").equals("eng")) {
+		if(ss.getAttribute("language") != null && ss.getAttribute("language").equals("eng")) {
 			return "user/user_eng/signin";
 		}
 		else {
@@ -142,22 +142,21 @@ public class UserController {
 	//회원가입 기능 - 01.31 장재호
 	// 시작페이지 연결을 위한 주소 수정 - 02.19 김범수
 	@RequestMapping(value = "signup", method = RequestMethod.POST)
-	public ModelAndView createPost(UserDto userDto) {
-	    //암호화하여 DB에 암호 저장
-
-		userDto.setPassword(encoder.encode(userDto.getPassword()));
-	    boolean tf = userService.create(userDto); //tf : 닉네임 중복여부 boolean
-	    ModelAndView mav = new ModelAndView();
-
-	    if (!tf) { //가입 실패
+	public ModelAndView createPost(UserDto userDto, ModelAndView mav) {
+		if(userDto.getId() == null || userDto.getEmail() == null || userDto.getNickname() == null || userDto.getPhone_num() == null) {
 	        mav.addObject("message", "fault");
+	        mav.addObject("signUpFail", userDto);
 	        mav.setViewName("user/signup");
-	    }else {   //가입 성공
+		}
+		else {
+			userDto.setPassword(encoder.encode(userDto.getPassword()));
+			userService.create(userDto);
 	        mav.addObject("message", "success");
-	        mav.setViewName("common/start");  // 회원가입 완료 후 시작페이지로 이동 시켜서 로그인 시킴 -02.19 김범수  
-	    }
-	    return mav;
-	}	
+	        mav.setViewName("common/start");
+		}
+		
+		return mav;
+	}
 
 	// 아이디/비밀번호 찾기 페이지 연결 - 02.08 김범수
 	// 영문페이지 - 03.06 장재호

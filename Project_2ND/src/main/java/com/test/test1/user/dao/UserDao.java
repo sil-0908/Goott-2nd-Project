@@ -29,13 +29,9 @@ public class UserDao {
 	}
 	
 	//회원 가입 - 01.31 장재호
-	public boolean create(UserDto userDto) {
-		String checkTF = this.sqlSessionTemplate.selectOne("user.signUpCheck", userDto);  //checkTF : 닉네임 중복이되면 중복 값을 담는다
-		if(checkTF == null) { // 닉네임 중복 없음
-			sqlSessionTemplate.insert("user.insert", userDto);
-			return true;
-		}
-		else return false;
+	public void create(UserDto userDto) {
+		sqlSessionTemplate.insert("user.insert", userDto);
+		
 	}
 	
 	//로그인 - 01.31 장재호
